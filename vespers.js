@@ -181,147 +181,112 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var printSplitData = [];  // Store for afterprint restoration
 
-  function collectSystemReferencedIds(system) {
-    var ids = new Set();
-    system.querySelectorAll('use').forEach(function(use) {
-      var href = use.href && use.href.baseVal;
-      if (href && href.startsWith('#')) {
-        ids.add(href.substring(1));
-      }
-    });
-    return ids;
-  }
+  // Simpler approach: use viewBox to show slices of the original SVG
+  function getSystemYPositions(svg) {
+    var positions = [];
 
-  function createLineSvg(system, originalDefs, lineIndex, svgWidth, caeciliaeGroup) {
-    var svgns = 'http://www.w3.org/2000/svg';
-
-    // Get the Y offset for this system from its staff group transform
-    var systemY = 0;
-    var staffGroup = system.querySelector('[id^="staff"]');
-    if (staffGroup) {
-      var transform = staffGroup.getAttribute('transform') || '';
-      var match = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
-      if (match) {
-        systemY = parseFloat(match[2]) || 0;
-      }
-    }
-
-    // Find text elements that belong to this system (they're siblings with class="systemN")
-    var systemTexts = caeciliaeGroup.querySelectorAll('text.system' + lineIndex);
-
-    // Calculate bounding box including text
-    var bbox = system.getBBox();
-    var textBbox = { y: bbox.y, height: bbox.height };
-    systemTexts.forEach(function(text) {
-      try {
-        var tb = text.getBBox();
-        var textTransform = text.getAttribute('transform') || '';
-        var textMatch = textTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
-        var textY = textMatch ? parseFloat(textMatch[2]) || 0 : 0;
-        var adjustedY = textY - systemY;
-        var bottom = adjustedY + tb.height;
-        if (bottom > textBbox.height) textBbox.height = bottom + 10;
-      } catch(e) {}
-    });
-
-    var width = Math.max(bbox.width + bbox.x + 20, svgWidth);
-    var height = Math.max(bbox.height + 40, textBbox.height + 50);
-
-    // Create new SVG
-    var newSvg = document.createElementNS(svgns, 'svg');
-    newSvg.setAttribute('class', 'Exsurge ChantScore chant-line-svg');
-    newSvg.setAttribute('width', width);
-    newSvg.setAttribute('height', height);
-
-    // Clone defs (only symbols used by this system + staff + masks)
-    var newDefs = document.createElementNS(svgns, 'defs');
-    var referencedIds = collectSystemReferencedIds(system);
-    referencedIds.add('staff');
-
-    Array.from(originalDefs.children).forEach(function(defChild) {
-      var id = defChild.getAttribute('id');
-      if (!id) return;
-
-      // Include referenced symbols, staff, ledger lines
-      if (referencedIds.has(id) || id.startsWith('ledger')) {
-        newDefs.appendChild(defChild.cloneNode(true));
-      }
-      // Include mask for this system (adjust transform)
-      if (id === 'staffmask' + lineIndex) {
-        var clonedMask = defChild.cloneNode(true);
-        clonedMask.setAttribute('transform', 'translate(0,0)');
-        newDefs.appendChild(clonedMask);
-      }
-    });
-    newSvg.appendChild(newDefs);
-
-    // Create caeciliae group with adjusted transform
-    var newCaeciliae = document.createElementNS(svgns, 'g');
-    newCaeciliae.setAttribute('class', 'caeciliae');
-    var staffOff = (typeof staffoffset !== 'undefined') ? staffoffset : 44;
-    newCaeciliae.setAttribute('transform', 'translate(0,' + staffOff + ')');
-
-    // Clone system and adjust coordinates to origin
-    var clonedSystem = system.cloneNode(true);
-    clonedSystem.setAttribute('id', 'system0');
-
-    // Adjust staff group transform (remove systemY offset)
-    var clonedStaffGroup = clonedSystem.querySelector('[id^="staff"]');
-    if (clonedStaffGroup) {
-      var transform = clonedStaffGroup.getAttribute('transform') || '';
-      var match = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
-      if (match) {
-        var x = parseFloat(match[1]) || 0;
-        var y = parseFloat(match[2]) || 0;
-        clonedStaffGroup.setAttribute('transform', 'translate(' + x + ',' + (y - systemY) + ')');
-      }
-      clonedStaffGroup.setAttribute('id', 'staff0');
-      clonedStaffGroup.setAttribute('mask', 'url(#staffmask' + lineIndex + ')');
-    }
-
-    newCaeciliae.appendChild(clonedSystem);
-
-    // Clone and adjust text elements for this system
-    systemTexts.forEach(function(text) {
-      var clonedText = text.cloneNode(true);
-      var transform = clonedText.getAttribute('transform') || '';
-      var match = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
-      if (match) {
-        var x = parseFloat(match[1]) || 0;
-        var y = parseFloat(match[2]) || 0;
-        clonedText.setAttribute('transform', 'translate(' + x + ',' + (y - systemY) + ')');
-      }
-      newCaeciliae.appendChild(clonedText);
-    });
-
-    newSvg.appendChild(newCaeciliae);
-
-    return newSvg;
-  }
-
-  function splitChantForPrint(svg) {
+    // Find staff groups - first try inside caeciliae, then in entire SVG
     var caeciliaeGroup = svg.querySelector('g.caeciliae');
-    if (!caeciliaeGroup) return null;
+    var staffGroups = caeciliaeGroup
+      ? Array.from(caeciliaeGroup.querySelectorAll('g[id^="staff"]'))
+      : [];
 
-    var systems = Array.from(caeciliaeGroup.querySelectorAll('[id^="system"]'));
-    if (systems.length <= 1) return null;  // No split needed
+    // If no staff groups in caeciliae, look for system groups in entire SVG
+    if (staffGroups.length <= 1) {
+      var systemGroups = Array.from(svg.querySelectorAll('g[id^="system"]'));
+      if (systemGroups.length > 1) {
+        // Extract Y positions directly from system group transforms
+        systemGroups.forEach(function(sys) {
+          var transform = sys.getAttribute('transform') || '';
+          var match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
+          if (match) {
+            var y = parseFloat(match[2]) || 0;
+            positions.push(y);
+          }
+        });
 
-    var originalDefs = svg.querySelector('defs');
-    var svgWidth = parseFloat(svg.getAttribute('width')) || 900;
+        // Sort and dedupe
+        positions.sort(function(a, b) { return a - b; });
+        positions = positions.filter(function(y, i, arr) {
+          return i === 0 || y - arr[i-1] > 10;
+        });
 
-    // Create container for line SVGs
+        return positions;
+      }
+    }
+
+    // If we found staff groups in caeciliae, extract Y positions from parent (system) transforms
+    staffGroups.forEach(function(staff) {
+      // The transform is on the parent element (system group), not the staff group itself
+      var parent = staff.parentElement;
+      var transform = parent ? parent.getAttribute('transform') || '' : '';
+      var match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
+      if (match) {
+        var y = parseFloat(match[2]) || 0;
+        positions.push(y);
+      }
+    });
+
+    // Sort by Y position and remove duplicates
+    positions.sort(function(a, b) { return a - b; });
+    positions = positions.filter(function(y, i, arr) {
+      return i === 0 || y - arr[i-1] > 10; // Remove positions within 10px of each other
+    });
+
+    return positions;
+  }
+
+  function splitChantForPrint(svg, targetWidth) {
+    var positions = getSystemYPositions(svg);
+    if (positions.length <= 1) return null;
+
+    var svgWidth = targetWidth || printWidth;
+    var svgHeight = parseFloat(svg.getAttribute('height')) || 800;
+
+    // Get the staffoffset (caeciliae group Y offset) to adjust coordinates
+    var staffOff = (typeof staffoffset !== 'undefined') ? staffoffset : 44;
+
+    // Create container for line divs (built in memory, inserted once at end)
     var container = document.createElement('div');
     container.className = 'chant-print-lines';
 
     var lineSvgs = [];
-    systems.forEach(function(system, index) {
-      var lineSvg = createLineSvg(system, originalDefs, index, svgWidth, caeciliaeGroup);
+    var numPositions = positions.length;
+    var normalLineHeight = numPositions > 1 ? positions[1] - positions[0] : 83;
+
+    for (var index = 0; index < numPositions; index++) {
+      var yPos = positions[index];
+      var lineStart, lineHeight;
+
+      if (index === 0) {
+        lineStart = 0;
+        lineHeight = staffOff + positions[1];
+      } else if (index === numPositions - 1) {
+        // Last line: ensure enough height for text below staff
+        lineStart = staffOff + yPos;
+        lineHeight = Math.max(svgHeight - lineStart + 50, normalLineHeight + 40);
+      } else {
+        lineStart = staffOff + yPos;
+        lineHeight = positions[index + 1] - yPos;
+      }
+
+      // Create wrapper with fixed height for clipping
       var lineWrapper = document.createElement('div');
       lineWrapper.className = 'chant-line';
+      lineWrapper.style.cssText = 'height:' + lineHeight + 'px;overflow:hidden;padding-right:10px';
+
+      // Clone SVG and use negative margin to show correct portion
+      var lineSvg = svg.cloneNode(true);
+      lineSvg.className = 'Exsurge ChantScore chant-line-svg';
+      lineSvg.setAttribute('width', svgWidth);
+      lineSvg.setAttribute('height', svgHeight);
+      lineSvg.removeAttribute('viewBox');
+      lineSvg.style.cssText = 'display:block;margin-top:' + (-lineStart) + 'px';
+
       lineWrapper.appendChild(lineSvg);
       container.appendChild(lineWrapper);
       lineSvgs.push(lineSvg);
-    });
+    }
 
     // Insert container, hide original
     svg.parentNode.insertBefore(container, svg);
@@ -345,51 +310,66 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("beforeprint", function () {
     printSplitData = [];
 
-    if (typeof relayoutChant === "function") {
-      document.querySelectorAll(".chant svg").forEach(function (svg) {
-        try {
-          // Save current screen state
-          svg.dataset.screenWidth = svg.getAttribute("width");
-          svg.dataset.screenHeight = svg.getAttribute("height");
-          svg.dataset.screenStyle = svg.getAttribute("style") || "";
-          svg.dataset.screenViewBox = svg.getAttribute("viewBox") || "";
+    if (typeof relayoutChant !== "function") return;
 
-          // Relayout for print width
-          relayoutChant(svg, printWidth);
-          extendStaffLines(svg, printWidth);
+    var scale = pageWidth / printWidth;
+    var svgs = document.querySelectorAll(".chant svg");
 
-          return;
+    // First pass: relayout all chants (batched reads/writes)
+    svgs.forEach(function (svg) {
+      // Save current screen state
+      svg.dataset.screenWidth = svg.getAttribute("width");
+      svg.dataset.screenHeight = svg.getAttribute("height");
+      svg.dataset.screenStyle = svg.getAttribute("style") || "";
+      svg.dataset.screenViewBox = svg.getAttribute("viewBox") || "";
 
-          // Split into per-line SVGs for page breaking
-          var splitData = splitChantForPrint(svg);
-          if (splitData) {
-            printSplitData.push(splitData);
+      // Relayout for print width
+      try {
+        relayoutChant(svg, printWidth);
+        extendStaffLines(svg, printWidth);
+      } catch (e) {
+        console.error("Print layout error:", e);
+      }
+    });
 
-            // Scale each line SVG for print
-            splitData.systems.forEach(function(lineSvg) {
-              var lineWidth = parseFloat(lineSvg.getAttribute('width')) || printWidth;
-              var lineHeight = parseFloat(lineSvg.getAttribute('height')) || 100;
-              var scale = pageWidth / printWidth;
+    // Second pass: split and scale (batched)
+    svgs.forEach(function (svg) {
+      try {
+        var splitData = splitChantForPrint(svg, printWidth);
+        if (splitData) {
+          printSplitData.push(splitData);
 
-              lineSvg.setAttribute('viewBox', '0 0 ' + lineWidth + ' ' + lineHeight);
-              lineSvg.setAttribute('width', lineWidth * scale);
-              lineSvg.setAttribute('height', lineHeight * scale);
-            });
-          } else {
-            // Single-line chant - use existing scaling
-            var svgHeight = parseFloat(svg.getAttribute("height")) || 100;
-            svg.setAttribute("viewBox", "0 0 " + printWidth + " " + svgHeight);
-            var scale = pageWidth / printWidth;
-            svg.setAttribute("width", pageWidth);
-            svg.setAttribute("height", svgHeight * scale);
-            svg.style.width = pageWidth + "px";
-            svg.style.height = (svgHeight * scale) + "px";
+          // Apply scaling to all line SVGs
+          var systems = splitData.systems;
+          for (var i = 0; i < systems.length; i++) {
+            var lineSvg = systems[i];
+            var wrapper = lineSvg.parentElement;
+            if (wrapper) {
+              var wrapperHeight = parseFloat(wrapper.style.height) || 83;
+              var marginTop = parseFloat(lineSvg.style.marginTop) || 0;
+              var svgW = parseFloat(lineSvg.getAttribute('width')) || printWidth;
+              var svgH = parseFloat(lineSvg.getAttribute('height')) || 600;
+
+              lineSvg.setAttribute('viewBox', '0 0 ' + svgW + ' ' + svgH);
+              lineSvg.setAttribute('width', svgW * scale);
+              lineSvg.setAttribute('height', svgH * scale);
+              lineSvg.style.marginTop = (marginTop * scale) + 'px';
+              wrapper.style.height = (wrapperHeight * scale) + 'px';
+            }
           }
-        } catch (e) {
-          console.error("Print layout error:", e);
+        } else {
+          // Single-line chant - use existing scaling
+          var svgHeight = parseFloat(svg.getAttribute("height")) || 100;
+          svg.setAttribute("viewBox", "0 0 " + printWidth + " " + svgHeight);
+          svg.setAttribute("width", pageWidth);
+          svg.setAttribute("height", svgHeight * scale);
+          svg.style.width = pageWidth + "px";
+          svg.style.height = (svgHeight * scale) + "px";
         }
-      });
-    }
+      } catch (e) {
+        console.error("Print layout error:", e);
+      }
+    });
   });
 
   window.addEventListener("afterprint", function () {

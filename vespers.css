@@ -478,12 +478,27 @@ span.start-pitch {
   /* Print page breaking for split chant lines */
   .chant-print-lines {
     display: block;
+    page-break-inside: auto;
+    break-inside: auto;
   }
   .chant-line {
     display: block;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    margin-bottom: 2pt;
+    width: 100%;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    break-inside: avoid-page !important;
+    -webkit-column-break-inside: avoid !important;
+    page-break-after: auto;
+    break-after: auto;
+    margin-bottom: 0;
+    -webkit-print-color-adjust: exact;
+    position: relative;
+    overflow: hidden;
+  }
+  .chant-line-svg {
+    display: block;
+    max-width: 100%;
+    overflow: hidden !important;
   }
   .chant-line-svg {
     display: block;
