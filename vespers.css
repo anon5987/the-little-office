@@ -554,3 +554,8 @@ span.start-pitch {
 body.show-translations .translation {
   display: block;
 }
+
+/* iOS Safari neume rendering fix for liquescent glyphs */
+.ios-device .caeciliae {
+  letter-spacing: -0.3px;
+}

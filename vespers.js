@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Detect iOS for rendering fixes (liquescent neume alignment)
+  var isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    document.documentElement.classList.add("ios-device");
+  }
+
   // Fix whitespace issues in static SVG text elements
   document.querySelectorAll("tspan.rubric").forEach(function (tspan) {
     tspan.textContent = tspan.textContent.trim();
