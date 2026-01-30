@@ -80,7 +80,7 @@ svg.Exsurge {
   display: block;
   font-family: "Crimson Text", serif;
   font-size: 14pt;
-  color: #d00;
+  color: var(--accent-red, #d00);
   margin-bottom: 0.25em;
 }
 
@@ -119,7 +119,7 @@ svg tspan.rubric,
 svg text.rubric,
 svg .rubric {
   font-weight: bold;
-  fill: #d00 !important;
+  fill: var(--accent-red, #d00) !important;
 }
 /* Red text in chant (verse numbers, asterisks) - NOT italic */
 /* jgabc uses class "i" for <i> tags */
@@ -135,8 +135,8 @@ text .i,
 g .i,
 tspan[style*="italic"].i,
 text tspan.i {
-  fill: #f00 !important;
-  color: #f00 !important;
+  fill: var(--accent-red, #d00) !important;
+  color: var(--accent-red, #d00) !important;
   font-style: normal !important;
 }
 
@@ -161,14 +161,14 @@ text tspan.i {
   margin-top: 0;
 }
 .verses > p > span.versenum {
-  color: #d00 !important;
+  color: var(--accent-red, #d00) !important;
   margin-bottom: 0;
   float: left;
   width: 1.5em;
   text-align: right;
 }
 .verses .versiculum {
-  color: #d00 !important;
+  color: var(--accent-red, #d00) !important;
 }
 .open-on-hover > .dropdown-menu {
   margin: 0;
@@ -180,7 +180,7 @@ text tspan.i {
   font-family: Verdana, Helvetica, sans-serif;
 }
 .selected {
-  fill: #e22;
+  fill: var(--accent-red, #d00);
 }
 .selected-1 {
   fill: url(#gradRedBlack);
@@ -189,7 +189,7 @@ text tspan.i {
   fill: url(#gradBlackRed);
 }
 tspan.selectable:hover {
-  fill: #e22;
+  fill: var(--accent-red, #d00);
 }
 tspan.selectable {
   cursor: pointer;
@@ -214,15 +214,15 @@ tspan.selectable {
   font-family: "Versiculum";
   font-variant: normal;
   font-style: normal;
-  fill: #d00 !important;
-  color: #d00 !important;
+  fill: var(--accent-red, #d00) !important;
+  color: var(--accent-red, #d00) !important;
 }
 /* Red color for verse numbers and asterisks in psalm tones */
 svg .v,
 svg tspan.v,
 .v {
-  fill: #d00 !important;
-  color: #d00 !important;
+  fill: var(--accent-red, #d00) !important;
+  color: var(--accent-red, #d00) !important;
 }
 .caeciliae-print {
   font-family: "CaeciliaeStaffless-Print";
@@ -269,7 +269,7 @@ text.dropCap {
   cursor: pointer !important;
 }
 text.dropCap:hover {
-  fill: #d00 !important;
+  fill: var(--accent-red, #d00) !important;
 }
 [part].show-gabc use[source-index]:hover,
 #chant-preview.clickable use[source-index]:hover,
@@ -308,7 +308,6 @@ text[source-index].active [style*="fill:#f00;"] {
 }
 
 .btn-group-vertical > .btn-group {
-  display: -webkit-flex;
   display: flex;
 }
 .btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn {
@@ -329,7 +328,6 @@ span.start-pitch {
 }
 #mediaControls {
   position: fixed;
-  display: -webkit-flex;
   display: flex;
   height: 30px;
   bottom: 0;
@@ -341,14 +339,10 @@ span.start-pitch {
   min-width: 100%;
   z-index: 1;
   transform: translateY(0);
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 #mediaControls > * {
   margin: auto;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
 }
@@ -359,7 +353,6 @@ span.start-pitch {
   margin-right: 0;
 }
 #mediaControls .volume {
-  display: -webkit-flex;
   display: flex;
   align-items: center;
   padding: 4px 10px;
@@ -399,18 +392,14 @@ span.start-pitch {
     display: none !important;
   }
   .flex {
-    -webkit-display: flex;
     display: flex;
-    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
   }
   .flex > .child-main {
-    -webkit-order: 1;
     order: 1;
     margin: 0 6px 6px 0;
   }
   .flex > .child-other {
-    -webkit-order: 2;
     order: 2;
   }
   .right {
@@ -446,17 +435,13 @@ span.start-pitch {
   font-display: swap;
 }
 
-@media screen {
-  .caeciliae {
-    font-family: "Caeciliae Staffless", "CaeciliaeStaffless";
-    font-size: 48px;
-  }
+/* Caeciliae font class - applies to both screen and print */
+.caeciliae {
+  font-family: "Caeciliae Staffless", "CaeciliaeStaffless";
+  font-size: 48px;
 }
+
 @media print {
-  .caeciliae {
-    font-family: "Caeciliae Staffless", "CaeciliaeStaffless";
-    font-size: 48px;
-  }
   .hide-print {
     display: none !important;
   }
@@ -544,7 +529,7 @@ span.start-pitch {
   font-family: "Crimson Text", serif;
   font-style: italic;
   font-size: 14pt;
-  color: #555;
+  color: var(--text-secondary, #555);
   margin: 0.3em 0 1.2em;
   white-space: pre-line;
 }

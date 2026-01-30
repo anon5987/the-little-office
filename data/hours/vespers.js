@@ -23,41 +23,41 @@ export const vespers = {
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-109',
-      psalmLabel: { en: 'Psalm cix.', cs: 'Žalm 109.' },
+      psalmLabelKey: 'ui-psalm-109',
       psalmIncipit: 'Dixit dominus',
-      antiphonKey: 'ant1',
+      antiphonKey: 'dum-esset-rex',
       mode: '3a'
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-112',
-      psalmLabel: { en: 'Psalm cxii.', cs: 'Žalm 112.' },
+      psalmLabelKey: 'ui-psalm-112',
       psalmIncipit: 'Laudate pueri',
-      antiphonKey: 'ant2',
+      antiphonKey: 'laeva-ejus',
       mode: '4a*'
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-121',
-      psalmLabel: { en: 'Psalm cxxi.', cs: 'Žalm 121.' },
+      psalmLabelKey: 'ui-psalm-121',
       psalmIncipit: 'Laetatus sum',
-      antiphonKey: 'ant3',
+      antiphonKey: 'nigra-sum',
       mode: '3b'
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-126',
-      psalmLabel: { en: 'Psalm cxxvi.', cs: 'Žalm 126.' },
+      psalmLabelKey: 'ui-psalm-126',
       psalmIncipit: 'Nisi Dominus',
-      antiphonKey: 'ant4',
+      antiphonKey: 'jam-hiems',
       mode: '8G'
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-147',
-      psalmLabel: { en: 'Psalm cxlvii.', cs: 'Žalm 147.' },
+      psalmLabelKey: 'ui-psalm-147',
       psalmIncipit: 'Lauda Jerusalem',
-      antiphonKey: 'ant5',
+      antiphonKey: 'speciosa-facta-es',
       mode: '4A*'
     },
     {
@@ -92,7 +92,7 @@ export const vespers = {
       type: 'canticle-with-antiphon',
       canticleId: 'magnificat-chant',
       canticleLabelKey: 'ui-magnificat',
-      antiphonKey: 'magnificat-ant',
+      antiphonKey: 'beata-mater',
       mode: '2D',
       translationKey: 'magnificat-chant'
     },

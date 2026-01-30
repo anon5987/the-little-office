@@ -4,28 +4,28 @@
  */
 
 export const office1Translations = {
-  // Vespers Antiphons
-  "ant1": {
+  // Vespers Antiphons (keys use Latin incipit naming)
+  "dum-esset-rex": {
     en: "While the king was at his repose, my spikenard sent forth a sweet odour.",
     cs: "Když král ulehl na svoje lůžko, můj nard rozšířil sladkou vůni."
   },
-  "ant2": {
+  "laeva-ejus": {
     en: "His left hand is under my head, and his right hand shall embrace me.",
     cs: "Jeho levice je pod mou hlavou, svou pravicí mě objímá."
   },
-  "ant3": {
+  "nigra-sum": {
     en: "I am black but beautiful, O ye daughters of Jerusalem: therefore hath the king loved me, and brought me into his chamber.",
     cs: "Černá jsem, přece však krásná, jeruzalémské dcery: proto si mě zamiloval král a uvedl mě do své komnaty."
   },
-  "ant4": {
+  "jam-hiems": {
     en: "For winter is now past, the rain is over and gone: arise, my love, and come",
     cs: "Hle, už přešla zima, déšť přestal a minul: vstaň a pojď, moje krásko, pojď!"
   },
-  "ant5": {
+  "speciosa-facta-es": {
     en: "Thou art become beautiful and sweet in thy delights, O holy Mother of God.",
     cs: "Stala ses krásnou a líbeznou ve své blaženosti, svatá Boží Rodičko."
   },
-  "magnificat-ant": {
+  "beata-mater": {
     en: "Blessed Mother and inviolate Virgin, glorious Queen of the world, intercede for us with the Lord.",
     cs: "Blahoslavená Matko a neporušená Panno, slavná Královno světa, přimlouvej se za nás u Pána."
   },

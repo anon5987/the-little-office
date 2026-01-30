@@ -183,8 +183,8 @@ export async function renderAllGabc(container = document) {
 }
 
 // Synchronous version for backwards compatibility
-export function renderAllGabcSync() {
-  document
+export function renderAllGabcSync(container = document) {
+  container
     .querySelectorAll("[data-gabc], [data-gabc-id]")
     .forEach(renderGabc);
 }

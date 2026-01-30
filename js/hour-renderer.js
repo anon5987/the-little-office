@@ -221,8 +221,13 @@ function renderPsalmWithAntiphon(section, gabc, container, lang) {
     psalmLabel.className = 'chant-label';
 
     const psalmNumSpan = document.createElement('span');
-    psalmNumSpan.setAttribute('data-translation-key', `ui-${section.psalmId}`);
-    psalmNumSpan.textContent = section.psalmLabel?.[lang] || section.psalmLabel?.en || '';
+    // Use psalmLabelKey for translation lookup, fallback to legacy psalmLabel
+    if (section.psalmLabelKey) {
+      psalmNumSpan.setAttribute('data-translation-key', section.psalmLabelKey);
+    } else {
+      psalmNumSpan.setAttribute('data-translation-key', `ui-${section.psalmId}`);
+      psalmNumSpan.textContent = section.psalmLabel?.[lang] || section.psalmLabel?.en || '';
+    }
     psalmLabel.appendChild(psalmNumSpan);
 
     if (section.psalmIncipit) {
