@@ -1,3 +1,35 @@
+/* ==========================================================================
+   CSS Variables for Chant Rendering
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-primary: "Crimson Text", Georgia, serif;
+  --font-chant: "Caeciliae Staffless", "CaeciliaeStaffless";
+  --font-sans: Verdana, Helvetica, sans-serif;
+
+  /* Font sizes */
+  --font-size-base: 14pt;
+  --font-size-sm: 12px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-chant: 48px;
+  --font-size-initial: 60px;
+
+  /* Spacing */
+  --spacing-xs: 6pt;
+  --spacing-sm: 0.25em;
+  --spacing-md: 16px;
+  --spacing-lg: 1.5em;
+
+  /* Line heights */
+  --line-height-verse: 1;
+}
+
+/* ==========================================================================
+   Font Faces
+   ========================================================================== */
+
 /* Load Crimson Text from jgabc repository via jsDelivr CDN */
 @font-face {
   font-family: "Crimson Text";
@@ -39,7 +71,7 @@
     format("woff");
 }
 .lyric-font {
-  font-family: "Crimson Text", serif;
+  font-family: var(--font-primary);
 }
 text.lyric,
 text.dropCap,
@@ -54,14 +86,14 @@ body {
 }
 
 h1 {
-  font-family: "Crimson Text", serif;
+  font-family: var(--font-primary);
 }
 
 .description {
-  font-family: "Crimson Text", serif;
+  font-family: var(--font-primary);
   font-style: italic;
-  font-size: 14pt;
-  margin-bottom: 1.5em;
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-lg);
 }
 
 /* Ensure SVGs display properly */
@@ -71,16 +103,16 @@ svg.Exsurge {
 }
 
 .crimson {
-  font-family: "Crimson Text", serif;
+  font-family: var(--font-primary);
 }
 
 /* Chant labels (above chant SVG) */
 .chant-label {
   display: block;
-  font-family: "Crimson Text", serif;
-  font-size: 14pt;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
   color: var(--accent-red, #d00);
-  margin-bottom: 0.25em;
+  margin-bottom: var(--spacing-sm);
 }
 
 .ita {
@@ -88,11 +120,11 @@ svg.Exsurge {
 }
 
 .ml {
-  margin-left: 16px;
+  margin-left: var(--spacing-md);
 }
 
 .mr {
-  margin-right: 16px;
+  margin-right: var(--spacing-md);
 }
 
 /* Dynamic chant containers */
@@ -121,19 +153,10 @@ svg .rubric {
   fill: var(--accent-red, #d00) !important;
 }
 /* Red text in chant (verse numbers, asterisks) - NOT italic */
-/* jgabc uses class "i" for <i> tags */
+/* jgabc uses class "i" for <i> tags which should be red, not italic */
 .i,
 svg .i,
-svg tspan.i,
-svg text .i,
-svg .goudy.i,
-svg tspan.goudy.i,
-tspan.i,
-text .i,
-.caeciliae .i,
-g .i,
-tspan[style*="italic"].i,
-text tspan.i {
+tspan.i {
   fill: var(--accent-red, #d00) !important;
   color: var(--accent-red, #d00) !important;
   font-style: normal !important;
@@ -151,12 +174,12 @@ text tspan.i {
 }
 .verses > p {
   hyphens: manual;
-  line-height: 1;
-  margin-bottom: 6pt;
+  line-height: var(--line-height-verse);
+  margin-bottom: var(--spacing-xs);
   clear: right;
 }
 .verses > p > span {
-  margin-bottom: 6pt;
+  margin-bottom: var(--spacing-xs);
   margin-top: 0;
 }
 .verses > p > span.versenum {
@@ -169,14 +192,8 @@ text tspan.i {
 .verses .versiculum {
   color: var(--accent-red, #d00) !important;
 }
-.open-on-hover > .dropdown-menu {
-  margin: 0;
-}
-.open-on-hover:hover > .dropdown-menu {
-  display: block;
-}
 .sans {
-  font-family: Verdana, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 .selected {
   fill: var(--accent-red, #d00);
@@ -207,7 +224,7 @@ tspan.selectable {
   font-variant: small-caps;
 }
 .trans {
-  font-size: 15px;
+  font-size: var(--font-size-md);
 }
 .versiculum {
   font-family: "Versiculum";
@@ -225,27 +242,27 @@ svg tspan.v,
 }
 .caeciliae-print {
   font-family: "CaeciliaeStaffless-Print";
-  font-size: 48px;
+  font-size: var(--font-size-chant);
 }
 .goudy {
-  font-family: "Crimson Text";
-  font-size: 18px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
 }
 .choral-sign {
-  font-family: "Crimson Text";
-  font-size: 12px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
 }
 .greinitial {
-  font-family: "Crimson Text";
-  font-size: 60px !important;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-initial) !important;
 }
 .greannotation {
-  font-family: "Crimson Text";
-  font-size: 15px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
 }
 .lectio-text {
-  font-family: "Crimson Text";
-  font-size: 14pt;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
 }
 label {
   font-weight: normal;
@@ -304,69 +321,6 @@ text[source-index].active [style*="fill:#f00;"] {
 #chant-preview.clickable use[source-index],
 #chant-preview.clickable text[source-index]:not(.dropCap) {
   cursor: pointer;
-}
-
-.btn-group-vertical > .btn-group {
-  display: flex;
-}
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.chant-context .btn.disabled {
-  opacity: 1;
-}
-span.start-pitch {
-  display: inline-block;
-  width: 65px;
-}
-
-#mediaControls.offscreen {
-  transform: translateY(30px);
-  opacity: 0;
-}
-#mediaControls {
-  position: fixed;
-  display: flex;
-  height: 30px;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  max-width: 100% !important;
-  width: 100%;
-  min-width: 100%;
-  z-index: 1;
-  transform: translateY(0);
-  transition: all 0.5s ease;
-}
-#mediaControls > * {
-  margin: auto;
-  display: flex;
-  align-items: center;
-}
-#mediaControls > * > *:first-child {
-  margin-left: 0;
-}
-#mediaControls > * > *:last-child {
-  margin-right: 0;
-}
-#mediaControls .volume {
-  display: flex;
-  align-items: center;
-  padding: 4px 10px;
-}
-#mediaControls .volume > .progress {
-  width: 100px;
-  margin: 0 0 0 5px;
-}
-#mediaControls .btn.with-next {
-  border-right: none;
-  padding-right: 5px;
-}
-#mediaControls .btn.with-next + .btn {
-  border-left: none;
-  padding-left: 0;
 }
 
 .flex-0 {
@@ -436,75 +390,8 @@ span.start-pitch {
 
 /* Caeciliae font class - applies to both screen and print */
 .caeciliae {
-  font-family: "Caeciliae Staffless", "CaeciliaeStaffless";
-  font-size: 48px;
-}
-
-@media print {
-  .hide-print {
-    display: none !important;
-  }
-  h1 {
-    page-break-after: avoid;
-    margin-bottom: 0.3em;
-  }
-  .chant-label {
-    page-break-after: avoid;
-  }
-  .chant {
-    page-break-before: avoid;
-    margin-bottom: 0.2em;
-  }
-
-  /* Print page breaking for split chant lines */
-  .chant-print-lines {
-    display: block;
-    page-break-inside: auto;
-    break-inside: auto;
-  }
-  .chant-line {
-    display: block;
-    width: 100%;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    break-inside: avoid-page !important;
-    -webkit-column-break-inside: avoid !important;
-    page-break-after: auto;
-    break-after: auto;
-    margin-bottom: 0;
-    -webkit-print-color-adjust: exact;
-    position: relative;
-    overflow: hidden;
-  }
-  .chant-line-svg {
-    display: block;
-    max-width: 100%;
-    overflow: hidden !important;
-  }
-  .chant-line-svg {
-    display: block;
-    max-width: 100%;
-  }
-}
-
-@media screen {
-  /* Hide print containers on screen */
-  .chant-print-lines {
-    display: none;
-  }
-}
-.btn-use-solesmes-lengths {
-  margin-right: 2.5em;
-}
-@media screen and (min-width: 412px) {
-  .parent-use-solesmes-lengths {
-    position: relative;
-    height: 30px;
-  }
-  .btn-use-solesmes-lengths {
-    position: absolute;
-    right: 0em;
-  }
+  font-family: var(--font-chant);
+  font-size: var(--font-size-chant);
 }
 
 /* Translation controls */
@@ -513,21 +400,21 @@ span.start-pitch {
   align-items: center;
   gap: 1em;
   margin: 0.5em 0 1em;
-  font-family: "Crimson Text", serif;
-  font-size: 14pt;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
 }
 #language-selector {
-  font-family: "Crimson Text", serif;
-  font-size: 14pt;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
   padding: 0.1em 0.3em;
 }
 
 /* Translation text below chants */
 .translation {
   display: none;
-  font-family: "Crimson Text", serif;
+  font-family: var(--font-primary);
   font-style: italic;
-  font-size: 14pt;
+  font-size: var(--font-size-base);
   color: var(--text-secondary, #555);
   margin: 0.3em 0 1.2em;
   white-space: pre-line;

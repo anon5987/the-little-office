@@ -5,6 +5,8 @@
  * Times are configurable - these are traditional approximations.
  */
 
+import { HOUR_ORDER, HOUR_NAME_KEYS } from './constants.js';
+
 // Default hour time ranges (24-hour format)
 // These can be overridden via setHourTimes()
 let HOUR_TIMES = {
@@ -18,8 +20,16 @@ let HOUR_TIMES = {
   compline: { start: 21, end: 24 }   // 9 PM to midnight (before sleep)
 };
 
-// Hour order for iteration
-const HOUR_ORDER = ['matins', 'lauds', 'prime', 'terce', 'sext', 'none', 'vespers', 'compline'];
+// Cache for hour name translations
+let hourNameTranslationsCache = null;
+
+/**
+ * Set hour name translations cache
+ * @param {Object} translations - Translation object with hour name keys
+ */
+export function setHourNameTranslations(translations) {
+  hourNameTranslationsCache = translations;
+}
 
 /**
  * Set custom hour times
@@ -108,8 +118,16 @@ export function getRecommendation(date = new Date()) {
 
 /**
  * Get display name for an hour
+ * Uses translation cache if available, falls back to static names
  */
 export function getHourName(hourId, lang = 'en') {
+  // Try translation cache first
+  const key = HOUR_NAME_KEYS[hourId];
+  if (hourNameTranslationsCache && key && hourNameTranslationsCache[key]) {
+    return hourNameTranslationsCache[key][lang] || hourNameTranslationsCache[key].en || hourId;
+  }
+
+  // Fallback to static names for backwards compatibility
   const names = {
     matins:   { en: 'Matins',   cs: 'Matutinum',     la: 'Matutinum' },
     lauds:    { en: 'Lauds',    cs: 'Ranní chvály',  la: 'Laudes' },

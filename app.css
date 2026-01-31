@@ -533,6 +533,7 @@ select, input {
    ========================================================================== */
 
 @media print {
+  /* Hide non-print elements */
   .landing-page,
   .sticky-header,
   .hide-print {
@@ -554,5 +555,57 @@ select, input {
   body {
     background: white !important;
     color: black !important;
+  }
+
+  /* Typography */
+  h1 {
+    page-break-after: avoid;
+    margin-bottom: 0.3em;
+  }
+
+  .chant-label {
+    page-break-after: avoid;
+  }
+
+  /* Chant containers */
+  .chant {
+    page-break-before: avoid;
+    margin-bottom: 0.2em;
+  }
+
+  /* Print page breaking for split chant lines */
+  .chant-print-lines {
+    display: block;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .chant-line {
+    display: block;
+    width: 100%;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    break-inside: avoid-page !important;
+    -webkit-column-break-inside: avoid !important;
+    page-break-after: auto;
+    break-after: auto;
+    margin-bottom: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chant-line-svg {
+    display: block;
+    max-width: 100%;
+    overflow: hidden !important;
+  }
+}
+
+/* Hide print containers on screen */
+@media screen {
+  .chant-print-lines {
+    display: none;
   }
 }

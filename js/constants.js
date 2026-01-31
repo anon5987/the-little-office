@@ -43,5 +43,20 @@ export const LANGUAGES = {
   LATIN: 'la',
 };
 
-// Available hours
+// Available hours (hours with implemented content)
 export const AVAILABLE_HOURS = ['vespers'];
+
+// Hour order for iteration
+export const HOUR_ORDER = ['matins', 'lauds', 'prime', 'terce', 'sext', 'none', 'vespers', 'compline'];
+
+// Hour name translation keys - maps hour ID to translation key
+export const HOUR_NAME_KEYS = {
+  matins: 'ui-hour-matins',
+  lauds: 'ui-hour-lauds',
+  prime: 'ui-hour-prime',
+  terce: 'ui-hour-terce',
+  sext: 'ui-hour-sext',
+  none: 'ui-hour-none',
+  vespers: 'ui-hour-vespers',
+  compline: 'ui-hour-compline',
+};

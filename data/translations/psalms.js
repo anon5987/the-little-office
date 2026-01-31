@@ -6,7 +6,7 @@
  * Czech translations from Český liturgický překlad Bible.
  */
 
-export const psalmTranslations = {
+export default {
   "psalm-109": {
     en: "1. The Lord said to my Lord: Sit thou at my right hand.\n2. Until I make thy enemies thy footstool.\n3. The Lord will send forth the sceptre of thy power out of Sion: rule thou in the midst of thy enemies.\n4. With thee is the principality in the day of thy strength: in the brightness of the saints: from the womb before the day star I begot thee.\n5. The Lord hath sworn, and he will not repent: Thou art a priest for ever according to the order of Melchisedech.\n6. The Lord at thy right hand hath broken kings in the day of his wrath.\n7. He shall judge among nations, he shall fill ruins: he shall crush the heads in the land of many.\n8. He shall drink of the torrent in the way: therefore shall he lift up the head.\n9. Glory be to the Father, and to the Son, and to the Holy Spirit.\n10. As it was in the beginning, is now, and ever shall be, world without end. Amen.",
     cs: "1. Hospodin řekl mému Pánu: Seď po mé pravici.\n2. Dokud nepoložím tvé nepřátele za podnož tvým nohám.\n3. Hospodin rozšíří mocné žezlo tvé ze Siónu: panuj uprostřed svých nepřátel!\n4. Tvůj lid se ti nabídne dobrovolně v den, kdy pohotovost svoláš; v posvátné nádheře z lůna jitřenky zrodí se ti rosa tvého mládí.\n5. Hospodin přísahal a nebude toho litovat: Ty jsi kněz navěky podle řádu Melchizedechova.\n6. Pán po tvé pravici zdrtí krále v den svého hněvu.\n7. Bude soudit národy, nakupí mrtvoly, zdrtí hlavy po širé zemi.\n8. Cestou se napije z potoka, proto povznese hlavu.\n9. Sláva Otci i Synu i Duchu Svatému.\n10. Jako byla na počátku, i nyní, i vždycky a na věky věků. Amen."
@@ -32,5 +32,3 @@ export const psalmTranslations = {
     cs: "1. Velebí má duše Hospodina.\n2. A můj duch jásá v Bohu, mém Spasiteli,\n3. že shlédl na svou nepatrnou služebnici. Hle, od této chvíle mě budou blahoslavit všechna pokolení,\n4. že mi učinil veliké věci ten, který je mocný. Jeho jméno je svaté\n5. a jeho milosrdenství od pokolení do pokolení k těm, kdo se ho bojí.\n6. Prokázal sílu svým ramenem, rozptýlil ty, kdo v srdci smýšlejí pyšně.\n7. Mocné svrhl z trůnu a ponížené povýšil.\n8. Hladové nasytil dobrými věcmi a bohaté propustil s prázdnou.\n9. Ujal se svého služebníka Izraele, pamětliv svého milosrdenství,\n10. jak slíbil našim otcům, Abrahámovi a jeho potomkům navěky.\n11. Sláva Otci i Synu i Duchu Svatému.\n12. Jako byla na počátku, i nyní, i vždycky a na věky věků. Amen."
   }
 };
-
-export default psalmTranslations;

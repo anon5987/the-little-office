@@ -101,8 +101,8 @@ export async function loadTranslations(office = 1) {
       import('../data/translations/psalms.js')
     ]);
 
-    Object.assign(translations, common.commonTranslations || common.default);
-    Object.assign(translations, psalms.psalmTranslations || psalms.default);
+    Object.assign(translations, common.default);
+    Object.assign(translations, psalms.default);
 
     // Try to load office-specific translations, fall back to office 1
     let officeTranslations = await import(`../data/translations/office${office}.js`).catch(() => null);
@@ -113,7 +113,7 @@ export async function loadTranslations(office = 1) {
     }
 
     if (officeTranslations) {
-      Object.assign(translations, officeTranslations.office1Translations || officeTranslations.default || officeTranslations);
+      Object.assign(translations, officeTranslations.default);
     }
 
     cache.translations[key] = translations;

@@ -3,7 +3,7 @@
  * UI strings and shared text used across all hours
  */
 
-export const commonTranslations = {
+export default {
   // UI Labels
   "ui-show-chant-translations": {
     en: "Show chant translations",
@@ -34,7 +34,7 @@ export const commonTranslations = {
     cs: "Ostatní dny"
   },
 
-  // Hour titles
+  // Hour titles (for page headings)
   "ui-title-vespers": {
     en: "Vespers",
     cs: "Nešpory"
@@ -66,6 +66,48 @@ export const commonTranslations = {
   "ui-title-none": {
     en: "None",
     cs: "Nona"
+  },
+
+  // Hour names (for navigation/display - includes Latin)
+  "ui-hour-matins": {
+    en: "Matins",
+    cs: "Matutinum",
+    la: "Matutinum"
+  },
+  "ui-hour-lauds": {
+    en: "Lauds",
+    cs: "Ranní chvály",
+    la: "Laudes"
+  },
+  "ui-hour-prime": {
+    en: "Prime",
+    cs: "Prima",
+    la: "Prima"
+  },
+  "ui-hour-terce": {
+    en: "Terce",
+    cs: "Tercie",
+    la: "Tertia"
+  },
+  "ui-hour-sext": {
+    en: "Sext",
+    cs: "Sexta",
+    la: "Sexta"
+  },
+  "ui-hour-none": {
+    en: "None",
+    cs: "Nona",
+    la: "Nona"
+  },
+  "ui-hour-vespers": {
+    en: "Vespers",
+    cs: "Nešpory",
+    la: "Vesperae"
+  },
+  "ui-hour-compline": {
+    en: "Compline",
+    cs: "Kompletář",
+    la: "Completorium"
   },
 
   // Hour descriptions
@@ -114,5 +156,3 @@ export const commonTranslations = {
     cs: "Dobrořečme Pánu. Bohu díky."
   }
 };
-
-export default commonTranslations;

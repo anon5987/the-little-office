@@ -3,7 +3,7 @@
  * Antiphons, readings, and hymns specific to Office 1
  */
 
-export const office1Translations = {
+export default {
   // Vespers Antiphons (keys use Latin incipit naming)
   "dum-esset-rex": {
     en: "While the king was at his repose, my spikenard sent forth a sweet odour.",
@@ -48,5 +48,3 @@ export const office1Translations = {
     cs: "Půvab se rozlévá po tvých rtech, proto ti Bůh požehnal navěky."
   }
 };
-
-export default office1Translations;
