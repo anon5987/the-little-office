@@ -10,6 +10,7 @@ import { showStickyHeader, updateLanguageSelector, setCurrentHourData, clearCurr
 import { getOffice } from './season.js';
 import { renderHour, applyTranslations } from './hour-renderer.js';
 import { cleanupScope, SCOPES } from './event-manager.js';
+import { restoreScrollPosition, setScrollHour } from './scroll-position.js';
 
 // Translation cache for hour names
 let translationsCache = null;
@@ -90,6 +91,10 @@ export async function renderHourPage(hourId, params = {}) {
     const hourData = await renderHour(hourId, contentArea, { office, lang });
     // Store hour data for language switching
     setCurrentHourData(hourData, applyTranslations);
+    // Restore scroll position after rendering completes (heights are stable)
+    restoreScrollPosition(hourId);
+    // Enable scroll tracking
+    setScrollHour(hourId);
   } catch (e) {
     console.error('Failed to render hour:', e);
     contentArea.innerHTML = `<p class="error">Failed to load ${hourId}. ${e.message}</p>`;

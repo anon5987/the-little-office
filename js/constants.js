@@ -25,6 +25,7 @@ export const DELAYS = {
   FONT_FALLBACK: 500,
   IDLE_TIMEOUT: 2000,
   RESIZE_DEBOUNCE: 250,
+  SCROLL_SAVE_DEBOUNCE: 250,
 };
 
 // CSS classes used in JavaScript

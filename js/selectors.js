@@ -40,6 +40,7 @@ export const SELECTORS = {
   TRANSLATION_CLASS: '.translation',
   TSPAN_RUBRIC: 'tspan.rubric',
   SVG_TEXT: 'svg text',
+  HOUR_SECTIONS: '#hour-content-area > div[id]',
 };
 
 /**

@@ -31,6 +31,7 @@ import { initStickyHeader } from './sticky-header.js';
 import { renderLandingPage, setTranslationsCache as setLandingTranslations } from './landing-page.js';
 import { renderHourPage, hideHourContent, setTranslationsCache as setHourTranslations } from './hour-page.js';
 import { IDS, getElement, SELECTORS } from './selectors.js';
+import { initScrollTracking, clearScrollPosition, clearScrollHour } from './scroll-position.js';
 
 // Application state
 const app = {
@@ -64,6 +65,10 @@ function handleRouteChange(newRoute, oldRoute) {
   // Cancel any in-progress rendering when navigating
   cancelRender();
 
+  // Clear scroll position on intentional navigation
+  clearScrollPosition();
+  clearScrollHour();
+
   if (isLandingPage()) {
     app.currentView = renderLandingPage();
     hideHourContent();
@@ -96,6 +101,9 @@ export async function init(translations) {
 
   // Initialize sticky header controls
   initStickyHeader();
+
+  // Initialize scroll position tracking
+  initScrollTracking();
 
   // Initialize print handlers
   initPrint();

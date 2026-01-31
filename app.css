@@ -26,6 +26,8 @@
   --skeleton-bg: #e0e0e0;
   --skeleton-wave: rgba(255, 255, 255, 0.5);
   --svg-fill: #000000;
+  --scroll-highlight: rgba(221, 0, 0, 0.12);
+  --scroll-highlight-strong: rgba(221, 0, 0, 0.22);
 }
 
 /* ==========================================================================
@@ -49,6 +51,8 @@ body.dark-mode {
   --skeleton-bg: #2a2a2a;
   --skeleton-wave: rgba(255, 255, 255, 0.08);
   --svg-fill: #cccccc;
+  --scroll-highlight: rgba(204, 68, 68, 0.18);
+  --scroll-highlight-strong: rgba(204, 68, 68, 0.28);
 }
 
 /* ==========================================================================
@@ -383,6 +387,38 @@ select, input {
 /* Also hide skeleton if SVG has been rendered (backup) */
 .chant:has(svg) .chant-skeleton-container {
   display: none;
+}
+
+/* ==========================================================================
+   Scroll Restore Highlight
+   ========================================================================== */
+
+@keyframes scroll-highlight {
+  0% {
+    background-color: var(--scroll-highlight-strong);
+    box-shadow: 0 0 0 12px var(--scroll-highlight-strong);
+  }
+  20% {
+    background-color: var(--scroll-highlight);
+    box-shadow: 0 0 0 12px var(--scroll-highlight);
+  }
+  40% {
+    background-color: var(--scroll-highlight-strong);
+    box-shadow: 0 0 0 12px var(--scroll-highlight-strong);
+  }
+  60% {
+    background-color: var(--scroll-highlight);
+    box-shadow: 0 0 0 12px var(--scroll-highlight);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
+
+.scroll-highlight {
+  animation: scroll-highlight 2.5s ease-out forwards;
+  border-radius: 12px;
 }
 
 /* ==========================================================================

@@ -510,6 +510,11 @@ export async function renderHour(hourId, container, options = {}) {
   // Apply translations
   applyTranslations(container, translations, lang);
 
+  // Call onStructureReady callback before async rendering
+  if (options.onStructureReady) {
+    options.onStructureReady();
+  }
+
   // Wait for fonts to load, then render GABC
   await new Promise(resolve => {
     const doRender = () => {
