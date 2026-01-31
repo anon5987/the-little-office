@@ -1,13 +1,13 @@
 /**
- * Vespers Hour Definition
+ * Lauds Hour Definition
  *
- * Defines the structure and content of Vespers (Evening Prayer)
+ * Defines the structure and content of Lauds (Evening Prayer)
  */
 
-export const vespers = {
-  id: 'vespers',
-  nameKey: 'ui-hour-vespers',
-  descriptionKey: 'ui-description-vespers',
+export const lauds = {
+  id: 'lauds',
+  nameKey: 'ui-hour-lauds',
+  descriptionKey: 'ui-description-lauds',
 
   // Structure defines the order of sections
   structure: [
@@ -18,38 +18,38 @@ export const vespers = {
     },
     {
       type: 'psalm-with-antiphon',
-      psalmId: 'psalm-109',
+      psalmId: 'psalm-92',
       psalmLabelKey: 'ui-psalm-109',
-      psalmIncipit: 'Dixit dominus',
-      antiphonKey: 'dum-esset-rex',
+      psalmIncipit: 'Dominus regnavit',
+      antiphonKey: 'assumpta-est-maria-in-cælum',
     },
     {
       type: 'psalm-with-antiphon',
-      psalmId: 'psalm-112',
+      psalmId: 'psalm-99',
       psalmLabelKey: 'ui-psalm-112',
-      psalmIncipit: 'Laudate pueri',
-      antiphonKey: 'laeva-ejus',
+      psalmIncipit: 'Jubilate Deo',
+      antiphonKey: 'maria-virgo-assumpta-est',
     },
     {
       type: 'psalm-with-antiphon',
-      psalmId: 'psalm-121',
+      psalmId: 'psalm-62',
       psalmLabelKey: 'ui-psalm-121',
-      psalmIncipit: 'Laetatus sum',
-      antiphonKey: 'nigra-sum',
+      psalmIncipit: 'Deus, Deus meus',
+      antiphonKey: 'in-odorem',
     },
     {
       type: 'psalm-with-antiphon',
-      psalmId: 'psalm-126',
+      psalmId: 'the-benedicite',
       psalmLabelKey: 'ui-psalm-126',
-      psalmIncipit: 'Nisi Dominus',
-      antiphonKey: 'jam-hiems',
+      psalmIncipit: 'Benedicite',
+      antiphonKey: 'benedicta-filia-tu',
     },
     {
       type: 'psalm-with-antiphon',
-      psalmId: 'psalm-147',
+      psalmId: 'psalm-148',
       psalmLabelKey: 'ui-psalm-147',
-      psalmIncipit: 'Lauda Jerusalem',
-      antiphonKey: 'speciosa-facta-es',
+      psalmIncipit: 'Laudate Dominum',
+      antiphonKey: 'pulchra-es-et-decora',
     },
     {
       type: 'chapter',
@@ -60,9 +60,9 @@ export const vespers = {
     },
     {
       type: 'hymn',
-      gabcId: 'ave-maris-stella',
+      gabcId: 'o-gloriosa-virginum',
       labelKey: 'ui-hymn',
-      translationKey: 'ave-maris-stella'
+      translationKey: 'o-gloriosa-virginum'
     },
     {
       type: 'versicle',
@@ -81,10 +81,10 @@ export const vespers = {
     },
     {
       type: 'canticle-with-antiphon',
-      canticleId: 'magnificat-chant',
-      canticleLabelKey: 'ui-magnificat',
-      antiphonKey: 'beata-mater',
-      translationKey: 'magnificat-chant'
+      canticleId: 'benedictus',
+      canticleLabelKey: 'ui-benedictus',
+      antiphonKey: 'beata-dei-genitrix',
+      translationKey: 'benedictus-chant'
     },
     {
       type: 'closing',
@@ -116,4 +116,4 @@ export const vespers = {
   }
 };
 
-export default vespers;
+export default lauds;

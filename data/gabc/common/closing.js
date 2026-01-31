@@ -9,7 +9,7 @@ export default {
 (c3)Do(h)mi(h)ne,(h) e(h)xau(h)di(h) o(h)ra(h)ti(h)o(h)nem(h) me(h)am.(f) <i>R.</i> (::)
 Et(h) cla(h)mor(h) me(h)us(h) ad(h) te(h) ve(h)ni(f)at.(f) (::)`,
 
-  'oremus': `initial-style: 1;
+  'concede-nos-famulos': `initial-style: 1;
 %%
 (c3)O(h)re(h)mus.(h) (:)
 Con(h)cé(h)de(h) nos(h) fá(h)mu(h)los(h) tu(h)os,(h) quǽ(h)su(h)mus(h) Dó(h)mi(h)ne(h) De(h)us,(h) per(h)pé(h)tu(h)a(h) men(h)tis(h) et(h) cór(h)po(h)ris(h) sa(h)ni(h)tá(h)te(h) gau(h)dé(f)re:(f.) (:)

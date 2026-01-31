@@ -25,6 +25,10 @@ export default {
     en: "Magnificat.",
     cs: "Magnificat."
   },
+  "ui-benedictus": {
+    en: "Benedictus.",
+    cs: "Benedictus."
+  },
   "ui-sundays-feasts": {
     en: "Sundays and feasts",
     cs: "Neděle a svátky"
@@ -115,6 +119,10 @@ export default {
     en: "At Vespers time, Our Lord Jesus Christ on Holy Thursday supped with His Apostles and ordained the Holy Sacrament of His Body and Blood. The same hour on Good Friday He was taken down from the Cross. And on Easter Day, the same hour, He met with two of His disciples going towards Emmaus, and made Himself known to them in the breaking of bread.",
     cs: "V hodinu nešpor náš Pán Ježíš Kristus na Zelený čtvrtek večeřel se svými apoštoly a ustanovil svátost svého Těla a Krve. V tutéž hodinu na Velký pátek byl sňat z kříže. A o Velikonoční neděli, v tutéž hodinu, se setkal se dvěma ze svých učedníků na cestě do Emauz a dal se jim poznat při lámání chleba."
   },
+  "ui-description-lauds": {
+    en: "At Lauds time, before daybreak, Our Lord Jesus Christ rose from the dead, and appeared first to His Blessed Mother, and then to the holy women at the sepulchre. The same hour, after His Resurrection, He appeared to the two disciples on the way to Emmaus.",
+    cs: "V hodinu ranních chval, před svítáním, náš Pán Ježíš Kristus vstal z mrtvých a zjevil se nejprve své blahoslavené Matce a poté svatým ženám u hrobu. V tutéž hodinu, po svém Zmrtvýchvstání, se zjevil dvěma učedníkům na cestě do Emauz."
+  },
 
   // Psalm labels
   "ui-psalm-109": {
@@ -147,12 +155,46 @@ export default {
     en: "O Lord, hear my prayer. And let my cry come unto you.",
     cs: "Pane, vyslyš mou modlitbu. A mé volání k tobě přijď."
   },
-  "oremus": {
-    en: "Let us pray.",
-    cs: "Modleme se."
-  },
   "benedicamus": {
     en: "Let us bless the Lord. Thanks be to God.",
     cs: "Dobrořečme Pánu. Bohu díky."
+  },
+
+  // Landing page
+  "ui-landing-title": {
+    en: "The Little Office of the Blessed Virgin Mary",
+    cs: "Malé oficium blahoslavené Panny Marie"
+  },
+  "ui-landing-season": {
+    en: "Season",
+    cs: "Období"
+  },
+  "ui-landing-office": {
+    en: "Office",
+    cs: "Oficium"
+  },
+  "ui-landing-recommended": {
+    en: "Recommended",
+    cs: "Doporučeno"
+  },
+  "ui-landing-soon": {
+    en: "Soon",
+    cs: "Brzy"
+  },
+  "ui-landing-dark-mode": {
+    en: "Dark mode",
+    cs: "Tmavý režim"
+  },
+  "ui-implementation-plan": {
+    en: "Implementation Plan",
+    cs: "Plán implementace"
+  },
+  "ui-seasonal-variations": {
+    en: "Seasonal Variations",
+    cs: "Sezónní varianty"
+  },
+  "ui-seasonal-variations-note": {
+    en: "Office 2 & 3 — currently all falls back to Office 1",
+    cs: "Oficium 2 a 3 — nyní vše používá Oficium 1"
   }
 };

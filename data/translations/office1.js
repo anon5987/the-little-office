@@ -30,8 +30,8 @@ export default {
     cs: "Blahoslavená Matko a neporušená Panno, slavná Královno světa, přimlouvej se za nás u Pána."
   },
 
-  // Little Chapter
-  "ecclus": {
+  // Little Chapter - Ecclesiasticus 24:14
+  "ab-initio": {
     en: "From the beginning, and before the world, was I created, and unto the world to come I shall not cease to be, and in the holy dwelling place I have ministered before him.",
     cs: "Od počátku, před věky jsem byla stvořena a až na věky nepřestanu být; ve svatém příbytku jsem před ním konala službu."
   },
@@ -43,8 +43,46 @@ export default {
   },
 
   // Versicle
-  "versicle": {
+  "diffusa-est-gratia": {
     en: "Grace is poured abroad in thy lips; therefore hath God blessed thee for ever.",
     cs: "Půvab se rozlévá po tvých rtech, proto ti Bůh požehnal navěky."
+  },
+
+  // Lauds Antiphons
+  "assumpta-est-maria-in-cælum": {
+    en: "TODO",
+    cs: "TODO"
+  },
+  "maria-virgo-assumpta-est": {
+    en: "TODO",
+    cs: "TODO"
+  },
+  "in-odorem": {
+    en: "TODO",
+    cs: "TODO"
+  },
+  "benedicta-filia-tu": {
+    en: "TODO",
+    cs: "TODO"
+  },
+  "pulchra-es-et-decora": {
+    en: "TODO",
+    cs: "TODO"
+  },
+  "beata-dei-genitrix": {
+    en: "TODO",
+    cs: "TODO"
+  },
+
+  // Lauds Hymn
+  "o-gloriosa-virginum": {
+    en: "TODO",
+    cs: "TODO"
+  },
+
+  // Vespers Prayer (Oremus)
+  "concede-nos-famulos": {
+    en: "Let us pray.\nGrant, we beseech Thee, O Lord God, that we Thy servants may enjoy perpetual health of mind and body: and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow, and enjoy everlasting gladness. Through our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end. Amen.",
+    cs: "Modleme se.\nDopřej, prosíme, Pane Bože, abychom se my, tvoji služebníci, těšili trvalému zdraví duše i těla: a na slavnou přímluvu blahoslavené Marie, vždy Panny, byli osvobozeni od nynějšího zármutku a zakoušeli věčnou radost. Skrze našeho Pána Ježíše Krista, tvého Syna, který s tebou žije a kraluje v jednotě Ducha Svatého, Bůh, po všechny věky věků. Amen."
   }
 };

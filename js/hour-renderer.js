@@ -56,9 +56,9 @@ export async function loadGabcContent(office = 1) {
     // Try to load office-specific GABC, fall back to office 1
     const loadOfficeGabc = async (officeNum) => {
       const results = await Promise.all([
-        import(`../data/gabc/office${officeNum}/vespers-antiphons.js`).catch(() => null),
+        import(`../data/gabc/office${officeNum}/antiphons.js`).catch(() => null),
         import(`../data/gabc/office${officeNum}/psalms.js`).catch(() => null),
-        import(`../data/gabc/office${officeNum}/vespers-hymn.js`).catch(() => null)
+        import(`../data/gabc/office${officeNum}/hymns.js`).catch(() => null)
       ]);
       return results;
     };

@@ -14,12 +14,14 @@
   --bg-secondary: #fafafa;
   --bg-card: #fafafa;
   --bg-card-hover: #ffffff;
-  --bg-card-recommended: #fff8f8;
+  --bg-card-recommended: #f0f4ff;
   --text-primary: #333333;
   --text-secondary: #666666;
   --text-muted: #999999;
   --accent-red: #d00;
   --accent-red-hover: #b00;
+  --primary: #2148ca;
+  --primary-hover: #1537a7;
   --border-light: #dddddd;
   --border-medium: #999999;
   --shadow-color: rgba(0, 0, 0, 0.1);
@@ -39,7 +41,9 @@ body.dark-mode {
   --bg-secondary: #1a1a1a;
   --bg-card: #1e1e1e;
   --bg-card-hover: #252525;
-  --bg-card-recommended: #1e1818;
+  --bg-card-recommended: #181c2e;
+  --primary: #5a8cff;
+  --primary-hover: #4a7ae8;
   --text-primary: #cccccc;
   --text-secondary: #999999;
   --text-muted: #777777;
@@ -103,7 +107,7 @@ select, input {
 }
 
 .season-name {
-  color: var(--accent-red);
+  color: var(--primary);
 }
 
 .hours-grid {
@@ -135,12 +139,12 @@ select, input {
 }
 
 .hour-card.recommended {
-  border-color: var(--accent-red);
+  border-color: var(--primary);
   background: var(--bg-card-recommended);
 }
 
 .hour-card.recommended:hover {
-  border-color: var(--accent-red-hover);
+  border-color: var(--primary-hover);
 }
 
 .hour-card.secondary {
@@ -168,7 +172,7 @@ select, input {
   position: absolute;
   top: -0.5rem;
   right: -0.5rem;
-  background: var(--accent-red);
+  background: var(--primary);
   color: white;
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
@@ -177,6 +181,50 @@ select, input {
 
 .badge.coming-soon {
   background: var(--text-muted);
+}
+
+/* Implementation Plan */
+.implementation-plan {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.plan-title {
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.plan-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.plan-list li {
+  padding-left: 0.5rem;
+}
+
+.plan-list li::marker {
+  color: var(--text-muted);
+}
+
+.plan-note {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 0.25rem;
 }
 
 /* ==========================================================================
@@ -440,7 +488,7 @@ select, input {
 
 .sticky-header .back-btn {
   font-size: 1.2rem;
-  color: var(--accent-red);
+  color: var(--primary);
   text-decoration: none;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
