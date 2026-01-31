@@ -16,14 +16,26 @@ export function normalizeGabc(source) {
 
 // Extend staff lines to full width (override jgabc's trimStaff behavior)
 export function extendStaffLines(svg, width) {
+  // Set fill on staff path in defs (CSS doesn't cascade into defs properly)
+  var staffDef = svg.querySelector("defs #staff path");
+  if (staffDef) {
+    // Use CSS variable so it responds to dark mode changes
+    staffDef.style.setProperty("fill", "var(--svg-fill, #000000)", "important");
+  }
+
+  // Extend staff line widths
   svg.querySelectorAll("use").forEach(function (staffUse) {
     var href = staffUse.href && staffUse.href.baseVal;
     if (href === "#staff") {
       var transform = staffUse.getAttribute("transform") || "";
-      staffUse.setAttribute(
-        "transform",
-        transform.replace(/scale\([^)]*\)/, "scale(" + width + ",1)")
-      );
+      if (transform.indexOf("scale(") !== -1) {
+        // Replace existing scale
+        transform = transform.replace(/scale\([^)]*\)/, "scale(" + width + ",1)");
+      } else {
+        // Add scale if none exists
+        transform = transform + " scale(" + width + ",1)";
+      }
+      staffUse.setAttribute("transform", transform.trim());
     }
   });
 }
@@ -105,7 +117,6 @@ export function renderGabc(container) {
       if (typeof relayoutChant === "function") {
         relayoutChant(svg, width);
       }
-      extendStaffLines(svg, width);
     } catch (relayoutError) {
       // Schedule a retry during idle time to avoid blocking user interaction
       const retryRelayout = () => {
@@ -126,6 +137,9 @@ export function renderGabc(container) {
       }
     }
 
+    // Always extend staff lines immediately (even if relayout failed)
+    extendStaffLines(svg, width);
+
     // Force red color on verse numbers and asterisks (override jgabc inline styles)
     svg.querySelectorAll(".i, .v, tspan.i, tspan.v").forEach(function (el) {
       el.style.fill = "#d00";
@@ -140,6 +154,7 @@ export function renderGabc(container) {
     } catch (e) {
       svg.setAttribute("height", 100);
     }
+
   } catch (e) {
     console.error("GABC render error:", e);
     container.innerHTML =
@@ -205,14 +220,25 @@ export function waitForJgabc(callback) {
   }
 }
 
+// Extend staff lines on all existing rendered chants
+export function extendAllStaffLines() {
+  document
+    .querySelectorAll("[data-gabc] svg, [data-gabc-id] svg")
+    .forEach(function (svg) {
+      var width = svg.parentNode.parentNode.offsetWidth || 800;
+      extendStaffLines(svg, width);
+    });
+}
+
 // Initialize rendering with font loading
 export function initRenderer() {
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () {
-      setTimeout(function() { waitForJgabc(); }, 200);
+      // Just extend staff lines on existing chants, don't re-render
+      setTimeout(extendAllStaffLines, 200);
     });
   } else {
-    setTimeout(function() { waitForJgabc(); }, 500);
+    setTimeout(extendAllStaffLines, 500);
   }
 }
 

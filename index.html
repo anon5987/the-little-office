@@ -8,12 +8,27 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <!-- Global Header with Dark Mode Toggle -->
-  <header class="global-header hide-print">
-    <button class="dark-mode-toggle" id="dark-mode-toggle" title="Toggle dark mode">
-      <span class="light-icon">☀️</span>
-      <span class="dark-icon hidden">🌙</span>
-    </button>
+  <!-- Sticky Header (hidden on landing, shown on hour pages) -->
+  <header class="sticky-header hide-print hidden" id="sticky-header">
+    <a href="#" class="back-btn" id="header-back" title="Back">&larr;</a>
+    <span class="section-name" id="section-name"></span>
+    <button class="menu-btn" id="menu-btn" title="Menu">&#8942;</button>
+    <div class="header-menu hidden" id="header-menu">
+      <div class="menu-item">
+        <select id="language-selector" class="control-select">
+          <option value="en">English</option>
+          <option value="cs">Čeština</option>
+        </select>
+      </div>
+      <label class="menu-item">
+        <input type="checkbox" id="show-translations" />
+        <span data-translation-key="ui-show-chant-translations">Show translations</span>
+      </label>
+      <button class="menu-item menu-btn-row" id="dark-mode-btn">
+        <span id="dark-mode-icon">☀️</span>
+        <span id="dark-mode-label">Dark mode</span>
+      </button>
+    </div>
   </header>
 
   <!-- Hidden SVG defs for gradients -->

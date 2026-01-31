@@ -58,7 +58,7 @@ body.dark-mode {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 select, input {
@@ -74,22 +74,24 @@ select, input {
 .landing-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1.5rem;
   text-align: center;
   font-family: "Crimson Text", Georgia, serif;
 }
 
 .landing-title {
   font-family: "Crimson Text", Georgia, serif;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
 .season-info {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   color: var(--text-secondary);
-  font-style: italic;
+  font-size: 1.05rem;
 }
 
 .season-label {
@@ -173,19 +175,62 @@ select, input {
   background: var(--text-muted);
 }
 
-.landing-footer {
+/* ==========================================================================
+   Unified Controls
+   ========================================================================== */
+
+.landing-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
   margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
 }
 
-.language-selector select {
+.control-select {
+  font-family: "Crimson Text", Georgia, serif;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   border: 1px solid var(--border-light);
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--bg-card);
   color: var(--text-primary);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  padding-right: 1.75rem;
+}
+
+.control-select:hover {
+  border-color: var(--border-medium);
+}
+
+.control-select:focus {
+  outline: none;
+  border-color: var(--border-medium);
+}
+
+.control-btn {
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 1.25rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--bg-card);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.control-btn:hover {
+  border-color: var(--border-medium);
+  background: var(--bg-card-hover);
+}
+
+.control-btn:focus {
+  outline: none;
+  border-color: var(--border-medium);
 }
 
 /* ==========================================================================
@@ -200,22 +245,6 @@ select, input {
   font-family: "Crimson Text", Georgia, serif;
 }
 
-#hour-content #controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-#hour-content .back-link {
-  color: var(--accent-red);
-  text-decoration: none;
-}
-
-#hour-content .back-link:hover {
-  text-decoration: underline;
-}
 
 /* ==========================================================================
    Chant Styles (Variable Overrides)
@@ -232,7 +261,7 @@ select, input {
 
 /* Chant labels and text using variables */
 .chant-label {
-  color: var(--text-primary);
+  color: var(--accent-red);
 }
 
 .translation {
@@ -241,6 +270,12 @@ select, input {
 
 .ita {
   color: var(--text-secondary);
+}
+
+/* Italic text inside chant labels should stay red */
+.chant-label .ita,
+.chant-label.ita {
+  color: var(--accent-red);
 }
 
 .crimson,
@@ -261,8 +296,13 @@ select, input {
   stroke: var(--svg-fill) !important;
 }
 
-.chant svg rect {
+.chant svg rect:not(mask rect) {
   fill: var(--svg-fill) !important;
+}
+
+/* Don't override mask rect fills - they need to stay white for visibility */
+.chant svg mask rect {
+  fill: white !important;
 }
 
 .chant svg text {
@@ -346,31 +386,117 @@ select, input {
 }
 
 /* ==========================================================================
-   Global Header
+   Sticky Header
    ========================================================================== */
 
-.global-header {
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
-  justify-content: flex-end;
-  padding: 0.75rem 1rem;
-  gap: 0.5rem;
   align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  gap: 0.75rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.dark-mode-toggle {
+.sticky-header .back-btn {
+  font-size: 1.2rem;
+  color: var(--accent-red);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.sticky-header .back-btn:hover {
+  background: var(--shadow-color);
+}
+
+.sticky-header .section-name {
+  flex: 1;
+  font-family: "Crimson Text", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-header .menu-btn {
   background: none;
   border: 1px solid var(--border-light);
   border-radius: 6px;
-  padding: 0.4rem 0.6rem;
+  padding: 0.3rem 0.6rem;
   cursor: pointer;
-  font-size: 1.1rem;
-  line-height: 1;
+  font-size: 1.2rem;
+  color: var(--text-primary);
   transition: all 0.2s ease;
 }
 
-.dark-mode-toggle:hover {
+.sticky-header .menu-btn:hover {
   background: var(--shadow-color);
   border-color: var(--border-medium);
+}
+
+/* Dropdown Menu */
+.header-menu {
+  position: absolute;
+  top: 100%;
+  right: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 0.5rem;
+  width: 200px;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-menu .menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.header-menu .menu-item:hover {
+  background: var(--bg-card-hover);
+}
+
+.header-menu .menu-item .control-select {
+  flex: 1;
+  min-width: 0;
+  font-family: "Crimson Text", Georgia, serif;
+}
+
+.header-menu input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--accent-red);
+  flex-shrink: 0;
+}
+
+.header-menu span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -408,9 +534,7 @@ select, input {
 
 @media print {
   .landing-page,
-  #controls,
-  .back-link,
-  .global-header,
+  .sticky-header,
   .hide-print {
     display: none !important;
   }

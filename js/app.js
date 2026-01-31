@@ -81,41 +81,111 @@ function fixStaticSVGWhitespace() {
 }
 
 /**
- * Initialize dark mode toggle and apply saved preference
+ * Initialize sticky header controls
  */
-function initDarkMode() {
+function initStickyHeader() {
   const state = getState();
-  const toggle = document.getElementById("dark-mode-toggle");
+  const header = document.getElementById("sticky-header");
+  const menuBtn = document.getElementById("menu-btn");
+  const menu = document.getElementById("header-menu");
+  const backBtn = document.getElementById("header-back");
+  const langSelector = document.getElementById("language-selector");
+  const showTransCheckbox = document.getElementById("show-translations");
 
-  // Apply saved dark mode state
-  if (state.darkMode) {
-    document.body.classList.add("dark-mode");
-    updateDarkModeIcon(true);
+  // Menu toggle
+  if (menuBtn && menu) {
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("hidden");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", () => {
+      menu.classList.add("hidden");
+    });
+
+    menu.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
   }
 
-  // Set up toggle button
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      const isDark = document.body.classList.toggle("dark-mode");
+  // Back button
+  if (backBtn) {
+    backBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.hash = "";
+    });
+  }
+
+  // Language selector
+  if (langSelector) {
+    langSelector.value = state.language || "en";
+    langSelector.addEventListener("change", (e) => {
+      const newLang = e.target.value;
+      set("language", newLang);
+
+      // Update translations without re-rendering GABC
+      if (currentHourData && currentHourData.translations) {
+        const contentArea = document.getElementById("hour-content-area");
+        if (contentArea) {
+          applyTranslations(contentArea, currentHourData.translations, newLang);
+        }
+      }
+    });
+  }
+
+  // Show translations checkbox
+  if (showTransCheckbox) {
+    showTransCheckbox.checked = state.showTranslations;
+    document.body.classList.toggle("show-translations", state.showTranslations);
+    showTransCheckbox.addEventListener("change", () => {
+      set("showTranslations", showTransCheckbox.checked);
+      document.body.classList.toggle("show-translations", showTransCheckbox.checked);
+    });
+  }
+
+  // Dark mode button
+  const darkModeBtn = document.getElementById("dark-mode-btn");
+  const darkModeIcon = document.getElementById("dark-mode-icon");
+
+  // Apply initial dark mode state
+  if (state.darkMode) {
+    document.body.classList.add("dark-mode");
+    if (darkModeIcon) darkModeIcon.textContent = "🌙";
+  }
+
+  if (darkModeBtn) {
+    darkModeBtn.addEventListener("click", () => {
+      const isDark = !getState().darkMode;
+      document.body.classList.toggle("dark-mode", isDark);
       set("darkMode", isDark);
-      updateDarkModeIcon(isDark);
+      if (darkModeIcon) darkModeIcon.textContent = isDark ? "🌙" : "☀️";
     });
   }
 }
 
 /**
- * Update dark mode toggle icon
+ * Show sticky header with section name
  */
-function updateDarkModeIcon(isDark) {
-  const toggle = document.getElementById("dark-mode-toggle");
-  if (!toggle) return;
+function showStickyHeader(sectionName) {
+  const header = document.getElementById("sticky-header");
+  const sectionNameEl = document.getElementById("section-name");
 
-  const lightIcon = toggle.querySelector(".light-icon");
-  const darkIcon = toggle.querySelector(".dark-icon");
+  if (header) {
+    header.classList.remove("hidden");
+  }
+  if (sectionNameEl && sectionName) {
+    sectionNameEl.textContent = sectionName;
+  }
+}
 
-  if (lightIcon && darkIcon) {
-    lightIcon.style.display = isDark ? "none" : "inline";
-    darkIcon.style.display = isDark ? "inline" : "none";
+/**
+ * Hide sticky header
+ */
+function hideStickyHeader() {
+  const header = document.getElementById("sticky-header");
+  if (header) {
+    header.classList.add("hidden");
   }
 }
 
@@ -126,7 +196,16 @@ const AVAILABLE_HOURS = ["vespers"];
  * Render the landing page with hour selection grid
  */
 function renderLandingPage() {
-  const container = document.getElementById("app-content") || document.body;
+  // Hide sticky header on landing page
+  hideStickyHeader();
+
+  // Show app-content, hide hour-content
+  const appContent = document.getElementById("app-content");
+  if (appContent) {
+    appContent.style.display = "block";
+  }
+
+  const container = appContent || document.body;
   const state = getState();
   const lang = state.language || "en";
   const seasonInfo = getSeasonInfo(new Date(), "vespers");
@@ -168,21 +247,21 @@ function renderLandingPage() {
           .join("")}
       </div>
 
-      <div class="landing-footer">
-        <label class="language-selector">
-          <select id="landing-language-selector">
-            <option value="en" ${lang === "en" ? "selected" : ""}>English</option>
-            <option value="cs" ${lang === "cs" ? "selected" : ""}>Čeština</option>
-          </select>
-        </label>
+      <div class="landing-controls">
+        <select id="landing-language-selector" class="control-select">
+          <option value="en" ${lang === "en" ? "selected" : ""}>English</option>
+          <option value="cs" ${lang === "cs" ? "selected" : ""}>Čeština</option>
+        </select>
+        <button id="landing-dark-mode" class="control-btn" title="${lang === "cs" ? "Tmavý režim" : "Dark mode"}">
+          ${state.darkMode ? "🌙" : "☀️"}
+        </button>
       </div>
     </div>
   `;
 
-  // Check if we have a dedicated container or need to manage the whole page
-  const appContent = document.getElementById("app-content");
-  if (appContent) {
-    appContent.innerHTML = html;
+  // Set the HTML content
+  if (container !== document.body) {
+    container.innerHTML = html;
   } else {
     // For full page mode, we need to be more careful
     const existing = document.querySelector(".landing-page");
@@ -197,6 +276,20 @@ function renderLandingPage() {
     langSelector.addEventListener("change", (e) => {
       set("language", e.target.value);
       renderLandingPage(); // Re-render with new language
+    });
+  }
+
+  // Set up dark mode toggle
+  const darkModeBtn = document.getElementById("landing-dark-mode");
+  if (darkModeBtn) {
+    darkModeBtn.addEventListener("click", () => {
+      const isDark = !getState().darkMode;
+      set("darkMode", isDark);
+      document.body.classList.toggle("dark-mode", isDark);
+      // Update checkbox in header menu if exists
+      const headerCheckbox = document.getElementById("dark-mode-checkbox");
+      if (headerCheckbox) headerCheckbox.checked = isDark;
+      renderLandingPage(); // Re-render to update icon
     });
   }
 
@@ -218,10 +311,10 @@ async function renderHourPage(hourId, params = {}) {
 
   console.log(`Rendering ${hourId} with Office ${office}, Language ${lang}`);
 
-  // Hide landing page
-  const landingContent = document.querySelector(".landing-page");
-  if (landingContent) {
-    landingContent.style.display = "none";
+  // Hide landing page / app content
+  const appContent = document.getElementById("app-content");
+  if (appContent) {
+    appContent.style.display = "none";
   }
 
   // Get or create hour content container
@@ -233,59 +326,26 @@ async function renderHourPage(hourId, params = {}) {
   }
   hourContent.style.display = "block";
 
-  // Add controls if not present
-  let controls = hourContent.querySelector("#controls");
-  if (!controls) {
-    controls = document.createElement("div");
-    controls.id = "controls";
-    controls.className = "hide-print";
-    controls.innerHTML = `
-      <a href="#" class="back-link">&larr; ${lang === "cs" ? "Zpět" : "Back"}</a>
-      <select id="language-selector">
-        <option value="en" ${lang === "en" ? "selected" : ""}>English</option>
-        <option value="cs" ${lang === "cs" ? "selected" : ""}>Čeština</option>
-      </select>
-      <label>
-        <input type="checkbox" id="show-translations" />
-        <span data-translation-key="ui-show-chant-translations">Show chant translations</span>
-      </label>
-    `;
-    hourContent.insertBefore(controls, hourContent.firstChild);
+  // Show sticky header with hour name
+  const hourNames = {
+    vespers: lang === "cs" ? "Nešpory" : "Vespers",
+    compline: lang === "cs" ? "Kompletář" : "Compline",
+    matins: lang === "cs" ? "Matutinum" : "Matins",
+    lauds: lang === "cs" ? "Chvály" : "Lauds",
+    prime: lang === "cs" ? "Prima" : "Prime",
+    terce: lang === "cs" ? "Tercie" : "Terce",
+    sext: lang === "cs" ? "Sexta" : "Sext",
+    none: lang === "cs" ? "Nona" : "None"
+  };
+  showStickyHeader(hourNames[hourId] || hourId);
 
-    // Set up language selector
-    const langSelector = controls.querySelector("#language-selector");
-    langSelector.addEventListener("change", (e) => {
-      const newLang = e.target.value;
-      set("language", newLang);
-
-      // Just update translations without re-rendering GABC
-      if (currentHourData && currentHourData.translations) {
-        const contentArea = document.getElementById("hour-content-area");
-        if (contentArea) {
-          applyTranslations(contentArea, currentHourData.translations, newLang);
-          // Also update the back link text
-          const backLink = controls.querySelector(".back-link");
-          if (backLink) {
-            backLink.innerHTML = `&larr; ${newLang === "cs" ? "Zpět" : "Back"}`;
-          }
-        }
-      }
-    });
-
-    // Set up translations checkbox
-    const checkbox = controls.querySelector("#show-translations");
-    // Restore saved state
-    const savedShowTrans = getState().showTranslations;
-    checkbox.checked = savedShowTrans;
-    document.body.classList.toggle("show-translations", savedShowTrans);
-
-    checkbox.addEventListener("change", () => {
-      set("showTranslations", checkbox.checked);
-      document.body.classList.toggle("show-translations", checkbox.checked);
-    });
+  // Update language selector to match current language
+  const langSelector = document.getElementById("language-selector");
+  if (langSelector) {
+    langSelector.value = lang;
   }
 
-  // Get or create content area (after controls)
+  // Get or create content area
   let contentArea = hourContent.querySelector("#hour-content-area");
   if (!contentArea) {
     contentArea = document.createElement("div");
@@ -345,8 +405,8 @@ export async function init(translations) {
   // Initialize state from URL/localStorage
   initState();
 
-  // Initialize dark mode
-  initDarkMode();
+  // Initialize sticky header controls
+  initStickyHeader();
 
   // Initialize print handlers
   initPrint();
@@ -377,7 +437,7 @@ export async function init(translations) {
     await renderHourPage(initialRoute.hour, initialRoute.params);
   }
 
-  // Initialize GABC rendering for current view
+  // Initialize GABC rendering (extends staff lines after fonts load)
   initRenderer();
 
   app.initialized = true;

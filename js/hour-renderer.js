@@ -415,24 +415,30 @@ function renderClosing(section, gabc, container) {
  * Apply translations to the rendered content
  */
 export function applyTranslations(container, translations, lang) {
-  // UI translations (not .translation class)
-  container.querySelectorAll('[data-translation-key]:not(.translation)').forEach(el => {
-    const key = el.dataset.translationKey;
-    const translation = translations[key];
-    if (translation && translation[lang]) {
-      el.textContent = translation[lang];
-    }
-  });
+  // Batch all DOM updates in a single animation frame to prevent layout thrashing
+  requestAnimationFrame(() => {
+    // UI translations (not .translation class)
+    const uiElements = container.querySelectorAll('[data-translation-key]:not(.translation)');
+    const translationElements = container.querySelectorAll('.translation');
 
-  // Chant translations (.translation class)
-  container.querySelectorAll('.translation').forEach(el => {
-    const key = el.dataset.translationKey;
-    // For antiphons, -pre and -post share the same translation
-    const baseKey = key.replace(/-(pre|post)$/, '');
-    const translation = translations[key] || translations[baseKey];
-    if (translation && translation[lang]) {
-      el.textContent = translation[lang];
-    }
+    uiElements.forEach(el => {
+      const key = el.dataset.translationKey;
+      const translation = translations[key];
+      if (translation && translation[lang]) {
+        el.textContent = translation[lang];
+      }
+    });
+
+    // Chant translations (.translation class)
+    translationElements.forEach(el => {
+      const key = el.dataset.translationKey;
+      // For antiphons, -pre and -post share the same translation
+      const baseKey = key.replace(/-(pre|post)$/, '');
+      const translation = translations[key] || translations[baseKey];
+      if (translation && translation[lang]) {
+        el.textContent = translation[lang];
+      }
+    });
   });
 }
 
@@ -504,26 +510,28 @@ export async function renderHour(hourId, container, options = {}) {
   // Apply translations
   applyTranslations(container, translations, lang);
 
-  // Wait for DOM to be fully painted before rendering GABC
-  // Double requestAnimationFrame ensures elements are in the DOM and painted
+  // Wait for fonts to load, then render GABC
   await new Promise(resolve => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        // Additional delay for fonts to load
-        setTimeout(() => {
-          waitForJgabc(async () => {
-            await renderAllGabc(container);
+    const doRender = () => {
+      waitForJgabc(async () => {
+        await renderAllGabc(container);
 
-            // Remove loading state from all chants after rendering
-            container.querySelectorAll('.chant.loading').forEach(chant => {
-              chant.classList.remove('loading');
-            });
+        // Remove loading state from all chants after rendering
+        container.querySelectorAll('.chant.loading').forEach(chant => {
+          chant.classList.remove('loading');
+        });
 
-            resolve();
-          });
-        }, 100);
+        resolve();
       });
-    });
+    };
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        setTimeout(doRender, 200);
+      });
+    } else {
+      setTimeout(doRender, 500);
+    }
   });
 
   return { hourDef, gabc, translations };
