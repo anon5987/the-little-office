@@ -14,19 +14,20 @@
     <span class="section-name" id="section-name"></span>
     <button class="menu-btn" id="menu-btn" title="Menu">&#8942;</button>
     <div class="header-menu hidden" id="header-menu">
-      <div class="menu-item">
+      <label class="menu-item">
+        <span class="menu-icon">🌐</span>
         <select id="language-selector" class="control-select">
           <option value="en">English</option>
           <option value="cs">Čeština</option>
         </select>
-      </div>
+      </label>
       <label class="menu-item">
         <input type="checkbox" id="show-translations" />
         <span data-translation-key="ui-show-chant-translations">Show translations</span>
       </label>
-      <button class="menu-item menu-btn-row" id="dark-mode-btn">
-        <span id="dark-mode-icon">☀️</span>
-        <span id="dark-mode-label">Dark mode</span>
+      <button class="menu-item" id="dark-mode-btn">
+        <span class="menu-icon" id="dark-mode-icon">☀️</span>
+        <span data-translation-key="ui-landing-dark-mode" id="dark-mode-label">Dark mode</span>
       </button>
     </div>
   </header>

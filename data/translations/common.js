@@ -124,7 +124,7 @@ export default {
     cs: "V hodinu ranních chval, před svítáním, náš Pán Ježíš Kristus vstal z mrtvých a zjevil se nejprve své blahoslavené Matce a poté svatým ženám u hrobu. V tutéž hodinu, po svém Zmrtvýchvstání, se zjevil dvěma učedníkům na cestě do Emauz."
   },
 
-  // Psalm labels
+  // Psalm labels - Vespers
   "ui-psalm-109": {
     en: "Psalm cix.",
     cs: "Žalm 109."
@@ -144,6 +144,28 @@ export default {
   "ui-psalm-147": {
     en: "Psalm cxlvii.",
     cs: "Žalm 147."
+  },
+
+  // Psalm labels - Lauds
+  "ui-psalm-92": {
+    en: "Psalm xcii.",
+    cs: "Žalm 92."
+  },
+  "ui-psalm-99": {
+    en: "Psalm xcix.",
+    cs: "Žalm 99."
+  },
+  "ui-psalm-62": {
+    en: "Psalm lxii.",
+    cs: "Žalm 62."
+  },
+  "ui-the-benedicite": {
+    en: "The Benedicite.",
+    cs: "Benedicite."
+  },
+  "ui-psalm-148": {
+    en: "Psalm cxlviii.",
+    cs: "Žalm 148."
   },
 
   // Common responses

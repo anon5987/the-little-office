@@ -19,44 +19,44 @@ export const lauds = {
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-92',
-      psalmLabelKey: 'ui-psalm-109',
+      psalmLabelKey: 'ui-psalm-92',
       psalmIncipit: 'Dominus regnavit',
       antiphonKey: 'assumpta-est-maria-in-cælum',
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-99',
-      psalmLabelKey: 'ui-psalm-112',
+      psalmLabelKey: 'ui-psalm-99',
       psalmIncipit: 'Jubilate Deo',
       antiphonKey: 'maria-virgo-assumpta-est',
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-62',
-      psalmLabelKey: 'ui-psalm-121',
+      psalmLabelKey: 'ui-psalm-62',
       psalmIncipit: 'Deus, Deus meus',
       antiphonKey: 'in-odorem',
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'the-benedicite',
-      psalmLabelKey: 'ui-psalm-126',
+      psalmLabelKey: 'ui-the-benedicite',
       psalmIncipit: 'Benedicite',
       antiphonKey: 'benedicta-filia-tu',
     },
     {
       type: 'psalm-with-antiphon',
       psalmId: 'psalm-148',
-      psalmLabelKey: 'ui-psalm-147',
+      psalmLabelKey: 'ui-psalm-148',
       psalmIncipit: 'Laudate Dominum',
       antiphonKey: 'pulchra-es-et-decora',
     },
     {
       type: 'chapter',
-      gabcId: 'ab-initio',
+      gabcId: 'viderunt-eam',
       labelKey: 'ui-little-chapter',
-      reference: 'Ecclus. xxiv. 14',
-      translationKey: 'ab-initio'
+      reference: 'Cant. vi. 8',
+      translationKey: 'viderunt-eam'
     },
     {
       type: 'hymn',
@@ -68,14 +68,14 @@ export const lauds = {
       type: 'versicle',
       variants: [
         {
-          gabcId: 'diffusa-est-gratia-solemn',
+          gabcId: 'benedicta-tu-solemn',
           labelKey: 'ui-sundays-feasts',
-          translationKey: 'diffusa-est-gratia'
+          translationKey: 'benedicta-tu'
         },
         {
-          gabcId: 'diffusa-est-gratia-simple',
+          gabcId: 'benedicta-tu-simple',
           labelKey: 'ui-other-times',
-          translationKey: 'diffusa-est-gratia'
+          translationKey: 'benedicta-tu'
         }
       ]
     },
@@ -90,7 +90,7 @@ export const lauds = {
       type: 'closing',
       items: [
         { gabcId: 'domine-exaudi', translationKey: 'domine-exaudi' },
-        { gabcId: 'concede-nos-famulos', translationKey: 'concede-nos-famulos' },
+        { gabcId: 'deus-qui-de-beatae', translationKey: 'deus-qui-de-beatae' },
         { gabcId: 'domine-exaudi', translationKey: 'domine-exaudi' },
         { gabcId: 'benedicamus', translationKey: 'benedicamus' }
       ]

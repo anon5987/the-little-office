@@ -50,39 +50,63 @@ export default {
 
   // Lauds Antiphons
   "assumpta-est-maria-in-cælum": {
-    en: "TODO",
+    en: "Mary was taken up into heaven, the angels rejoice, and with praises bless the Lord.",
     cs: "TODO"
   },
   "maria-virgo-assumpta-est": {
-    en: "TODO",
+    en: "The Virgin Mary was taken up to the heavenly chamber, where the King of kings sitteth on His starry throne.",
     cs: "TODO"
   },
   "in-odorem": {
-    en: "TODO",
+    en: "We run to the odour of thy ointments: the young maidens have loved thee exceedingly.",
     cs: "TODO"
   },
   "benedicta-filia-tu": {
-    en: "TODO",
+    en: "Thou, O daughter, art blessed of the Lord, for through thee have we been made partakers of the fruit of life.",
     cs: "TODO"
   },
   "pulchra-es-et-decora": {
-    en: "TODO",
+    en: "Thou art fair and comely, O daughter of Jerusalem: terrible as an army set in array.",
     cs: "TODO"
   },
   "beata-dei-genitrix": {
-    en: "TODO",
+    en: "O blessed Mother of God, Mary ever Virgin, temple of the Lord, sanctuary of the Holy Ghost, thou alone, without example, wast well-pleasing to our Lord Jesus Christ: pray for the people, mediate for the clergy, intercede for the devoted female sex.",
     cs: "TODO"
   },
 
   // Lauds Hymn
   "o-gloriosa-virginum": {
+    en: "1. O Queen of all the Virgin choir!\nEnthron’d above the starry sky!\nWho with pure milk from thy own breast\nThy own Creator didst supply.\n\n2. What man had lost in hapless Eve,\nThy sacred womb to man restores;\nThou to the wretched here beneath\nHast open’d Heaven’s eternal doors.\n\n3. Hail, O refulgent Hall of light!\nHail, Gate sublime of Heaven’s high King!\nThrough Thee redeem ‘d to endless life,\nThy praise let all the nations sing.\n\n4. O Jesu! born of Virgin bright,\nImmortal glory be to Thee;\nPraise to the Father infinite,\nAnd Holy Ghost eternally.\nAmen.",
+    cs: "TODO"
+  },
+
+  // Lauds Little Chapter - Cant. vi. 8
+  "viderunt-eam": {
     en: "TODO",
+    cs: "TODO"
+  },
+
+  // Lauds Versicle
+  "benedicta-tu": {
+    en: "Blessed art thou among women.\nAnd blessed is the fruit of thy womb.",
+    cs: "TODO"
+  },
+
+  // Benedictus Canticle
+  "benedictus-chant": {
+    en: "benede?",
+    cs: "TODO"
+  },
+
+  // Lauds Closing Prayer
+  "deus-qui-de-beatae": {
+    en: "O God, who wast pleased that thy Word, at the message of an angel, should take flesh in the womb of the blessed Virgin Mary; grant to us, thy humble servants, that, as we believe her to be truly the Mother of God, we may be assisted also by her intercessions with thee. Through the same Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end. Amen.",
     cs: "TODO"
   },
 
   // Vespers Prayer (Oremus)
   "concede-nos-famulos": {
     en: "Let us pray.\nGrant, we beseech Thee, O Lord God, that we Thy servants may enjoy perpetual health of mind and body: and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow, and enjoy everlasting gladness. Through our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end. Amen.",
-    cs: "Modleme se.\nDopřej, prosíme, Pane Bože, abychom se my, tvoji služebníci, těšili trvalému zdraví duše i těla: a na slavnou přímluvu blahoslavené Marie, vždy Panny, byli osvobozeni od nynějšího zármutku a zakoušeli věčnou radost. Skrze našeho Pána Ježíše Krista, tvého Syna, který s tebou žije a kraluje v jednotě Ducha Svatého, Bůh, po všechny věky věků. Amen."
+    cs: "Modleme se.\nDopřej, prosíme, Bože, abychom se my, tvoji služebníci, těšili trvalému zdraví duše i těla: a na slavnou přímluvu blahoslavené Marie, vždy Panny, byli osvobozeni od nynějšího zármutku a zakoušeli věčnou radost. Skrze našeho Pána Ježíše Krista, Syna tvého, který s tebou žije a kraluje v jednotě Ducha Svatého, Bůh, po všechny věky věků. Amen."
   }
 };

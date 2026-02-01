@@ -29,8 +29,8 @@ export default {
   },
   // Lauds Psalms
   "psalm-92": {
-    en: "TODO",
-    cs: "TODO"
+    en: "1. The Lord hath reigned, he is clothed with beauty: the Lord is clothed with strength, and hath girded himself.\n2. For he hath established the world which shall not be moved.\n3. Thy throne is prepared from of old: thou art from everlasting.\n4. The floods have lifted up, O Lord: the floods have lifted up their voice.\n5. The floods have lifted up their waves, with the noise of many waters.\n6. Wonderful are the surges of the sea: wonderful is the Lord on high.\n7. Thy testimonies are become exceedingly credible: holiness becometh thy house, O Lord, unto length of days.\n8. Glory be to the Father, and to the Son, and to the Holy Spirit.\n9. As it was in the beginning, is now, and ever shall be, world without end. Amen.",
+    cs: "1. Hospodin kraluje, oděl se velebností, oděl se Hospodin, opásal se mocí.\n2. Dal světu základ, že nezakolísá.\n3. Pevný je tvůj trůn od pradávna, jsi od věčnosti.\n4. Zdvihají řeky, Hospodine, zdvihají řeky svůj hlas.\n5. Zdvihají řeky svůj hukot, mocnější než hukot mnohých vod.\n6 Mohutnější než mořský příboj, mocný je Hospodin na výsosti.\n7. Tvé výroky jsou nejvýš spolehlivé, tvému domu přísluší svatost, Hospodine, na věčné časy.\n8. Sláva Otci i Synu i Duchu Svatému.\n9. Jako byla na počátku, i nyní, i vždycky a na věky věků. Amen."
   },
   "psalm-99": {
     en: "TODO",
