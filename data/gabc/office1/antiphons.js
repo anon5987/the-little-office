@@ -34,7 +34,7 @@ centering-scheme: latin;
 annotation: 8. G;
 centering-scheme: latin;
 %%
-(c4)Jam(gj) hi(h)ems(gf) tran(gh)si(h)it,(g.)<i>*</i>(;)  im(i)ber(j) a(k)bi(j)it(h) et(j) re(j)ces(i)sit:(i.) (:) sur(jk)ge,(ji) a(h)mi(i)ca(j) me(hGF)a,(f) (;) et(hiwjhi) ve(g.)ni(g.) (::)`,
+(c4)Jam(gj) hi(h)ems(gf) tran(gh)si(h)it,(g.)<i>*</i>(;)  im(i)ber(j) a(k)bi(j)it(h) et(j) re(j)ces(i)sit:(i.) (:) sur(jk)ge,(ji) a(h)mi(i)ca(j) me(hvGF)a,(f) (;) et(hiwjhi) ve(g.)ni(g.) (::)`,
 
   // Antiphon 5 - Mode 4A* - "Speciosa facta es"
   'speciosa-facta-es': `initial-style: 1;
