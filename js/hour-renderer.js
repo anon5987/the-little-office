@@ -520,19 +520,38 @@ export async function renderHour(hourId, container, options = {}) {
     const doRender = () => {
       waitForJgabc(async () => {
         await renderAllGabc(container);
-
-        // Remove loading state from all chants after rendering
-        container.querySelectorAll('.chant.loading').forEach(chant => {
-          chant.classList.remove('loading');
-        });
-
         resolve();
       });
     };
 
     if (document.fonts && document.fonts.ready) {
+      // Wait for fonts.ready, then explicitly check Caeciliae font is loaded
       document.fonts.ready.then(() => {
-        setTimeout(doRender, 200);
+        // Check if Caeciliae (chant notation font) is actually loaded
+        const checkCaeciliae = () => {
+          try {
+            return document.fonts.check('24px Caeciliae');
+          } catch (e) {
+            return false;
+          }
+        };
+
+        if (checkCaeciliae()) {
+          doRender();
+        } else {
+          // Poll for Caeciliae font with timeout
+          let attempts = 0;
+          const maxAttempts = 40; // 2 seconds max
+          const pollFont = () => {
+            attempts++;
+            if (checkCaeciliae() || attempts >= maxAttempts) {
+              doRender();
+            } else {
+              setTimeout(pollFont, 50);
+            }
+          };
+          pollFont();
+        }
       });
     } else {
       setTimeout(doRender, 500);

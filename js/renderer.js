@@ -165,15 +165,22 @@ export function renderGabc(container) {
 // Track current render operation for cancellation
 let currentRenderAbort = null;
 
+// Track active IntersectionObserver for cleanup
+let activeObserver = null;
+
 // Cancel any in-progress rendering
 export function cancelRender() {
   if (currentRenderAbort) {
     currentRenderAbort.cancelled = true;
     currentRenderAbort = null;
   }
+  if (activeObserver) {
+    activeObserver.disconnect();
+    activeObserver = null;
+  }
 }
 
-// Render all GABC elements on the page (async, yields between chants)
+// Render all GABC elements using lazy loading (IntersectionObserver)
 export async function renderAllGabc(container = document) {
   // Cancel any previous render
   cancelRender();
@@ -183,18 +190,63 @@ export async function renderAllGabc(container = document) {
 
   const elements = container.querySelectorAll("[data-gabc], [data-gabc-id]");
 
-  for (const element of elements) {
-    // Check if cancelled before each render
-    if (abortToken.cancelled) {
-      return;
-    }
-
-    renderGabc(element);
-    // Yield to browser after each chant to keep UI responsive
-    await new Promise(resolve => setTimeout(resolve, 0));
+  if (elements.length === 0) {
+    currentRenderAbort = null;
+    return;
   }
 
-  currentRenderAbort = null;
+  // Set to track which elements have been rendered
+  const rendered = new WeakSet();
+
+  // Render a single element
+  const renderElement = (element) => {
+    if (rendered.has(element) || abortToken.cancelled) return;
+    rendered.add(element);
+    renderGabc(element);
+    element.classList.remove('loading');
+  };
+
+  // Create IntersectionObserver for lazy loading
+  const observer = new IntersectionObserver((entries) => {
+    if (abortToken.cancelled) return;
+
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        renderElement(entry.target);
+        observer.unobserve(entry.target);
+      }
+    }
+  }, {
+    rootMargin: '200px 0px', // Start rendering 200px before element enters viewport
+    threshold: 0
+  });
+
+  activeObserver = observer;
+
+  // Observe all elements and immediately render visible ones
+  const INITIAL_BATCH = 8; // Render first N immediately for fast initial paint
+  let initialCount = 0;
+
+  for (const element of elements) {
+    if (abortToken.cancelled) break;
+
+    // Check if element is in or near viewport
+    const rect = element.getBoundingClientRect();
+    const isNearViewport = rect.top < window.innerHeight + 200;
+
+    if (isNearViewport && initialCount < INITIAL_BATCH) {
+      // Render immediately if in initial viewport
+      renderElement(element);
+      initialCount++;
+      // Yield occasionally for responsiveness
+      if (initialCount % 4 === 0) {
+        await new Promise(r => setTimeout(r, 0));
+      }
+    } else {
+      // Lazy load via observer
+      observer.observe(element);
+    }
+  }
 }
 
 // Synchronous version for backwards compatibility
@@ -206,17 +258,32 @@ export function renderAllGabcSync(container = document) {
 
 // Wait for jQuery and jgabc to be ready, then render
 export function waitForJgabc(callback) {
-  if (
+  const isReady = () =>
     typeof $ !== "undefined" &&
     typeof getChant === "function" &&
-    typeof _defs !== "undefined"
-  ) {
-    // jgabc is ready
+    typeof _defs !== "undefined";
+
+  const execute = () => {
     if (callback) callback();
     else renderAllGabc();
+  };
+
+  if (isReady()) {
+    execute();
   } else {
-    // Wait and retry
-    setTimeout(function() { waitForJgabc(callback); }, 100);
+    // Try once more after a frame, then fall back to polling
+    requestAnimationFrame(() => {
+      if (isReady()) {
+        execute();
+      } else {
+        // Fall back to polling if still not ready
+        const poll = () => {
+          if (isReady()) execute();
+          else setTimeout(poll, 50);
+        };
+        poll();
+      }
+    });
   }
 }
 
