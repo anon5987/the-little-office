@@ -60,7 +60,6 @@ async function loadCommonTranslations() {
  * Handle route changes
  */
 function handleRouteChange(newRoute, oldRoute) {
-  console.log('Route changed:', oldRoute, '->', newRoute);
 
   // Cancel any in-progress rendering when navigating
   cancelRender();
@@ -144,7 +143,6 @@ export async function init(translations) {
   initRenderer();
 
   app.initialized = true;
-  console.log('Little Office app initialized');
 }
 
 // Re-export for direct use

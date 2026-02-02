@@ -290,7 +290,6 @@ var setPdfLinkSelector=function(sel){
   linkSelector=sel;
 };
 var onDragStart=function(e){
-  console.info(e);
   e.originalEvent.dataTransfer.setData("DownloadURL",this.getAttribute("data-downloadurl"));
 };
 var setGabcLinkSelector=function(sel){
@@ -517,7 +516,6 @@ function updateChant(text, svg, dontDelay) {
     $(svg).css('width',newElem.getBBox().width);
   }
   gabcProcessTime = new Date() - startTime;
-  console.info("Update chant time: " + gabcProcessTime);// + "; height: " + _ht + "; correction: "+_heightCorrection);
   if(gabcProcessTime > 3000) gabcProcessTime=3000;
 }
 
@@ -864,7 +862,6 @@ var justifyLine=function(curStaff,useNeumeX,justCommit){
         tmpX += textWidth(lastTspan) - endSpace;
       }
       currentX=Math.max(currentX,tmpX);
-  //      console.info(tmpX==currentX?lastTspan:lastUse);
     }
   }
   if(justCommit || currentX>0){
@@ -3307,7 +3304,6 @@ $(function() {
             e.preventDefault();
             return;
           default:
-            //console.info(e.which);
             return;
         }
         selectPunctum(punctumToSelect);
@@ -3385,16 +3381,8 @@ $(function() {
       var startTime = new Date();
       relayoutChant($old,$old.data('width'));
       var gabcProcessTime = new Date() - startTime;
-      console.info("Relayout chant time: " + gabcProcessTime);
       $old.trigger('relayout');
     });
-    // $.each(otherElements,function(i,e){
-    //   var $old=$(e),
-    //       old=$old.is('svg')?$old[0] : $old.find('svg')[0];
-    //   if(!old) return;
-    //   relayoutChant(old);
-    //   $old.trigger('relayout');
-    // });
   }
   //var updateAllChantWidth;
   if(navigator.userAgent.match(/\bChrome\b/)){
@@ -3460,14 +3448,12 @@ $(function() {
         notewidth = getChantWidth("p");
         cWidth = getChantWidth("p p p p p p p p p p p p p p p");
         if(tWidth != oldTWidth) {
-          //console.info('twidth = ' + tWidth + '; (old was ' + oldTWidth + ')');
           _txtWidths={};
           oldTWidth=tWidth;
           forceUpdateChant();
           updateAllChant();
         }
         if(cWidth != oldCWidth) {
-          //console.info('cwidth = ' + cWidth + '; (old was ' + oldCWidth + ')');
           oldCWidth=cWidth;
           forceUpdateChant();
           updateAllChant();
