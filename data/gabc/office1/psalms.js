@@ -235,7 +235,7 @@ export default {
   "psalm-62": gabcPsalm62,
   "psalm-148": gabcPsalm148,
   "the-benedicite": benedicite,
-  benedictus: benedictus,
+  "benedictus": benedictus,
 
   // Vespers 1
   "psalm-109": gabcPsalm109,

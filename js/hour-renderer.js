@@ -360,7 +360,7 @@ function renderCanticleWithAntiphon(section, gabc, container) {
     const canticleLabel = document.createElement('span');
     canticleLabel.className = 'chant-label';
     canticleLabel.setAttribute('data-translation-key', section.canticleLabelKey);
-    canticleLabel.textContent = 'Magnificat.';
+    canticleLabel.textContent = ''; // Populated by translation system via data-translation-key
     wrapper.appendChild(canticleLabel);
 
     wrapper.appendChild(createGabcScript(section.canticleId, canticleGabc));
