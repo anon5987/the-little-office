@@ -59,40 +59,40 @@ centering-scheme: latin;
 annotation: 7. a;
 centering-scheme: latin;
 %%
-(c3) As(e)súmp(e)ta(e) est(g) Ma(h)rí(i)a(j) in(h) cæ(ii)lum:(g) *(;) gau(hg)dent(ef) An(h)ge(h)li,(g) (;) lau(gh)dán(ij)tes(i) be(hg)ne(f)dí(g)cunt(f) Dó(e)mi(e)num.(e) (::)`,
+(c3) As(e)súmp(e)ta(e) est(g) Ma(h)rí(i)a(j) in(h) cæ(ii)lum:(g.) <i>*</i>(;) gau(hg)dent(ef) An(h)ge(h)li,(g.) (;) lau(gh)dán(ij)tes(i) be(hg)ne(f)dí(g)cunt(f) Dó(e)mi(e)num.(e.) (::)`,
 
   // Antiphon 2 - Mode 8G* - "Maria Virgo assumpta est"
   'maria-virgo-assumpta-est': `initial-style: 1;
 annotation: 8. G;
 centering-scheme: latin;
 %%
-(c4)Ma(g)ri(g)a(g) Vir(gvFD)go(e) as(f)súm(gh)pta(h) est(g) *(,) ad(g) ae(i)thé(k)re(j)um(jh~) thá(j)la(j)mum,(i) (;) in(k) quo(j) Rex(kl) re(k)gum(ji/jkj) (,) stel(h)lá(h)to(g) se(hiwjh)det(i) só(g)li(g)o.(g) (::) E(j) u(j) o(i) u(j) a(h) e.(g) (::)`,
+(c4)Ma(g)ri(g)a(g) Vir(gvFD)go(e) as(f)súm(gh)pta(h) est(g) <i>*</i>(,) ad(g) ae(i)thé(k)re(j)um(jh~) thá(j)la(j)mum,(i) (;) in(k) quo(j) Rex(kl) re(k)gum(ji/jkj) (,) stel(h)lá(h)to(g) se(hiwjh)det(i) só(g)li(g)o.(g) (::)`,
 
   // Antiphon 3 - Mode 4a* - "In odorem"
   'in-odorem': `initial-style: 1;
 annotation: 4. A*;
 centering-scheme: latin;
 %%
-(c3)In(e) o(f)dó(hi)rem(i) *(,) un(h)guen(i)tó(j)rum(i) tu(h)ó(i)rum(ij) cúr(h)ri(g)mus:(f) (;) a(fi)do(g)les(h)cén(f)tu(e)lae(fe) (,) di(d)le(e)xé(gxfg)runt(h) te(h) ni(f)mis.(f) (::) E(i) u(h) o(i) u(j) a(h) e.(f) (::)`,
+(c3)In(e) o(f)dó(hi)rem(i) <i>*</i>(,) un(h)guen(i)tó(j)rum(i) tu(h)ó(i)rum(ij) cúr(h)ri(g)mus:(f) (;) a(fi)do(g)les(h)cén(f)tu(e)lae(fe) (,) di(d)le(e)xé(gxfg)runt(h) te(h) ni(f)mis.(f) (::)`,
 
   // Antiphon 4 - Mode 7c2 - "Benedicta filia tu"
   'benedicta-filia-tu': `initial-style: 1;
 annotation: 7. c 2;
 centering-scheme: latin;
 %%
-(c3)Be(hg)ne(h)dí(ih/i_j)cta(i.) *(,) fí(i!jwk_j)li(ih)a(h) tu(hg) a(f_i) Dó(h')mi(h)no:(ef..) (;) qui(e)a(d) per(ef~) te(f.) (,) fru(ii)ctum(e_f) vi(h_f)tae(g) com(fd~)mu(ef)ni(f)cá(e)vi(e)mus.(e.) (::)`,
+(c3)Be(hg)ne(h)dí(ih/i_j)cta(i.) <i>*</i>(,) fí(i!jwk_j)li(ih)a(h) tu(hg) a(f_i) Dó(h')mi(h)no:(ef..) (;) qui(e)a(d) per(ef~) te(f.) (,) fru(ii)ctum(e_f) vi(h_f)tae(g) com(fd~)mu(ef)ni(f)cá(e)vi(e)mus.(e.) (::)`,
 
   // Antiphon 5 - Mode 1g2 - "Pulchra es et decora"
   'pulchra-es-et-decora': `initial-style: 1;
 annotation: 1 g 2;
 centering-scheme: latin;
 %%
-(c4)Pul(f)chra(f) es(h) * et(ixi) de(g)có(h)ra,(fh) (,) fí(h)li(g)a(h) Je(f)rú(g)sa(fe)lem:(dewf) (;) ter(cd)rí(f)bi(fg)lis(g) (,) ut(f) cas(g)tró(h)rum(gf) á(g)ci(fe)es(dg) or(e)di(fe)ná(d)ta.(d) (::) E(h) u(h) o(g) u(f) a(g) e.(ghg) (::)`,
+(c4)Pul(f)chra(f) es(h) <i>*</i> et(ixi) de(g)có(h)ra,(fh) (,) fí(h)li(g)a(h) Je(f)rú(g)sa(fe)lem:(dewf) (;) ter(cd)rí(f)bi(fg)lis(g) (,) ut(f) cas(g)tró(h)rum(gf) á(g)ci(fe)es(dg) or(e)di(fe)ná(d)ta.(d) (::)`,
 
   // Benedictus Antiphon - Mode 8G - "Beata Dei Genitrix"
   'beata-dei-genitrix': `initial-style: 1;
 annotation: 8. G;
 centering-scheme: latin;
 %%
-(c4)Be(g)a(g)ta(f) De(e)i(d) Gé(e)ni(f)trix(hg) Ma(fg)rí(g)a,(g) *(,) Vir(jji~)go(h) per(ji)pé(g)tu(fg)a,(g) (;) tem(j)plum(k) Dó(j)mi(ji)ni,(h) (,) sa(j)crá(ji)ri(hg)um(gh) Spí(gf)ri(h)tus(hih) San(g)cti:(g) (:) so(gh)la(gf) si(f)ne(h) e(j)xém(jl/jk~)plo(k) (,) pla(kl)cu(k)ís(ji)ti(hj) Dó(jk)mi(ji)no(ghGF) Je(hiwjh)su(ih) Chris(g)to:(g) (:) o(ghGF)ra(g) pro(hg) pó(j)pu(kj)lo,(j) (;) in(jl)tér(k)ve(ji)ni(hg) pro(fg) cle(gh)ro,(gf) (;) in(f)ter(hg~)cé(jjk)de(j) (,) pro(l) de(k)vó(ji)to(hg) fe(gh)mí(hg)ne(fe)o(fgf) se(g)xu.(g) (::) E(j) u(j) o(i) u(j) a(h) e.(g) (::)`
+(c4)Be(g)a(g)ta(f) De(e)i(d) Gé(e)ni(f)trix(hg) Ma(fg)rí(g)a,(g) <i>*</i>(,) Vir(jji~)go(h) per(ji)pé(g)tu(fg)a,(g) (;) tem(j)plum(k) Dó(j)mi(ji)ni,(h) (,) sa(j)crá(ji)ri(hg)um(gh) Spí(gf)ri(h)tus(hih) San(g)cti:(g) (:) so(gh)la(gf) si(f)ne(h) e(j)xém(jl/jk~)plo(k) (,) pla(kl)cu(k)ís(ji)ti(hj) Dó(jk)mi(ji)no(ghGF) Je(hiwjh)su(ih) Chris(g)to:(g) (:) o(ghGF)ra(g) pro(hg) pó(j)pu(kj)lo,(j) (;) in(jl)tér(k)ve(ji)ni(hg) pro(fg) cle(gh)ro,(gf) (;) in(f)ter(hg~)cé(jjk)de(j) (,) pro(l) de(k)vó(ji)to(hg) fe(gh)mí(hg)ne(fe)o(fgf) se(g)xu.(g) (::)`
 };

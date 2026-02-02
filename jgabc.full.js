@@ -290,7 +290,6 @@ var setPdfLinkSelector=function(sel){
   linkSelector=sel;
 };
 var onDragStart=function(e){
-  console.info(e);
   e.originalEvent.dataTransfer.setData("DownloadURL",this.getAttribute("data-downloadurl"));
 };
 var setGabcLinkSelector=function(sel){
@@ -517,7 +516,6 @@ function updateChant(text, svg, dontDelay) {
     $(svg).css('width',newElem.getBBox().width);
   }
   gabcProcessTime = new Date() - startTime;
-  console.info("Update chant time: " + gabcProcessTime);// + "; height: " + _ht + "; correction: "+_heightCorrection);
   if(gabcProcessTime > 3000) gabcProcessTime=3000;
 }
 
@@ -864,7 +862,6 @@ var justifyLine=function(curStaff,useNeumeX,justCommit){
         tmpX += textWidth(lastTspan) - endSpace;
       }
       currentX=Math.max(currentX,tmpX);
-  //      console.info(tmpX==currentX?lastTspan:lastUse);
     }
   }
   if(justCommit || currentX>0){
@@ -878,7 +875,22 @@ var justifyLine=function(curStaff,useNeumeX,justCommit){
           if($(o).attr("transform")) {
             if(useNeumeX && o.neume)$(o).attr("x", o.neume.x);
             $(o).attr("transform",function(e,cv){
-              return "translate("+Math.round(extraSpace + (o.neume&&o.neume.transformX||0))+")";
+              var baseX = o.neume && o.neume.transformX || 0;
+              var scaleComponent = "";
+              // For elements without neume (like ledger lines), preserve original X and scale
+              if (!o.neume && cv) {
+                var origAttr = o.getAttribute('data-jgabc-orig-x');
+                if (origAttr === null) {
+                  var translateMatch = cv.match(/translate\(([^,)]+)/);
+                  baseX = translateMatch ? parseFloat(translateMatch[1]) || 0 : 0;
+                  o.setAttribute('data-jgabc-orig-x', baseX);
+                } else {
+                  baseX = parseFloat(origAttr);
+                }
+                var scaleMatch = cv.match(/scale\([^)]+\)/);
+                if (scaleMatch) scaleComponent = " " + scaleMatch[0];
+              }
+              return "translate("+Math.round(extraSpace + baseX)+")" + scaleComponent;
             });
           } else {
             $(o).attr("x",function(e,cv){
@@ -1704,11 +1716,17 @@ function insertLedger(above,curStaff,use,isCustos){
   var temp = make('use');
   temp.setAttributeNS(xlinkns, 'href', above?'#ledgera':'#ledgerb');
   temp.setAttribute('y',use.getAttribute('y'));
-  var transform = use.getAttribute('transform');
-  var tx = parseFloat(use.getAttribute('x'));
-  if(transform) {
-    while(m = regexTranslateG.exec(transform)){
-      tx += parseFloat(m[1]);
+  // Use neume's calculated position (x) and original offset (transformX) to avoid stale DOM values
+  var tx;
+  if(use.neume && use.neume.x !== undefined) {
+    tx = use.neume.x + (use.neume.transformX || 0);
+  } else {
+    tx = parseFloat(use.getAttribute('x'));
+    var transform = use.getAttribute('transform');
+    if(transform) {
+      while(m = regexTranslateG.exec(transform)){
+        tx += parseFloat(m[1]);
+      }
     }
   }
   var chantWidth=useWidth(use,index,len);
@@ -3286,7 +3304,6 @@ $(function() {
             e.preventDefault();
             return;
           default:
-            //console.info(e.which);
             return;
         }
         selectPunctum(punctumToSelect);
@@ -3364,16 +3381,8 @@ $(function() {
       var startTime = new Date();
       relayoutChant($old,$old.data('width'));
       var gabcProcessTime = new Date() - startTime;
-      console.info("Relayout chant time: " + gabcProcessTime);
       $old.trigger('relayout');
     });
-    // $.each(otherElements,function(i,e){
-    //   var $old=$(e),
-    //       old=$old.is('svg')?$old[0] : $old.find('svg')[0];
-    //   if(!old) return;
-    //   relayoutChant(old);
-    //   $old.trigger('relayout');
-    // });
   }
   //var updateAllChantWidth;
   if(navigator.userAgent.match(/\bChrome\b/)){
@@ -3439,14 +3448,12 @@ $(function() {
         notewidth = getChantWidth("p");
         cWidth = getChantWidth("p p p p p p p p p p p p p p p");
         if(tWidth != oldTWidth) {
-          //console.info('twidth = ' + tWidth + '; (old was ' + oldTWidth + ')');
           _txtWidths={};
           oldTWidth=tWidth;
           forceUpdateChant();
           updateAllChant();
         }
         if(cWidth != oldCWidth) {
-          //console.info('cwidth = ' + cWidth + '; (old was ' + oldCWidth + ')');
           oldCWidth=cWidth;
           forceUpdateChant();
           updateAllChant();

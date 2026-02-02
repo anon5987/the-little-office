@@ -575,6 +575,12 @@ select, input {
   flex-shrink: 0;
 }
 
+.header-menu .menu-icon {
+  width: 1.1rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
 .header-menu span {
   flex: 1;
   min-width: 0;

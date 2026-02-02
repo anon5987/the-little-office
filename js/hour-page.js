@@ -54,8 +54,6 @@ export async function renderHourPage(hourId, params = {}) {
     : getOffice(new Date(), hourId);
   const lang = params.lang || state.language || 'en';
 
-  console.log(`Rendering ${hourId} with Office ${office}, Language ${lang}`);
-
   // Hide landing page / app content
   const appContent = getElement(IDS.APP_CONTENT);
   if (appContent) {

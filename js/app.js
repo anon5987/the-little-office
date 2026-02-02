@@ -27,7 +27,7 @@ import { cancelRender } from './hour-renderer.js';
 // Split modules
 import { detectIOS } from './device-detection.js';
 import { fixStaticSVGWhitespace } from './svg-utils.js';
-import { initStickyHeader } from './sticky-header.js';
+import { initStickyHeader, setUITranslations } from './sticky-header.js';
 import { renderLandingPage, setTranslationsCache as setLandingTranslations } from './landing-page.js';
 import { renderHourPage, hideHourContent, setTranslationsCache as setHourTranslations } from './hour-page.js';
 import { IDS, getElement, SELECTORS } from './selectors.js';
@@ -60,7 +60,6 @@ async function loadCommonTranslations() {
  * Handle route changes
  */
 function handleRouteChange(newRoute, oldRoute) {
-  console.log('Route changed:', oldRoute, '->', newRoute);
 
   // Cancel any in-progress rendering when navigating
   cancelRender();
@@ -99,8 +98,14 @@ export async function init(translations) {
   // Load common translations for page rendering
   const commonTranslations = await loadCommonTranslations();
 
-  // Initialize sticky header controls
+  // Initialize sticky header controls and set UI translations
   initStickyHeader();
+  if (commonTranslations) {
+    setUITranslations(commonTranslations);
+    // Apply initial UI translations for header menu
+    const state = getState();
+    updateUITranslations(commonTranslations, state.language || 'en');
+  }
 
   // Initialize scroll position tracking
   initScrollTracking();
@@ -138,7 +143,6 @@ export async function init(translations) {
   initRenderer();
 
   app.initialized = true;
-  console.log('Little Office app initialized');
 }
 
 // Re-export for direct use

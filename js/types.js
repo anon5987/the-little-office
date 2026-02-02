@@ -37,7 +37,6 @@
  * @property {string} psalmLabelKey - Translation key for psalm label (e.g., 'ui-psalm-109')
  * @property {string} psalmIncipit - Latin incipit of the psalm (e.g., 'Dixit dominus')
  * @property {string} antiphonKey - ID of the antiphon GABC (use incipit, e.g., 'dum-esset-rex')
- * @property {string} mode - Gregorian mode (e.g., '3a', '4a*', '8G')
  */
 
 /**
@@ -81,7 +80,6 @@
  * @property {string} canticleId - ID of the canticle GABC
  * @property {string} canticleLabelKey - Translation key for canticle label
  * @property {string} antiphonKey - ID of the antiphon GABC (use incipit)
- * @property {string} mode - Gregorian mode
  * @property {string} translationKey - Key for canticle translation
  */
 
@@ -115,8 +113,8 @@
  * Hour definition
  * @typedef {Object} HourDefinition
  * @property {string} id - Unique identifier for the hour (e.g., 'vespers', 'lauds')
- * @property {LocalizedString} name - Localized names for the hour
- * @property {string} descriptionKey - Translation key for hour description
+ * @property {string} nameKey - Translation key for hour name lookup
+ * @property {string} [descriptionKey] - Translation key for hour description (optional)
  * @property {Section[]} structure - Ordered array of sections
  * @property {Object.<number, SeasonalOverride>} [seasonal] - Office-specific overrides keyed by office number
  */
