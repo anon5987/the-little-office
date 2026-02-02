@@ -196,8 +196,8 @@ export default {
     cs: "Oficium",
   },
   "ui-landing-recommended": {
-    en: "Recommended",
-    cs: "Doporučeno",
+    en: "Current",
+    cs: "Nyní",
   },
   "ui-landing-soon": {
     en: "Soon",
