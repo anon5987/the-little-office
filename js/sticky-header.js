@@ -9,9 +9,12 @@ import { CSS_CLASSES } from './constants.js';
 import { createEventScope, SCOPES } from './event-manager.js';
 import { updateUITranslations } from './translation-manager.js';
 
-// Store current hour data reference for language switching
+// Module-level state for language switching functionality
+/** @type {Object|null} Current hour data containing translations, set via setCurrentHourData() */
 let currentHourDataRef = null;
+/** @type {Function|null} Callback to apply translations when language changes */
 let applyTranslationsFn = null;
+/** @type {Object|null} UI translations object for header menu items, set via setUITranslations() */
 let uiTranslationsRef = null;
 
 /**

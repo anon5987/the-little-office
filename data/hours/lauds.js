@@ -1,7 +1,7 @@
 /**
  * Lauds Hour Definition
  *
- * Defines the structure and content of Lauds (Evening Prayer)
+ * Defines the structure and content of Lauds (Morning Prayer)
  */
 
 export const lauds = {

@@ -142,7 +142,7 @@ export function renderGabc(container) {
 
     // Force red color on verse numbers and asterisks (override jgabc inline styles)
     svg.querySelectorAll(".i, .v, tspan.i, tspan.v").forEach(function (el) {
-      el.style.fill = "#d00";
+      el.style.fill = "var(--accent-red, #d00)";
       el.style.fontStyle = "normal";
     });
 

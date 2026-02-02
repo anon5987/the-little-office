@@ -230,19 +230,18 @@ centering-scheme: latin;
 // Export as object for consistent API
 export default {
   // Lauds 1
-  'psalm-92': gabcPsalm92,
-  'psalm-99': gabcPsalm99,
-  'psalm-62': gabcPsalm62,
-  'psalm-148': gabcPsalm148,
-  'the-benedicite': benedicite,
-  'psalm-109': gabcPsalm109,
-  'benedictus': benedictus,
+  "psalm-92": gabcPsalm92,
+  "psalm-99": gabcPsalm99,
+  "psalm-62": gabcPsalm62,
+  "psalm-148": gabcPsalm148,
+  "the-benedicite": benedicite,
+  benedictus: benedictus,
 
   // Vespers 1
-  'psalm-109': gabcPsalm109,
-  'psalm-112': gabcPsalm112,
-  'psalm-121': gabcPsalm121,
-  'psalm-126': gabcPsalm126,
-  'psalm-147': gabcPsalm147,
-  'magnificat-chant': gabcMagnificat
+  "psalm-109": gabcPsalm109,
+  "psalm-112": gabcPsalm112,
+  "psalm-121": gabcPsalm121,
+  "psalm-126": gabcPsalm126,
+  "psalm-147": gabcPsalm147,
+  "magnificat-chant": gabcMagnificat,
 };

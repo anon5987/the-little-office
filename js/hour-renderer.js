@@ -333,11 +333,11 @@ function renderVersicle(section, gabc, container) {
 }
 
 /**
- * Render canticle with antiphon (Magnificat)
+ * Render canticle with antiphon (Magnificat, Benedictus, or Nunc Dimittis)
  */
 function renderCanticleWithAntiphon(section, gabc, container) {
   const wrapper = document.createElement('div');
-  wrapper.id = 'magnificat';
+  wrapper.id = 'canticle';
 
   const antiphonGabc = gabc[section.antiphonKey];
   const canticleGabc = gabc[section.canticleId];
