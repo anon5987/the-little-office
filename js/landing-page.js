@@ -123,7 +123,8 @@ export function renderLandingPage() {
       <div class="implementation-plan">
         <h2 class="plan-title">${t('ui-implementation-plan', lang)}</h2>
         <ol class="plan-list">
-          <li>${getHourNameTranslated('lauds', lang)}</li>
+          <li><s>${getHourNameTranslated('vespers', lang)}</s></li>
+          <li><s>${getHourNameTranslated('lauds', lang)}</s></li>
           <li>${getHourNameTranslated('compline', lang)}</li>
           <li>${getHourNameTranslated('prime', lang)}</li>
           <li>${getHourNameTranslated('terce', lang)}</li>
