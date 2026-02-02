@@ -878,7 +878,22 @@ var justifyLine=function(curStaff,useNeumeX,justCommit){
           if($(o).attr("transform")) {
             if(useNeumeX && o.neume)$(o).attr("x", o.neume.x);
             $(o).attr("transform",function(e,cv){
-              return "translate("+Math.round(extraSpace + (o.neume&&o.neume.transformX||0))+")";
+              var baseX = o.neume && o.neume.transformX || 0;
+              var scaleComponent = "";
+              // For elements without neume (like ledger lines), preserve original X and scale
+              if (!o.neume && cv) {
+                var origAttr = o.getAttribute('data-jgabc-orig-x');
+                if (origAttr === null) {
+                  var translateMatch = cv.match(/translate\(([^,)]+)/);
+                  baseX = translateMatch ? parseFloat(translateMatch[1]) || 0 : 0;
+                  o.setAttribute('data-jgabc-orig-x', baseX);
+                } else {
+                  baseX = parseFloat(origAttr);
+                }
+                var scaleMatch = cv.match(/scale\([^)]+\)/);
+                if (scaleMatch) scaleComponent = " " + scaleMatch[0];
+              }
+              return "translate("+Math.round(extraSpace + baseX)+")" + scaleComponent;
             });
           } else {
             $(o).attr("x",function(e,cv){
@@ -1704,11 +1719,17 @@ function insertLedger(above,curStaff,use,isCustos){
   var temp = make('use');
   temp.setAttributeNS(xlinkns, 'href', above?'#ledgera':'#ledgerb');
   temp.setAttribute('y',use.getAttribute('y'));
-  var transform = use.getAttribute('transform');
-  var tx = parseFloat(use.getAttribute('x'));
-  if(transform) {
-    while(m = regexTranslateG.exec(transform)){
-      tx += parseFloat(m[1]);
+  // Use neume's calculated position (x) and original offset (transformX) to avoid stale DOM values
+  var tx;
+  if(use.neume && use.neume.x !== undefined) {
+    tx = use.neume.x + (use.neume.transformX || 0);
+  } else {
+    tx = parseFloat(use.getAttribute('x'));
+    var transform = use.getAttribute('transform');
+    if(transform) {
+      while(m = regexTranslateG.exec(transform)){
+        tx += parseFloat(m[1]);
+      }
     }
   }
   var chantWidth=useWidth(use,index,len);
