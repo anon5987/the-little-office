@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Little Office of the Blessed Virgin Mary</title>
+  <script>
+    // Apply dark mode immediately to prevent flash of white background
+    try {
+      const state = JSON.parse(localStorage.getItem('littleOfficeState') || '{}');
+      if (state.darkMode) {
+        document.documentElement.classList.add('dark-mode');
+        document.write('<style>html,body{background:#121212;color:#ccc}</style>');
+      }
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="little-office.css">
   <link rel="stylesheet" href="app.css">
 </head>

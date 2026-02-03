@@ -58,4 +58,8 @@ export default {
     en: "1. My soul doth magnify the Lord.\n2. And my spirit hath rejoiced in God my Saviour.\n3. Because he hath regarded the humility of his handmaid: for behold from henceforth all generations shall call me blessed.\n4. Because he that is mighty hath done great things to me: and holy is his name.\n5. And his mercy is from generation unto generations, to them that fear him.\n6. He hath shewed might in his arm: he hath scattered the proud in the conceit of their heart.\n7. He hath put down the mighty from their seat: and hath exalted the humble.\n8. He hath filled the hungry with good things: and the rich he hath sent empty away.\n9. He hath received Israel his servant: being mindful of his mercy.\n10. As he spoke to our fathers: to Abraham and to his seed for ever.\n11. Glory be to the Father, and to the Son, and to the Holy Spirit.\n12. As it was in the beginning, is now, and ever shall be, world without end. Amen.",
     cs: "1. Velebí má duše Hospodina.\n2. A můj duch jásá v Bohu, mém Spasiteli,\n3. že shlédl na svou nepatrnou služebnici. Hle, od této chvíle mě budou blahoslavit všechna pokolení,\n4. že mi učinil veliké věci ten, který je mocný. Jeho jméno je svaté\n5. a jeho milosrdenství od pokolení do pokolení k těm, kdo se ho bojí.\n6. Prokázal sílu svým ramenem, rozptýlil ty, kdo v srdci smýšlejí pyšně.\n7. Mocné svrhl z trůnu a ponížené povýšil.\n8. Hladové nasytil dobrými věcmi a bohaté propustil s prázdnou.\n9. Ujal se svého služebníka Izraele, pamětliv svého milosrdenství,\n10. jak slíbil našim otcům, Abrahámovi a jeho potomkům navěky.\n11. Sláva Otci i Synu i Duchu Svatému.\n12. Jako byla na počátku, i nyní, i vždycky a na věky věků. Amen.",
   },
+  "nunc-dimittis-chant": {
+    en: "",
+    cs: "",
+  },
 };

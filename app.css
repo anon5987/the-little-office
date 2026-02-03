@@ -36,6 +36,7 @@
    Dark Mode
    ========================================================================== */
 
+html.dark-mode,
 body.dark-mode {
   --bg-primary: #121212;
   --bg-secondary: #1a1a1a;

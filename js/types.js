@@ -40,6 +40,15 @@
  */
 
 /**
+ * Psalm section - psalm without antiphon (used in Compline and elsewhere)
+ * @typedef {Object} PsalmSection
+ * @property {'psalm'} type
+ * @property {string} psalmId - ID of the psalm GABC
+ * @property {string} psalmLabelKey - Translation key for psalm label
+ * @property {string} psalmIncipit - Latin incipit of the psalm
+ */
+
+/**
  * Chapter/Little Chapter section
  * @typedef {Object} ChapterSection
  * @property {'chapter'} type
@@ -98,8 +107,15 @@
  */
 
 /**
+ * Marian antiphon section for Compline (dynamically selected by season)
+ * @typedef {Object} MarianAntiphonSection
+ * @property {'marian-antiphon'} type
+ * @property {string} labelKey - Translation key for section label
+ */
+
+/**
  * Any section type
- * @typedef {OpeningSection|PsalmWithAntiphonSection|ChapterSection|HymnSection|VersicleSection|CanticleWithAntiphonSection|ClosingSection} Section
+ * @typedef {OpeningSection|PsalmWithAntiphonSection|PsalmSection|ChapterSection|HymnSection|VersicleSection|CanticleWithAntiphonSection|ClosingSection|MarianAntiphonSection} Section
  */
 
 /**

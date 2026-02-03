@@ -29,6 +29,14 @@ export default {
     en: "The Benedictus, or Canticle of Zachary.",
     cs: "Benedictus.",
   },
+  "ui-nunc-dimittis": {
+    en: "The Canticle of Simeon (Nunc dimittis).",
+    cs: "Chvalozpěv Simeonův (Nunc dimittis).",
+  },
+  "ui-marian-antiphon": {
+    en: "Antiphon of the Blessed Virgin Mary.",
+    cs: "Antifona k blahoslavené Panně Marii.",
+  },
   "ui-sundays-feasts": {
     en: "Sundays and feasts",
     cs: "Neděle a svátky",
@@ -123,6 +131,10 @@ export default {
     en: "At Lauds time, before daybreak, Our Lord Jesus Christ rose from the dead, and appeared first to His Blessed Mother, and then to the holy women at the sepulchre. The same hour, after His Resurrection, He appeared to the two disciples on the way to Emmaus.",
     cs: "V hodinu ranních chval, před svítáním, náš Pán Ježíš Kristus vstal z mrtvých a zjevil se nejprve své blahoslavené Matce a poté svatým ženám u hrobu. V tutéž hodinu, po svém Zmrtvýchvstání, se zjevil dvěma učedníkům na cestě do Emauz.",
   },
+  "ui-description-compline": {
+    en: "At Compline time, when the day is ended and night has fallen, we commend ourselves to God's protection during the hours of sleep. Our Lord Jesus Christ was laid in the tomb in the evening, and in the quiet of night the holy women prepared spices to anoint His body.",
+    cs: "V hodinu kompletáře, kdy den končí a noc nastává, svěřujeme se do Boží ochrany během spánku. Náš Pán Ježíš Kristus byl večer položen do hrobu a v tichu noci svaté ženy připravovaly vonné masti k pomazání jeho těla.",
+  },
 
   // Psalm labels - Vespers
   "ui-psalm-109": {
@@ -169,9 +181,13 @@ export default {
   },
 
   // Common responses
+  "converte-nos-Deus": {
+    en: "Convert thou us, O God our Saviour.\nAnd turn away thine anger from us.",
+    cs: "Obnov nás, Bože, náš spasiteli.\nOdlož svou nevoli proti nám!",
+  },
   "Deus-in-adjutorium": {
-    en: "O God, come to my assistance. O Lord, make haste to help me.",
-    cs: "Bože, prosím, vysvoboď mě, Hospodine, na pomoc mi pospěš!",
+    en: "O God, come to my assistance.\nO Lord, make haste to help me.\nGlory be to the Father, and to the Son, and to the Holy Spirit.\nAs it was in the beginning, is now, and ever shall be, world without end. Amen.",
+    cs: "Bože, prosím, vysvoboď mě.\nHospodine, na pomoc mi pospěš!\nSláva Otci i Synu i Duchu Svatému.\nJako byla na počátku, i nyní, i vždycky a na věky věků. Amen.",
   },
   "domine-exaudi": {
     en: "O Lord, hear my prayer. And let my cry come unto you.",
@@ -180,6 +196,10 @@ export default {
   benedicamus: {
     en: "Let us bless the Lord.\nThanks be to God.\nMay the souls of the faithful, through the mercy of God, rest in peace. Amen.",
     cs: "Dobrořečme Pánu.\nBohu díky.\nDuše věrných zemřelých skrze milosrdenství Boží ať odpočívají v pokoji. Amen.",
+  },
+  "benedicamus-no-fidelium": {
+    en: "Let us bless the Lord.\nThanks be to God.",
+    cs: "Dobrořečme Pánu.\nBohu díky.",
   },
 
   // Landing page

@@ -4,6 +4,7 @@
  */
 
 import { renderGabc, renderAllGabc, waitForJgabc, extendStaffLines, cancelRender } from './renderer.js';
+import { getMarianSeason } from './marian-season.js';
 
 // Re-export cancelRender for use in app.js
 export { cancelRender };
@@ -46,12 +47,14 @@ export async function loadGabcContent(office = 1) {
 
   try {
     // Load common GABC
-    const [opening, closing] = await Promise.all([
+    const [opening, closing, marianAntiphons] = await Promise.all([
       import('../data/gabc/common/opening.js'),
-      import('../data/gabc/common/closing.js')
+      import('../data/gabc/common/closing.js'),
+      import('../data/gabc/common/marian-antiphons.js')
     ]);
     Object.assign(gabc, opening.default || opening);
     Object.assign(gabc, closing.default || closing);
+    Object.assign(gabc, marianAntiphons.default || marianAntiphons);
 
     // Try to load office-specific GABC, fall back to office 1
     const loadOfficeGabc = async (officeNum) => {
@@ -260,6 +263,43 @@ function renderPsalmWithAntiphon(section, gabc, container, lang) {
 }
 
 /**
+ * Render a psalm without antiphon (used in Compline)
+ */
+function renderPsalm(section, gabc, container, lang) {
+  const wrapper = document.createElement('div');
+  wrapper.id = section.psalmId;
+
+  const psalmGabc = gabc[section.psalmId];
+
+  if (psalmGabc) {
+    const psalmLabel = document.createElement('span');
+    psalmLabel.className = 'chant-label';
+
+    const psalmNumSpan = document.createElement('span');
+    if (section.psalmLabelKey) {
+      psalmNumSpan.setAttribute('data-translation-key', section.psalmLabelKey);
+    } else {
+      psalmNumSpan.setAttribute('data-translation-key', `ui-${section.psalmId}`);
+    }
+    psalmLabel.appendChild(psalmNumSpan);
+
+    if (section.psalmIncipit) {
+      const incipitSpan = document.createElement('span');
+      incipitSpan.className = 'ita ml';
+      incipitSpan.textContent = section.psalmIncipit + '.';
+      psalmLabel.appendChild(incipitSpan);
+    }
+    wrapper.appendChild(psalmLabel);
+
+    wrapper.appendChild(createGabcScript(section.psalmId, psalmGabc));
+    wrapper.appendChild(createChantDiv(section.psalmId));
+    wrapper.appendChild(createTranslationSpan(section.psalmId));
+  }
+
+  container.appendChild(wrapper);
+}
+
+/**
  * Render a chapter (little chapter/reading)
  */
 function renderChapter(section, gabc, container) {
@@ -412,6 +452,73 @@ function renderClosing(section, gabc, container) {
 }
 
 /**
+ * Render the Marian antiphon section (dynamically selected by season)
+ */
+function renderMarianAntiphon(section, gabc, container) {
+  const wrapper = document.createElement('div');
+  wrapper.id = 'marian-antiphon';
+
+  // Get current Marian season
+  const { antiphonId, variant } = getMarianSeason();
+
+  // Section label
+  const label = document.createElement('span');
+  label.className = 'chant-label';
+  label.setAttribute('data-translation-key', section.labelKey);
+  label.textContent = 'Antiphon of the Blessed Virgin Mary.';
+  wrapper.appendChild(label);
+
+  // Main antiphon
+  if (gabc[antiphonId]) {
+    wrapper.appendChild(createGabcScript(antiphonId, gabc[antiphonId]));
+    wrapper.appendChild(createChantDiv(antiphonId));
+    wrapper.appendChild(createTranslationSpan(antiphonId));
+  }
+
+  // Versicle - determine the correct key based on variant
+  let versicleId;
+  if (antiphonId === 'alma-redemptoris-mater') {
+    versicleId = variant === 'advent'
+      ? 'alma-redemptoris-versicle-advent'
+      : 'alma-redemptoris-versicle-christmas';
+  } else if (antiphonId === 'ave-regina-caelorum') {
+    versicleId = 'ave-regina-versicle';
+  } else if (antiphonId === 'regina-caeli-laetare') {
+    versicleId = 'regina-caeli-versicle';
+  } else {
+    versicleId = 'salve-regina-versicle';
+  }
+
+  if (gabc[versicleId]) {
+    wrapper.appendChild(createGabcScript(versicleId, gabc[versicleId]));
+    wrapper.appendChild(createChantDiv(versicleId));
+    wrapper.appendChild(createTranslationSpan(versicleId));
+  }
+
+  // Prayer - determine the correct key based on variant
+  let prayerId;
+  if (antiphonId === 'alma-redemptoris-mater') {
+    prayerId = variant === 'advent'
+      ? 'alma-redemptoris-prayer-advent'
+      : 'alma-redemptoris-prayer-christmas';
+  } else if (antiphonId === 'ave-regina-caelorum') {
+    prayerId = 'ave-regina-prayer';
+  } else if (antiphonId === 'regina-caeli-laetare') {
+    prayerId = 'regina-caeli-prayer';
+  } else {
+    prayerId = 'salve-regina-prayer';
+  }
+
+  if (gabc[prayerId]) {
+    wrapper.appendChild(createGabcScript(prayerId, gabc[prayerId]));
+    wrapper.appendChild(createChantDiv(prayerId));
+    wrapper.appendChild(createTranslationSpan(prayerId));
+  }
+
+  container.appendChild(wrapper);
+}
+
+/**
  * Apply translations to the rendered content
  */
 export function applyTranslations(container, translations, lang) {
@@ -487,6 +594,9 @@ export async function renderHour(hourId, container, options = {}) {
       case 'psalm-with-antiphon':
         renderPsalmWithAntiphon(section, gabc, container, lang);
         break;
+      case 'psalm':
+        renderPsalm(section, gabc, container, lang);
+        break;
       case 'chapter':
         renderChapter(section, gabc, container);
         break;
@@ -501,6 +611,9 @@ export async function renderHour(hourId, container, options = {}) {
         break;
       case 'closing':
         renderClosing(section, gabc, container);
+        break;
+      case 'marian-antiphon':
+        renderMarianAntiphon(section, gabc, container);
         break;
       default:
         console.warn(`Unknown section type: ${section.type}`);

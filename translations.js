@@ -1,8 +1,4 @@
 const translations = {
-  "Deus-in-adjutorium": {
-    en: "O God, come to my assistance. O Lord, make haste to help me.",
-    cs: "Bože, prosím, vysvoboď mě, Hospodine, na pomoc mi pospěš!",
-  },
   ant1: {
     en: "While the king was at his repose, my spikenard sent forth a sweet odour.",
     cs: "Když král ulehl na svoje lůžko, můj nard rozšířil sladkou vůni.",
