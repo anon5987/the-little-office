@@ -12,6 +12,8 @@
  * 4. salve-regina: Trinity Monday → Advent 1 Eve
  */
 
+import { getFirstSundayOfAdvent } from './season.js';
+
 /**
  * Calculate Easter date using the Anonymous Gregorian algorithm (Computus)
  * @param {number} year - The year to calculate Easter for
@@ -52,18 +54,10 @@ export function getTrinitySunday(year) {
  * Calculate First Sunday of Advent (4th Sunday before Christmas)
  * @param {number} year - The year to calculate Advent 1 for
  * @returns {Date} First Sunday of Advent
+ * @deprecated Use getFirstSundayOfAdvent from season.js instead
  */
 export function getAdvent1(year) {
-  // Christmas Day
-  const christmas = new Date(year, 11, 25);
-  // Find the Sunday on or before Christmas
-  const christmasDow = christmas.getDay(); // 0 = Sunday
-  // Days to go back to get to Sunday
-  const daysToSunday = christmasDow === 0 ? 7 : christmasDow;
-  // 4th Sunday before Christmas (including that Sunday)
-  const advent1 = new Date(christmas);
-  advent1.setDate(christmas.getDate() - daysToSunday - 21);
-  return advent1;
+  return getFirstSundayOfAdvent(year);
 }
 
 /**
@@ -145,4 +139,4 @@ export function getMarianSeason(date = new Date()) {
   };
 }
 
-export default { getEasterDate, getTrinitySunday, getAdvent1, getMarianSeason };
+export default { getEasterDate, getTrinitySunday, getAdvent1, getMarianSeason, getFirstSundayOfAdvent };

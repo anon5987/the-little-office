@@ -3,52 +3,26 @@
  * Renders and manages the hour selection landing page
  */
 
-import { IDS, SELECTORS, getElement } from './selectors.js';
-import { getState, set } from './state.js';
-import { CSS_CLASSES, AVAILABLE_HOURS, HOUR_NAME_KEYS } from './constants.js';
-import { createEventScope, SCOPES } from './event-manager.js';
-import { hideStickyHeader } from './sticky-header.js';
-import { getSeasonInfo } from './season.js';
-import { getAllHoursStatus } from './hour-time.js';
-import { buildUrl } from './router.js';
-
-// Translation cache for hour names
-let translationsCache = null;
+import { IDS, SELECTORS, getElement } from '../utils/selectors.js';
+import { getState, set } from '../core/state.js';
+import { CSS_CLASSES, AVAILABLE_HOURS } from '../core/constants.js';
+import { createEventScope, SCOPES } from '../utils/event-manager.js';
+import { hideStickyHeader } from '../ui/sticky-header.js';
+import { getSeasonInfo } from '../liturgical/season.js';
+import { getAllHoursStatus } from '../liturgical/hour-time.js';
+import { buildUrl } from '../core/router.js';
+import {
+  setTranslationsCache as setTranslationsCacheInternal,
+  getHourNameTranslated,
+  t,
+} from '../utils/translation-helpers.js';
 
 /**
  * Set translations cache for hour names
  * @param {Object} translations - Translation data
  */
 export function setTranslationsCache(translations) {
-  translationsCache = translations;
-}
-
-/**
- * Get translation by key
- * @param {string} key - Translation key
- * @param {string} lang - Language code
- * @returns {string}
- */
-function t(key, lang) {
-  if (translationsCache && translationsCache[key]) {
-    return translationsCache[key][lang] || translationsCache[key].en || key;
-  }
-  return key;
-}
-
-/**
- * Get hour name from translations or fallback to hour-time module
- * @param {string} hourId - Hour identifier
- * @param {string} lang - Language code
- * @returns {string}
- */
-function getHourNameTranslated(hourId, lang) {
-  const key = HOUR_NAME_KEYS[hourId];
-  if (translationsCache && key && translationsCache[key]) {
-    return translationsCache[key][lang] || translationsCache[key].en || hourId;
-  }
-  // Fallback to capitalized ID
-  return hourId.charAt(0).toUpperCase() + hourId.slice(1);
+  setTranslationsCacheInternal(translations);
 }
 
 /**

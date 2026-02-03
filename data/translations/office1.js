@@ -98,6 +98,24 @@ export default {
     cs: "Bože, jenž jsi ráčil, aby tvé Slovo při andělově zvěstování přijalo tělo v lůně blahoslavené Panny Marie; uděl nám, svým pokorným služebníkům, abychom, jako věříme, že je opravdu Boží Rodičkou, byli také podpořeni jejími přímluvami u tebe. Skrze téhož Pána Ježíše Krista, Syna tvého, který s tebou žije a kraluje v jednotě Ducha Svatého, Bůh, po všechny věky věků. Amen.",
   },
 
+  // Compline
+  "memento-rerum-conditor": {
+    en: "1. Remember, O Creator Lord,\nThat in the Virgins womb\nThou wast conceived, and of her flesh\nDidst our mortality assume.\n\n2. Mother of grace, O Mary blest,\nTo thee, sweet fount of love, we fly;\nShield us through life, and take us hence\nTo thy dear bosom when we die.\n\n3. All honour, laud, and glory be,\nO Jesu, Virgin-born, to thee;\nAll glory, as is ever meet,\nTo Father and to Paraclete.\nAmen.",
+    cs: "TODO",
+  },
+  "ego-mater": {
+    en: "I am the mother of fair love, and of fear, and of knowledge, and of holy hope.",
+    cs: "TODO",
+  },
+  "ora-pro-nobis": {
+    en: "Pray for us, O Holy Mother of God.\nThat we may be made worthy of the promises of Christ.",
+    cs: "TODO",
+  },
+  "sub-tuum-praesidium": {
+    en: "We fly to thy protection, O Holy Mother of God. Do not despise our petitions in our necessities, but deliver us always from all dangers, O Glorious and Blessed Virgin.",
+    cs: "Pod ochranu tvou se utíkáme, svatá Boží Rodičko. Prosbami našimi nezhrdej v potřebách našich, ale ode všeho nebezpečenství vysvoboď nás vždycky, ó slavná, požehnaná Panno Maria.",
+  },
+
   // Vespers Prayer (Oremus)
   "concede-nos-famulos": {
     en: "Let us pray.\nGrant, we beseech Thee, O Lord God, that we Thy servants may enjoy perpetual health of mind and body: and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow, and enjoy everlasting gladness. Through our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end. Amen.",

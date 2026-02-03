@@ -2,11 +2,11 @@
  * Compline Hour Definition
  *
  * Defines the structure and content of Compline (Night Prayer)
- * @see {import('../../js/types.js').HourDefinition}
+ * @see {import('../../js/core/types.js').HourDefinition}
  *
  * Unique features:
- * - Psalms without antiphon (new 'psalm' section type)
- * - Seasonal Marian antiphon at the end (dynamically selected)
+ * - Psalms without antiphon (chant with label)
+ * - Seasonal Marian antiphon at the end (dynamic resolver)
  */
 
 export const compline = {
@@ -16,86 +16,108 @@ export const compline = {
 
   structure: [
     {
-      type: "opening",
+      type: "chant",
       gabcId: "converte-nos-deus",
       translationKey: "converte-nos-Deus",
+      id: "converte"
     },
     {
-      type: "opening",
+      type: "chant",
       gabcId: "deus-in-adjutorium",
       translationKey: "Deus-in-adjutorium",
+      id: "intro"
     },
 
     {
-      type: "psalm",
-      psalmId: "psalm-128",
-      psalmLabelKey: "ui-psalm-128",
-      psalmIncipit: "Sæpe expugnaverunt",
+      type: "chant",
+      gabcId: "psalm-128",
+      translationKey: "psalm-128",
+      labelKey: "ui-psalm-128",
+      incipit: "Sæpe expugnaverunt",
+      id: "psalm-128"
     },
     {
-      type: "psalm",
-      psalmId: "psalm-129",
-      psalmLabelKey: "ui-psalm-129",
-      psalmIncipit: "De profundis",
+      type: "chant",
+      gabcId: "psalm-129",
+      translationKey: "psalm-129",
+      labelKey: "ui-psalm-129",
+      incipit: "De profundis",
+      id: "psalm-129"
     },
     {
-      type: "psalm",
-      psalmId: "psalm-130",
-      psalmLabelKey: "ui-psalm-130",
-      psalmIncipit: "Domine, non est",
+      type: "chant",
+      gabcId: "psalm-130",
+      translationKey: "psalm-130",
+      labelKey: "ui-psalm-130",
+      incipit: "Domine, non est",
+      id: "psalm-130"
     },
 
     {
-      type: "hymn",
+      type: "chant",
       gabcId: "memento-rerum-conditor",
-      labelKey: "ui-hymn",
       translationKey: "memento-rerum-conditor",
+      labelKey: "ui-hymn",
+      id: "hymnus"
     },
 
-    // TODO
     {
-      type: "chapter",
+      type: "chant",
       gabcId: "ego-mater",
+      translationKey: "ego-mater",
       labelKey: "ui-little-chapter",
       reference: "Ecclus. xxiv. 24.",
-      translationKey: "ego-mater",
+      id: "reading"
     },
 
     {
-      type: "canticle-with-antiphon",
-      canticleId: "nunc-dimittis",
-      canticleLabelKey: "ui-nunc-dimittis",
+      type: 'chant-variants',
+      variants: [
+        {
+          gabcId: 'ora-pro-nobis-solemn',
+          labelKey: 'ui-sundays-feasts',
+          translationKey: 'ora-pro-nobis'
+        },
+        {
+          gabcId: 'ora-pro-nobis-simple',
+          labelKey: 'ui-other-times',
+          translationKey: 'ora-pro-nobis'
+        }
+      ],
+      id: 'versicle'
+    },
+
+    {
+      type: "chant-with-antiphon",
+      mainGabcId: "nunc-dimittis",
+      mainTranslationKey: "nunc-dimittis-chant",
+      mainLabelKey: "ui-nunc-dimittis",
       antiphonKey: "sub-tuum-praesidium",
-      translationKey: "nunc-dimittis-chant",
+      id: "canticle"
     },
 
     {
-      type: "closing",
+      type: "chant-sequence",
+      id: "end",
       items: [
         { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
-        // TODO
-        {
-          gabcId: "beatae-et-gloriosae",
-          translationKey: "beatae-et-gloriosae",
-        },
+        { gabcId: "beatae-et-gloriosae", translationKey: "beatae-et-gloriosae" },
         { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
-        {
-          gabcId: "benedicamus-no-fidelium",
-          translationKey: "benedicamus-no-fidelium",
-        },
-        // TODO blessing
-      ],
+        { gabcId: "benedicamus-benedicat", translationKey: "benedicamus-benedicat" }
+      ]
     },
 
     {
-      type: "marian-antiphon",
+      type: "dynamic",
+      resolver: "marian-antiphon",
       labelKey: "ui-marian-antiphon",
-    },
+      id: "marian-antiphon"
+    }
 
     // todo divinum auxilium
   ],
 
-  seasonal: {},
+  seasonal: {}
 };
 
 export default compline;

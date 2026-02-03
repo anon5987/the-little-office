@@ -46,22 +46,15 @@ function isHourBefore(hourId, referenceHour) {
  * Advent 1 is the 4th Sunday before Christmas
  */
 export function getFirstSundayOfAdvent(year) {
-  const christmas = new Date(year, 11, 25); // Dec 25
-  const christmasDayOfWeek = christmas.getDay(); // 0 = Sunday
-
-  // Calculate days to subtract to get to Advent 1
-  // If Christmas is Sunday (0), we go back 3 weeks (21 days)
-  // If Christmas is Monday (1), we go back 3 weeks + 1 day (22 days)
-  // etc.
-  // Advent 1 is always between Nov 27 and Dec 3
-  let daysBack = 22 + christmasDayOfWeek;
-  if (christmasDayOfWeek === 0) {
-    daysBack = 28; // If Christmas is Sunday, Advent 1 is 4 weeks before
-  }
-
+  // Christmas Day
+  const christmas = new Date(year, 11, 25);
+  // Find the Sunday on or before Christmas
+  const christmasDow = christmas.getDay(); // 0 = Sunday
+  // Days to go back to get to the Sunday before Christmas
+  const daysToSunday = christmasDow === 0 ? 7 : christmasDow;
+  // 4th Sunday before Christmas (including that Sunday)
   const advent1 = new Date(christmas);
-  advent1.setDate(christmas.getDate() - daysBack);
-
+  advent1.setDate(christmas.getDate() - daysToSunday - 21);
   return advent1;
 }
 

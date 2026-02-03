@@ -136,6 +136,20 @@ export default {
     cs: "V hodinu kompletáře, kdy den končí a noc nastává, svěřujeme se do Boží ochrany během spánku. Náš Pán Ježíš Kristus byl večer položen do hrobu a v tichu noci svaté ženy připravovaly vonné masti k pomazání jeho těla.",
   },
 
+  // Psalm labels - Compline
+  "ui-psalm-128": {
+    en: "TODO",
+    cs: "TODO",
+  },
+  "ui-psalm-129": {
+    en: "TODO",
+    cs: "TODO",
+  },
+  "ui-psalm-130": {
+    en: "TODO",
+    cs: "TODO",
+  },
+
   // Psalm labels - Vespers
   "ui-psalm-109": {
     en: "Psalm cix.",
@@ -200,6 +214,14 @@ export default {
   "benedicamus-no-fidelium": {
     en: "Let us bless the Lord.\nThanks be to God.",
     cs: "Dobrořečme Pánu.\nBohu díky.",
+  },
+  "beatae-et-gloriosae": {
+    en: "TODO",
+    cs: "TODO",
+  },
+  "benedicamus-benedicat": {
+    en: "TODO",
+    cs: "TODO",
   },
 
   // Landing page

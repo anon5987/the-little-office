@@ -5,7 +5,7 @@
  * Times are configurable - these are traditional approximations.
  */
 
-import { HOUR_ORDER, HOUR_NAME_KEYS } from './constants.js';
+import { HOUR_ORDER, HOUR_NAME_KEYS } from '../core/constants.js';
 
 // Default hour time ranges (24-hour format)
 // These can be overridden via setHourTimes()

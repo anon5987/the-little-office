@@ -3,23 +3,23 @@
  * Manages the sticky header controls and menu
  */
 
-import { IDS, getElement } from './selectors.js';
-import { getState, set } from './state.js';
-import { CSS_CLASSES } from './constants.js';
-import { createEventScope, SCOPES } from './event-manager.js';
+import { IDS, getElement } from '../utils/selectors.js';
+import { getState, set } from '../core/state.js';
+import { CSS_CLASSES } from '../core/constants.js';
+import { createEventScope, SCOPES } from '../utils/event-manager.js';
 import { updateUITranslations } from './translation-manager.js';
 
 // Module-level state for language switching functionality
-/** @type {{hourDef: import('./types.js').HourDefinition, translations: import('./types.js').Translations}|null} */
+/** @type {{hourDef: import('../core/types.js').HourDefinition, translations: import('../core/types.js').Translations}|null} */
 let currentHourDataRef = null;
 /** @type {Function|null} Callback to apply translations when language changes */
 let applyTranslationsFn = null;
-/** @type {import('./types.js').Translations|null} UI translations for header menu items */
+/** @type {import('../core/types.js').Translations|null} UI translations for header menu items */
 let uiTranslationsRef = null;
 
 /**
  * Set UI translations reference for header menu items
- * @param {import('./types.js').Translations} translations
+ * @param {import('../core/types.js').Translations} translations
  */
 export function setUITranslations(translations) {
   uiTranslationsRef = translations;
@@ -27,7 +27,7 @@ export function setUITranslations(translations) {
 
 /**
  * Set the current hour data reference for language switching
- * @param {{hourDef: import('./types.js').HourDefinition, translations: import('./types.js').Translations}} hourData
+ * @param {{hourDef: import('../core/types.js').HourDefinition, translations: import('../core/types.js').Translations}} hourData
  * @param {Function} applyFn - Function to apply translations
  */
 export function setCurrentHourData(hourData, applyFn) {

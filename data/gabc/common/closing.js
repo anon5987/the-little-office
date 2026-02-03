@@ -34,15 +34,17 @@ Be(h)a(h)tæ,(h) et(h) glo(h)ri(h)o(h)sæ(h) sem(h)per(h)que(h) vir(h)gi(h)nis(h
 
   benedicamus: `initial-style: 1;
 %%
-(c3)Be(h)ne(h)di(h)ca(hi)mus(i) Do(i)mi(i)no.(ivHG) <i>R.</i> (::)
-De(i)o(i) gra(i)ti(i)as.(ivHG) <i>V.</i> (::)
+(c3)Be(h)ne(h)di(h)ca(hi)mus(i) Do(i)mi(i)no.(ivHG.) <i>R.</i> (::)
+De(i)o(i) gra(i)ti(i)as.(ivHG.) <i>V.</i> (::)
 Fi(e)de(e)li(e)um(e) a(e)ni(e)mæ,(e) <i>✠</i> per(e) mi(e)se(e)ri(e)cor(e)di(e)am(e) De(e)i,(e) re(e)qui(e)e(e)scant(e) in(e) pa(e)ce.(e) <i>R.</i> (::)
 A(e)men.(e.) (::)`,
 
-  "benedicamus-no-fidelium": `initial-style: 1;
+  "benedicamus-benedicat": `initial-style: 1;
 %%
-(c3)Be(h)ne(h)di(h)ca(hi)mus(i) Do(i)mi(i)no.(ivHG) <i>R.</i> (::)
-De(i)o(i) gra(i)ti(i)as.(ivHG) <i>V.</i> (::)`,
+(c3)Be(h)ne(h)di(h)ca(hi)mus(i) Do(i)mi(i)no.(ivHG.) <i>R.</i> (::)
+De(i)o(i) gra(i)ti(i)as.(ivHG.) <i>V.</i> (::) 
+Be(e)ne(e)di(e)cat(e) et(e) cu(e)sto(e)di(e)at(e) nos(e) om(e)ni(e)po(e)tens(e) et(e) mi(e)se(e)ri(e)cors(e) Do(e)mi(e)nus,(e) Pa(e)ter(e) <i>✠</i> et(e) Fi(e)li(e)us,(e) et(e) Spi(e)ri(e)tus(e) San(e)ctus.(e.) <i>R.</i> (::)
+A(e.)men.(e.) (::)`,
 
   "benedicat-et-custodiat": `initial-style: 1;
 %%`,

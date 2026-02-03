@@ -3,39 +3,24 @@
  * Renders and manages individual hour pages
  */
 
-import { IDS, getElement } from './selectors.js';
-import { getState } from './state.js';
-import { HOUR_NAME_KEYS } from './constants.js';
-import { showStickyHeader, updateLanguageSelector, setCurrentHourData, clearCurrentHourData } from './sticky-header.js';
-import { getOffice } from './season.js';
-import { renderHour, applyTranslations } from './hour-renderer.js';
-import { cleanupScope, SCOPES } from './event-manager.js';
-import { restoreScrollPosition, setScrollHour } from './scroll-position.js';
-
-// Translation cache for hour names
-let translationsCache = null;
+import { IDS, getElement } from '../utils/selectors.js';
+import { getState } from '../core/state.js';
+import { showStickyHeader, updateLanguageSelector, setCurrentHourData, clearCurrentHourData } from '../ui/sticky-header.js';
+import { getOffice } from '../liturgical/season.js';
+import { renderHour, applyTranslations } from '../rendering/hour-renderer.js';
+import { cleanupScope, SCOPES } from '../utils/event-manager.js';
+import { restoreScrollPosition, setScrollHour } from '../ui/scroll-position.js';
+import {
+  setTranslationsCache as setTranslationsCacheInternal,
+  getHourNameTranslated,
+} from '../utils/translation-helpers.js';
 
 /**
  * Set translations cache for hour names
  * @param {Object} translations - Translation data
  */
 export function setTranslationsCache(translations) {
-  translationsCache = translations;
-}
-
-/**
- * Get hour name from translations
- * @param {string} hourId - Hour identifier
- * @param {string} lang - Language code
- * @returns {string}
- */
-function getHourNameTranslated(hourId, lang) {
-  const key = HOUR_NAME_KEYS[hourId];
-  if (translationsCache && key && translationsCache[key]) {
-    return translationsCache[key][lang] || translationsCache[key].en || hourId;
-  }
-  // Fallback
-  return hourId.charAt(0).toUpperCase() + hourId.slice(1);
+  setTranslationsCacheInternal(translations);
 }
 
 /**

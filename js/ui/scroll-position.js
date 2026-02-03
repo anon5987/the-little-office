@@ -3,8 +3,8 @@
  * Saves and restores scroll position for hour pages using anchor-based approach
  */
 
-import { DELAYS } from './constants.js';
-import { IDS, SELECTORS } from './selectors.js';
+import { DELAYS } from '../core/constants.js';
+import { IDS, SELECTORS } from '../utils/selectors.js';
 
 const STORAGE_KEY = 'scrollPosition';
 const HIGHLIGHT_CLASS = 'scroll-highlight';
