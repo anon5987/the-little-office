@@ -15,6 +15,21 @@
 import { getFirstSundayOfAdvent } from './season.js';
 
 /**
+ * Convert a Date to YYYYMMDD integer for comparison
+ */
+function toDateValue(date) {
+  return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
+}
+
+/**
+ * Check if a date falls within an inclusive range
+ */
+function isDateInRange(date, start, end) {
+  const value = toDateValue(date);
+  return value >= toDateValue(start) && value <= toDateValue(end);
+}
+
+/**
  * Calculate Easter date using the Anonymous Gregorian algorithm (Computus)
  * @param {number} year - The year to calculate Easter for
  * @returns {Date} Easter Sunday date
@@ -45,98 +60,69 @@ export function getEasterDate(year) {
  */
 export function getTrinitySunday(year) {
   const easter = getEasterDate(year);
-  const trinity = new Date(easter);
-  trinity.setDate(trinity.getDate() + 56);
-  return trinity;
+  return new Date(easter.getFullYear(), easter.getMonth(), easter.getDate() + 56);
 }
 
 /**
- * Calculate First Sunday of Advent (4th Sunday before Christmas)
- * @param {number} year - The year to calculate Advent 1 for
- * @returns {Date} First Sunday of Advent
- * @deprecated Use getFirstSundayOfAdvent from season.js instead
+ * Create a result object for a Marian season
  */
-export function getAdvent1(year) {
-  return getFirstSundayOfAdvent(year);
+function createResult(antiphonId, season, variant = null) {
+  return { antiphonId, variant, season };
 }
 
 /**
- * Get Marian season information for a given date
+ * Get Marian season information for a given date and hour
  * @param {Date} [date=new Date()] - Date to check (defaults to today)
+ * @param {string} [hourId=null] - Hour being prayed (for boundary cases like Feb 2 Compline)
  * @returns {{ antiphonId: string, variant: string|null, season: string }}
  */
-export function getMarianSeason(date = new Date()) {
+export function getMarianSeason(date = new Date(), hourId = null) {
   const year = date.getFullYear();
-  const month = date.getMonth(); // 0-indexed
-  const day = date.getDate();
 
-  // Key dates for current year
+  // Key dates
   const easter = getEasterDate(year);
   const trinity = getTrinitySunday(year);
-  const advent1 = getAdvent1(year);
+  const advent1 = getFirstSundayOfAdvent(year);
   const feb2 = new Date(year, 1, 2);
-  const dec24 = new Date(year, 11, 24);
-  const dec25 = new Date(year, 11, 25);
-
-  // Previous year's Advent 1 (for dates in Jan/early Feb)
-  const prevAdvent1 = getAdvent1(year - 1);
-
-  // Normalize to midnight for comparison
-  const normalizeDate = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
-  const today = normalizeDate(date);
-
-  // 1. Check Alma Redemptoris Mater period
-  // From Advent 1 Vespers to Feb 2 Compline
-  if (today >= normalizeDate(advent1) && today <= normalizeDate(new Date(year, 11, 31))) {
-    // After Advent 1 in current year
-    const variant = today <= normalizeDate(dec24) ? 'advent' : 'christmas';
-    return {
-      antiphonId: 'alma-redemptoris-mater',
-      variant,
-      season: 'alma-redemptoris'
-    };
-  }
-
-  if (today >= normalizeDate(new Date(year, 0, 1)) && today <= normalizeDate(feb2)) {
-    // Jan 1 to Feb 2 (continuing from previous year's Advent)
-    return {
-      antiphonId: 'alma-redemptoris-mater',
-      variant: 'christmas',
-      season: 'alma-redemptoris'
-    };
-  }
-
-  // 2. Check Ave Regina Caelorum period
-  // From Feb 2 (after Compline) to Easter Vigil
   const feb3 = new Date(year, 1, 3);
-  const easterVigil = new Date(easter);
-  easterVigil.setDate(easter.getDate() - 1);
+  const dec24 = new Date(year, 11, 24);
+  const dec31 = new Date(year, 11, 31);
+  const jan1 = new Date(year, 0, 1);
 
-  if (today >= normalizeDate(feb3) && today < normalizeDate(easter)) {
-    return {
-      antiphonId: 'ave-regina-caelorum',
-      variant: null,
-      season: 'ave-regina'
-    };
+  // 1. Alma Redemptoris Mater: Advent 1 → Feb 2
+  // Check current year's Advent period (Advent 1 through Dec 31)
+  if (isDateInRange(date, advent1, dec31)) {
+    const variant = toDateValue(date) <= toDateValue(dec24) ? 'advent' : 'christmas';
+    return createResult('alma-redemptoris-mater', 'alma-redemptoris', variant);
   }
 
-  // 3. Check Regina Caeli period
-  // From Easter to Trinity Sunday Compline
-  if (today >= normalizeDate(easter) && today <= normalizeDate(trinity)) {
-    return {
-      antiphonId: 'regina-caeli-laetare',
-      variant: null,
-      season: 'regina-caeli'
-    };
+  // Check continuation from previous year's Advent (Jan 1 through Feb 1)
+  // Feb 2 Compline is when Ave Regina begins
+  const feb1 = new Date(year, 1, 1);
+  if (isDateInRange(date, jan1, feb1)) {
+    return createResult('alma-redemptoris-mater', 'alma-redemptoris', 'christmas');
   }
 
-  // 4. Salve Regina (default)
-  // From Trinity Monday to Advent 1 Eve
-  return {
-    antiphonId: 'salve-regina',
-    variant: null,
-    season: 'salve-regina'
-  };
+  // Feb 2: Alma for hours before Compline, Ave Regina from Compline onwards
+  if (toDateValue(date) === toDateValue(feb2)) {
+    if (hourId === 'compline') {
+      return createResult('ave-regina-caelorum', 'ave-regina');
+    }
+    return createResult('alma-redemptoris-mater', 'alma-redemptoris', 'christmas');
+  }
+
+  // 2. Ave Regina Caelorum: Feb 3 → day before Easter
+  if (isDateInRange(date, feb3, easter) && toDateValue(date) < toDateValue(easter)) {
+    return createResult('ave-regina-caelorum', 'ave-regina');
+  }
+
+  // 3. Regina Caeli: Easter → Trinity Sunday
+  if (isDateInRange(date, easter, trinity)) {
+    return createResult('regina-caeli-laetare', 'regina-caeli');
+  }
+
+  // 4. Salve Regina: Trinity Monday → Advent 1 Eve (default)
+  return createResult('salve-regina', 'salve-regina');
 }
 
-export default { getEasterDate, getTrinitySunday, getAdvent1, getMarianSeason, getFirstSundayOfAdvent };
+export default { getEasterDate, getTrinitySunday, getMarianSeason };

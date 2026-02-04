@@ -79,6 +79,24 @@ function handleRouteChange(newRoute, oldRoute) {
 }
 
 /**
+ * Handle date override changes - re-render current view
+ */
+function handleDateOverrideChange() {
+  // Cancel any in-progress rendering
+  cancelRender();
+
+  if (isLandingPage()) {
+    app.currentView = renderLandingPage();
+  } else {
+    // Re-render the current hour page with new date
+    const currentRoute = initRouter();
+    renderHourPage(currentRoute.hour, currentRoute.params).then((view) => {
+      app.currentView = view;
+    });
+  }
+}
+
+/**
  * Initialize the application
  */
 export async function init(translations) {
@@ -116,6 +134,13 @@ export async function init(translations) {
   // Initialize router and listen for changes
   const initialRoute = initRouter();
   onRouteChange(handleRouteChange);
+
+  // Subscribe to date override changes
+  subscribe((key) => {
+    if (key === 'dateOverride') {
+      handleDateOverrideChange();
+    }
+  });
 
   // Initialize translations if available
   if (translations) {

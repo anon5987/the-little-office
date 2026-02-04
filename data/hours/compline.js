@@ -112,9 +112,14 @@ export const compline = {
       resolver: "marian-antiphon",
       labelKey: "ui-marian-antiphon",
       id: "marian-antiphon"
-    }
+    },
 
-    // todo divinum auxilium
+    {
+      type: "chant",
+      gabcId: "divinum-auxilium",
+      translationKey: "divinum-auxilium",
+      id: "ending"
+    },
   ],
 
   seasonal: {}

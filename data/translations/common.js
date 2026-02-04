@@ -257,4 +257,72 @@ export default {
     en: "Office 2 & 3 — currently all falls back to Office 1",
     cs: "Oficium 2 a 3 — nyní vše používá Oficium 1",
   },
+
+  // Date override
+  "ui-date-override": {
+    en: "Preview date",
+    cs: "Datum náhledu",
+  },
+  "ui-clear-override": {
+    en: "Clear override",
+    cs: "Zrušit",
+  },
+
+  // Marian Antiphons
+  "alma-redemptoris-mater": {
+    en: "Loving Mother of our Saviour, hear thou thy people's cry.\nStar of the deep and Portal of the sky!\nMother of Him who thee from nothing made,\nSinking we strive and call to thee for aid.\nOh, by that joy which Gabriel brought to thee,\nThou Virgin first and last, let us thy mercy see.",
+    cs: "Laskavá Matko Vykupitele, slyš volání svého lidu.\nHvězdo mořská a Bráno nebeská!\nMatko Toho, jenž tě z ničeho stvořil,\nklesajíce voláme k tobě o pomoc.\nPro radost, kterou ti Gabriel přinesl,\nPanno první i poslední, ukaž nám své milosrdenství.",
+  },
+  "alma-redemptoris-versicle-advent": {
+    en: "The Angel of the Lord declared unto Mary.\nAnd she conceived of the Holy Ghost.",
+    cs: "Anděl Páně zvěstoval Panně Marii.\nA ona počala z Ducha Svatého.",
+  },
+  "alma-redemptoris-prayer-advent": {
+    en: "Pour forth, we beseech Thee, O Lord, Thy grace into our hearts; that we, to whom the incarnation of Christ, Thy Son, was made known by the message of an angel, may by His Passion and Cross be brought to the glory of His Resurrection. Through the same Christ our Lord. Amen.",
+    cs: "Vlij, prosíme, Pane, do našich srdcí svou milost, abychom my, kterým bylo andělským zvěstováním oznámeno vtělení Krista, tvého Syna, byli jeho utrpením a křížem přivedeni ke slávě jeho vzkříšení. Skrze téhož Krista, našeho Pána. Amen.",
+  },
+  "alma-redemptoris-versicle-christmas": {
+    en: "After childbirth thou didst remain a pure virgin.\nMother of God, intercede for us.",
+    cs: "Po porodu jsi zůstala čistou pannou.\nMatko Boží, přimlouvej se za nás.",
+  },
+  "alma-redemptoris-prayer-christmas": {
+    en: "O God, who by the fruitful virginity of Blessed Mary, hast given to mankind the rewards of eternal salvation: grant, we beseech Thee, that we may experience her intercession for us, by whom we have been made worthy to receive the Author of life, our Lord Jesus Christ, Thy Son. Amen.",
+    cs: "Bože, jenž jsi skrze plodné panenství blahoslavené Marie dal lidstvu odměnu věčné spásy: dej, prosíme, abychom zakusili její přímluvu za nás, skrze niž jsme byli učiněni hodnými přijmout Původce života, našeho Pána Ježíše Krista, tvého Syna. Amen.",
+  },
+  "ave-regina-caelorum": {
+    en: "Hail, O Queen of Heaven.\nHail, O Lady of Angels.\nHail! thou root, hail! thou gate\nFrom whom unto the world, a light has arisen:\nRejoice, O glorious Virgin,\nLovely beyond all others,\nFarewell, most beautiful maiden,\nAnd pray for us to Christ.",
+    cs: "Zdráva buď, Královno nebe,\nandělů sbory ctí tebe.\nZdráva buď, nebeská bráno,\nz níž světu Světlo je dáno.\nPlesej Panno vyvolená,\nnade všechny oslavená,\nzdráva buď, Panno přečistá,\npřimluv se za nás u Krista.",
+  },
+  "ave-regina-versicle": {
+    en: "Vouchsafe that I may praise thee, O sacred Virgin.\nGive me strength against thine enemies.",
+    cs: "Dopřej mi, abych tě chválil, Panno svatá.\nDej mi sílu proti tvým nepřátelům.",
+  },
+  "ave-regina-prayer": {
+    en: "Let us pray. Grant, O merciful God, to our weak natures Thy protection, that we who commemorate the holy Mother of God may, by the help of her intercession, arise from our iniquities. Through the same Christ our Lord. Amen.",
+    cs: "Modleme se. Uděl, milosrdný Bože, oporu naší slabosti: abychom my, kteří vzpomínáme na svatou Matku Boží, s pomocí její přímluvy povstali z našich nepravostí. Skrze téhož Krista, našeho Pána. Amen.",
+  },
+  "regina-caeli-laetare": {
+    en: "Queen of Heaven, rejoice, alleluia.\nFor He whom you did merit to bear, alleluia.\nHas risen, as he said, alleluia.\nPray for us to God, alleluia.",
+    cs: "Raduj se, Královno nebeská, aleluja.\nNeboť ten, kterého jsi zasloužila nosit, aleluja.\nVstal z mrtvých, jak předpověděl, aleluja.\nPros za nás Boha, aleluja.",
+  },
+  "regina-caeli-versicle": {
+    en: "Rejoice and be glad, O Virgin Mary, alleluia.\nFor the Lord has truly risen, alleluia.",
+    cs: "Raduj se a vesel se, Panno Maria, aleluja.\nNeboť Pán vpravdě vstal z mrtvých, aleluja.",
+  },
+  "regina-caeli-prayer": {
+    en: "Let us pray. O God, who gave joy to the world through the resurrection of Thy Son, our Lord Jesus Christ: grant, we beseech Thee, that through His Mother, the Virgin Mary, we may obtain the joys of everlasting life. Through the same Christ our Lord. Amen.",
+    cs: "Modleme se. Bože, jenž jsi skrze vzkříšení svého Syna, našeho Pána Ježíše Krista, dal světu radost: dej, prosíme, abychom skrze jeho Matku, Pannu Marii, dosáhli radostí věčného života. Skrze téhož Krista, našeho Pána. Amen.",
+  },
+  "salve-regina": {
+    en: "Hail, holy Queen, Mother of Mercy,\nour life, our sweetness and our hope.\nTo thee do we cry, poor banished children of Eve;\nto thee do we send up our sighs,\nmourning and weeping in this valley of tears.\nTurn then, most gracious advocate,\nthine eyes of mercy toward us,\nand after this our exile,\nshow unto us the blessed fruit of thy womb, Jesus.\nO clement, O loving, O sweet Virgin Mary.",
+    cs: "Zdrávas, Královno, Matko milosrdenství,\nživote náš, sladkosti a naděje naše, buď zdráva.\nK tobě voláme, vyhnaní synové Evy,\nk tobě vzdycháme, lkajíce a plačíce\nv tomto slzavém údolí.\nA proto, orodovnice naše,\nobrať k nám své milosrdné oči\na po tomto putování\nukaž nám Ježíše, požehnaný plod života svého.\nÓ milostivá, ó přívětivá, ó přesladká Panno Maria.",
+  },
+  "salve-regina-versicle": {
+    en: "Pray for us, O holy Mother of God.\nThat we may be made worthy of the promises of Christ.",
+    cs: "Oroduj za nás, svatá Boží Rodičko.\nAbychom se stali hodnými zaslíbení Kristových.",
+  },
+  "salve-regina-prayer": {
+    en: "Let us pray. Almighty, everlasting God, who by the co-operation of the Holy Ghost, didst prepare the body and soul of the glorious Virgin-Mother Mary to become a dwelling-place meet for Thy Son: grant that as we rejoice in her commemoration; so by her loving intercession we may be delivered from present evils and from everlasting death. Through the same Christ our Lord. Amen.",
+    cs: "Modleme se. Všemohoucí, věčný Bože, jenž jsi spoluprací Ducha Svatého připravil tělo i duši slavné Panny Marie, aby se stala důstojným příbytkem tvého Syna: dej, abychom tak jako se radujeme z její památky, byli její láskyplnou přímluvou vysvobozeni od nynějších zel i od věčné smrti. Skrze téhož Krista, našeho Pána. Amen.",
+  },
 };

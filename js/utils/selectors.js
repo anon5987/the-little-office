@@ -27,6 +27,10 @@ export const IDS = {
   // Landing page controls
   LANDING_LANGUAGE_SELECTOR: 'landing-language-selector',
   LANDING_DARK_MODE: 'landing-dark-mode',
+
+  // Date override controls
+  DATE_OVERRIDE_INPUT: 'date-override-input',
+  DATE_OVERRIDE_CLEAR: 'date-override-clear',
 };
 
 // CSS selectors for querying elements

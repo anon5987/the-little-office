@@ -8,6 +8,7 @@ import { getState, set } from '../core/state.js';
 import { CSS_CLASSES } from '../core/constants.js';
 import { createEventScope, SCOPES } from '../utils/event-manager.js';
 import { updateUITranslations } from './translation-manager.js';
+import { formatDateForInput, getCurrentDate } from '../core/date-provider.js';
 
 // Module-level state for language switching functionality
 /** @type {{hourDef: import('../core/types.js').HourDefinition, translations: import('../core/types.js').Translations}|null} */
@@ -127,6 +128,38 @@ export function initStickyHeader() {
       document.body.classList.toggle(CSS_CLASSES.DARK_MODE, isDark);
       set('darkMode', isDark);
       if (darkModeIcon) darkModeIcon.textContent = isDark ? '🌙' : '☀️';
+    });
+  }
+
+  // Date override controls
+  const dateInput = getElement(IDS.DATE_OVERRIDE_INPUT);
+  const dateClearBtn = getElement(IDS.DATE_OVERRIDE_CLEAR);
+
+  if (dateInput) {
+    // Set initial value if override exists
+    if (state.dateOverride) {
+      dateInput.value = formatDateForInput(new Date(state.dateOverride));
+      if (dateClearBtn) dateClearBtn.classList.remove(CSS_CLASSES.HIDDEN);
+    }
+
+    events.add(dateInput, 'change', (e) => {
+      const value = e.target.value;
+      if (value) {
+        const date = new Date(value);
+        set('dateOverride', date.toISOString());
+        if (dateClearBtn) dateClearBtn.classList.remove(CSS_CLASSES.HIDDEN);
+      } else {
+        set('dateOverride', null);
+        if (dateClearBtn) dateClearBtn.classList.add(CSS_CLASSES.HIDDEN);
+      }
+    });
+  }
+
+  if (dateClearBtn) {
+    events.add(dateClearBtn, 'click', () => {
+      set('dateOverride', null);
+      if (dateInput) dateInput.value = '';
+      dateClearBtn.classList.add(CSS_CLASSES.HIDDEN);
     });
   }
 }

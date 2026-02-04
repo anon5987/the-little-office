@@ -10,7 +10,8 @@ const state = {
   officeOverride: null, // null = auto-detect, 1/2/3 = manual override
   currentHour: null,    // 'vespers', 'lauds', etc.
   showTranslations: false,
-  darkMode: false
+  darkMode: false,
+  dateOverride: null    // ISO string or null (session-only, not persisted)
 };
 
 // State change listeners

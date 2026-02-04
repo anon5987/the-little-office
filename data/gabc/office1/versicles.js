@@ -38,5 +38,5 @@ Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(g_ hvGFEfgf.) (
   "benedicta-tu-simple": `initial-style: 1;
 %%
 (c3)Be(h)ne(h)di(h)cta(h) tu(h) in(h) mu(h)li(h)e(h)ri(f)bus.(f) <i>R.</i> (::)
-Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(f) (::)`,
+Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(f) (::)`
 };

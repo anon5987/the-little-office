@@ -10,6 +10,7 @@ import { createEventScope, SCOPES } from '../utils/event-manager.js';
 import { hideStickyHeader } from '../ui/sticky-header.js';
 import { getSeasonInfo } from '../liturgical/season.js';
 import { getAllHoursStatus } from '../liturgical/hour-time.js';
+import { getCurrentDate } from '../core/date-provider.js';
 import { buildUrl } from '../core/router.js';
 import {
   setTranslationsCache as setTranslationsCacheInternal,
@@ -45,8 +46,8 @@ export function renderLandingPage() {
   const container = appContent || document.body;
   const state = getState();
   const lang = state.language || 'en';
-  const seasonInfo = getSeasonInfo(new Date(), 'vespers');
-  const hoursStatus = getAllHoursStatus();
+  const seasonInfo = getSeasonInfo(getCurrentDate(), 'vespers');
+  const hoursStatus = getAllHoursStatus(getCurrentDate());
 
   const html = `
     <div class="landing-page">

@@ -7,6 +7,7 @@ import { IDS, getElement } from '../utils/selectors.js';
 import { getState } from '../core/state.js';
 import { showStickyHeader, updateLanguageSelector, setCurrentHourData, clearCurrentHourData } from '../ui/sticky-header.js';
 import { getOffice } from '../liturgical/season.js';
+import { getCurrentDate } from '../core/date-provider.js';
 import { renderHour, applyTranslations } from '../rendering/hour-renderer.js';
 import { cleanupScope, SCOPES } from '../utils/event-manager.js';
 import { restoreScrollPosition, setScrollHour } from '../ui/scroll-position.js';
@@ -36,7 +37,7 @@ export async function renderHourPage(hourId, params = {}) {
   const state = getState();
   const office = params.office
     ? parseInt(params.office, 10)
-    : getOffice(new Date(), hourId);
+    : getOffice(getCurrentDate(), hourId);
   const lang = params.lang || state.language || 'en';
 
   // Hide landing page / app content

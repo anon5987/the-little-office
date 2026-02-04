@@ -12,6 +12,7 @@
 
 import { renderGabc, renderAllGabc, waitForJgabc, extendStaffLines, cancelRender } from './renderer.js';
 import { getMarianSeason } from '../liturgical/marian-season.js';
+import { getCurrentDate } from '../core/date-provider.js';
 
 // Re-export cancelRender for use in app.js
 export { cancelRender };
@@ -28,8 +29,8 @@ const cache = {
  * Each resolver returns an array of { gabcId, translationKey } objects
  */
 const resolvers = {
-  'marian-antiphon': () => {
-    const { antiphonId, variant } = getMarianSeason();
+  'marian-antiphon': (hourId) => {
+    const { antiphonId, variant } = getMarianSeason(getCurrentDate(), hourId);
 
     // Build versicle ID based on antiphon and variant
     let versicleId;
@@ -184,22 +185,25 @@ export async function loadTranslations(office = 1) {
 
 /**
  * Create a GABC script tag
+ * @param {string} id - Base ID (will be prefixed with 'gabc-' to avoid conflicts)
+ * @param {string} gabcContent - GABC notation content
  */
 function createGabcScript(id, gabcContent) {
   const script = document.createElement('script');
   script.type = 'text/gabc';
-  script.id = id;
+  script.id = 'gabc-' + id;
   script.textContent = gabcContent;
   return script;
 }
 
 /**
  * Create a chant container div with skeleton loading placeholder
+ * @param {string} gabcId - Base ID (will be prefixed with 'gabc-' to match script tag)
  */
 function createChantDiv(gabcId) {
   const div = document.createElement('div');
   div.className = 'chant loading';
-  div.setAttribute('data-gabc-id', gabcId);
+  div.setAttribute('data-gabc-id', 'gabc-' + gabcId);
 
   // Add skeleton placeholder
   const skeleton = document.createElement('div');
@@ -432,7 +436,7 @@ function renderChantSequence(section, gabc, container) {
  * Render dynamic section (runtime-resolved content)
  * Handles: marian-antiphon (seasonal selection)
  */
-function renderDynamic(section, gabc, container) {
+function renderDynamic(section, gabc, container, hourId) {
   const resolver = resolvers[section.resolver];
   if (!resolver) {
     console.warn(`Unknown resolver: ${section.resolver}`);
@@ -451,7 +455,7 @@ function renderDynamic(section, gabc, container) {
   }
 
   // Get resolved content and render each chant
-  const items = resolver();
+  const items = resolver(hourId);
   for (const item of items) {
     if (gabc[item.gabcId]) {
       appendChant(wrapper, item.gabcId, gabc[item.gabcId], item.translationKey);
@@ -544,7 +548,7 @@ export async function renderHour(hourId, container, options = {}) {
         renderChantSequence(section, gabc, container);
         break;
       case 'dynamic':
-        renderDynamic(section, gabc, container);
+        renderDynamic(section, gabc, container, hourId);
         break;
       default:
         console.warn(`Unknown section type: ${section.type}`);

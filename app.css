@@ -552,7 +552,7 @@ select, input {
   border-radius: 8px;
   box-shadow: 0 4px 12px var(--shadow-color);
   padding: 0.5rem;
-  width: 200px;
+  width: 300px;
   box-sizing: border-box;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -579,8 +579,6 @@ select, input {
 }
 
 .header-menu .menu-item .control-select {
-  flex: 1;
-  min-width: 0;
   font-family: "Crimson Text", Georgia, serif;
 }
 
@@ -598,12 +596,34 @@ select, input {
 }
 
 .header-menu span {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Date override input */
+.control-input {
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.control-input:hover {
+  border-color: var(--border-medium);
+}
+
+.control-input:focus {
+  outline: none;
+  border-color: var(--border-medium);
+}
+
+body.dark-mode .control-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
 
 /* ==========================================================================
    Error State

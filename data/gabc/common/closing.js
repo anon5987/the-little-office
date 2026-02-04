@@ -46,9 +46,9 @@ De(i)o(i) gra(i)ti(i)as.(ivHG.) <i>V.</i> (::)
 Be(e)ne(e)di(e)cat(e) et(e) cu(e)sto(e)di(e)at(e) nos(e) om(e)ni(e)po(e)tens(e) et(e) mi(e)se(e)ri(e)cors(e) Do(e)mi(e)nus,(e) Pa(e)ter(e) <i>✠</i> et(e) Fi(e)li(e)us,(e) et(e) Spi(e)ri(e)tus(e) San(e)ctus.(e.) <i>R.</i> (::)
 A(e.)men.(e.) (::)`,
 
-  "benedicat-et-custodiat": `initial-style: 1;
-%%`,
-
   "divinum-auxilium": `initial-style: 1;
-%%`,
+%%
+(c3)Di(e)vi(e)num(e) au(e)xi(e)li(e)um(e) ma(e)ne(e)at(e) sem(e)per(e) no(e)bi(e)scum.(e.) <i>R.</i> (::)
+A(e.)men.(e.) (::)
+`,
 };
