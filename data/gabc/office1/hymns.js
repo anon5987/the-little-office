@@ -1,9 +1,9 @@
 /**
- * Office 1 (Ordinary Time) - Vespers Hymn and Versicles
+ * Office 1 (Ordinary Time) - Hymns
  */
 
 export default {
-  // Ave Maris Stella - Hymn for Vespers
+  // Vespers - Ave Maris Stella
   "ave-maris-stella": `initial-style: 1;
 annotation: 1.;
 centering-scheme: latin;
@@ -45,56 +45,7 @@ Spi(f)rí(e')tu(f)i(gf) San(e)cto,(d'_) (,)
 Tri(e)bus(f') ho(d)nor(cd) u(d)nus.(d.) (::)
 A(ded)men.(c.d.) (::)`,
 
-  // Versicle - Solemn tone (Sundays and Feasts)
-  "diffusa-est-gratia-solemn": `initial-style: 1;
-%%
-(c3)Dif(h)fú(h)sa(h) est(h) grá(h)ti(h)a(h) in(h) lá(h)bi(h)is(h) tu(h)is.(g_ hvGFEfgf.)  <i>R.</i>  (::)
-Prop(h)té(h)re(h)a(h) be(h)ne(h)dí(h)xit(h) te(h) De(h)us(h) in(h) ae(h)tér(h)num.(g_ hvGFEfgf.) (::)`,
-
-  // Versicle - Simple tone (Other times)
-  "diffusa-est-gratia-simple": `initial-style: 1;
-%%
-(c3)Dif(h)fú(h)sa(h) est(h) grá(h)ti(h)a(h) in(h) lá(h)bi(h)is(h) tu(h)is.(f) <i>R.</i> (::)
-Prop(h)té(h)re(h)a(h) be(h)ne(h)dí(h)xit(h) te(h) De(h)us(h) in(h) ae(h)tér(h)num.(f) (::)`,
-
-// Versicle
-"ora-pro-nobis-solemn": `initial-style: 1;
-%%
-(c3)O(h)ra(h) pro(h) no(h)bis,(h) san(h)cta(h) De(h)i(h) Ge(h)ni(h)trix.(g_ hvGFEfgf.) <i>R.</i> (::)
-Ut(h) di(h)gni(h) ef(h)fi(h)ci(h)a(h)mur(h) pro(h)mis(h)si(h)o(h)ni(h)bus(h) Chri(h)sti.(g_ hvGFEfgf.) (::)`,
-
-// Versicle
- "ora-pro-nobis-simple": `initial-style: 1;
-%%
-(c3)O(h)ra(h) pro(h) no(h)bis,(h) san(h)cta(h) De(h)i(h) Ge(h)ni(h)trix.(f.) <i>R.</i> (::)
-Ut(h) di(h)gni(h) ef(h)fi(h)ci(h)a(h)mur(h) pro(h)mis(h)si(h)o(h)ni(h)bus(h) Chri(h)sti.(f.) (::)`,
-
-  // Versicle - Solemn tone (Sundays and Feasts)
-  "benedicta-tu-solemn": `initial-style: 1;
-%%
-(c3)Be(h)ne(h)di(h)cta(h) tu(h) in(h) mu(h)li(h)e(h)ri(h)bus.(g_ hvGFEfgf.) <i>R.</i> (::)
-Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(g_ hvGFEfgf.) (::)`,
-
-  // Versicle - Simple tone (Other times)
-  "benedicta-tu-simple": `initial-style: 1;
-%%
-(c3)Be(h)ne(h)di(h)cta(h) tu(h) in(h) mu(h)li(h)e(h)ri(f)bus.(f) <i>R.</i> (::)
-Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(f) (::)`,
-
-  // Little Chapter - Ecclesiasticus 24:14
-  "ab-initio": `centering-scheme: latin;
-%%
-(c3) Ab(h) in(h)í(h)ti(h)o,(h) et(h) an(h)te(h) sǽ(h)cu(h)la(h) cre(h)á(h)ta(h) sum,(h) (,) et(h) us(h)que(h) ad(h) fu(h)tú(h)rum(h) sǽ(h)cu(h)lum(g) non(f) dé(h)si(h)nam,(h.) (;) et(h) in(h) ha(h)bi(h)ta(h)ti(h)ó(h)ne(h) sanc(h)ta(h) co(h)ram(h) ip(h)so(h) mi(h)nis(h)trá(f)vi.(e.f.) (::) <i>R.</i> De(h)o(h) gra(f)ti(e)as.(e.f.) (::)`,
-
-  // Little Chapter - Cant. 6:8
-  "viderunt-eam": `centering-scheme: latin;
-%%
-(c3)Vi(h)de(h)runt(h) e(h)am(h) fi(h)li(h)ae(h) Si(h)on,(f.) (,) et(h) be(h)a(h)tis(h)si(h)mam(h) prae(h)di(g)ca(f)ve(h)runt,(h.) (;) et(h) re(h)gi(h)nae(h) lau(h)da(h)ve(h)runt(h) e(h)am.(d.) (::) <i>R.</i> De(h)o(h) gra(h)ti(d)as.(d.) (::)`,
-
-  "ego-mater": `centering-scheme: latin;
-%%
-(c3) E(h)go(h) ma(h)ter(h) pul(h)chræ(h) di(h)lec(h)ti(h)ó(h)nis,(h) et(h) ti(h)mó(h)ris,(h) et(h) a(h)gni(h)ti(h)ó(h)nis,(h) et(h) sanc(h)tæ(h) spe(h)i.(d.) <i>R.</i> (:) De(h)o(h) gra(h)ti(h)as.(d.) (::)`,
-
+  // Lauds - O Gloriosa Virginum
   "o-gloriosa-virginum": `initial-style: 1;
 annotation: 2.;
 centering-scheme: latin;
@@ -114,12 +65,13 @@ Et(hk) au(k)la(i) lu(ji)cis(h) fúl(ih)gi(g)da :(h) (:)
 Vi(k)tam(k) da(i)tam(k) per(klk) Vír(ji)gi(hi)nem(ivHG) (;)
 Gen(ji)tes(jk) red(i)ém(ji)ptae(h) pláu(ih)di(g)te.(h) (::)
 
-<i>4.</i> Je(h)su(hg) ti(ed)bi(g) sit(hj) gló(ji)ri(h)a,(i) (;) 
+<i>4.</i> Je(h)su(hg) ti(ed)bi(g) sit(hj) gló(ji)ri(h)a,(i) (;)
 Qui(hk) na(k)tus(i) es(ji) de(h) Vír(ih)gi(g)ne,(h) (:)
 Cum(k) Patre(k) et(i) al(k)mo(klk) Spí(ji)ri(hi)tu,(ivHG) (;)
 In(ji) sem(jk)pi(i)tér(ji)na(h) saé(ih)cu(g)la.(h) (::)
 A(hih)men.(gh) (::)`,
 
+  // Compline - Memento Rerum Conditor
   "memento-rerum-conditor": `name:Memento rerum Cónditor;
 office-part:Hymnus;
 mode:2;

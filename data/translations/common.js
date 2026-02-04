@@ -138,16 +138,16 @@ export default {
 
   // Psalm labels - Compline
   "ui-psalm-128": {
-    en: "TODO",
-    cs: "TODO",
+    en: "Psalm cxxviii.",
+    cs: "Žalm 128.",
   },
   "ui-psalm-129": {
-    en: "TODO",
-    cs: "TODO",
+    en: "Psalm cxxix.",
+    cs: "Žalm 129.",
   },
   "ui-psalm-130": {
-    en: "TODO",
-    cs: "TODO",
+    en: "Psalm cxxx.",
+    cs: "Žalm 130.",
   },
 
   // Psalm labels - Vespers
@@ -211,17 +211,13 @@ export default {
     en: "Let us bless the Lord.\nThanks be to God.\nMay the souls of the faithful, through the mercy of God, rest in peace. Amen.",
     cs: "Dobrořečme Pánu.\nBohu díky.\nDuše věrných zemřelých skrze milosrdenství Boží ať odpočívají v pokoji. Amen.",
   },
-  "benedicamus-no-fidelium": {
-    en: "Let us bless the Lord.\nThanks be to God.",
-    cs: "Dobrořečme Pánu.\nBohu díky.",
-  },
   "beatae-et-gloriosae": {
-    en: "TODO",
-    cs: "TODO",
+    en: "We beseech thee O Lord that the glorious intercession of the ever blessed, and glorious virgin Mary, may protect us, and bring us to life everlasting. Though our Lord Jesus Christ thy son: who liveth and reigneth, God, with thee, in the unity of the holy Ghost, world without end. Amen.",
+    cs: "Prosíme tě, Pane, ať nás slavná přímluva blahoslavené a požehnané, vždy Panny Marie, chrání a přivádí k životu věčnému. Skrze našeho Pána Ježíše Krista, Syna tvého, který s tebou žije a kraluje v jednotě Ducha Svatého, Bůh, po všechny věky věků. Amen.",
   },
   "benedicamus-benedicat": {
-    en: "TODO",
-    cs: "TODO",
+    en: "Let us bless the Lord.\nThanks be to God.\nMay the almighty and merciful Lord, Father, and Son, and Holy Ghost, bless and preserve us.\nAmen.",
+    cs: "Dobrořečme Pánu.\nBohu díky.\nAť nás všemohoucí a milosrdný Pán, Otec i Syn i Duch Svatý, požehná a ochraňuje.\nAmen.",
   },
 
   // Landing page

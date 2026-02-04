@@ -112,22 +112,26 @@ export async function loadGabcContent(office = 1) {
       const results = await Promise.all([
         import(`../../data/gabc/office${officeNum}/antiphons.js`).catch(() => null),
         import(`../../data/gabc/office${officeNum}/psalms.js`).catch(() => null),
-        import(`../../data/gabc/office${officeNum}/hymns.js`).catch(() => null)
+        import(`../../data/gabc/office${officeNum}/hymns.js`).catch(() => null),
+        import(`../../data/gabc/office${officeNum}/versicles.js`).catch(() => null),
+        import(`../../data/gabc/office${officeNum}/chapters.js`).catch(() => null)
       ]);
       return results;
     };
 
-    let [antiphons, psalms, hymn] = await loadOfficeGabc(office);
+    let [antiphons, psalms, hymns, versicles, chapters] = await loadOfficeGabc(office);
 
     // Fall back to office 1 if office-specific files not found
-    if (!antiphons && !psalms && !hymn && office !== 1) {
+    if (!antiphons && !psalms && !hymns && !versicles && !chapters && office !== 1) {
       console.log(`Office ${office} GABC not found, falling back to Office 1`);
-      [antiphons, psalms, hymn] = await loadOfficeGabc(1);
+      [antiphons, psalms, hymns, versicles, chapters] = await loadOfficeGabc(1);
     }
 
     if (antiphons) Object.assign(gabc, antiphons.default || antiphons);
     if (psalms) Object.assign(gabc, psalms.default || psalms);
-    if (hymn) Object.assign(gabc, hymn.default || hymn);
+    if (hymns) Object.assign(gabc, hymns.default || hymns);
+    if (versicles) Object.assign(gabc, versicles.default || versicles);
+    if (chapters) Object.assign(gabc, chapters.default || chapters);
 
     cache.gabc[key] = gabc;
     return gabc;
