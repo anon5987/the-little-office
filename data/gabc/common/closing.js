@@ -59,6 +59,11 @@ A(e.)men.(e.) (::)`,
   "divinum-auxilium": `initial-style: 1;
 %%
 (c3)Di(e)vi(e)num(e) au(e)xi(e)li(e)um(e) ma(e)ne(e)at(e) sem(e)per(e) no(e)bi(e)scum.(e.) <i>R.</i> (::)
-A(e.)men.(e.) (::)
-`,
+A(e.)men.(e.) (::)`,
+
+  "Deus-qui-salutis-aeternae": `initial-style: 1;
+%%
+(c3)O(h)re(h)mus.(f) (::)
+De(h)us,(h) qui(h) sa(h)lu(h)tis(h) ae(h)ter(h)nae,(h) be(h)a(h)tae(h) Ma(h)ri(h)ae(h) vir(h)gi(h)ni(h)ta(h)te(h) fe(h)cun(h)da,(h) hu(h)ma(h)no(h) ge(h)ne(h)ri(h) prae(h)mi(h)a(h) prae(h)sti(h)ti(h)sti:(g) (;) tri(h)bu(h)e,(h) quae(h)su(h)mus;(h) ut(h) i(h)psam(h) pro(h) no(h)bis(h) in(h)ter(h)ce(h)de(h)re(h) sen(g)ti(f)a(h)mus,(h) (;) per(h) quam(h) me(h)ru(h)i(h)mus(h) au(h)cto(h)rem(h) vi(h)tae(h) su(h)sci(h)pe(h)re,(h) Do(h)mi(h)num(h) no(h)strum(h) Ie(h)sum(h) Chri(h)stum,(h) Fi(h)li(h)um(h) tu(h)um.(f) <i>R.</i> (::)
+A(g.)men.(h.) (::)`,
 };

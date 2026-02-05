@@ -31,22 +31,22 @@ export const terce = {
       type: "chants-with-antiphon",
       chants: [
         {
-          gabcId: "psalm-53",
-          translationKey: "psalm-53",
-          labelKey: "ui-psalm-53",
-          incipit: "Deus, in nomine tuo",
+          gabcId: "psalm-119",
+          translationKey: "psalm-119",
+          labelKey: "ui-psalm-119",
+          incipit: "Ad Dominum",
         },
         {
-          gabcId: "psalm-84",
-          translationKey: "psalm-84",
-          labelKey: "ui-psalm-84",
-          incipit: "Benedixisti, Domine",
+          gabcId: "psalm-120",
+          translationKey: "psalm-120",
+          labelKey: "ui-psalm-120",
+          incipit: "Levavi oculos",
         },
         {
-          gabcId: "psalm-116",
-          translationKey: "psalm-116",
-          labelKey: "ui-psalm-116",
-          incipit: "Laudate Dominum",
+          gabcId: "psalm-121-8g",
+          translationKey: "psalm-121",
+          labelKey: "ui-psalm-121",
+          incipit: "Lætatus sum in his",
         },
       ],
       antiphonKey: "maria-virgo-assumpta-est",
@@ -55,8 +55,8 @@ export const terce = {
 
     {
       type: "chant",
-      gabcId: "que-est-ista",
-      translationKey: "que-est-ista",
+      gabcId: "et-sic-in-sion",
+      translationKey: "et-sic-in-sion",
       labelKey: "ui-little-chapter",
       reference: "Cant. vi. 9.",
       id: "reading",
@@ -66,14 +66,14 @@ export const terce = {
       type: "chant-variants",
       variants: [
         {
-          gabcId: "dignare-me-solemn",
+          gabcId: "diffusa-est-gratia-solemn",
           labelKey: "ui-sundays-feasts",
-          translationKey: "dignare-me",
+          translationKey: "diffusa-est-gratia",
         },
         {
-          gabcId: "dignare-me-simple",
+          gabcId: "diffusa-est-gratia-simple",
           labelKey: "ui-other-times",
-          translationKey: "dignare-me",
+          translationKey: "diffusa-est-gratia",
         },
       ],
       id: "versicle",
@@ -85,8 +85,8 @@ export const terce = {
       items: [
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         {
-          gabcId: "Deus-qui-virginalem",
-          translationKey: "Deus-qui-virginalem",
+          gabcId: "Deus-qui-salutis-aeternae",
+          translationKey: "Deus-qui-salutis-aeternae",
         },
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },

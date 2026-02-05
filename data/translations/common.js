@@ -190,6 +190,16 @@ export default {
     cs: "Žalm 116.",
   },
 
+  // Psalm labels - Terce
+  "ui-psalm-119": {
+    en: "Psalm cxix.",
+    cs: "Žalm 119.",
+  },
+  "ui-psalm-120": {
+    en: "Psalm cxx.",
+    cs: "Žalm 120.",
+  },
+
   // Psalm labels - Lauds
   "ui-psalm-92": {
     en: "Psalm xcii.",

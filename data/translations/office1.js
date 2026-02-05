@@ -108,26 +108,32 @@ export default {
 
   // Prime - Cant. vi. 9
   "que-est-ista": {
-    en: "Who is she that cometh forth as the morning rising, fair as the moon, bright as the sun, terrible as an army set in array?",
-    cs: "Kdo je to: vychází jak zora, krásná jak luna, jasná jak slunce, hrozná jak seřazené šiky?",
+    en: "Who is she that cometh forth as the morning rising, fair as the moon, bright as the sun, terrible as an army set in array?\nThanks be to God.",
+    cs: "Kdo je to: vychází jak zora, krásná jak luna, jasná jak slunce, hrozná jak seřazené šiky?\nBohu díky.",
   },
 
   // Vespers - Ecclesiasticus 24:14
   "ab-initio": {
-    en: "From the beginning, and before the world, was I created, and unto the world to come I shall not cease to be, and in the holy dwelling place I have ministered before him.",
-    cs: "Od počátku, před věky jsem byla stvořena a až na věky nepřestanu být; ve svatém příbytku jsem před ním konala službu.",
+    en: "From the beginning, and before the world, was I created, and unto the world to come I shall not cease to be, and in the holy dwelling place I have ministered before him.\nThanks be to God.",
+    cs: "Od počátku, před věky jsem byla stvořena a až na věky nepřestanu být; ve svatém příbytku jsem před ním konala službu.\nBohu díky.",
   },
 
   // Lauds - Cant. vi. 8
   "viderunt-eam": {
-    en: "The daughters saw her, and declared her most blessed: and the queens, they praised her.",
-    cs: "Vidí ji družky a velebí ji, královny ji chválí.",
+    en: "The daughters saw her, and declared her most blessed: and the queens, they praised her.\nThanks be to God.",
+    cs: "Vidí ji družky a velebí ji, královny ji chválí.\nBohu díky.",
   },
 
   // Compline - Ecclesiasticus 24:24
   "ego-mater": {
-    en: "I am the mother of fair love, and of fear, and of knowledge, and of holy hope.",
-    cs: "Já jsem matka krásného milování, bázně, poznání a svaté naděje.",
+    en: "I am the mother of fair love, and of fear, and of knowledge, and of holy hope.\nThanks be to God.",
+    cs: "Já jsem matka krásného milování, bázně, poznání a svaté naděje.\nBohu díky.",
+  },
+
+  // Terce - Ecclesiasticus 24:15
+  "et-sic-in-sion": {
+    en: "And so was I established in Sion, and in the holy city likewise I rested, and my power was in Jerusalem.\nThanks be to God.",
+    cs: "Na Siónu jsem obdržela sídlo, usadil mě v městě, které miloval jako mě, v Jeruzalémě vykonávám svou moc.\nBohu díky.",
   },
 
   // === PRAYER TRANSLATIONS ===
@@ -136,6 +142,12 @@ export default {
   "Deus-qui-virginalem": {
     en: "O God which didst vouchsafe to choose the virginal palace of the blessed virgin Mary, in which thou wouldst dwell: grant we beseech thee: that we guarded by her defence, she may make us joyful to be present at her commemoration. Who liveth and reigneth, God, with God the father in the unity of the Holy Ghost, world without end. Amen.",
     cs: "Bože, který sis ráčil vyvolit panenský příbytek blahoslavené Panny Marie, abys v něm přebýval, dej, prosíme, abys nás, posílené její ochranou, učinil radostnými při účasti na její památce. Neboť ty žiješ a kraluješ s Bohem Otcem v jednotě Ducha svatého jako Bůh po všechny věky věků.",
+  },
+
+  // Terce Prayer
+  "Deus-qui-salutis-aeternae": {
+    en: "O God, who by the fruitful virginity of Blessed Mary, hast given to mankind the rewards of eternal salvation: grant, we beseech Thee, that we may experience her intercession for us, by whom we have been made worthy to receive the Author of life, our Lord Jesus Christ, Thy Son. Amen.",
+    cs: "Bože, jenž jsi skrze plodné panenství blahoslavené Marie dal lidstvu odměnu věčné spásy: dej, prosíme, abychom zakusili její přímluvu za nás, skrze niž jsme byli učiněni hodnými přijmout Původce života, našeho Pána Ježíše Krista, tvého Syna. Amen.",
   },
 
   // Vespers Prayer (Oremus)
