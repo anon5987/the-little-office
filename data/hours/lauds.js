@@ -2,6 +2,7 @@
  * Lauds Hour Definition
  *
  * Defines the structure and content of Lauds (Morning Prayer)
+ * @see {import('../../js/core/types.js').HourDefinition}
  */
 
 export const lauds = {
@@ -11,89 +12,124 @@ export const lauds = {
   // Structure defines the order of sections
   structure: [
     {
-      type: "opening",
-      gabcId: "deus-in-adjutorium",
+      type: "chant",
+      gabcId: "Deus-in-adjutorium",
       translationKey: "Deus-in-adjutorium",
+      id: "intro"
     },
     {
-      type: "psalm-with-antiphon",
-      psalmId: "psalm-92",
-      psalmLabelKey: "ui-psalm-92",
-      psalmIncipit: "Dominus regnavit",
-      antiphonKey: "assumpta-est-maria-in-cælum",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-92",
+          translationKey: "psalm-92",
+          labelKey: "ui-psalm-92",
+          incipit: "Dominus regnavit"
+        }
+      ],
+      antiphonKey: "assumpta-est-maria-in-cælum"
     },
     {
-      type: "psalm-with-antiphon",
-      psalmId: "psalm-99",
-      psalmLabelKey: "ui-psalm-99",
-      psalmIncipit: "Jubilate Deo",
-      antiphonKey: "maria-virgo-assumpta-est",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-99",
+          translationKey: "psalm-99",
+          labelKey: "ui-psalm-99",
+          incipit: "Jubilate Deo"
+        }
+      ],
+      antiphonKey: "maria-virgo-assumpta-est"
     },
     {
-      type: "psalm-with-antiphon",
-      psalmId: "psalm-62",
-      psalmLabelKey: "ui-psalm-62",
-      psalmIncipit: "Deus, Deus meus",
-      antiphonKey: "in-odorem",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-62",
+          translationKey: "psalm-62",
+          labelKey: "ui-psalm-62",
+          incipit: "Deus, Deus meus"
+        }
+      ],
+      antiphonKey: "in-odorem"
     },
     {
-      type: "psalm-with-antiphon",
-      psalmId: "the-benedicite",
-      psalmLabelKey: "ui-the-benedicite",
-      psalmIncipit: "Benedicite",
-      antiphonKey: "benedicta-filia-tu",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "the-benedicite",
+          translationKey: "the-benedicite",
+          labelKey: "ui-the-benedicite",
+          incipit: "Benedicite"
+        }
+      ],
+      antiphonKey: "benedicta-filia-tu"
     },
     {
-      type: "psalm-with-antiphon",
-      psalmId: "psalm-148",
-      psalmLabelKey: "ui-psalm-148",
-      psalmIncipit: "Laudate Dominum",
-      antiphonKey: "pulchra-es-et-decora",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-148",
+          translationKey: "psalm-148",
+          labelKey: "ui-psalm-148",
+          incipit: "Laudate Dominum"
+        }
+      ],
+      antiphonKey: "pulchra-es-et-decora"
     },
     {
-      type: "chapter",
+      type: "chant",
       gabcId: "viderunt-eam",
+      translationKey: "viderunt-eam",
       labelKey: "ui-little-chapter",
       reference: "Cant. vi. 8",
-      translationKey: "viderunt-eam",
+      id: "reading"
     },
     {
-      type: "hymn",
+      type: "chant",
       gabcId: "o-gloriosa-virginum",
-      labelKey: "ui-hymn",
       translationKey: "o-gloriosa-virginum",
+      labelKey: "ui-hymn",
+      id: "hymnus"
     },
     {
-      type: "versicle",
+      type: "chant-variants",
       variants: [
         {
           gabcId: "benedicta-tu-solemn",
           labelKey: "ui-sundays-feasts",
-          translationKey: "benedicta-tu",
+          translationKey: "benedicta-tu"
         },
         {
           gabcId: "benedicta-tu-simple",
           labelKey: "ui-other-times",
-          translationKey: "benedicta-tu",
-        },
+          translationKey: "benedicta-tu"
+        }
       ],
+      id: "versicle"
     },
     {
-      type: "canticle-with-antiphon",
-      canticleId: "benedictus",
-      canticleLabelKey: "ui-benedictus",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "benedictus",
+          translationKey: "benedictus-chant",
+          labelKey: "ui-benedictus"
+        }
+      ],
       antiphonKey: "beata-dei-genitrix",
-      translationKey: "benedictus-chant",
+      id: "canticle"
     },
     {
-      type: "closing",
+      type: "chant-sequence",
+      id: "end",
       items: [
-        { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
-        { gabcId: "deus-qui-de-beatae", translationKey: "deus-qui-de-beatae" },
-        { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
-        { gabcId: "benedicamus", translationKey: "benedicamus" },
-      ],
-    },
+        { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
+        { gabcId: "Deus-qui-de-beatae", translationKey: "Deus-qui-de-beatae" },
+        { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
+        { gabcId: "benedicamus", translationKey: "benedicamus" }
+      ]
+    }
   ],
 
   // Seasonal overrides for Office 2 (Advent) and Office 3 (Christmas)
@@ -104,15 +140,13 @@ export const lauds = {
     },
     2: {
       // Office 2 (Advent) - placeholder for antiphon/hymn changes
-      // hymn: 'conditor-alme-siderum',
-      // antiphons: { ... }
+      // overrides: { 'o-gloriosa-virginum': 'conditor-alme-siderum' }
     },
     3: {
       // Office 3 (Christmas to Purification) - placeholder
-      // hymn: 'jesu-redemptor-omnium',
-      // antiphons: { ... }
-    },
-  },
+      // overrides: { 'o-gloriosa-virginum': 'jesu-redemptor-omnium' }
+    }
+  }
 };
 
 export default lauds;

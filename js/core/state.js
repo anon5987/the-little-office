@@ -1,16 +1,18 @@
 /**
  * Global State Module
  * Manages application state (language, season/office, current hour)
+ * @see {import('./types.js').AppState}
  */
 
-// Application state
+/** @type {import('./types.js').AppState} */
 const state = {
   language: 'en',
   office: 1,           // 1, 2, or 3 (seasonal office)
   officeOverride: null, // null = auto-detect, 1/2/3 = manual override
   currentHour: null,    // 'vespers', 'lauds', etc.
   showTranslations: false,
-  darkMode: false
+  darkMode: false,
+  dateOverride: null    // ISO string or null (session-only, not persisted)
 };
 
 // State change listeners

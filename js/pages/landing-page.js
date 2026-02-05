@@ -3,52 +3,27 @@
  * Renders and manages the hour selection landing page
  */
 
-import { IDS, SELECTORS, getElement } from './selectors.js';
-import { getState, set } from './state.js';
-import { CSS_CLASSES, AVAILABLE_HOURS, HOUR_NAME_KEYS } from './constants.js';
-import { createEventScope, SCOPES } from './event-manager.js';
-import { hideStickyHeader } from './sticky-header.js';
-import { getSeasonInfo } from './season.js';
-import { getAllHoursStatus } from './hour-time.js';
-import { buildUrl } from './router.js';
-
-// Translation cache for hour names
-let translationsCache = null;
+import { IDS, SELECTORS, getElement } from '../utils/selectors.js';
+import { getState, set } from '../core/state.js';
+import { CSS_CLASSES, AVAILABLE_HOURS } from '../core/constants.js';
+import { createEventScope, SCOPES } from '../utils/event-manager.js';
+import { hideStickyHeader } from '../ui/sticky-header.js';
+import { getSeasonInfo } from '../liturgical/season.js';
+import { getAllHoursStatus } from '../liturgical/hour-time.js';
+import { getCurrentDate } from '../core/date-provider.js';
+import { buildUrl } from '../core/router.js';
+import {
+  setTranslationsCache as setTranslationsCacheInternal,
+  getHourNameTranslated,
+  t,
+} from '../utils/translation-helpers.js';
 
 /**
  * Set translations cache for hour names
  * @param {Object} translations - Translation data
  */
 export function setTranslationsCache(translations) {
-  translationsCache = translations;
-}
-
-/**
- * Get translation by key
- * @param {string} key - Translation key
- * @param {string} lang - Language code
- * @returns {string}
- */
-function t(key, lang) {
-  if (translationsCache && translationsCache[key]) {
-    return translationsCache[key][lang] || translationsCache[key].en || key;
-  }
-  return key;
-}
-
-/**
- * Get hour name from translations or fallback to hour-time module
- * @param {string} hourId - Hour identifier
- * @param {string} lang - Language code
- * @returns {string}
- */
-function getHourNameTranslated(hourId, lang) {
-  const key = HOUR_NAME_KEYS[hourId];
-  if (translationsCache && key && translationsCache[key]) {
-    return translationsCache[key][lang] || translationsCache[key].en || hourId;
-  }
-  // Fallback to capitalized ID
-  return hourId.charAt(0).toUpperCase() + hourId.slice(1);
+  setTranslationsCacheInternal(translations);
 }
 
 /**
@@ -71,8 +46,8 @@ export function renderLandingPage() {
   const container = appContent || document.body;
   const state = getState();
   const lang = state.language || 'en';
-  const seasonInfo = getSeasonInfo(new Date(), 'vespers');
-  const hoursStatus = getAllHoursStatus();
+  const seasonInfo = getSeasonInfo(getCurrentDate(), 'vespers');
+  const hoursStatus = getAllHoursStatus(getCurrentDate());
 
   const html = `
     <div class="landing-page">
@@ -123,9 +98,9 @@ export function renderLandingPage() {
       <div class="implementation-plan">
         <h2 class="plan-title">${t('ui-implementation-plan', lang)}</h2>
         <ol class="plan-list">
-          <li><s>${getHourNameTranslated('vespers', lang)}</s></li>
-          <li><s>${getHourNameTranslated('lauds', lang)}</s></li>
-          <li>${getHourNameTranslated('compline', lang)}</li>
+          <li><s>${getHourNameTranslated('vespers', lang)}</s> <span class="plan-date">(${new Date('2026-01-28').toLocaleDateString(lang)})</span></li>
+          <li><s>${getHourNameTranslated('lauds', lang)}</s> <span class="plan-date">(${new Date('2026-02-03').toLocaleDateString(lang)})</span></li>
+          <li><s>${getHourNameTranslated('compline', lang)}</s> <span class="plan-date">(${new Date('2026-02-05').toLocaleDateString(lang)})</span></li>
           <li>${getHourNameTranslated('prime', lang)}</li>
           <li>${getHourNameTranslated('terce', lang)}</li>
           <li>${getHourNameTranslated('sext', lang)}</li>

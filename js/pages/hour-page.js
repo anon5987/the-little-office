@@ -3,39 +3,25 @@
  * Renders and manages individual hour pages
  */
 
-import { IDS, getElement } from './selectors.js';
-import { getState } from './state.js';
-import { HOUR_NAME_KEYS } from './constants.js';
-import { showStickyHeader, updateLanguageSelector, setCurrentHourData, clearCurrentHourData } from './sticky-header.js';
-import { getOffice } from './season.js';
-import { renderHour, applyTranslations } from './hour-renderer.js';
-import { cleanupScope, SCOPES } from './event-manager.js';
-import { restoreScrollPosition, setScrollHour } from './scroll-position.js';
-
-// Translation cache for hour names
-let translationsCache = null;
+import { IDS, getElement } from '../utils/selectors.js';
+import { getState } from '../core/state.js';
+import { showStickyHeader, updateLanguageSelector, setCurrentHourData, clearCurrentHourData } from '../ui/sticky-header.js';
+import { getOffice } from '../liturgical/season.js';
+import { getCurrentDate } from '../core/date-provider.js';
+import { renderHour, applyTranslations } from '../rendering/hour-renderer.js';
+import { cleanupScope, SCOPES } from '../utils/event-manager.js';
+import { restoreScrollPosition, setScrollHour } from '../ui/scroll-position.js';
+import {
+  setTranslationsCache as setTranslationsCacheInternal,
+  getHourNameTranslated,
+} from '../utils/translation-helpers.js';
 
 /**
  * Set translations cache for hour names
  * @param {Object} translations - Translation data
  */
 export function setTranslationsCache(translations) {
-  translationsCache = translations;
-}
-
-/**
- * Get hour name from translations
- * @param {string} hourId - Hour identifier
- * @param {string} lang - Language code
- * @returns {string}
- */
-function getHourNameTranslated(hourId, lang) {
-  const key = HOUR_NAME_KEYS[hourId];
-  if (translationsCache && key && translationsCache[key]) {
-    return translationsCache[key][lang] || translationsCache[key].en || hourId;
-  }
-  // Fallback
-  return hourId.charAt(0).toUpperCase() + hourId.slice(1);
+  setTranslationsCacheInternal(translations);
 }
 
 /**
@@ -51,7 +37,7 @@ export async function renderHourPage(hourId, params = {}) {
   const state = getState();
   const office = params.office
     ? parseInt(params.office, 10)
-    : getOffice(new Date(), hourId);
+    : getOffice(getCurrentDate(), hourId);
   const lang = params.lang || state.language || 'en';
 
   // Hide landing page / app content
@@ -67,14 +53,6 @@ export async function renderHourPage(hourId, params = {}) {
     hourContent.id = IDS.HOUR_CONTENT;
     document.body.appendChild(hourContent);
   }
-  hourContent.style.display = 'block';
-
-  // Show sticky header with hour name
-  const hourName = getHourNameTranslated(hourId, lang);
-  showStickyHeader(hourName);
-
-  // Update language selector to match current language
-  updateLanguageSelector(lang);
 
   // Get or create content area
   let contentArea = hourContent.querySelector(`#${IDS.HOUR_CONTENT_AREA}`);
@@ -83,6 +61,19 @@ export async function renderHourPage(hourId, params = {}) {
     contentArea.id = IDS.HOUR_CONTENT_AREA;
     hourContent.appendChild(contentArea);
   }
+
+  // Clear old content before showing container (prevents flash of stale content)
+  contentArea.innerHTML = '';
+
+  // Now safe to show the container
+  hourContent.style.display = 'block';
+
+  // Show sticky header with hour name
+  const hourName = getHourNameTranslated(hourId, lang);
+  showStickyHeader(hourName, hourId);
+
+  // Update language selector to match current language
+  updateLanguageSelector(lang);
 
   // Render the hour from data modules
   try {

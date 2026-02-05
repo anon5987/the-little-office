@@ -48,19 +48,47 @@ Then open the local URL shown in your terminal.
 
 ```
 the-little-office/
-├── index.html          # Main HTML shell
-├── app.css             # Application styles and theming
-├── little-office.css   # Chant-specific styles
-├── js/                 # JavaScript modules
-│   ├── app.js          # Main entry point
-│   ├── router.js       # Hash-based navigation
-│   ├── hour-renderer.js# Chant rendering logic
-│   └── ...
-├── data/               # Content modules
-│   ├── hours/          # Hour definitions
-│   ├── gabc/           # GABC chant notation
-│   └── translations/   # Language files
-└── jgabc.full.js       # Chant rendering library
+├── index.html              # Main HTML shell
+├── app.css                 # Application styles and theming
+├── little-office.css       # Chant-specific styles
+├── js/                     # JavaScript modules
+│   ├── app.js              # Main entry point
+│   ├── core/               # Core application logic
+│   │   ├── router.js       # Hash-based navigation
+│   │   ├── state.js        # Application state management
+│   │   ├── constants.js    # Configuration values
+│   │   ├── types.js        # JSDoc type definitions
+│   │   └── date-provider.js# Date functionality for liturgical calculations
+│   ├── pages/              # Page components
+│   │   ├── landing-page.js # Hour selection grid
+│   │   └── hour-page.js    # Individual hour rendering
+│   ├── rendering/          # GABC rendering
+│   │   ├── hour-renderer.js# Dynamic hour content generation
+│   │   ├── renderer.js     # GABC to SVG rendering
+│   │   ├── jgabc-adapter.js# jgabc library wrapper
+│   │   └── print.js        # Print preparation
+│   ├── ui/                 # UI components
+│   │   ├── sticky-header.js# Header controls and menu
+│   │   ├── translation-manager.js
+│   │   └── scroll-position.js
+│   ├── utils/              # Utility modules
+│   │   ├── selectors.js    # DOM element IDs
+│   │   ├── event-manager.js# Scoped event cleanup
+│   │   ├── svg-utils.js    # SVG manipulation utilities
+│   │   ├── device-detection.js # iOS detection for rendering fixes
+│   │   └── translation-helpers.js # Shared translation utilities
+│   └── liturgical/         # Liturgical calculations
+│       ├── season.js       # Office selection (1, 2, or 3)
+│       ├── marian-season.js# Marian antiphon selection
+│       └── hour-time.js    # Hour recommendations
+├── data/                   # Content modules
+│   ├── index.js            # Aggregates all data modules
+│   ├── hours/              # Hour definitions (vespers.js, lauds.js, compline.js)
+│   ├── gabc/               # GABC chant notation
+│   │   ├── common/         # Shared chants (opening, closing, marian-antiphons)
+│   │   └── office1/        # Office-specific (antiphons, psalms, hymns, chapters, versicles)
+│   └── translations/       # Language files (common.js, office1.js, psalms.js)
+└── jgabc.full.js           # Chant rendering library
 ```
 
 ## Dependencies

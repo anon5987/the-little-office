@@ -5,33 +5,33 @@
  * Load this as: <script type="module" src="js/app.js"></script>
  */
 
-import { initRenderer, handleResize, renderAllGabc, waitForJgabc } from './renderer.js';
-import { initPrint } from './print.js';
+import { initRenderer, handleResize, renderAllGabc, waitForJgabc } from './rendering/renderer.js';
+import { initPrint } from './rendering/print.js';
 import {
   initTranslations,
   updateUITranslations,
   updateChantTranslations,
-} from './translation-manager.js';
-import { initState, getState, set, subscribe } from './state.js';
+} from './ui/translation-manager.js';
+import { initState, getState, set, subscribe } from './core/state.js';
 import {
   initRouter,
   onRouteChange,
   isLandingPage,
   navigate,
   HOURS,
-} from './router.js';
-import { getOffice, getOfficeName } from './season.js';
-import { getCurrentHour, getRecommendation } from './hour-time.js';
-import { cancelRender } from './hour-renderer.js';
+} from './core/router.js';
+import { getOffice, getOfficeName } from './liturgical/season.js';
+import { getCurrentHour, getRecommendation } from './liturgical/hour-time.js';
+import { cancelRender } from './rendering/hour-renderer.js';
 
 // Split modules
-import { detectIOS } from './device-detection.js';
-import { fixStaticSVGWhitespace } from './svg-utils.js';
-import { initStickyHeader, setUITranslations } from './sticky-header.js';
-import { renderLandingPage, setTranslationsCache as setLandingTranslations } from './landing-page.js';
-import { renderHourPage, hideHourContent, setTranslationsCache as setHourTranslations } from './hour-page.js';
-import { IDS, getElement, SELECTORS } from './selectors.js';
-import { initScrollTracking, clearScrollPosition, clearScrollHour } from './scroll-position.js';
+import { detectIOS } from './utils/device-detection.js';
+import { fixStaticSVGWhitespace } from './utils/svg-utils.js';
+import { initStickyHeader, setUITranslations } from './ui/sticky-header.js';
+import { renderLandingPage, setTranslationsCache as setLandingTranslations } from './pages/landing-page.js';
+import { renderHourPage, hideHourContent, setTranslationsCache as setHourTranslations } from './pages/hour-page.js';
+import { IDS, getElement, SELECTORS } from './utils/selectors.js';
+import { initScrollTracking, clearScrollPosition, clearScrollHour } from './ui/scroll-position.js';
 
 // Application state
 const app = {
@@ -79,6 +79,24 @@ function handleRouteChange(newRoute, oldRoute) {
 }
 
 /**
+ * Handle date override changes - re-render current view
+ */
+function handleDateOverrideChange() {
+  // Cancel any in-progress rendering
+  cancelRender();
+
+  if (isLandingPage()) {
+    app.currentView = renderLandingPage();
+  } else {
+    // Re-render the current hour page with new date
+    const currentRoute = initRouter();
+    renderHourPage(currentRoute.hour, currentRoute.params).then((view) => {
+      app.currentView = view;
+    });
+  }
+}
+
+/**
  * Initialize the application
  */
 export async function init(translations) {
@@ -116,6 +134,13 @@ export async function init(translations) {
   // Initialize router and listen for changes
   const initialRoute = initRouter();
   onRouteChange(handleRouteChange);
+
+  // Subscribe to date override changes
+  subscribe((key) => {
+    if (key === 'dateOverride') {
+      handleDateOverrideChange();
+    }
+  });
 
   // Initialize translations if available
   if (translations) {

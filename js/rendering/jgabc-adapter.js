@@ -5,7 +5,7 @@
  * jgabc exposes global functions: getChant, relayoutChant, getHeader, _defs, staffoffset, svgWidth
  */
 
-import { RENDER, DELAYS } from './constants.js';
+import { RENDER, DELAYS } from '../core/constants.js';
 
 /**
  * Check if jgabc library is loaded and ready

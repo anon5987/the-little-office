@@ -227,6 +227,62 @@ centering-scheme: latin;
 <i>11.</i> Gló(e)ri(f)a(h) Pa(h)tri,(h) et(h) Fí(i)li(h)o,(h.) <i>*</i>(:) et(h) Spi(h)rí(h)tu(h)i(g) Sanc(e)to.(f.) (::)
 <i>12.</i> Sic(e)ut(f) e(h)rat(h) in(h) prin(h)cí(h)pi(h)o,(h) et(h) nunc,(h) et(h) sem(i)per,(h.) <i>*</i>(:) et(h) in(h) sǽ(h)cu(h)la(h) sæ(h)cu(h)ló(h)rum.(g) A(e)men.(f.) (::)`;
 
+// Psalm 128 - in directum
+export const psalm128 = `name: 128-tonus TP;
+initial-style: 1;
+centering-scheme: latin;
+%%
+(c3)Sæ(e)pe(f) ex(h)pu(h)gna(h)vé(h)runt(h) me(h) a(h) ju(h)ven(h)tú(h)te(i) me(i)a,(f.) <i>*</i>(:) di(h)cat(e) nunc(f) Is(g)ra(f)ël:(f.) (::)
+<i>2.</i> Sæ(h)pe(h) ex(h)pu(h)gna(h)vé(h)runt(h) me(h) a(h) ju(h)ven(h)tú(h)te(i) me(i)a:(f.) <i>*</i>(:) ét(h)e(h)nim(h) non(h) pot(h)u(h)é(e)runt(f) mi(g)hi.(f.) (::)
+<i>3.</i> Su(h)pra(h) dor(h)sum(h) me(h)um(h) fa(h)bri(h)ca(h)vé(h)runt(h) pec(h)ca(i)tó(i)res:(f.) <i>*</i>(:) pro(h)lon(h)ga(h)vé(h)runt(h) in(h)i(h)qui(h)tá(e)tem(f) su(g)am.(f.) (::)
+<i>4.</i> Dó(h)mi(h)nus(h) jus(h)tus(h) con(h)cí(h)dit(h) cer(h)ví(h)ces(h) pec(h)ca(i)tó(i)rum:(f.) <i>*</i>(:) con(h)fun(h)dán(h)tur(h) et(h) con(h)ver(h)tán(h)tur(h) re(h)trór(h)sum(h) om(h)nes,(h) qui(h) o(h)dé(e)runt(f) Si(g)on.(f.) (::)
+<i>5.</i> Fi(h)ant(h) sic(h)ut(h) fœ(h)num(h) tec(i)tó(i)rum:(f.) <i>*</i>(:) quod(h) pri(h)ús(h)quam(h) e(h)vel(h)lá(h)tur(e) ex(f)á(g)ru(f)it:(f.) (::)
+<i>6.</i> De(h) quo(h) non(h) im(h)plé(h)vit(h) ma(h)num(h) su(h)am(h) qui(i) me(i)tit:(f.) <i>*</i>(:) et(h) si(h)num(h) su(h)um(h) qui(h) ma(h)ní(h)pu(e)los(f) cól(g)li(f)git.(f.) (::)
+<i>7.</i> Et(h) non(h) di(h)xé(h)runt(h) qui(h) præ(h)ter(h)í(h)bant:(h) Be(h)ne(h)díc(h)ti(h)o(h) Dó(h)mi(h)ni(i) su(i)per(f) vos:(f.) <i>*</i>(:) be(h)ne(h)dí(h)xi(h)mus(h) vo(h)bis(h) in(h) nó(h)mi(e)ne(f) Dó(g)mi(f)ni.(f.) (::)
+<i>8.</i> Gló(h)ri(h)a(h) Pa(h)tri,(h) et(i) Fí(i)li(f)o,(f.) <i>*</i>(:) et(h) Spi(h)rí(h)tu(e)i(f) Sanc(g)to.(f.) (::)
+<i>9.</i> Sic(h)ut(h) e(h)rat(h) in(h) prin(h)cí(h)pi(h)o,(h) et(h) nunc,(h) et(i) sem(i)per,(f.) <i>*</i>(:) et(h) in(h) sǽ(h)cu(h)la(h) sæ(h)cu(h)ló(e)rum.(f) A(g)men.(f.) (::)`;
+
+// Psalm 129 - in directum
+export const psalm129 = `name: 129-tonus TP;
+initial-style: 1;
+centering-scheme: latin;
+%%
+(c3)De(e) pro(f)fún(h)dis(h) cla(h)má(h)vi(h) ad(h) te,(i) Dó(i)mi(f)ne:(f.) <i>*</i>(:) Dó(h)mi(h)ne,(h) ex(h)áu(h)di(h) vo(e)cem(f) me(g)am:(f.) (::)
+<i>2.</i> Fi(h)ant(h) au(h)res(h) tu(h)æ(h) in(h)ten(i)dén(i)tes:(f.) <i>*</i>(:) in(h) vo(h)cem(h) de(h)pre(h)ca(h)ti(h)ó(e)nis(f) me(g)æ.(f.) (::)
+<i>3.</i> Si(h) in(h)i(h)qui(h)tá(h)tes(h) ob(h)ser(h)vá(h)ve(h)ris,(i) Dó(i)mi(f)ne:(f.) <i>*</i>(:) Dó(h)mi(h)ne,(h) quis(h) sus(e)ti(f)né(g)bit?(f.) (::)
+<i>4.</i> Qui(h)a(h) a(h)pud(h) te(h) pro(h)pi(h)ti(h)á(h)ti(i)o(i) est:(f.) <i>*</i>(:) et(h) prop(h)ter(h) le(h)gem(h) tu(h)am(h) sus(h)tí(h)nu(h)i(e) te,(f) Dó(g)mi(f)ne.(f.) (::)
+<i>5.</i> Sus(h)tí(h)nu(h)it(h) á(h)ni(h)ma(h) me(h)a(h) in(h) ver(h)bo(i) e(i)jus:(f.) <i>*</i>(:) spe(h)rá(h)vit(h) á(h)ni(h)ma(h) me(h)a(e) in(f) Dó(g)mi(f)no.(f.) (::)
+<i>6.</i> A(h) cus(h)tó(h)di(h)a(h) ma(h)tu(h)tí(h)na(h) us(h)que(h) ad(i) noc(i)tem:(f.) <i>*</i>(:) spe(h)ret(h) Is(h)ra(h)ël(e) in(f) Dó(g)mi(f)no.(f.) (::)
+<i>7.</i> Qui(h)a(h) a(h)pud(h) Dó(h)mi(h)num(h) mi(h)se(h)ri(i)cór(i)di(f)a:(f.) <i>*</i>(:) et(h) co(h)pi(h)ó(h)sa(h) a(h)pud(h) e(h)um(e) red(f)émp(g)ti(f)o.(f.) (::)
+<i>8.</i> Et(h) ip(h)se(h) réd(h)i(h)met(i) Is(i)ra(f)ël:(f.) <i>*</i>(:) ex(h) óm(h)ni(h)bus(h) in(h)i(h)qui(h)tá(h)ti(e)bus(f) e(g)jus.(f.) (::)
+<i>9.</i> Gló(h)ri(h)a(h) Pa(h)tri,(h) et(i) Fí(i)li(f)o,(f.) <i>*</i>(:) et(h) Spi(h)rí(h)tu(e)i(f) Sanc(g)to.(f.) (::)
+<i>10.</i> Sic(h)ut(h) e(h)rat(h) in(h) prin(h)cí(h)pi(h)o,(h) et(h) nunc,(h) et(i) sem(i)per,(f.) <i>*</i>(:) et(h) in(h) sǽ(h)cu(h)la(h) sæ(h)cu(h)ló(e)rum.(f) A(g)men.(f.) (::)`;
+
+// Psalm 130 - in directum
+export const psalm130 = `name: 130-tonus TP;
+initial-style: 1;
+centering-scheme: latin;
+%%
+(c3)Dó(e)mi(f)ne,(h) non(h) est(h) ex(h)al(h)tá(h)tum(h) cor(i) me(i)um:(f.) <i>*</i>(:) ne(h)que(h) e(h)lá(h)ti(h) sunt(h) ó(h)cu(e)li(f) me(g)i.(f.) (::)
+<i>2.</i> Ne(h)que(h) am(h)bu(h)lá(h)vi(h) in(i) ma(i)gnis:(f.) <i>*</i>(:) ne(h)que(h) in(h) mi(h)ra(h)bí(h)li(e)bus(f) su(g)per(f) me.(f.) (::)
+<i>3.</i> Si(h) non(h) hu(h)mí(h)li(h)ter(h) sen(h)ti(i)é(i)bam:(f.) <i>*</i>(:) sed(h) ex(h)al(h)tá(h)vi(h) á(h)ni(e)mam(f) me(g)am.(f.) (::)
+<i>4.</i> Sic(h)ut(h) ab(h)lac(h)tá(h)tus(h) est(h) su(h)per(h) ma(h)tre(i) su(i)a:(f.) <i>*</i>(:) i(h)ta(h) re(h)tri(h)bú(h)ti(h)o(h) in(h) á(h)ni(e)ma(f) me(g)a.(f.) (::)
+<i>5.</i> Spe(h)ret(h) Is(h)ra(h)ël(h) in(i) Dó(i)mi(f)no:(f.) <i>*</i>(:) ex(h) hoc(h) nunc(h) et(h) us(h)que(e) in(f) sǽ(g)cu(f)lum.(f.) (::)
+<i>6.</i> Gló(h)ri(h)a(h) Pa(h)tri,(h) et(i) Fí(i)li(f)o,(f.) <i>*</i>(:) et(h) Spi(h)rí(h)tu(e)i(f) Sanc(g)to.(f.) (::)
+<i>7.</i> Sic(h)ut(h) e(h)rat(h) in(h) prin(h)cí(h)pi(h)o,(h) et(h) nunc,(h) et(i) sem(i)per,(f.) <i>*</i>(:) et(h) in(h) sǽ(h)cu(h)la(h) sæ(h)cu(h)ló(e)rum.(f) A(g)men.(f.) (::)`;
+
+export const nuncDimittis = `name: Nunc dimittis-7a;
+initial-style: 1;
+centering-scheme: latin;
+annotation: 7.a;
+%%
+(c3)Nunc(hg) di(hi)mít(i)tis(i) ser(i)vum(i) tu(k)um,(j) Dó(i)mi(j)ne,(j.) <i>*</i>(:) se(i)cún(i)dum(i) ver(i)bum(i) tu(j)um(i) in(i) pa(h)ce:(gf..) (::)
+<i>2.</i> Qui(hg)a(hi) vi(i)dé(i)runt(i) ó(k)cu(j)li(j) me(i)i(j.) <i>*</i>(:) sa(i)lu(i)tá(j)re(i) tu(h)um,(gf..) (::)
+<i>3.</i> Quod(k) pa(j)rás(i)ti(j.) <i>*</i>(:) an(i)te(i) fá(i)ci(i)em(i) óm(i)ni(i)um(i) po(j)pu(i)ló(h)rum,(gf..) (::)
+<i>4.</i> Lu(hg)men(hi) ad(i) re(i)ve(i)la(i)ti(i)ó(k)nem(j) Gén(i)ti(j)um,(j.) <i>*</i>(:) et(i) gló(i)ri(i)am(i) ple(i)bis(i) tu(j)æ(i) Is(h)ra(h)ël.(gf..) (::)
+<i>5.</i> Gló(hg)ri(hi)a(i) Pa(k)tri,(j) et(j) Fí(i)li(j)o,(j.) <i>*</i>(:) et(i) Spi(i)rí(j)tu(i)i(i) Sanc(h)to.(gf..) (::)
+<i>6.</i> Sic(hg)ut(hi) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(k) et(j) sem(i)per,(j.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(i)ló(j)rum.(i) A(h)men.(gf..) (::)`;
+
 // Export as object for consistent API
 export default {
   // Lauds 1
@@ -235,7 +291,7 @@ export default {
   "psalm-62": gabcPsalm62,
   "psalm-148": gabcPsalm148,
   "the-benedicite": benedicite,
-  "benedictus": benedictus,
+  benedictus: benedictus,
 
   // Vespers 1
   "psalm-109": gabcPsalm109,
@@ -244,4 +300,10 @@ export default {
   "psalm-126": gabcPsalm126,
   "psalm-147": gabcPsalm147,
   "magnificat-chant": gabcMagnificat,
+
+  // Compline 1
+  "psalm-128": psalm128,
+  "psalm-129": psalm129,
+  "psalm-130": psalm130,
+  "nunc-dimittis": nuncDimittis,
 };

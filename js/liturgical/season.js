@@ -10,21 +10,23 @@
 
 // Hour ordering for boundary comparisons
 export const HOUR_ORDER = {
-  'matins': 0,
-  'lauds': 1,
-  'prime': 2,
-  'terce': 3,
-  'sext': 4,
-  'none': 5,
-  'vespers': 6,
-  'compline': 7
+  matins: 0,
+  lauds: 1,
+  prime: 2,
+  terce: 3,
+  sext: 4,
+  none: 5,
+  vespers: 6,
+  compline: 7,
 };
 
 /**
  * Convert a Date to YYYYMMDD integer for easy comparison
  */
 function toDateValue(date) {
-  return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
+  return (
+    date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()
+  );
 }
 
 /**
@@ -46,22 +48,15 @@ function isHourBefore(hourId, referenceHour) {
  * Advent 1 is the 4th Sunday before Christmas
  */
 export function getFirstSundayOfAdvent(year) {
-  const christmas = new Date(year, 11, 25); // Dec 25
-  const christmasDayOfWeek = christmas.getDay(); // 0 = Sunday
-
-  // Calculate days to subtract to get to Advent 1
-  // If Christmas is Sunday (0), we go back 3 weeks (21 days)
-  // If Christmas is Monday (1), we go back 3 weeks + 1 day (22 days)
-  // etc.
-  // Advent 1 is always between Nov 27 and Dec 3
-  let daysBack = 22 + christmasDayOfWeek;
-  if (christmasDayOfWeek === 0) {
-    daysBack = 28; // If Christmas is Sunday, Advent 1 is 4 weeks before
-  }
-
+  // Christmas Day
+  const christmas = new Date(year, 11, 25);
+  // Find the Sunday on or before Christmas
+  const christmasDow = christmas.getDay(); // 0 = Sunday
+  // Days to go back to get to the Sunday before Christmas
+  const daysToSunday = christmasDow === 0 ? 7 : christmasDow;
+  // 4th Sunday before Christmas (including that Sunday)
   const advent1 = new Date(christmas);
-  advent1.setDate(christmas.getDate() - daysBack);
-
+  advent1.setDate(christmas.getDate() - daysToSunday - 21);
   return advent1;
 }
 
@@ -82,12 +77,12 @@ function isInOffice2Period(date, hourId, advent1Sunday, christmasEve) {
 
   // On Advent 1 Sunday: only Vespers and Compline are Office 2
   if (dateValue === advent1Value) {
-    return isHourAtOrAfter(hourId, 'vespers');
+    return isHourAtOrAfter(hourId, "vespers");
   }
 
   // On Christmas Eve: only hours before Vespers are Office 2 (Matins through None)
   if (dateValue === christmasEveValue) {
-    return isHourBefore(hourId, 'vespers');
+    return isHourBefore(hourId, "vespers");
   }
 
   // Between Advent 1 and Christmas Eve (exclusive) - all hours are Office 2
@@ -111,7 +106,7 @@ function isInOffice3Period(date, hourId, christmasEve, purification) {
 
   // On Christmas Eve: only Vespers and Compline are Office 3
   if (dateValue === christmasEveValue) {
-    return isHourAtOrAfter(hourId, 'vespers');
+    return isHourAtOrAfter(hourId, "vespers");
   }
 
   // On Purification: all hours including Compline are Office 3
@@ -136,11 +131,11 @@ export function getOffice(date, hourId) {
   // Key dates for current year
   const advent1Sunday = getFirstSundayOfAdvent(year);
   const christmasEve = new Date(year, 11, 24); // Dec 24
-  const purification = new Date(year, 1, 2);   // Feb 2
+  const purification = new Date(year, 1, 2); // Feb 2
 
-  // For dates in January-February, check if we're in the Christmas period
+  // For dates in January through Feb 2, check if we're in the Christmas period
   // which started in the previous year
-  if (date.getMonth() < 2 || (date.getMonth() === 1 && date.getDate() <= 2)) {
+  if (date.getMonth() === 0 || (date.getMonth() === 1 && date.getDate() <= 2)) {
     // Check against previous year's Christmas through this year's Purification
     const prevChristmasEve = new Date(year - 1, 11, 24);
     if (isInOffice3Period(date, hourId, prevChristmasEve, purification)) {
@@ -165,13 +160,13 @@ export function getOffice(date, hourId) {
 /**
  * Get the name of the current season/office
  */
-export function getOfficeName(office, lang = 'en') {
+export function getOfficeName(office, lang = "en") {
   const names = {
-    1: { en: 'Ordinary Time', cs: 'Obyčejná doba', la: 'Per Annum' },
-    2: { en: 'Advent', cs: 'Advent', la: 'Adventus' },
-    3: { en: 'Christmas', cs: 'Vánoce', la: 'Nativitas' }
+    1: { en: "Ordinary Time", cs: "Mezidobí", la: "Per Annum" },
+    2: { en: "Advent", cs: "Advent", la: "Adventus" },
+    3: { en: "Christmas", cs: "Vánoce", la: "Nativitas" },
   };
-  return names[office]?.[lang] || names[office]?.en || 'Unknown';
+  return names[office]?.[lang] || names[office]?.en || "Unknown";
 }
 
 /**
@@ -182,9 +177,9 @@ export function getSeasonInfo(date, hourId) {
   return {
     office,
     name: {
-      en: getOfficeName(office, 'en'),
-      cs: getOfficeName(office, 'cs'),
-      la: getOfficeName(office, 'la')
-    }
+      en: getOfficeName(office, "en"),
+      cs: getOfficeName(office, "cs"),
+      la: getOfficeName(office, "la"),
+    },
   };
 }
