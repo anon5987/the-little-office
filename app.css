@@ -124,7 +124,7 @@ select, input {
   align-items: center;
   padding: 1.5rem 1rem;
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-medium);
   border-radius: 8px;
   text-decoration: none;
   color: var(--text-primary);
@@ -311,7 +311,6 @@ select, input {
    ========================================================================== */
 
 #hour-content {
-  display: none;
   max-width: 900px;
   margin: 0 auto;
   padding: 1rem;

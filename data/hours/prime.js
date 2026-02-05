@@ -1,13 +1,14 @@
 /**
- * Lauds Hour Definition
+ * Prime Hour Definition
  *
- * Defines the structure and content of Lauds (Morning Prayer)
+ * Defines the structure and content of Prime (First Hour)
  * @see {import('../../js/core/types.js').HourDefinition}
  */
 
 export const prime = {
   id: "prime",
   nameKey: "ui-hour-prime",
+  descriptionKey: "ui-description-prime",
 
   // Structure defines the order of sections
   structure: [
@@ -33,22 +34,23 @@ export const prime = {
           gabcId: "psalm-53",
           translationKey: "psalm-53",
           labelKey: "ui-psalm-53",
-          incipit: "Deus, in nomine tuo.",
+          incipit: "Deus, in nomine tuo",
         },
         {
           gabcId: "psalm-84",
           translationKey: "psalm-84",
           labelKey: "ui-psalm-84",
-          incipit: "Benedixisti, Domine.",
+          incipit: "Benedixisti, Domine",
         },
         {
           gabcId: "psalm-116",
           translationKey: "psalm-116",
           labelKey: "ui-psalm-116",
-          incipit: "Laudate Dominum.",
+          incipit: "Laudate Dominum",
         },
       ],
       antiphonKey: "assumpta-est-maria-in-cælum",
+      id: "psalms",
     },
 
     {

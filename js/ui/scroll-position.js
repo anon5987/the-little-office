@@ -87,7 +87,10 @@ function saveScrollPosition(hourId) {
 
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (e) {
-    // sessionStorage may be unavailable
+    // SecurityError is expected in private browsing or iframe contexts
+    if (e.name !== 'SecurityError') {
+      console.debug('Scroll position save failed:', e);
+    }
   }
 }
 
@@ -157,7 +160,10 @@ export function restoreScrollPosition(hourId) {
     // Clear after successful restore
     clearScrollPosition();
   } catch (e) {
-    // JSON parse error or sessionStorage unavailable
+    // SecurityError is expected in private browsing or iframe contexts
+    if (e.name !== 'SecurityError') {
+      console.debug('Scroll position restore failed:', e);
+    }
     clearScrollPosition();
   }
 }
@@ -169,7 +175,10 @@ export function clearScrollPosition() {
   try {
     sessionStorage.removeItem(STORAGE_KEY);
   } catch (e) {
-    // sessionStorage may be unavailable
+    // SecurityError is expected in private browsing or iframe contexts
+    if (e.name !== 'SecurityError') {
+      console.debug('Scroll position clear failed:', e);
+    }
   }
 }
 

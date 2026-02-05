@@ -4,6 +4,7 @@
  */
 
 import { IDS, getElement } from '../utils/selectors.js';
+import { CSS_CLASSES } from '../core/constants.js';
 import { getState } from '../core/state.js';
 import { showStickyHeader, updateLanguageSelector, setCurrentHourData, clearCurrentHourData } from '../ui/sticky-header.js';
 import { getOffice } from '../liturgical/season.js';
@@ -43,7 +44,7 @@ export async function renderHourPage(hourId, params = {}) {
   // Hide landing page / app content
   const appContent = getElement(IDS.APP_CONTENT);
   if (appContent) {
-    appContent.style.display = 'none';
+    appContent.classList.add(CSS_CLASSES.HIDDEN);
   }
 
   // Get or create hour content container
@@ -66,7 +67,7 @@ export async function renderHourPage(hourId, params = {}) {
   contentArea.innerHTML = '';
 
   // Now safe to show the container
-  hourContent.style.display = 'block';
+  hourContent.classList.remove(CSS_CLASSES.HIDDEN);
 
   // Show sticky header with hour name
   const hourName = getHourNameTranslated(hourId, lang);
@@ -99,7 +100,7 @@ export async function renderHourPage(hourId, params = {}) {
 export function hideHourContent() {
   const hourContent = getElement(IDS.HOUR_CONTENT);
   if (hourContent) {
-    hourContent.style.display = 'none';
+    hourContent.classList.add(CSS_CLASSES.HIDDEN);
   }
   clearCurrentHourData();
 }
