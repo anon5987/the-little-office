@@ -15,7 +15,8 @@
  */
 
 /**
- * Localized string with translations for each supported language
+ * Localized string with translations including Latin
+ * Use for: liturgical content, season names, hour names - anything needing Latin
  * @typedef {Object} LocalizedString
  * @property {string} [en] - English translation
  * @property {string} [cs] - Czech translation
@@ -54,10 +55,14 @@
 
 /**
  * Multiple chants wrapped by antiphon (before first and after last)
- * Used for: psalm-with-antiphon, canticle-with-antiphon
+ * Used for: psalm sections, canticle sections (e.g., Magnificat, Benedictus, Nunc Dimittis)
+ *
+ * Rendering convention: The renderer uses `${antiphonKey}-pre` and `${antiphonKey}-post`
+ * as translation keys for the pre/post antiphon instances.
+ *
  * @typedef {Object} ChantsWithAntiphonSection
  * @property {'chants-with-antiphon'} type
- * @property {ChantItem[]} chants - Array of chants (1 or more)
+ * @property {ChantItem[]} chants - Array of chants (1 or more required)
  * @property {string} antiphonKey - Antiphon GABC ID (uses Latin incipit)
  * @property {string} [id] - Wrapper element ID, defaults to antiphonKey
  */
@@ -106,7 +111,7 @@
  * Resolvers return an array of { gabcId, translationKey } objects
  * @typedef {Object} DynamicSection
  * @property {'dynamic'} type
- * @property {string} resolver - Name of resolver function in registry
+ * @property {'marian-antiphon'} resolver - Resolver name (add new resolvers to hour-renderer.js registry)
  * @property {string} [labelKey] - Optional label translation key
  * @property {string} [id] - Wrapper element ID
  */
@@ -130,11 +135,13 @@
  * @property {string} nameKey - Translation key for hour name lookup
  * @property {string} [descriptionKey] - Translation key for hour description (optional)
  * @property {Section[]} structure - Ordered array of sections
- * @property {Object.<number, SeasonalOverride>} [seasonal] - Office-specific overrides keyed by office number
+ * @property {{[1]?: SeasonalOverride, [2]?: SeasonalOverride, [3]?: SeasonalOverride}} [seasonal] - Office-specific overrides (1=Ordinary, 2=Advent, 3=Christmas)
  */
 
 /**
- * Translation entry
+ * Translation entry for UI strings (no Latin needed)
+ * Use for: UI labels, button text, menu items - anything not needing Latin
+ * See LocalizedString for content that needs Latin support
  * @typedef {Object} TranslationEntry
  * @property {string} [en] - English translation
  * @property {string} [cs] - Czech translation
@@ -143,6 +150,18 @@
 /**
  * Translations object - maps keys to translation entries
  * @typedef {Object.<string, TranslationEntry>} Translations
+ */
+
+/**
+ * Application state
+ * @typedef {Object} AppState
+ * @property {'en'|'cs'} language - Current UI language
+ * @property {1|2|3} office - Current liturgical office (1=Ordinary, 2=Advent, 3=Christmas)
+ * @property {1|2|3|null} officeOverride - Manual office override (null = auto-detect from date)
+ * @property {string|null} currentHour - Current hour ID ('vespers', 'lauds', etc.) or null
+ * @property {boolean} showTranslations - Whether to show translations below chants
+ * @property {boolean} darkMode - Whether dark mode is enabled
+ * @property {string|null} dateOverride - ISO date string for preview, or null (session-only)
  */
 
 // Export empty object to make this a module

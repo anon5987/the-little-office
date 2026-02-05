@@ -1,9 +1,10 @@
 /**
  * Global State Module
  * Manages application state (language, season/office, current hour)
+ * @see {import('./types.js').AppState}
  */
 
-// Application state
+/** @type {import('./types.js').AppState} */
 const state = {
   language: 'en',
   office: 1,           // 1, 2, or 3 (seasonal office)

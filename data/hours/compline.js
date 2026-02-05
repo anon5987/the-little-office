@@ -5,7 +5,7 @@
  * @see {import('../../js/core/types.js').HourDefinition}
  *
  * Unique features:
- * - Psalms without antiphon (chant with label)
+ * - Psalms without antiphon (unlike Vespers/Lauds where each psalm has its own antiphon)
  * - Seasonal Marian antiphon at the end (dynamic resolver)
  */
 

@@ -307,9 +307,14 @@ function renderChant(section, gabc, container) {
 /**
  * Render a chants-with-antiphon section (multiple chants wrapped by antiphon)
  * Antiphon appears before first chant and after last chant
- * Handles: psalm-with-antiphon, canticle-with-antiphon
+ * Handles: psalm sections, canticle sections (e.g., Magnificat, Benedictus, Nunc Dimittis)
  */
 function renderChantsWithAntiphon(section, gabc, container) {
+  if (!section.chants?.length) {
+    console.warn('chants-with-antiphon section has no chants:', section);
+    return;
+  }
+
   const wrapper = document.createElement('div');
   wrapper.id = section.id || section.antiphonKey;
 

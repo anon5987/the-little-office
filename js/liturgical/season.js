@@ -133,9 +133,9 @@ export function getOffice(date, hourId) {
   const christmasEve = new Date(year, 11, 24); // Dec 24
   const purification = new Date(year, 1, 2); // Feb 2
 
-  // For dates in January-February, check if we're in the Christmas period
+  // For dates in January through Feb 2, check if we're in the Christmas period
   // which started in the previous year
-  if (date.getMonth() < 2 || (date.getMonth() === 1 && date.getDate() <= 2)) {
+  if (date.getMonth() === 0 || (date.getMonth() === 1 && date.getDate() <= 2)) {
     // Check against previous year's Christmas through this year's Purification
     const prevChristmasEve = new Date(year - 1, 11, 24);
     if (isInOffice3Period(date, hourId, prevChristmasEve, purification)) {

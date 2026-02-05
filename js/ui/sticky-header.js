@@ -43,6 +43,7 @@ export function setCurrentHourData(hourData, applyFn) {
  * Clear the current hour data reference
  */
 export function clearCurrentHourData() {
+  currentHourId = null;
   currentHourDataRef = null;
   applyTranslationsFn = null;
 }
