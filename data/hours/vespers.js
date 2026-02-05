@@ -19,43 +19,63 @@ export const vespers = {
       id: 'intro'
     },
     {
-      type: 'chant-with-antiphon',
-      mainGabcId: 'psalm-109',
-      mainTranslationKey: 'psalm-109',
-      mainLabelKey: 'ui-psalm-109',
-      mainIncipit: 'Dixit dominus',
+      type: 'chants-with-antiphon',
+      chants: [
+        {
+          gabcId: 'psalm-109',
+          translationKey: 'psalm-109',
+          labelKey: 'ui-psalm-109',
+          incipit: 'Dixit dominus'
+        }
+      ],
       antiphonKey: 'dum-esset-rex'
     },
     {
-      type: 'chant-with-antiphon',
-      mainGabcId: 'psalm-112',
-      mainTranslationKey: 'psalm-112',
-      mainLabelKey: 'ui-psalm-112',
-      mainIncipit: 'Laudate pueri',
+      type: 'chants-with-antiphon',
+      chants: [
+        {
+          gabcId: 'psalm-112',
+          translationKey: 'psalm-112',
+          labelKey: 'ui-psalm-112',
+          incipit: 'Laudate pueri'
+        }
+      ],
       antiphonKey: 'laeva-ejus'
     },
     {
-      type: 'chant-with-antiphon',
-      mainGabcId: 'psalm-121',
-      mainTranslationKey: 'psalm-121',
-      mainLabelKey: 'ui-psalm-121',
-      mainIncipit: 'Laetatus sum',
+      type: 'chants-with-antiphon',
+      chants: [
+        {
+          gabcId: 'psalm-121',
+          translationKey: 'psalm-121',
+          labelKey: 'ui-psalm-121',
+          incipit: 'Laetatus sum'
+        }
+      ],
       antiphonKey: 'nigra-sum'
     },
     {
-      type: 'chant-with-antiphon',
-      mainGabcId: 'psalm-126',
-      mainTranslationKey: 'psalm-126',
-      mainLabelKey: 'ui-psalm-126',
-      mainIncipit: 'Nisi Dominus',
+      type: 'chants-with-antiphon',
+      chants: [
+        {
+          gabcId: 'psalm-126',
+          translationKey: 'psalm-126',
+          labelKey: 'ui-psalm-126',
+          incipit: 'Nisi Dominus'
+        }
+      ],
       antiphonKey: 'jam-hiems'
     },
     {
-      type: 'chant-with-antiphon',
-      mainGabcId: 'psalm-147',
-      mainTranslationKey: 'psalm-147',
-      mainLabelKey: 'ui-psalm-147',
-      mainIncipit: 'Lauda Jerusalem',
+      type: 'chants-with-antiphon',
+      chants: [
+        {
+          gabcId: 'psalm-147',
+          translationKey: 'psalm-147',
+          labelKey: 'ui-psalm-147',
+          incipit: 'Lauda Jerusalem'
+        }
+      ],
       antiphonKey: 'speciosa-facta-es'
     },
     {
@@ -90,10 +110,14 @@ export const vespers = {
       id: 'versicle'
     },
     {
-      type: 'chant-with-antiphon',
-      mainGabcId: 'magnificat-chant',
-      mainTranslationKey: 'magnificat-chant',
-      mainLabelKey: 'ui-magnificat',
+      type: 'chants-with-antiphon',
+      chants: [
+        {
+          gabcId: 'magnificat-chant',
+          translationKey: 'magnificat-chant',
+          labelKey: 'ui-magnificat'
+        }
+      ],
       antiphonKey: 'beata-mater',
       id: 'canticle'
     },

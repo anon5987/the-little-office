@@ -6,7 +6,7 @@
  *
  * The type system uses 5 functional types that describe rendering behavior:
  * - chant: Single chant with optional label
- * - chant-with-antiphon: Main chant wrapped by antiphon
+ * - chants-with-antiphon: Multiple chants wrapped by antiphon (before first, after last)
  * - chant-variants: Multiple alternative chants
  * - chant-sequence: Array of chants in order
  * - dynamic: Runtime-resolved content
@@ -42,14 +42,22 @@
  */
 
 /**
- * Main chant wrapped by antiphon (before and after)
+ * Individual chant item in a chants-with-antiphon section
+ * Note: Intentionally minimal subset rather than reusing ChantSection,
+ * as these items don't need type, id, or reference fields
+ * @typedef {Object} ChantItem
+ * @property {string} gabcId - GABC content ID
+ * @property {string} translationKey - Translation lookup key
+ * @property {string} labelKey - Label for the chant (e.g., 'ui-psalm-109')
+ * @property {string} [incipit] - Latin incipit (e.g., "Dixit dominus")
+ */
+
+/**
+ * Multiple chants wrapped by antiphon (before first and after last)
  * Used for: psalm-with-antiphon, canticle-with-antiphon
- * @typedef {Object} ChantWithAntiphonSection
- * @property {'chant-with-antiphon'} type
- * @property {string} mainGabcId - Main chant GABC ID (psalm/canticle)
- * @property {string} mainTranslationKey - Translation key for main chant
- * @property {string} mainLabelKey - Label for main chant (e.g., 'ui-psalm-109')
- * @property {string} [mainIncipit] - Latin incipit (e.g., "Dixit dominus")
+ * @typedef {Object} ChantsWithAntiphonSection
+ * @property {'chants-with-antiphon'} type
+ * @property {ChantItem[]} chants - Array of chants (1 or more)
  * @property {string} antiphonKey - Antiphon GABC ID (uses Latin incipit)
  * @property {string} [id] - Wrapper element ID, defaults to antiphonKey
  */
@@ -105,7 +113,7 @@
 
 /**
  * Any section type
- * @typedef {ChantSection|ChantWithAntiphonSection|ChantVariantsSection|ChantSequenceSection|DynamicSection} Section
+ * @typedef {ChantSection|ChantsWithAntiphonSection|ChantVariantsSection|ChantSequenceSection|DynamicSection} Section
  */
 
 /**

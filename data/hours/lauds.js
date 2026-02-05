@@ -18,43 +18,63 @@ export const lauds = {
       id: "intro"
     },
     {
-      type: "chant-with-antiphon",
-      mainGabcId: "psalm-92",
-      mainTranslationKey: "psalm-92",
-      mainLabelKey: "ui-psalm-92",
-      mainIncipit: "Dominus regnavit",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-92",
+          translationKey: "psalm-92",
+          labelKey: "ui-psalm-92",
+          incipit: "Dominus regnavit"
+        }
+      ],
       antiphonKey: "assumpta-est-maria-in-cælum"
     },
     {
-      type: "chant-with-antiphon",
-      mainGabcId: "psalm-99",
-      mainTranslationKey: "psalm-99",
-      mainLabelKey: "ui-psalm-99",
-      mainIncipit: "Jubilate Deo",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-99",
+          translationKey: "psalm-99",
+          labelKey: "ui-psalm-99",
+          incipit: "Jubilate Deo"
+        }
+      ],
       antiphonKey: "maria-virgo-assumpta-est"
     },
     {
-      type: "chant-with-antiphon",
-      mainGabcId: "psalm-62",
-      mainTranslationKey: "psalm-62",
-      mainLabelKey: "ui-psalm-62",
-      mainIncipit: "Deus, Deus meus",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-62",
+          translationKey: "psalm-62",
+          labelKey: "ui-psalm-62",
+          incipit: "Deus, Deus meus"
+        }
+      ],
       antiphonKey: "in-odorem"
     },
     {
-      type: "chant-with-antiphon",
-      mainGabcId: "the-benedicite",
-      mainTranslationKey: "the-benedicite",
-      mainLabelKey: "ui-the-benedicite",
-      mainIncipit: "Benedicite",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "the-benedicite",
+          translationKey: "the-benedicite",
+          labelKey: "ui-the-benedicite",
+          incipit: "Benedicite"
+        }
+      ],
       antiphonKey: "benedicta-filia-tu"
     },
     {
-      type: "chant-with-antiphon",
-      mainGabcId: "psalm-148",
-      mainTranslationKey: "psalm-148",
-      mainLabelKey: "ui-psalm-148",
-      mainIncipit: "Laudate Dominum",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "psalm-148",
+          translationKey: "psalm-148",
+          labelKey: "ui-psalm-148",
+          incipit: "Laudate Dominum"
+        }
+      ],
       antiphonKey: "pulchra-es-et-decora"
     },
     {
@@ -89,10 +109,14 @@ export const lauds = {
       id: "versicle"
     },
     {
-      type: "chant-with-antiphon",
-      mainGabcId: "benedictus",
-      mainTranslationKey: "benedictus-chant",
-      mainLabelKey: "ui-benedictus",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "benedictus",
+          translationKey: "benedictus-chant",
+          labelKey: "ui-benedictus"
+        }
+      ],
       antiphonKey: "beata-dei-genitrix",
       id: "canticle"
     },

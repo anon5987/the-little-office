@@ -4,7 +4,7 @@
  *
  * Uses 5 functional section types:
  * - chant: Single chant with optional label
- * - chant-with-antiphon: Main chant wrapped by antiphon
+ * - chants-with-antiphon: Multiple chants wrapped by antiphon (before first, after last)
  * - chant-variants: Multiple alternative chants
  * - chant-sequence: Array of chants in order
  * - dynamic: Runtime-resolved content
@@ -305,17 +305,17 @@ function renderChant(section, gabc, container) {
 }
 
 /**
- * Render a chant-with-antiphon section (main chant wrapped by antiphon)
+ * Render a chants-with-antiphon section (multiple chants wrapped by antiphon)
+ * Antiphon appears before first chant and after last chant
  * Handles: psalm-with-antiphon, canticle-with-antiphon
  */
-function renderChantWithAntiphon(section, gabc, container) {
+function renderChantsWithAntiphon(section, gabc, container) {
   const wrapper = document.createElement('div');
   wrapper.id = section.id || section.antiphonKey;
 
   const antiphonGabc = gabc[section.antiphonKey];
-  const mainGabc = gabc[section.mainGabcId];
 
-  // Pre-antiphon
+  // Pre-antiphon (before first chant)
   if (antiphonGabc) {
     const antLabel = document.createElement('span');
     antLabel.className = 'chant-label ita';
@@ -326,27 +326,30 @@ function renderChantWithAntiphon(section, gabc, container) {
     appendChant(wrapper, `${section.antiphonKey}-pre`, antiphonGabc, `${section.antiphonKey}-pre`);
   }
 
-  // Main chant (psalm or canticle)
-  if (mainGabc) {
-    const mainLabel = document.createElement('span');
-    mainLabel.className = 'chant-label';
+  // All chants in sequence
+  for (const chant of section.chants) {
+    const chantGabc = gabc[chant.gabcId];
+    if (chantGabc) {
+      const chantLabel = document.createElement('span');
+      chantLabel.className = 'chant-label';
 
-    const labelSpan = document.createElement('span');
-    labelSpan.setAttribute('data-translation-key', section.mainLabelKey);
-    mainLabel.appendChild(labelSpan);
+      const labelSpan = document.createElement('span');
+      labelSpan.setAttribute('data-translation-key', chant.labelKey);
+      chantLabel.appendChild(labelSpan);
 
-    if (section.mainIncipit) {
-      const incipitSpan = document.createElement('span');
-      incipitSpan.className = 'ita ml';
-      incipitSpan.textContent = section.mainIncipit + '.';
-      mainLabel.appendChild(incipitSpan);
+      if (chant.incipit) {
+        const incipitSpan = document.createElement('span');
+        incipitSpan.className = 'ita ml';
+        incipitSpan.textContent = chant.incipit + '.';
+        chantLabel.appendChild(incipitSpan);
+      }
+      wrapper.appendChild(chantLabel);
+
+      appendChant(wrapper, chant.gabcId, chantGabc, chant.translationKey);
     }
-    wrapper.appendChild(mainLabel);
-
-    appendChant(wrapper, section.mainGabcId, mainGabc, section.mainTranslationKey);
   }
 
-  // Post-antiphon
+  // Post-antiphon (after last chant)
   if (antiphonGabc) {
     const antLabel2 = document.createElement('span');
     antLabel2.className = 'chant-label ita';
@@ -538,8 +541,8 @@ export async function renderHour(hourId, container, options = {}) {
       case 'chant':
         renderChant(section, gabc, container);
         break;
-      case 'chant-with-antiphon':
-        renderChantWithAntiphon(section, gabc, container);
+      case 'chants-with-antiphon':
+        renderChantsWithAntiphon(section, gabc, container);
         break;
       case 'chant-variants':
         renderChantVariants(section, gabc, container);

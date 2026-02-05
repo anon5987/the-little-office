@@ -88,10 +88,14 @@ export const compline = {
     },
 
     {
-      type: "chant-with-antiphon",
-      mainGabcId: "nunc-dimittis",
-      mainTranslationKey: "nunc-dimittis-chant",
-      mainLabelKey: "ui-nunc-dimittis",
+      type: "chants-with-antiphon",
+      chants: [
+        {
+          gabcId: "nunc-dimittis",
+          translationKey: "nunc-dimittis-chant",
+          labelKey: "ui-nunc-dimittis"
+        }
+      ],
       antiphonKey: "sub-tuum-praesidium",
       id: "canticle"
     },
