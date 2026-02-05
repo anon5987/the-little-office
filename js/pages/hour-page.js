@@ -57,7 +57,7 @@ export async function renderHourPage(hourId, params = {}) {
 
   // Show sticky header with hour name
   const hourName = getHourNameTranslated(hourId, lang);
-  showStickyHeader(hourName);
+  showStickyHeader(hourName, hourId);
 
   // Update language selector to match current language
   updateLanguageSelector(lang);

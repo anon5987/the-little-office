@@ -10,21 +10,23 @@
 
 // Hour ordering for boundary comparisons
 export const HOUR_ORDER = {
-  'matins': 0,
-  'lauds': 1,
-  'prime': 2,
-  'terce': 3,
-  'sext': 4,
-  'none': 5,
-  'vespers': 6,
-  'compline': 7
+  matins: 0,
+  lauds: 1,
+  prime: 2,
+  terce: 3,
+  sext: 4,
+  none: 5,
+  vespers: 6,
+  compline: 7,
 };
 
 /**
  * Convert a Date to YYYYMMDD integer for easy comparison
  */
 function toDateValue(date) {
-  return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
+  return (
+    date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()
+  );
 }
 
 /**
@@ -75,12 +77,12 @@ function isInOffice2Period(date, hourId, advent1Sunday, christmasEve) {
 
   // On Advent 1 Sunday: only Vespers and Compline are Office 2
   if (dateValue === advent1Value) {
-    return isHourAtOrAfter(hourId, 'vespers');
+    return isHourAtOrAfter(hourId, "vespers");
   }
 
   // On Christmas Eve: only hours before Vespers are Office 2 (Matins through None)
   if (dateValue === christmasEveValue) {
-    return isHourBefore(hourId, 'vespers');
+    return isHourBefore(hourId, "vespers");
   }
 
   // Between Advent 1 and Christmas Eve (exclusive) - all hours are Office 2
@@ -104,7 +106,7 @@ function isInOffice3Period(date, hourId, christmasEve, purification) {
 
   // On Christmas Eve: only Vespers and Compline are Office 3
   if (dateValue === christmasEveValue) {
-    return isHourAtOrAfter(hourId, 'vespers');
+    return isHourAtOrAfter(hourId, "vespers");
   }
 
   // On Purification: all hours including Compline are Office 3
@@ -129,7 +131,7 @@ export function getOffice(date, hourId) {
   // Key dates for current year
   const advent1Sunday = getFirstSundayOfAdvent(year);
   const christmasEve = new Date(year, 11, 24); // Dec 24
-  const purification = new Date(year, 1, 2);   // Feb 2
+  const purification = new Date(year, 1, 2); // Feb 2
 
   // For dates in January-February, check if we're in the Christmas period
   // which started in the previous year
@@ -158,13 +160,13 @@ export function getOffice(date, hourId) {
 /**
  * Get the name of the current season/office
  */
-export function getOfficeName(office, lang = 'en') {
+export function getOfficeName(office, lang = "en") {
   const names = {
-    1: { en: 'Ordinary Time', cs: 'Obyčejná doba', la: 'Per Annum' },
-    2: { en: 'Advent', cs: 'Advent', la: 'Adventus' },
-    3: { en: 'Christmas', cs: 'Vánoce', la: 'Nativitas' }
+    1: { en: "Ordinary Time", cs: "Mezidobí", la: "Per Annum" },
+    2: { en: "Advent", cs: "Advent", la: "Adventus" },
+    3: { en: "Christmas", cs: "Vánoce", la: "Nativitas" },
   };
-  return names[office]?.[lang] || names[office]?.en || 'Unknown';
+  return names[office]?.[lang] || names[office]?.en || "Unknown";
 }
 
 /**
@@ -175,9 +177,9 @@ export function getSeasonInfo(date, hourId) {
   return {
     office,
     name: {
-      en: getOfficeName(office, 'en'),
-      cs: getOfficeName(office, 'cs'),
-      la: getOfficeName(office, 'la')
-    }
+      en: getOfficeName(office, "en"),
+      cs: getOfficeName(office, "cs"),
+      la: getOfficeName(office, "la"),
+    },
   };
 }

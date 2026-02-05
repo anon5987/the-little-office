@@ -98,9 +98,9 @@ export function renderLandingPage() {
       <div class="implementation-plan">
         <h2 class="plan-title">${t('ui-implementation-plan', lang)}</h2>
         <ol class="plan-list">
-          <li><s>${getHourNameTranslated('vespers', lang)}</s></li>
-          <li><s>${getHourNameTranslated('lauds', lang)}</s></li>
-          <li>${getHourNameTranslated('compline', lang)}</li>
+          <li><s>${getHourNameTranslated('vespers', lang)}</s> <span class="plan-date">(${new Date('2026-01-28').toLocaleDateString(lang)})</span></li>
+          <li><s>${getHourNameTranslated('lauds', lang)}</s> <span class="plan-date">(${new Date('2026-02-03').toLocaleDateString(lang)})</span></li>
+          <li><s>${getHourNameTranslated('compline', lang)}</s> <span class="plan-date">(${new Date('2026-02-05').toLocaleDateString(lang)})</span></li>
           <li>${getHourNameTranslated('prime', lang)}</li>
           <li>${getHourNameTranslated('terce', lang)}</li>
           <li>${getHourNameTranslated('sext', lang)}</li>

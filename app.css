@@ -228,6 +228,11 @@ select, input {
   margin-top: 0.25rem;
 }
 
+.plan-date {
+  margin-left: 0.5rem;
+  color: var(--text-muted);
+}
+
 .bmc-container {
   margin: 2rem auto;
   text-align: center;
@@ -580,6 +585,7 @@ select, input {
 
 .header-menu .menu-item .control-select {
   font-family: "Crimson Text", Georgia, serif;
+  width: 100%;
 }
 
 .header-menu input[type="checkbox"] {
@@ -640,7 +646,7 @@ body.dark-mode .control-input::-webkit-calendar-picker-indicator {
    ========================================================================== */
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .hidden-svg-defs {

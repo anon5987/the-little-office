@@ -9,8 +9,11 @@ import { CSS_CLASSES } from '../core/constants.js';
 import { createEventScope, SCOPES } from '../utils/event-manager.js';
 import { updateUITranslations } from './translation-manager.js';
 import { formatDateForInput, getCurrentDate } from '../core/date-provider.js';
+import { getHourNameTranslated } from '../utils/translation-helpers.js';
 
 // Module-level state for language switching functionality
+/** @type {string|null} Current hour ID for updating section name on language change */
+let currentHourId = null;
 /** @type {{hourDef: import('../core/types.js').HourDefinition, translations: import('../core/types.js').Translations}|null} */
 let currentHourDataRef = null;
 /** @type {Function|null} Callback to apply translations when language changes */
@@ -96,6 +99,14 @@ export function initStickyHeader() {
         updateUITranslations(uiTranslationsRef, newLang);
       }
 
+      // Update section name (hour title) in header
+      if (currentHourId) {
+        const sectionNameEl = getElement(IDS.SECTION_NAME);
+        if (sectionNameEl) {
+          sectionNameEl.textContent = getHourNameTranslated(currentHourId, newLang);
+        }
+      }
+
       // Update hour content translations without re-rendering GABC
       if (currentHourDataRef && currentHourDataRef.translations && applyTranslationsFn) {
         const contentArea = getElement(IDS.HOUR_CONTENT_AREA);
@@ -167,10 +178,14 @@ export function initStickyHeader() {
 /**
  * Show sticky header with section name
  * @param {string} sectionName - Name to display in header
+ * @param {string} [hourId] - Hour ID for language switching
  */
-export function showStickyHeader(sectionName) {
+export function showStickyHeader(sectionName, hourId = null) {
   const header = getElement(IDS.STICKY_HEADER);
   const sectionNameEl = getElement(IDS.SECTION_NAME);
+
+  // Store hour ID for language switching
+  currentHourId = hourId;
 
   if (header) {
     header.classList.remove(CSS_CLASSES.HIDDEN);
