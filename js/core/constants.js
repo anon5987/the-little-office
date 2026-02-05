@@ -45,7 +45,13 @@ export const LANGUAGES = {
 };
 
 // Available hours (hours with implemented content)
-export const AVAILABLE_HOURS = ["vespers", "lauds", "prime", "compline"];
+export const AVAILABLE_HOURS = [
+  "vespers",
+  "lauds",
+  "prime",
+  "terce",
+  "compline",
+];
 
 // Hour order for iteration
 export const HOUR_ORDER = [
