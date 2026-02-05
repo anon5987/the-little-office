@@ -109,13 +109,19 @@ export async function loadGabcContent(office = 1) {
     Object.assign(gabc, marianAntiphons.default || marianAntiphons);
 
     // Try to load office-specific GABC, fall back to office 1
+    const tryImport = (path, name, officeNum) =>
+      import(path).catch((e) => {
+        console.warn(`Failed to load ${name} for office ${officeNum}:`, e.message);
+        return null;
+      });
+
     const loadOfficeGabc = async (officeNum) => {
       const results = await Promise.all([
-        import(`../../data/gabc/office${officeNum}/antiphons.js`).catch(() => null),
-        import(`../../data/gabc/office${officeNum}/psalms.js`).catch(() => null),
-        import(`../../data/gabc/office${officeNum}/hymns.js`).catch(() => null),
-        import(`../../data/gabc/office${officeNum}/versicles.js`).catch(() => null),
-        import(`../../data/gabc/office${officeNum}/chapters.js`).catch(() => null)
+        tryImport(`../../data/gabc/office${officeNum}/antiphons.js`, 'antiphons', officeNum),
+        tryImport(`../../data/gabc/office${officeNum}/psalms.js`, 'psalms', officeNum),
+        tryImport(`../../data/gabc/office${officeNum}/hymns.js`, 'hymns', officeNum),
+        tryImport(`../../data/gabc/office${officeNum}/versicles.js`, 'versicles', officeNum),
+        tryImport(`../../data/gabc/office${officeNum}/chapters.js`, 'chapters', officeNum)
       ]);
       return results;
     };
@@ -164,11 +170,17 @@ export async function loadTranslations(office = 1) {
     Object.assign(translations, psalms.default);
 
     // Try to load office-specific translations, fall back to office 1
-    let officeTranslations = await import(`../../data/translations/office${office}.js`).catch(() => null);
+    let officeTranslations = await import(`../../data/translations/office${office}.js`).catch((e) => {
+      console.warn(`Failed to load translations for office ${office}:`, e.message);
+      return null;
+    });
 
     if (!officeTranslations && office !== 1) {
       console.warn(`Office ${office} translations not found, falling back to Office 1`);
-      officeTranslations = await import('../../data/translations/office1.js').catch(() => null);
+      officeTranslations = await import('../../data/translations/office1.js').catch((e) => {
+        console.warn(`Failed to load fallback translations for office 1:`, e.message);
+        return null;
+      });
     }
 
     if (officeTranslations) {
@@ -534,8 +546,9 @@ export async function renderHour(hourId, container, options = {}) {
 
   // Add title
   const title = document.createElement('h1');
-  title.setAttribute('data-translation-key', `ui-title-${hourId}`);
-  title.textContent = hourDef.name?.[lang] || hourDef.name?.en || hourId;
+  const titleKey = `ui-title-${hourId}`;
+  title.setAttribute('data-translation-key', titleKey);
+  title.textContent = translations[titleKey]?.[lang] || translations[titleKey]?.en || hourId;
   container.appendChild(title);
 
   // Add description

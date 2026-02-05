@@ -30,6 +30,13 @@ De(h)us,(h) qui(h) de(h) be(h)a(h)tae(h) Ma(h)ri(h)ae(h) vir(h)gi(h)nis(h) u(h)t
 A(g)men.(h.) (::)
 `,
 
+  "Deus-qui-virginalem": `initial-style: 1;
+%%
+(c3)O(h)re(h)mus.(f) (::)
+De(h)us(h) qui(h) vir(h)gi(h)na(h)lem(h) au(h)lam(h) be(h)a(h)tae(h) Ma(h)ri(h)ae(h) vir(h)gi(h)nis,(h) in(h) qua(h) ha(h)bi(h)ta(h)res,(h) e(h)li(h)ge(h)re(h) di(h)gna(f)tus(f) es:(f) (;) da(h) quae(h)su(h)mus:(h) ut(h) su(h)a(h) nos(h) de(h)fen(h)si(h)o(h)ne(g) mu(f)ni(h)tos,(h) (,) iu(h)cun(h)dos(h) fa(h)ci(h)at(h) su(h)ae(h) in(h)te(h)res(h)se(h) com(h)me(h)mo(h)ra(h)ti(h)o(h)ni.(f) (:) Qui(h) vi(h)vis(h) et(h) re(h)gnas(h) cum(h) De(h)o(h) pa(h)tre(h) in(h) u(h)ni(h)ta(h)te(h) spi(h)ri(h)tus(h) san(g)cti(f) De(h)us,(h) (;) per(h) om(h)ni(h)a(h) sae(h)cu(h)la(h) sae(h)cu(h)lo(h)rum.(f) <i>R.</i> (::)
+A(g.)men.(h.) (::)
+`,
+
   "beatae-et-gloriosae": `initial-style: 1;
 %%
 (c3)O(h)re(h)mus.(f) (::)

@@ -39,7 +39,6 @@
         <span class="menu-icon" id="dark-mode-icon">☀️</span>
         <span data-translation-key="ui-landing-dark-mode" id="dark-mode-label">Dark mode</span>
       </button>
-      <!-- Date picker hidden for prod release (functionality preserved) -->
       <label class="menu-item menu-item-date hidden">
         <span class="menu-icon">📅</span>
         <input type="datetime-local" id="date-override-input" class="control-input" title="Preview date" />
@@ -74,7 +73,7 @@
   </div>
 
   <!-- Hour Content Container (dynamically populated) -->
-  <div id="hour-content"></div>
+  <div id="hour-content" class="hidden"></div>
 
   <!-- Dependencies -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

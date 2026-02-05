@@ -135,6 +135,10 @@ export default {
     en: "Compline is the end of the day; and in the end of our life we have most need of our Lady's help, and therefore in all these hours we ought to do her worship and praising. Also the pains that our Lord Jesus Christ suffered in His Holy Passion in all these seven hours our Lady His Mother suffered the same pain in her heart by compassion, and therefore it is convenient to praise her and do her service in all the same hours. O most blessed Virgin, as the day draws to a close may your prayers be ever with us. Amen.",
     cs: "Kompletář završuje den; a na sklonku života nejvíce potřebujeme pomoc naší Paní, proto jí v těchto hodinkách vzdáváme úctu a chválu. Vše, co náš Pán Ježíš Kristus vytrpěl ve svém svatém utrpení, prožívala jeho Matka spolu s ním ve svém srdci ze soucitu, a proto je vhodné ji oslavovat a sloužit jí v každé z těchto sedmi hodinek. Ó nejblahoslavenější Panno, když se den chýlí ke konci, kéž nás tvé modlitby stále provázejí. Amen.",
   },
+  "ui-description-prime": {
+    en: "At Prime, the first hour of the day, Our Lord Jesus Christ was brought before Pilate and falsely accused. The same hour on Easter Day, the holy women came to the sepulchre and found the stone rolled away, and the angels told them that Christ was risen.",
+    cs: "V hodinu primy, první hodinu dne, byl náš Pán Ježíš Kristus předveden před Piláta a křivě obviněn. V tutéž hodinu o Velikonoční neděli přišly svaté ženy ke hrobu a nalezly kámen odvalený a andělé jim oznámili, že Kristus vstal z mrtvých.",
+  },
 
   // Psalm labels - Compline
   "ui-psalm-128": {
@@ -170,6 +174,20 @@ export default {
   "ui-psalm-147": {
     en: "Psalm cxlvii.",
     cs: "Žalm 147.",
+  },
+
+  // Psalm labels - Prime
+  "ui-psalm-53": {
+    en: "Psalm liii.",
+    cs: "Žalm 53.",
+  },
+  "ui-psalm-84": {
+    en: "Psalm lxxxiv.",
+    cs: "Žalm 84.",
+  },
+  "ui-psalm-116": {
+    en: "Psalm cxvi.",
+    cs: "Žalm 116.",
   },
 
   // Psalm labels - Lauds

@@ -38,5 +38,17 @@ Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(g_ hvGFEfgf.) (
   "benedicta-tu-simple": `initial-style: 1;
 %%
 (c3)Be(h)ne(h)di(h)cta(h) tu(h) in(h) mu(h)li(h)e(h)ri(f)bus.(f) <i>R.</i> (::)
-Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(f) (::)`
+Et(h) be(h)ne(h)di(h)ctus(h) fru(h)ctus(h) ven(h)tris(h) tu(h)i.(f) (::)`,
+
+  // Prime Versicle - Solemn tone
+  "dignare-me-solemn": `initial-style: 1;
+%%
+(c3)Di(h)gna(h)re(h) me(h) lau(h)da(h)re(h) te,(h) Vir(h)go(h) sa(h)cra(h)ta.(g_ hvGFEfgf.) <i>R.</i> (::)
+Da(h) mi(h)hi(h) vir(h)tu(h)tem(h) con(h)tra(h) ho(h)stes(h) tu(h)os.(g_ hvGFEfgf.) (::)`,
+
+  // Prime Versicle - Simple tone
+  "dignare-me-simple": `initial-style: 1;
+%%
+(c3)Di(h)gna(h)re(h) me(h) lau(h)da(h)re(h) te,(h) Vir(h)go(h) sa(h)cra(h)ta.(f.)  <i>R.</i> (::)
+Da(h) mi(h)hi(h) vir(h)tu(h)tem(h) con(h)tra(h) ho(h)stes(h) tu(h)os.(f.) (::)`,
 };

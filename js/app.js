@@ -72,9 +72,13 @@ function handleRouteChange(newRoute, oldRoute) {
     app.currentView = renderLandingPage();
     hideHourContent();
   } else {
-    renderHourPage(newRoute.hour, newRoute.params).then((view) => {
-      app.currentView = view;
-    });
+    renderHourPage(newRoute.hour, newRoute.params)
+      .then((view) => {
+        app.currentView = view;
+      })
+      .catch((e) => {
+        console.error('Failed to render hour page:', e);
+      });
   }
 }
 
@@ -90,9 +94,13 @@ function handleDateOverrideChange() {
   } else {
     // Re-render the current hour page with new date
     const currentRoute = initRouter();
-    renderHourPage(currentRoute.hour, currentRoute.params).then((view) => {
-      app.currentView = view;
-    });
+    renderHourPage(currentRoute.hour, currentRoute.params)
+      .then((view) => {
+        app.currentView = view;
+      })
+      .catch((e) => {
+        console.error('Failed to render hour page:', e);
+      });
   }
 }
 

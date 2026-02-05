@@ -40,7 +40,7 @@ export function renderLandingPage() {
   // Show app-content
   const appContent = getElement(IDS.APP_CONTENT);
   if (appContent) {
-    appContent.style.display = 'block';
+    appContent.classList.remove(CSS_CLASSES.HIDDEN);
   }
 
   const container = appContent || document.body;
@@ -101,7 +101,7 @@ export function renderLandingPage() {
           <li><s>${getHourNameTranslated('vespers', lang)}</s> <span class="plan-date">(${new Date('2026-01-28').toLocaleDateString(lang)})</span></li>
           <li><s>${getHourNameTranslated('lauds', lang)}</s> <span class="plan-date">(${new Date('2026-02-03').toLocaleDateString(lang)})</span></li>
           <li><s>${getHourNameTranslated('compline', lang)}</s> <span class="plan-date">(${new Date('2026-02-05').toLocaleDateString(lang)})</span></li>
-          <li>${getHourNameTranslated('prime', lang)}</li>
+          <li><s>${getHourNameTranslated('prime', lang)}</s> <span class="plan-date">(${new Date('2026-02-05').toLocaleDateString(lang)})</span></li>
           <li>${getHourNameTranslated('terce', lang)}</li>
           <li>${getHourNameTranslated('sext', lang)}</li>
           <li>${getHourNameTranslated('none', lang)}</li>
