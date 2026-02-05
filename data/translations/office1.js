@@ -127,7 +127,7 @@ export default {
   },
 
   // Lauds Closing Prayer
-  "deus-qui-de-beatae": {
+  "Deus-qui-de-beatae": {
     en: "O God, who wast pleased that thy Word, at the message of an angel, should take flesh in the womb of the blessed Virgin Mary; grant to us, thy humble servants, that, as we believe her to be truly the Mother of God, we may be assisted also by her intercessions with thee. Through the same Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end. Amen.",
     cs: "Bože, jenž jsi ráčil, aby tvé Slovo při andělově zvěstování přijalo tělo v lůně blahoslavené Panny Marie; uděl nám, svým pokorným služebníkům, abychom, jako věříme, že je opravdu Boží Rodičkou, byli také podpořeni jejími přímluvami u tebe. Skrze téhož Pána Ježíše Krista, Syna tvého, který s tebou žije a kraluje v jednotě Ducha Svatého, Bůh, po všechny věky věků. Amen.",
   },

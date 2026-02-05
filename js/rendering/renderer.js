@@ -126,7 +126,7 @@ export function renderGabc(container) {
           }
           extendStaffLines(svg, width);
         } catch (e) {
-          // Silently ignore retry failure
+          console.warn('GABC relayout retry failed:', e);
         }
       };
 
@@ -152,6 +152,7 @@ export function renderGabc(container) {
       var height = bbox.height + top[0] + 20;
       svg.setAttribute("height", height);
     } catch (e) {
+      console.warn('Could not calculate SVG height, using fallback:', e);
       svg.setAttribute("height", 100);
     }
 
@@ -222,6 +223,13 @@ export async function renderAllGabc(container = document) {
   });
 
   activeObserver = observer;
+
+  // Wait for layout to be computed before checking positions
+  // Double rAF ensures we wait for both the next frame and subsequent layout
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  // Check for cancellation after waiting
+  if (abortToken.cancelled) return;
 
   // Observe all elements and immediately render visible ones
   const INITIAL_BATCH = 8; // Render first N immediately for fast initial paint
@@ -322,7 +330,9 @@ export function handleResize() {
             var width = svg.parentNode.parentNode.offsetWidth || 800;
             relayoutChant(svg, width);
             extendStaffLines(svg, width);
-          } catch (e) {}
+          } catch (e) {
+            console.warn('Failed to relayout chant on resize:', e);
+          }
         });
     }
   }, 250);

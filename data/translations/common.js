@@ -195,6 +195,8 @@ export default {
   },
 
   // Common responses
+  // Key naming convention: Latin incipit with divine names capitalized
+  // (Deus, Domine, Dominus = God, Lord)
   "converte-nos-Deus": {
     en: "Convert thou us, O God our Saviour.\nAnd turn away thine anger from us.",
     cs: "Obnov nás, Bože, náš spasiteli.\nOdlož svou nevoli proti nám!",
@@ -203,7 +205,7 @@ export default {
     en: "O God, come to my assistance.\nO Lord, make haste to help me.\nGlory be to the Father, and to the Son, and to the Holy Spirit.\nAs it was in the beginning, is now, and ever shall be, world without end. Amen.",
     cs: "Bože, prosím, vysvoboď mě.\nHospodine, na pomoc mi pospěš!\nSláva Otci i Synu i Duchu Svatému.\nJako byla na počátku, i nyní, i vždycky a na věky věků. Amen.",
   },
-  "domine-exaudi": {
+  "Domine-exaudi": {
     en: "O Lord, hear my prayer. And let my cry come unto you.",
     cs: "Pane, vyslyš mou modlitbu. A mé volání k tobě přijď.",
   },

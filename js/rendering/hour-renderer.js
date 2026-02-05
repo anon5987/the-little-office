@@ -124,7 +124,7 @@ export async function loadGabcContent(office = 1) {
 
     // Fall back to office 1 if office-specific files not found
     if (!antiphons && !psalms && !hymns && !versicles && !chapters && office !== 1) {
-      console.log(`Office ${office} GABC not found, falling back to Office 1`);
+      console.warn(`Office ${office} GABC not found, falling back to Office 1`);
       [antiphons, psalms, hymns, versicles, chapters] = await loadOfficeGabc(1);
     }
 
@@ -167,7 +167,7 @@ export async function loadTranslations(office = 1) {
     let officeTranslations = await import(`../../data/translations/office${office}.js`).catch(() => null);
 
     if (!officeTranslations && office !== 1) {
-      console.log(`Office ${office} translations not found, falling back to Office 1`);
+      console.warn(`Office ${office} translations not found, falling back to Office 1`);
       officeTranslations = await import('../../data/translations/office1.js').catch(() => null);
     }
 
@@ -463,7 +463,13 @@ function renderDynamic(section, gabc, container, hourId) {
   }
 
   // Get resolved content and render each chant
-  const items = resolver(hourId);
+  let items;
+  try {
+    items = resolver(hourId);
+  } catch (e) {
+    console.error(`Resolver '${section.resolver}' failed for hour '${hourId}':`, e);
+    return;
+  }
   for (const item of items) {
     if (gabc[item.gabcId]) {
       appendChant(wrapper, item.gabcId, gabc[item.gabcId], item.translationKey);

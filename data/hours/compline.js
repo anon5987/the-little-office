@@ -17,13 +17,13 @@ export const compline = {
   structure: [
     {
       type: "chant",
-      gabcId: "converte-nos-deus",
+      gabcId: "converte-nos-Deus",
       translationKey: "converte-nos-Deus",
       id: "converte"
     },
     {
       type: "chant",
-      gabcId: "deus-in-adjutorium",
+      gabcId: "Deus-in-adjutorium",
       translationKey: "Deus-in-adjutorium",
       id: "intro"
     },
@@ -104,9 +104,9 @@ export const compline = {
       type: "chant-sequence",
       id: "end",
       items: [
-        { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
+        { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "beatae-et-gloriosae", translationKey: "beatae-et-gloriosae" },
-        { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
+        { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus-benedicat", translationKey: "benedicamus-benedicat" }
       ]
     },

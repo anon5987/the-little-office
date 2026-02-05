@@ -3,14 +3,14 @@
  * Centralized date provider that respects dateOverride for testing
  */
 
-import { get } from './state.js';
+import { getState } from './state.js';
 
 /**
  * Get the current date, respecting any override set for testing
  * @returns {Date}
  */
 export function getCurrentDate() {
-  const override = get('dateOverride');
+  const override = getState().dateOverride;
   return override ? new Date(override) : new Date();
 }
 
@@ -19,7 +19,7 @@ export function getCurrentDate() {
  * @returns {boolean}
  */
 export function hasDateOverride() {
-  return !!get('dateOverride');
+  return !!getState().dateOverride;
 }
 
 /**

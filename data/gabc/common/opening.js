@@ -1,10 +1,13 @@
 /**
  * Common Opening GABC
  * Deus in adjutorium - used at the start of every hour
+ *
+ * Key naming convention: Latin incipit with divine names capitalized
+ * (Deus, Domine, Dominus = God, Lord)
  */
 
 export default {
-  "deus-in-adjutorium": `initial-style: 1;
+  "Deus-in-adjutorium": `initial-style: 1;
 %%
 (c3)De(h)us,(h_) <i>✠</i> (,) in(h) ad(h)ju(h)tó(hi)ri(h)um(h) me(h)um(h_) in(h)tén(gh)de.(h.) (::)
 Dó(h)mi(h)ne,(h_) (,) ad(h) ad(h)ju(h)ván(h)dum(h) me(h_) fe(h)stí(gh)na.(h) (:)
@@ -14,7 +17,7 @@ A(gh)men.(h.) (:)
 Al(h)le(i)lú(hg~)ia.(g.) <i>Or:</i> (::)
 Laus(h) tí(h)bi(h) Dó(h)mi(h)ne,(h_) Rex(h) æ(h)ter(h)ne(i) gló(h)ri(h)æ.(g.) (::)`,
 
-  "converte-nos-deus": `initial-style: 1;
+  "converte-nos-Deus": `initial-style: 1;
 %%
 (c3)Con(h)ver(h)te(h) nos,(h) <i>✠</i> De(h)us(h) sa(h)lu(h)ta(g)ris(f) no(h)ster.(h.) <i>R.</i> (::)
 et(h) a(h)ver(h)te(h) i(h)ram(h) tu(h)am(g) a(f) no(h)bis.(h.) (::)`,

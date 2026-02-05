@@ -7,8 +7,8 @@
  * 1. alma-redemptoris-mater: Advent 1 Vespers → Feb 2 Compline
  *    - variant 'advent': Advent 1 → Dec 24
  *    - variant 'christmas': Dec 25 → Feb 2
- * 2. ave-regina-caelorum: Feb 2 (after Compline) → Easter Vigil
- * 3. regina-caeli-laetare: Easter → Trinity Sunday Compline
+ * 2. ave-regina-caelorum: Feb 2 (after Compline) → Good Friday
+ * 3. regina-caeli-laetare: Holy Saturday (Easter Vigil) → Trinity Sunday Compline
  * 4. salve-regina: Trinity Monday → Advent 1 Eve
  */
 
@@ -111,13 +111,15 @@ export function getMarianSeason(date = new Date(), hourId = null) {
     return createResult('alma-redemptoris-mater', 'alma-redemptoris', 'christmas');
   }
 
-  // 2. Ave Regina Caelorum: Feb 3 → day before Easter
-  if (isDateInRange(date, feb3, easter) && toDateValue(date) < toDateValue(easter)) {
+  // 2. Ave Regina Caelorum: Feb 3 → Good Friday
+  const goodFriday = new Date(year, easter.getMonth(), easter.getDate() - 2);
+  if (isDateInRange(date, feb3, goodFriday)) {
     return createResult('ave-regina-caelorum', 'ave-regina');
   }
 
-  // 3. Regina Caeli: Easter → Trinity Sunday
-  if (isDateInRange(date, easter, trinity)) {
+  // 3. Regina Caeli: Holy Saturday (Easter Vigil) → Trinity Sunday
+  const holySaturday = new Date(year, easter.getMonth(), easter.getDate() - 1);
+  if (isDateInRange(date, holySaturday, trinity)) {
     return createResult('regina-caeli-laetare', 'regina-caeli');
   }
 

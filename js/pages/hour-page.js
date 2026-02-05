@@ -53,14 +53,6 @@ export async function renderHourPage(hourId, params = {}) {
     hourContent.id = IDS.HOUR_CONTENT;
     document.body.appendChild(hourContent);
   }
-  hourContent.style.display = 'block';
-
-  // Show sticky header with hour name
-  const hourName = getHourNameTranslated(hourId, lang);
-  showStickyHeader(hourName, hourId);
-
-  // Update language selector to match current language
-  updateLanguageSelector(lang);
 
   // Get or create content area
   let contentArea = hourContent.querySelector(`#${IDS.HOUR_CONTENT_AREA}`);
@@ -69,6 +61,19 @@ export async function renderHourPage(hourId, params = {}) {
     contentArea.id = IDS.HOUR_CONTENT_AREA;
     hourContent.appendChild(contentArea);
   }
+
+  // Clear old content before showing container (prevents flash of stale content)
+  contentArea.innerHTML = '';
+
+  // Now safe to show the container
+  hourContent.style.display = 'block';
+
+  // Show sticky header with hour name
+  const hourName = getHourNameTranslated(hourId, lang);
+  showStickyHeader(hourName, hourId);
+
+  // Update language selector to match current language
+  updateLanguageSelector(lang);
 
   // Render the hour from data modules
   try {

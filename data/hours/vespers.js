@@ -14,7 +14,7 @@ export const vespers = {
   structure: [
     {
       type: 'chant',
-      gabcId: 'deus-in-adjutorium',
+      gabcId: 'Deus-in-adjutorium',
       translationKey: 'Deus-in-adjutorium',
       id: 'intro'
     },
@@ -125,9 +125,9 @@ export const vespers = {
       type: 'chant-sequence',
       id: 'end',
       items: [
-        { gabcId: 'domine-exaudi', translationKey: 'domine-exaudi' },
+        { gabcId: 'Domine-exaudi', translationKey: 'Domine-exaudi' },
         { gabcId: 'concede-nos-famulos', translationKey: 'concede-nos-famulos' },
-        { gabcId: 'domine-exaudi', translationKey: 'domine-exaudi' },
+        { gabcId: 'Domine-exaudi', translationKey: 'Domine-exaudi' },
         { gabcId: 'benedicamus', translationKey: 'benedicamus' }
       ]
     }

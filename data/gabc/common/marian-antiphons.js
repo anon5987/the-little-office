@@ -3,8 +3,8 @@
  *
  * Four seasonal antiphons sung after Compline:
  * - Alma Redemptoris Mater (Advent 1 → Feb 2)
- * - Ave Regina Caelorum (Feb 2 → Easter)
- * - Regina Caeli Laetare (Easter → Trinity)
+ * - Ave Regina Caelorum (Feb 2 → Good Friday)
+ * - Regina Caeli Laetare (Holy Saturday → Trinity)
  * - Salve Regina (Trinity → Advent 1)
  *
  * Each antiphon has associated versicle(s) and prayer(s).

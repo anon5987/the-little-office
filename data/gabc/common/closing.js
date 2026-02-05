@@ -1,10 +1,13 @@
 /**
  * Common Closing GABC
  * Domine exaudi, Oremus, Benedicamus - used at the end of hours
+ *
+ * Key naming convention: Latin incipit with divine names capitalized
+ * (Deus, Domine, Dominus = God, Lord)
  */
 
 export default {
-  "domine-exaudi": `initial-style: 1;
+  "Domine-exaudi": `initial-style: 1;
 %%
 (c3)Do(h)mi(h)ne,(h) e(h)xau(h)di(h) o(h)ra(h)ti(h)o(h)nem(h) me(h)am.(f) <i>R.</i> (::)
 Et(h) cla(h)mor(h) me(h)us(h) ad(h) te(h) ve(h)ni(f)at.(f) (::)`,
@@ -20,7 +23,7 @@ qui(h) te(h)cum(h) vi(h)vit(h) et(h) re(h)gnat(h) in(h) u(h)ni(h)tá(h)te(h) Sp�
 per(h) óm(h)ni(h)a(h) sǽ(h)cu(h)la(h) sæ(h)cu(h)ló(h.)rum.(d.) <i>R.</i> (;)
 A(g)men.(h.) (::)`,
 
-  "deus-qui-de-beatae": `initial-style: 1;
+  "Deus-qui-de-beatae": `initial-style: 1;
 %%
 (c3)O(h)re(h)mus.(f) (:)
 De(h)us,(h) qui(h) de(h) be(h)a(h)tae(h) Ma(h)ri(h)ae(h) vir(h)gi(h)nis(h) u(h)te(h)ro,(h) ver(h)bum(h) tu(h)um(h) an(h)ge(h)lo(h) nun(h)ci(h)an(h)te,(h) car(h)nem(h) su(h)sci(h)pe(h)re(h) vo(h)lu(h)i(h)sti:(f) (:) prae(h)sta(h) sup(h)pli(h)ci(h)bus(h) tu(h)is,(h) ut(h) qui(h) ve(h)re(h) e(h)am(h) ge(h)ne(h)tri(h)cem(h) De(g)i(f) cre(h)di(h)mus:(h) (;) e(h)ius(h) a(h)pud(h) te(h) in(h)ter(h)ces(h)si(h)o(h)ni(h)bus(h) a(h)di(h)u(h)ve(h)mur.(d) (:) Per(h) e(h)un(h)dem(h) Do(h)mi(h)num(h) no(h)strum(h) Ie(h)sum(h) Chri(h)stum(h) fi(h)li(h)um(h) tu(h)um:(f) (;) Qui(h) te(h)cum(h) vi(h)vit(h) et(h) re(h)gnat(h) in(h) u(h)ni(h)ta(h)te(h) spi(h)ri(h)tus(h) san(g)cti(f) De(h)us,(h) (;) per(h) om(h)ni(h)a(h) sae(h)cu(h)la(h) sae(h)cu(h)lo(h)rum.(d) <i>R.</i>  (:)

@@ -13,7 +13,7 @@ export const lauds = {
   structure: [
     {
       type: "chant",
-      gabcId: "deus-in-adjutorium",
+      gabcId: "Deus-in-adjutorium",
       translationKey: "Deus-in-adjutorium",
       id: "intro"
     },
@@ -124,9 +124,9 @@ export const lauds = {
       type: "chant-sequence",
       id: "end",
       items: [
-        { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
-        { gabcId: "deus-qui-de-beatae", translationKey: "deus-qui-de-beatae" },
-        { gabcId: "domine-exaudi", translationKey: "domine-exaudi" },
+        { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
+        { gabcId: "Deus-qui-de-beatae", translationKey: "Deus-qui-de-beatae" },
+        { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" }
       ]
     }
