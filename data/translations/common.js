@@ -122,6 +122,7 @@ export default {
     la: "Completorium",
   },
 
+  // TODO add missing descs
   // Hour descriptions
   "ui-description-vespers": {
     en: "At Vespers time, Our Lord Jesus Christ on Holy Thursday supped with His Apostles and ordained the Holy Sacrament of His Body and Blood. The same hour on Good Friday He was taken down from the Cross. And on Easter Day, the same hour, He met with two of His disciples going towards Emmaus, and made Himself known to them in the breaking of bread.",
@@ -136,8 +137,8 @@ export default {
     cs: "Kompletář završuje den; a na sklonku života nejvíce potřebujeme pomoc naší Paní, proto jí v těchto hodinkách vzdáváme úctu a chválu. Vše, co náš Pán Ježíš Kristus vytrpěl ve svém svatém utrpení, prožívala jeho Matka spolu s ním ve svém srdci ze soucitu, a proto je vhodné ji oslavovat a sloužit jí v každé z těchto sedmi hodinek. Ó nejblahoslavenější Panno, když se den chýlí ke konci, kéž nás tvé modlitby stále provázejí. Amen.",
   },
   "ui-description-prime": {
-    en: "At Prime, the first hour of the day, Our Lord Jesus Christ was brought before Pilate and falsely accused. The same hour on Easter Day, the holy women came to the sepulchre and found the stone rolled away, and the angels told them that Christ was risen.",
-    cs: "V hodinu primy, první hodinu dne, byl náš Pán Ježíš Kristus předveden před Piláta a křivě obviněn. V tutéž hodinu o Velikonoční neděli přišly svaté ženy ke hrobu a nalezly kámen odvalený a andělé jim oznámili, že Kristus vstal z mrtvých.",
+    en: "",
+    cs: "",
   },
 
   // Psalm labels - Compline

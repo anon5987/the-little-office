@@ -9,7 +9,7 @@
  */
 
 // Hour ordering for boundary comparisons
-export const HOUR_INDEX_MAP = {
+const HOUR_INDEX_MAP = {
   matins: 0,
   lauds: 1,
   prime: 2,

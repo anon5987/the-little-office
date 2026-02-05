@@ -78,7 +78,6 @@ export function getRecommendation(date = new Date()) {
 
 /**
  * Get display name for an hour
- * Uses translation cache if available, falls back to static names
  */
 function getHourName(hourId, lang = 'en') {
   const names = {

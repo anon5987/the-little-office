@@ -17,11 +17,30 @@ import { getCurrentDate } from '../core/date-provider.js';
 // Re-export cancelRender for use in app.js
 export { cancelRender };
 
+/**
+ * Display an error message in a container element
+ */
+function showError(container, message) {
+  const p = document.createElement('p');
+  p.className = 'error';
+  p.textContent = message;
+  container.innerHTML = '';
+  container.appendChild(p);
+}
+
 // Cache for loaded modules
 const cache = {
   hours: {},
   gabc: {},
   translations: {}
+};
+
+// Marian antiphon versicle/prayer prefix lookup
+const MARIAN_SUFFIXES = {
+  'alma-redemptoris-mater': { prefix: 'alma-redemptoris', hasVariant: true },
+  'ave-regina-caelorum':    { prefix: 'ave-regina',       hasVariant: false },
+  'regina-caeli-laetare':   { prefix: 'regina-caeli',     hasVariant: false },
+  'salve-regina':           { prefix: 'salve-regina',     hasVariant: false },
 };
 
 /**
@@ -31,34 +50,11 @@ const cache = {
 const resolvers = {
   'marian-antiphon': (hourId) => {
     const { antiphonId, variant } = getMarianSeason(getCurrentDate(), hourId);
+    const info = MARIAN_SUFFIXES[antiphonId] || MARIAN_SUFFIXES['salve-regina'];
+    const suffix = info.hasVariant ? `-${variant}` : '';
 
-    // Build versicle ID based on antiphon and variant
-    let versicleId;
-    if (antiphonId === 'alma-redemptoris-mater') {
-      versicleId = variant === 'advent'
-        ? 'alma-redemptoris-versicle-advent'
-        : 'alma-redemptoris-versicle-christmas';
-    } else if (antiphonId === 'ave-regina-caelorum') {
-      versicleId = 'ave-regina-versicle';
-    } else if (antiphonId === 'regina-caeli-laetare') {
-      versicleId = 'regina-caeli-versicle';
-    } else {
-      versicleId = 'salve-regina-versicle';
-    }
-
-    // Build prayer ID based on antiphon and variant
-    let prayerId;
-    if (antiphonId === 'alma-redemptoris-mater') {
-      prayerId = variant === 'advent'
-        ? 'alma-redemptoris-prayer-advent'
-        : 'alma-redemptoris-prayer-christmas';
-    } else if (antiphonId === 'ave-regina-caelorum') {
-      prayerId = 'ave-regina-prayer';
-    } else if (antiphonId === 'regina-caeli-laetare') {
-      prayerId = 'regina-caeli-prayer';
-    } else {
-      prayerId = 'salve-regina-prayer';
-    }
+    const versicleId = `${info.prefix}-versicle${suffix}`;
+    const prayerId = `${info.prefix}-prayer${suffix}`;
 
     return [
       { gabcId: antiphonId, translationKey: antiphonId },
@@ -126,33 +122,22 @@ export async function loadGabcContent(office = 1) {
       return results;
     };
 
-    let [antiphons, psalms, hymns, versicles, chapters] = await loadOfficeGabc(office);
+    const MODULE_NAMES = ['antiphons', 'psalms', 'hymns', 'versicles', 'chapters'];
+    let modules = await loadOfficeGabc(office);
 
     // Fall back to office 1 individually for any modules that failed to load
     if (office !== 1) {
-      const missing = [];
-      if (!antiphons) missing.push('antiphons');
-      if (!psalms) missing.push('psalms');
-      if (!hymns) missing.push('hymns');
-      if (!versicles) missing.push('versicles');
-      if (!chapters) missing.push('chapters');
-
+      const missing = MODULE_NAMES.filter((_, i) => !modules[i]);
       if (missing.length > 0) {
         console.warn(`Office ${office} missing ${missing.join(', ')}, falling back to Office 1`);
-        const [fb_ant, fb_ps, fb_hy, fb_ver, fb_ch] = await loadOfficeGabc(1);
-        if (!antiphons) antiphons = fb_ant;
-        if (!psalms) psalms = fb_ps;
-        if (!hymns) hymns = fb_hy;
-        if (!versicles) versicles = fb_ver;
-        if (!chapters) chapters = fb_ch;
+        const fallback = await loadOfficeGabc(1);
+        modules = modules.map((mod, i) => mod || fallback[i]);
       }
     }
 
-    if (antiphons) Object.assign(gabc, antiphons.default || antiphons);
-    if (psalms) Object.assign(gabc, psalms.default || psalms);
-    if (hymns) Object.assign(gabc, hymns.default || hymns);
-    if (versicles) Object.assign(gabc, versicles.default || versicles);
-    if (chapters) Object.assign(gabc, chapters.default || chapters);
+    for (const mod of modules) {
+      if (mod) Object.assign(gabc, mod.default || mod);
+    }
 
     cache.gabc[key] = gabc;
     return gabc;
@@ -559,11 +544,7 @@ export async function renderHour(hourId, container, options = {}) {
   ]);
 
   if (!hourDef) {
-    const p = document.createElement('p');
-    p.className = 'error';
-    p.textContent = `Hour "${hourId}" not found.`;
-    container.innerHTML = '';
-    container.appendChild(p);
+    showError(container, `Hour "${hourId}" not found.`);
     return;
   }
 

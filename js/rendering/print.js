@@ -9,10 +9,27 @@ import { RENDER, PRINT } from '../core/constants.js';
 // Store for afterprint restoration
 let printSplitData = [];
 
+// Extract Y positions from transforms, sorted and deduped
+// useParent: when true, reads the transform from el.parentElement (for staff groups)
+function extractYPositions(elements, useParent) {
+  const positions = [];
+  elements.forEach(function(el) {
+    const target = useParent ? el.parentElement : el;
+    const transform = target ? target.getAttribute('transform') || '' : '';
+    const match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
+    if (match) {
+      positions.push(parseFloat(match[2]) || 0);
+    }
+  });
+
+  positions.sort(function(a, b) { return a - b; });
+  return positions.filter(function(y, i, arr) {
+    return i === 0 || y - arr[i - 1] > 10;
+  });
+}
+
 // Get Y positions of each system (staff line) in the SVG
 function getSystemYPositions(svg) {
-  let positions = [];
-
   // Find staff groups - first try inside caeciliae, then in entire SVG
   const caeciliaeGroup = svg.querySelector('g.caeciliae');
   const staffGroups = caeciliaeGroup
@@ -23,45 +40,12 @@ function getSystemYPositions(svg) {
   if (staffGroups.length <= 1) {
     const systemGroups = Array.from(svg.querySelectorAll('g[id^="system"]'));
     if (systemGroups.length > 1) {
-      // Extract Y positions directly from system group transforms
-      systemGroups.forEach(function(sys) {
-        const transform = sys.getAttribute('transform') || '';
-        const match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
-        if (match) {
-          const y = parseFloat(match[2]) || 0;
-          positions.push(y);
-        }
-      });
-
-      // Sort and dedupe
-      positions.sort(function(a, b) { return a - b; });
-      positions = positions.filter(function(y, i, arr) {
-        return i === 0 || y - arr[i-1] > 10;
-      });
-
-      return positions;
+      return extractYPositions(systemGroups, false);
     }
   }
 
-  // If we found staff groups in caeciliae, extract Y positions from parent (system) transforms
-  staffGroups.forEach(function(staff) {
-    // The transform is on the parent element (system group), not the staff group itself
-    const parent = staff.parentElement;
-    const transform = parent ? parent.getAttribute('transform') || '' : '';
-    const match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
-    if (match) {
-      const y = parseFloat(match[2]) || 0;
-      positions.push(y);
-    }
-  });
-
-  // Sort by Y position and remove duplicates
-  positions.sort(function(a, b) { return a - b; });
-  positions = positions.filter(function(y, i, arr) {
-    return i === 0 || y - arr[i-1] > 10; // Remove positions within 10px of each other
-  });
-
-  return positions;
+  // Extract Y positions from parent (system) transforms of staff groups
+  return extractYPositions(staffGroups, true);
 }
 
 // Split a multi-line chant SVG into separate line containers

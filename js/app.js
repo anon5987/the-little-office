@@ -42,6 +42,19 @@ const app = {
 };
 
 /**
+ * Display an error message in a container element
+ * @param {HTMLElement} container - Target container
+ * @param {string} message - Error message text
+ */
+function showError(container, message) {
+  const p = document.createElement('p');
+  p.className = 'error';
+  p.textContent = message;
+  container.innerHTML = '';
+  container.appendChild(p);
+}
+
+/**
  * Load common translations for use in landing/hour pages
  */
 async function loadCommonTranslations() {
@@ -81,11 +94,7 @@ function handleRouteChange(newRoute, oldRoute) {
         console.error('Failed to render hour page:', e);
         const content = getElement(IDS.HOUR_CONTENT_AREA);
         if (content) {
-          const p = document.createElement('p');
-          p.className = 'error';
-          p.textContent = `Failed to load page. ${e.message}`;
-          content.innerHTML = '';
-          content.appendChild(p);
+          showError(content, `Failed to load page. ${e.message}`);
         }
       });
   }
@@ -111,11 +120,7 @@ function handleDateOverrideChange() {
         console.error('Failed to render hour page:', e);
         const content = getElement(IDS.HOUR_CONTENT_AREA);
         if (content) {
-          const p = document.createElement('p');
-          p.className = 'error';
-          p.textContent = `Failed to load page. ${e.message}`;
-          content.innerHTML = '';
-          content.appendChild(p);
+          showError(content, `Failed to load page. ${e.message}`);
         }
       });
   }
@@ -210,10 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
     typeof translations !== 'undefined' ? translations : null;
   init(globalTranslations).catch(function (e) {
     console.error('Application initialization failed:', e);
-    var p = document.createElement('p');
-    p.className = 'error';
-    p.textContent = 'Failed to initialize application. Please reload the page.';
-    document.body.appendChild(p);
+    showError(document.body, 'Failed to initialize application. Please reload the page.');
   });
 });
 

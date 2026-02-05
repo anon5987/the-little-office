@@ -6,6 +6,17 @@
 import { isJgabcReady, getHeaderSafe, getDefsSafe, getStaffOffset, setSvgWidth, getChantSafe, relayoutChantSafe } from './jgabc-adapter.js';
 import { RENDER, DELAYS } from '../core/constants.js';
 
+/**
+ * Display an error message in a container element
+ */
+function showError(container, message) {
+  const p = document.createElement('p');
+  p.className = 'error';
+  p.textContent = message;
+  container.innerHTML = '';
+  container.appendChild(p);
+}
+
 // Normalize GABC: trim leading whitespace from each line (handles autoformat)
 export function normalizeGabc(source) {
   return source
@@ -107,7 +118,10 @@ export function renderGabc(container) {
 
     // Call jgabc's getChant function
     var top = [0];
-    getChantSafe([header, text], svg, result, top);
+    if (!getChantSafe([header, text], svg, result, top)) {
+      console.warn('Chant rendering failed for container:', container.getAttribute('data-gabc-id') || '(inline)');
+      return;
+    }
 
     // Relayout to fit width (may fail if fonts not loaded yet)
     if (!relayoutChantSafe(svg, width)) {
@@ -145,11 +159,7 @@ export function renderGabc(container) {
 
   } catch (e) {
     console.error("GABC render error:", e);
-    var p = document.createElement('p');
-    p.className = 'error';
-    p.textContent = 'Error rendering GABC: ' + e.message;
-    container.innerHTML = '';
-    container.appendChild(p);
+    showError(container, 'Error rendering GABC: ' + e.message);
   }
 }
 
@@ -247,10 +257,11 @@ export async function renderAllGabc(container = document) {
   }
 }
 
+// Maximum polling attempts before giving up on jgabc load
+const MAX_JGABC_ATTEMPTS = 100;
+
 // Wait for jQuery and jgabc to be ready, then render
 export function waitForJgabc(callback) {
-  const MAX_ATTEMPTS = 100;
-
   const execute = () => {
     if (callback) callback();
     else renderAllGabc();
@@ -258,27 +269,34 @@ export function waitForJgabc(callback) {
 
   if (isJgabcReady()) {
     execute();
-  } else {
-    // Try once more after a frame, then fall back to polling
-    requestAnimationFrame(() => {
+    return;
+  }
+
+  // Try once more after a frame, then fall back to polling
+  requestAnimationFrame(() => {
+    if (isJgabcReady()) {
+      execute();
+      return;
+    }
+
+    // Fall back to polling if still not ready
+    let attempts = 0;
+    const poll = () => {
       if (isJgabcReady()) {
         execute();
+      } else if (++attempts >= MAX_JGABC_ATTEMPTS) {
+        console.error('jgabc library failed to load after ' + (MAX_JGABC_ATTEMPTS * DELAYS.JGABC_RETRY / 1000) + 's');
+        // Remove loading skeletons and show error so page doesn't appear stuck
+        document.querySelectorAll('[data-gabc].loading, [data-gabc-id].loading').forEach(el => {
+          el.classList.remove('loading');
+          showError(el, 'Chant rendering library failed to load. Please reload the page.');
+        });
       } else {
-        // Fall back to polling if still not ready
-        let attempts = 0;
-        const poll = () => {
-          if (isJgabcReady()) {
-            execute();
-          } else if (++attempts >= MAX_ATTEMPTS) {
-            console.error('jgabc library failed to load after ' + (MAX_ATTEMPTS * DELAYS.JGABC_RETRY / 1000) + 's');
-          } else {
-            setTimeout(poll, DELAYS.JGABC_RETRY);
-          }
-        };
-        poll();
+        setTimeout(poll, DELAYS.JGABC_RETRY);
       }
-    });
-  }
+    };
+    poll();
+  });
 }
 
 // Extend staff lines on all existing rendered chants
