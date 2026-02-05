@@ -30,34 +30,43 @@ export const DELAYS = {
 
 // CSS classes used in JavaScript
 export const CSS_CLASSES = {
-  HIDDEN: 'hidden',
-  LOADING: 'loading',
-  DARK_MODE: 'dark-mode',
-  SHOW_TRANSLATIONS: 'show-translations',
-  ERROR: 'error',
+  HIDDEN: "hidden",
+  LOADING: "loading",
+  DARK_MODE: "dark-mode",
+  SHOW_TRANSLATIONS: "show-translations",
+  ERROR: "error",
 };
 
 // Supported languages
 export const LANGUAGES = {
-  ENGLISH: 'en',
-  CZECH: 'cs',
-  LATIN: 'la',
+  ENGLISH: "en",
+  CZECH: "cs",
+  LATIN: "la",
 };
 
 // Available hours (hours with implemented content)
-export const AVAILABLE_HOURS = ['vespers', 'lauds', 'compline'];
+export const AVAILABLE_HOURS = ["vespers", "lauds", "prime", "compline"];
 
 // Hour order for iteration
-export const HOUR_ORDER = ['matins', 'lauds', 'prime', 'terce', 'sext', 'none', 'vespers', 'compline'];
+export const HOUR_ORDER = [
+  "matins",
+  "lauds",
+  "prime",
+  "terce",
+  "sext",
+  "none",
+  "vespers",
+  "compline",
+];
 
 // Hour name translation keys - maps hour ID to translation key
 export const HOUR_NAME_KEYS = {
-  matins: 'ui-hour-matins',
-  lauds: 'ui-hour-lauds',
-  prime: 'ui-hour-prime',
-  terce: 'ui-hour-terce',
-  sext: 'ui-hour-sext',
-  none: 'ui-hour-none',
-  vespers: 'ui-hour-vespers',
-  compline: 'ui-hour-compline',
+  matins: "ui-hour-matins",
+  lauds: "ui-hour-lauds",
+  prime: "ui-hour-prime",
+  terce: "ui-hour-terce",
+  sext: "ui-hour-sext",
+  none: "ui-hour-none",
+  vespers: "ui-hour-vespers",
+  compline: "ui-hour-compline",
 };

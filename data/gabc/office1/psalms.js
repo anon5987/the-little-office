@@ -283,6 +283,58 @@ annotation: 7.a;
 <i>5.</i> Gló(hg)ri(hi)a(i) Pa(k)tri,(j) et(j) Fí(i)li(j)o,(j.) <i>*</i>(:) et(i) Spi(i)rí(j)tu(i)i(i) Sanc(h)to.(gf..) (::)
 <i>6.</i> Sic(hg)ut(hi) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(k) et(j) sem(i)per,(j.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(i)ló(j)rum.(i) A(h)men.(gf..) (::)`;
 
+// Prime
+
+// Psalm 53
+export const psalm53 = `name: 53-7a;
+initial-style: 1;
+centering-scheme: latin;
+annotation: 7.a;
+%%
+(c3)De(hg)us,(hi) in(i) nó(i)mi(i)ne(i) tu(i)o(i) sal(k)vum(j) me(i) fac:(j.) <i>*</i>(:) et(i) in(i) vir(i)tú(i)te(i) tu(i)a(i) jú(j)di(i)ca(h) me.(gf..) (::)
+<i>2.</i> De(i)us,(i) ex(i)áu(i)di(i) o(i)ra(i)ti(i)ó(k)nem(j) me(i)am:(j.) <i>*</i>(:) áu(i)ri(i)bus(i) pér(i)ci(i)pe(i) ver(i)ba(i) o(j)ris(i) me(h)i.(gf..) (::)
+<i>3.</i> Quón(i)i(i)am(i) a(i)li(i)é(i)ni(i) in(i)sur(i)re(i)xé(i)runt(i) ad(i)vér(i)sum(h) me, †(h.) et(i) for(i)tes(i) quæ(i)si(i)é(i)runt(i) á(k)ni(j)mam(j) me(i)am:(j.) <i>*</i>(:) et(i) non(i) pro(i)po(i)su(i)é(i)runt(i) De(i)um(i) an(i)te(i) con(i)spéc(j)tum(i) su(h)um.(gf..) (::)
+<i>4.</i> Ec(i)ce(i) e(i)nim(i) De(i)us(i) ád(k)ju(j)vat(i) me:(j.) <i>*</i>(:) et(i) Dó(i)mi(i)nus(i) su(i)scép(i)tor(i) est(i) á(j)ni(i)mæ(i) me(h)æ.(gf..) (::)
+<i>5.</i> A(i)vér(i)te(i) ma(i)la(i) in(i)i(i)mí(k)cis(j) me(i)is:(j.) <i>*</i>(:) et(i) in(i) ve(i)ri(i)tá(i)te(i) tu(i)a(i) dis(i)pér(j)de(i) il(h)los.(gf..) (::)
+<i>6.</i> Vo(i)lun(i)tá(i)ri(i)e(i) sa(i)cri(i)fi(i)cá(k)bo(j) ti(i)bi,(j.) <i>*</i>(:) et(i) con(i)fi(i)té(i)bor(i) nó(i)mi(i)ni(i) tu(i)o,(i) Dó(i)mi(i)ne:(i) quón(j)i(i)am(i) bo(h)num(h) est:(gf..) (::)
+<i>7.</i> Quón(i)i(i)am(i) ex(i) om(i)ni(i) tri(i)bu(i)la(i)ti(i)ó(i)ne(i) e(i)ri(k)pu(j)ís(i)ti(j) me:(j.) <i>*</i>(:) et(i) su(i)per(i) in(i)i(i)mí(i)cos(i) me(i)os(i) de(i)spé(i)xit(i) ó(j)cu(i)lus(i) me(h)us.(gf..) (::)
+<i>8.</i> Gló(i)ri(i)a(i) Pa(k)tri,(j) et(j) Fí(i)li(j)o,(j.) <i>*</i>(:) et(i) Spi(i)rí(j)tu(i)i(i) Sanc(h)to.(gf..) (::)
+<i>9.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(k) et(j) sem(i)per,(j.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(i)ló(j)rum.(i) A(h)men.(gf..) (::)`;
+
+// Psalm 84
+export const psalm84 = `name: 84-7a;
+initial-style: 1;
+centering-scheme: latin;
+annotation: 7.a;
+%%
+(c3)Be(hg)ne(hi)di(i)xís(i)ti,(i) Dó(i)mi(i)ne,(i) ter(k)ram(j) tu(i)am:(j.) <i>*</i>(:) a(i)ver(i)tís(i)ti(i) cap(i)ti(i)vi(i)tá(j)tem(i) Ja(h)cob.(gf..) (::)
+<i>2.</i> Re(i)mi(i)sís(i)ti(i) in(i)i(i)qui(i)tá(i)tem(i) ple(k)bis(j) tu(i)æ:(j.) <i>*</i>(:) o(i)pe(i)ru(i)ís(i)ti(i) óm(i)ni(i)a(i) pec(i)cá(j)ta(i) e(i)ó(h)rum.(gf..) (::)
+<i>3.</i> Mi(i)ti(i)gás(i)ti(i) om(i)nem(i) i(k)ram(j) tu(i)am:(j.) <i>*</i>(:) a(i)ver(i)tís(i)ti(i) ab(i) i(i)ra(i) in(i)di(i)gna(i)ti(i)ó(j)nis(i) tu(h)æ.(gf..) (::)
+<i>4.</i> Con(i)vér(i)te(i) nos,(i) De(i)us,(i) sa(i)lu(i)tá(k)ris(j) nos(i)ter:(j.) <i>*</i>(:) et(i) a(i)vér(i)te(i) i(i)ram(i) tu(j)am(i) a(i) no(h)bis.(gf..) (::)
+<i>5.</i> Num(i)quid(i) in(i) æ(i)tér(i)num(i) i(i)ra(i)scé(k)ris(j) no(i)bis?(j.) <i>*</i>(:) aut(i) ex(i)tén(i)des(i) i(i)ram(i) tu(i)am(i) a(i) ge(i)ne(i)ra(i)ti(i)ó(i)ne(i) in(i) ge(i)ne(i)ra(j)ti(i)ó(h)nem?(gf..) (::)
+<i>6.</i> De(i)us,(i) tu(i) con(i)vér(i)sus(i) vi(i)vi(k)fi(j)cá(i)bis(j) nos:(j.) <i>*</i>(:) et(i) plebs(i) tu(i)a(i) læ(i)tá(j)bi(i)tur(i) in(h) te.(gf..) (::)
+<i>7.</i> Os(i)tén(i)de(i) no(i)bis,(i) Dó(i)mi(i)ne,(i) mi(i)se(i)ri(i)cór(k)di(j)am(j) tu(i)am:(j.) <i>*</i>(:) et(i) sa(i)lu(i)tá(i)re(i) tu(j)um(i) da(i) no(h)bis.(gf..) (::)
+<i>8.</i> Au(i)di(i)am(i) quid(i) lo(i)quá(i)tur(i) in(i) me(i) Dó(k)mi(j)nus(j) De(i)us:(j.) <i>*</i>(:) quón(i)i(i)am(i) lo(i)qué(i)tur(i) pa(i)cem(i) in(i) ple(j)bem(i) su(h)am.(gf..) (::)
+<i>9.</i> Et(i) su(i)per(i) sanc(k)tos(j) su(i)os:(j.) <i>*</i>(:) et(i) in(i) e(i)os,(i) qui(i) con(i)ver(i)tún(j)tur(i) ad(h) cor.(gf..) (::)
+<i>10.</i> Ve(i)rúm(i)ta(i)men(i) pro(i)pe(i) ti(i)mén(i)tes(i) e(i)um(i) sa(i)lu(i)tá(k)re(j) ip(j)sí(i)us:(j.) <i>*</i>(:) ut(i) in(i)há(i)bi(i)tet(i) gló(i)ri(i)a(i) in(i) ter(j)ra(i) nos(h)tra.(gf..) (::)
+<i>11.</i> Mi(i)se(i)ri(i)cór(i)di(i)a,(i) et(i) vé(i)ri(i)tas(i) ob(i)vi(i)a(i)vé(k)runt(j) si(i)bi:(j.) <i>*</i>(:) jus(i)tí(i)ti(i)a,(i) et(i) pax(i) os(j)cu(i)lá(h)tæ(h) sunt.(gf..) (::)
+<i>12.</i> Vé(i)ri(i)tas(i) de(i) ter(k)ra(j) or(i)ta(j) est:(j.) <i>*</i>(:) et(i) jus(i)tí(i)ti(i)a(i) de(i) cæ(j)lo(i) pro(i)spé(h)xit.(gf..) (::)
+<i>13.</i> Et(i)e(i)nim(i) Dó(i)mi(i)nus(i) da(i)bit(i) be(i)ni(k)gni(j)tá(i)tem:(j.) <i>*</i>(:) et(i) ter(i)ra(i) nos(i)tra(i) da(i)bit(i) fruc(j)tum(i) su(h)um.(gf..) (::)
+<i>14.</i> Jus(i)tí(i)ti(i)a(i) an(i)te(i) e(i)um(i) am(k)bu(j)lá(i)bit:(j.) <i>*</i>(:) et(i) po(i)net(i) in(i) vi(i)a(i) gres(j)sus(i) su(h)os.(gf..) (::)
+<i>15.</i> Gló(i)ri(i)a(i) Pa(k)tri,(j) et(j) Fí(i)li(j)o,(j.) <i>*</i>(:) et(i) Spi(i)rí(j)tu(i)i(i) Sanc(h)to.(gf..) (::)
+<i>16.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(k) et(j) sem(i)per,(j.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(i)ló(j)rum.(i) A(h)men.(gf..) (::)`;
+
+// Psalm 116
+export const psalm116 = `name: 116-7a;
+initial-style: 1;
+centering-scheme: latin;
+annotation: 7.a;
+%%
+(c3)Lau(hg)dá(hi)te(i) Dó(i)mi(i)num,(i) om(k)nes(j) Gen(i)tes:(j.) <i>*</i>(:) lau(i)dá(i)te(i) e(i)um,(i) om(j)nes(i) pó(h)pu(h)li:(gf..) (::)
+<i>2.</i> Quón(i)i(i)am(i) con(i)fir(i)má(i)ta(i) est(i) su(i)per(i) nos(i) mi(i)se(i)ri(i)cór(k)di(j)a(j) e(i)jus:(j.) <i>*</i>(:) et(i) vé(i)ri(i)tas(i) Dó(i)mi(i)ni(i) ma(i)net(i) in(j) æ(i)tér(h)num.(gf..) (::)
+<i>3.</i> Gló(i)ri(i)a(i) Pa(k)tri,(j) et(j) Fí(i)li(j)o,(j.) <i>*</i>(:) et(i) Spi(i)rí(j)tu(i)i(i) Sanc(h)to.(gf..) (::)
+<i>4.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(k) et(j) sem(i)per,(j.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(i)ló(j)rum.(i) A(h)men.(gf..) (::)`;
+
 // Export as object for consistent API
 export default {
   // Lauds 1
@@ -306,4 +358,9 @@ export default {
   "psalm-129": psalm129,
   "psalm-130": psalm130,
   "nunc-dimittis": nuncDimittis,
+
+  // Prime
+  "psalm-53": psalm53,
+  "psalm-84": psalm84,
+  "psalm-116": psalm116,
 };

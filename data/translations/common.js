@@ -172,6 +172,20 @@ export default {
     cs: "Žalm 147.",
   },
 
+  // Psalm labels - Prime
+  "ui-psalm-53": {
+    en: "Psalm liii.",
+    cs: "Žalm 53.",
+  },
+  "ui-psalm-84": {
+    en: "Psalm lxxxiv.",
+    cs: "Žalm 84.",
+  },
+  "ui-psalm-116": {
+    en: "Psalm cxvi.",
+    cs: "Žalm 116.",
+  },
+
   // Psalm labels - Lauds
   "ui-psalm-92": {
     en: "Psalm xcii.",
