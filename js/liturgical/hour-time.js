@@ -5,11 +5,10 @@
  * Times are configurable - these are traditional approximations.
  */
 
-import { HOUR_ORDER, HOUR_NAME_KEYS } from '../core/constants.js';
+import { HOUR_ORDER } from '../core/constants.js';
 
 // Default hour time ranges (24-hour format)
-// These can be overridden via setHourTimes()
-let HOUR_TIMES = {
+const HOUR_TIMES = {
   matins:   { start: 0,  end: 3 },   // Midnight to 3 AM
   lauds:    { start: 3,  end: 6 },   // 3 AM to 6 AM (dawn)
   prime:    { start: 6,  end: 9 },   // 6 AM to 9 AM (first hour)
@@ -19,32 +18,6 @@ let HOUR_TIMES = {
   vespers:  { start: 18, end: 21 },  // 6 PM to 9 PM (evening)
   compline: { start: 21, end: 24 }   // 9 PM to midnight (before sleep)
 };
-
-// Cache for hour name translations
-let hourNameTranslationsCache = null;
-
-/**
- * Set hour name translations cache
- * @param {Object} translations - Translation object with hour name keys
- */
-export function setHourNameTranslations(translations) {
-  hourNameTranslationsCache = translations;
-}
-
-/**
- * Set custom hour times
- * @param {Object} times - Object with hour names as keys and {start, end} as values
- */
-export function setHourTimes(times) {
-  HOUR_TIMES = { ...HOUR_TIMES, ...times };
-}
-
-/**
- * Get the current hour times configuration
- */
-export function getHourTimes() {
-  return { ...HOUR_TIMES };
-}
 
 /**
  * Get the canonical hour for a given time
@@ -66,24 +39,11 @@ export function getCurrentHour(date = new Date()) {
 
 /**
  * Get the next canonical hour after the current one
- * @param {Date} date - The date/time to check (default: now)
- * @returns {string} - The next hour ID
  */
-export function getNextHour(date = new Date()) {
+function getNextHour(date = new Date()) {
   const currentHour = getCurrentHour(date);
   const currentIndex = HOUR_ORDER.indexOf(currentHour);
   return HOUR_ORDER[(currentIndex + 1) % HOUR_ORDER.length];
-}
-
-/**
- * Get the previous canonical hour
- * @param {Date} date - The date/time to check (default: now)
- * @returns {string} - The previous hour ID
- */
-export function getPreviousHour(date = new Date()) {
-  const currentHour = getCurrentHour(date);
-  const currentIndex = HOUR_ORDER.indexOf(currentHour);
-  return HOUR_ORDER[(currentIndex - 1 + HOUR_ORDER.length) % HOUR_ORDER.length];
 }
 
 /**
@@ -118,16 +78,8 @@ export function getRecommendation(date = new Date()) {
 
 /**
  * Get display name for an hour
- * Uses translation cache if available, falls back to static names
  */
-export function getHourName(hourId, lang = 'en') {
-  // Try translation cache first
-  const key = HOUR_NAME_KEYS[hourId];
-  if (hourNameTranslationsCache && key && hourNameTranslationsCache[key]) {
-    return hourNameTranslationsCache[key][lang] || hourNameTranslationsCache[key].en || hourId;
-  }
-
-  // Fallback to static names for backwards compatibility
+function getHourName(hourId, lang = 'en') {
   const names = {
     matins:   { en: 'Matins',   cs: 'Matutinum',     la: 'Matutinum' },
     lauds:    { en: 'Lauds',    cs: 'Ranní chvály',  la: 'Laudes' },
@@ -144,7 +96,7 @@ export function getHourName(hourId, lang = 'en') {
 /**
  * Get description for an hour
  */
-export function getHourDescription(hourId, lang = 'en') {
+function getHourDescription(hourId, lang = 'en') {
   const descriptions = {
     matins: {
       en: 'The night office, traditionally prayed at midnight or before dawn.',

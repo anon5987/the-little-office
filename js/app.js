@@ -15,6 +15,7 @@ import {
 import { initState, getState, set, subscribe } from './core/state.js';
 import {
   initRouter,
+  parseHash,
   onRouteChange,
   isLandingPage,
   navigate,
@@ -39,6 +40,19 @@ const app = {
   currentView: null, // 'landing' or hour ID
   translations: null,
 };
+
+/**
+ * Display an error message in a container element
+ * @param {HTMLElement} container - Target container
+ * @param {string} message - Error message text
+ */
+function showError(container, message) {
+  const p = document.createElement('p');
+  p.className = 'error';
+  p.textContent = message;
+  container.innerHTML = '';
+  container.appendChild(p);
+}
 
 /**
  * Load common translations for use in landing/hour pages
@@ -78,6 +92,10 @@ function handleRouteChange(newRoute, oldRoute) {
       })
       .catch((e) => {
         console.error('Failed to render hour page:', e);
+        const content = getElement(IDS.HOUR_CONTENT_AREA);
+        if (content) {
+          showError(content, `Failed to load page. ${e.message}`);
+        }
       });
   }
 }
@@ -93,13 +111,17 @@ function handleDateOverrideChange() {
     app.currentView = renderLandingPage();
   } else {
     // Re-render the current hour page with new date
-    const currentRoute = initRouter();
+    const currentRoute = parseHash();
     renderHourPage(currentRoute.hour, currentRoute.params)
       .then((view) => {
         app.currentView = view;
       })
       .catch((e) => {
         console.error('Failed to render hour page:', e);
+        const content = getElement(IDS.HOUR_CONTENT_AREA);
+        if (content) {
+          showError(content, `Failed to load page. ${e.message}`);
+        }
       });
   }
 }
@@ -191,7 +213,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize with global translations if available, otherwise initialize without
   const globalTranslations =
     typeof translations !== 'undefined' ? translations : null;
-  init(globalTranslations);
+  init(globalTranslations).catch(function (e) {
+    console.error('Application initialization failed:', e);
+    showError(document.body, 'Failed to initialize application. Please reload the page.');
+  });
 });
 
 // Export app object for debugging

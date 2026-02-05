@@ -23,11 +23,6 @@ export function getState() {
   return { ...state };
 }
 
-// Get a specific state value
-export function get(key) {
-  return state[key];
-}
-
 // Update state and notify listeners
 export function set(key, value) {
   if (state[key] !== value) {
@@ -35,21 +30,6 @@ export function set(key, value) {
     state[key] = value;
     notifyListeners(key, value, oldValue);
   }
-}
-
-// Update multiple state values
-export function update(updates) {
-  const changes = [];
-  for (const [key, value] of Object.entries(updates)) {
-    if (state[key] !== value) {
-      const oldValue = state[key];
-      state[key] = value;
-      changes.push({ key, value, oldValue });
-    }
-  }
-  changes.forEach(({ key, value, oldValue }) => {
-    notifyListeners(key, value, oldValue);
-  });
 }
 
 // Subscribe to state changes
@@ -80,9 +60,13 @@ export function initState() {
   if (langParam && ['en', 'cs'].includes(langParam)) {
     state.language = langParam;
   } else {
-    const savedLang = localStorage.getItem('little-office-lang');
-    if (savedLang && ['en', 'cs'].includes(savedLang)) {
-      state.language = savedLang;
+    try {
+      const savedLang = localStorage.getItem('little-office-lang');
+      if (savedLang && ['en', 'cs'].includes(savedLang)) {
+        state.language = savedLang;
+      }
+    } catch (e) {
+      // SecurityError expected in private browsing or iframe contexts
     }
   }
 
@@ -93,16 +77,20 @@ export function initState() {
     state.office = state.officeOverride;
   }
 
-  // Show translations from localStorage
-  const savedShowTrans = localStorage.getItem('little-office-show-translations');
-  if (savedShowTrans === 'true') {
-    state.showTranslations = true;
-  }
+  try {
+    // Show translations from localStorage
+    const savedShowTrans = localStorage.getItem('little-office-show-translations');
+    if (savedShowTrans === 'true') {
+      state.showTranslations = true;
+    }
 
-  // Dark mode from localStorage
-  const savedDarkMode = localStorage.getItem('little-office-dark-mode');
-  if (savedDarkMode === 'true') {
-    state.darkMode = true;
+    // Dark mode from localStorage
+    const savedDarkMode = localStorage.getItem('little-office-dark-mode');
+    if (savedDarkMode === 'true') {
+      state.darkMode = true;
+    }
+  } catch (e) {
+    // SecurityError expected in private browsing or iframe contexts
   }
 
   return state;
@@ -110,9 +98,13 @@ export function initState() {
 
 // Save current state to localStorage
 export function saveState() {
-  localStorage.setItem('little-office-lang', state.language);
-  localStorage.setItem('little-office-show-translations', state.showTranslations.toString());
-  localStorage.setItem('little-office-dark-mode', state.darkMode.toString());
+  try {
+    localStorage.setItem('little-office-lang', state.language);
+    localStorage.setItem('little-office-show-translations', state.showTranslations.toString());
+    localStorage.setItem('little-office-dark-mode', state.darkMode.toString());
+  } catch (e) {
+    // SecurityError expected in private browsing or iframe contexts
+  }
 }
 
 // Subscribe to save state on changes

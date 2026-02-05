@@ -9,7 +9,7 @@
  */
 
 // Hour ordering for boundary comparisons
-export const HOUR_ORDER = {
+const HOUR_INDEX_MAP = {
   matins: 0,
   lauds: 1,
   prime: 2,
@@ -23,7 +23,7 @@ export const HOUR_ORDER = {
 /**
  * Convert a Date to YYYYMMDD integer for easy comparison
  */
-function toDateValue(date) {
+export function toDateValue(date) {
   return (
     date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()
   );
@@ -33,14 +33,14 @@ function toDateValue(date) {
  * Check if an hour is at or after a reference hour in the daily cycle
  */
 function isHourAtOrAfter(hourId, referenceHour) {
-  return HOUR_ORDER[hourId] >= HOUR_ORDER[referenceHour];
+  return HOUR_INDEX_MAP[hourId] >= HOUR_INDEX_MAP[referenceHour];
 }
 
 /**
  * Check if an hour is before a reference hour in the daily cycle
  */
 function isHourBefore(hourId, referenceHour) {
-  return HOUR_ORDER[hourId] < HOUR_ORDER[referenceHour];
+  return HOUR_INDEX_MAP[hourId] < HOUR_INDEX_MAP[referenceHour];
 }
 
 /**

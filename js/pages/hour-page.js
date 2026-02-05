@@ -18,6 +18,17 @@ import {
 } from '../utils/translation-helpers.js';
 
 /**
+ * Display an error message in a container element
+ */
+function showError(container, message) {
+  const p = document.createElement('p');
+  p.className = 'error';
+  p.textContent = message;
+  container.innerHTML = '';
+  container.appendChild(p);
+}
+
+/**
  * Set translations cache for hour names
  * @param {Object} translations - Translation data
  */
@@ -87,7 +98,7 @@ export async function renderHourPage(hourId, params = {}) {
     setScrollHour(hourId);
   } catch (e) {
     console.error('Failed to render hour:', e);
-    contentArea.innerHTML = `<p class="error">Failed to load ${hourId}. ${e.message}</p>`;
+    showError(contentArea, `Failed to load ${hourId}. ${e.message}`);
     clearCurrentHourData();
   }
 

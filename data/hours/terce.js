@@ -1,14 +1,14 @@
 /**
- * Prime Hour Definition
+ * Terce Hour Definition
  *
- * Defines the structure and content of Prime (First Hour)
+ * Defines the structure and content of Terce (Third Hour)
  * @see {import('../../js/core/types.js').HourDefinition}
  */
 
-export const prime = {
-  id: "prime",
-  nameKey: "ui-hour-prime",
-  descriptionKey: "ui-description-prime",
+export const terce = {
+  id: "terce",
+  nameKey: "ui-hour-terce",
+  descriptionKey: "ui-description-terce",
 
   // Structure defines the order of sections
   structure: [
@@ -31,34 +31,34 @@ export const prime = {
       type: "chants-with-antiphon",
       chants: [
         {
-          gabcId: "psalm-53",
-          translationKey: "psalm-53",
-          labelKey: "ui-psalm-53",
-          incipit: "Deus, in nomine tuo",
+          gabcId: "psalm-119",
+          translationKey: "psalm-119",
+          labelKey: "ui-psalm-119",
+          incipit: "Ad Dominum",
         },
         {
-          gabcId: "psalm-84",
-          translationKey: "psalm-84",
-          labelKey: "ui-psalm-84",
-          incipit: "Benedixisti, Domine",
+          gabcId: "psalm-120",
+          translationKey: "psalm-120",
+          labelKey: "ui-psalm-120",
+          incipit: "Levavi oculos",
         },
         {
-          gabcId: "psalm-116",
-          translationKey: "psalm-116",
-          labelKey: "ui-psalm-116",
-          incipit: "Laudate Dominum",
+          gabcId: "psalm-121-8g",
+          translationKey: "psalm-121",
+          labelKey: "ui-psalm-121",
+          incipit: "Lætatus sum in his",
         },
       ],
-      antiphonKey: "assumpta-est-maria-in-cælum",
+      antiphonKey: "maria-virgo-assumpta-est",
       id: "psalms",
     },
 
     {
       type: "chant",
-      gabcId: "que-est-ista",
-      translationKey: "que-est-ista",
+      gabcId: "et-sic-in-sion",
+      translationKey: "et-sic-in-sion",
       labelKey: "ui-little-chapter",
-      reference: "Cant. vi. 9.",
+      reference: "Ecclus. xxiv. 15.",
       id: "reading",
     },
 
@@ -66,14 +66,14 @@ export const prime = {
       type: "chant-variants",
       variants: [
         {
-          gabcId: "dignare-me-solemn",
+          gabcId: "diffusa-est-gratia-solemn",
           labelKey: "ui-sundays-feasts",
-          translationKey: "dignare-me",
+          translationKey: "diffusa-est-gratia",
         },
         {
-          gabcId: "dignare-me-simple",
+          gabcId: "diffusa-est-gratia-simple",
           labelKey: "ui-other-times",
-          translationKey: "dignare-me",
+          translationKey: "diffusa-est-gratia",
         },
       ],
       id: "versicle",
@@ -85,8 +85,8 @@ export const prime = {
       items: [
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         {
-          gabcId: "Deus-qui-virginalem",
-          translationKey: "Deus-qui-virginalem",
+          gabcId: "Deus-qui-salutis-aeternae",
+          translationKey: "Deus-qui-salutis-aeternae",
         },
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },
@@ -111,4 +111,4 @@ export const prime = {
   },
 };
 
-export default prime;
+export default terce;

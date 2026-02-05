@@ -56,15 +56,3 @@ export function getElement(id) {
   return document.getElementById(id);
 }
 
-/**
- * Get multiple elements by their ID constants
- * @param {...string} ids - IDs from IDS constant
- * @returns {Object} Map of id -> element
- */
-export function getElements(...ids) {
-  const result = {};
-  for (const id of ids) {
-    result[id] = document.getElementById(id);
-  }
-  return result;
-}

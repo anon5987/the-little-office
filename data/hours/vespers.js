@@ -46,7 +46,7 @@ export const vespers = {
       type: 'chants-with-antiphon',
       chants: [
         {
-          gabcId: 'psalm-121',
+          gabcId: 'psalm-121-3b',
           translationKey: 'psalm-121',
           labelKey: 'ui-psalm-121',
           incipit: 'Laetatus sum'

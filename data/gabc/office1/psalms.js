@@ -158,7 +158,7 @@ centering-scheme: latin;
 <i>10.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)ci(i)pi(i)o,(i) et(i) nunc,(h) et(i) sem(j)per,(i.) <i>*</i>(:) et(i) in(i) sae(i)cu(i)la(i) sae(i)cu(h)lo(i)rum.(j) A(h)men.(f.) (::)`;
 
 // Psalm 121 - Mode 3b (Laetatus sum)
-export const gabcPsalm121 = `name: 121-3b;
+export const gabcPsalm121_3b = `name: 121-3b;
 initial-style: 1;
 annotation: 3.b;
 centering-scheme: latin;
@@ -335,6 +335,58 @@ annotation: 7.a;
 <i>3.</i> Gló(i)ri(i)a(i) Pa(k)tri,(j) et(j) Fí(i)li(j)o,(j.) <i>*</i>(:) et(i) Spi(i)rí(j)tu(i)i(i) Sanc(h)to.(gf..) (::)
 <i>4.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(k) et(j) sem(i)per,(j.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(i)ló(j)rum.(i) A(h)men.(gf..) (::)`;
 
+// Terce
+
+// Psalm 119
+export const psalm119 = `name: 119-8G;
+initial-style: 1;
+annotation: 8.G;
+centering-scheme: latin;
+%%
+(c4)Ad(g) Dó(h)mi(j)num(j) cum(j) tri(j)bu(j)lá(j)rer(j) cla(j)má(k)vi:(j.) <i>*</i>(:) et(j) ex(i)au(j)dí(h)vit(g) me.(g.) (::)
+<i>2.</i> Dó(j)mi(j)ne,(j) lí(j)be(j)ra(j) á(j)ni(j)mam(j) me(j)am(j) a(j) lá(j)bi(j)is(j) in(j)í(k)quis,(j.) <i>*</i>(:) et(j) a(j) lin(j)gua(i) do(j)ló(h)sa.(g.) (::)
+<i>3.</i> Quid(j) de(j)tur(j) ti(j)bi,(j) aut(j) quid(j) ap(j)po(j)ná(j)tur(j) ti(k)bi(j.) <i>*</i>(:) ad(j) lin(j)guam(i) do(j)ló(h)sam?(g.) (::)
+<i>4.</i> Sa(j)gít(j)tæ(j) pot(j)én(j)tis(j) a(j)cú(k)tæ,(j.) <i>*</i>(:) cum(j) car(j)bó(j)ni(j)bus(j) de(j)so(i)la(j)tó(h)ri(g)is.(g.) (::)
+<i>5.</i> He(j)u(j) mi(j)hi!(j) qui(j)a(j) in(j)co(j)lá(j)tus(j) me(j)us(j) pro(j)lon(j)gá(j)tus(h) est: †(h.) ha(j)bi(j)tá(j)vi(j) cum(j) ha(j)bi(j)tán(j)ti(j)bus(j) Ce(k)dar:(j.) <i>*</i>(:) mul(j)tum(j) ín(j)co(j)la(j) fu(j)it(j) á(j)ni(i)ma(j) me(h)a.(g.) (::)
+<i>6.</i> Cum(j) his,(j) qui(j) o(j)dé(j)runt(j) pa(j)cem,(j) e(j)ram(j) pa(j)cí(k)fi(j)cus:(j.) <i>*</i>(:) cum(j) lo(j)qué(j)bar(j) il(j)lis,(j) im(j)pu(j)gná(j)bant(i) me(j) gra(h)tis.(g.) (::)
+<i>7.</i> Gló(j)ri(j)a(j) Pa(j)tri,(j) et(j) Fí(k)li(j)o,(j.) <i>*</i>(:) et(j) Spi(j)rí(j)tu(i)i(j) Sanc(h)to.(g.) (::)
+<i>8.</i> Sic(j)ut(j) e(j)rat(j) in(j) prin(j)cí(j)pi(j)o,(j) et(j) nunc,(j) et(j) sem(k)per,(j.) <i>*</i>(:) et(j) in(j) sǽ(j)cu(j)la(j) sæ(j)cu(j)ló(i)rum.(j) A(h)men.(g.) (::)`;
+
+// Psalm 120
+export const psalm120 = `name: 120-8G;
+initial-style: 1;
+annotation: 8.G;
+centering-scheme: latin;
+%%
+(c4)Le(g)vá(h)vi(j) ó(j)cu(j)los(j) me(j)os(j) in(j) mon(k)tes,(j.) <i>*</i>(:) un(j)de(j) vé(j)ni(j)et(j) au(j)xí(j)li(i)um(j) mi(h)hi.(g.) (::)
+<i>2.</i> Au(j)xí(j)li(j)um(j) me(j)um(j) a(j) Dó(k)mi(j)no,(j.) <i>*</i>(:) qui(j) fe(j)cit(j) cæ(j)lum(i) et(j) ter(h)ram.(g.) (::)
+<i>3.</i> Non(j) det(j) in(j) com(j)mo(j)ti(j)ó(j)nem(j) pe(j)dem(j) tu(k)um:(j.) <i>*</i>(:) ne(j)que(j) dor(j)mí(j)tet(j) qui(i) cus(j)tó(h)dit(g) te.(g.) (::)
+<i>4.</i> Ec(j)ce,(j) non(j) dor(j)mi(j)tá(j)bit(j) ne(j)que(j) dór(k)mi(j)et,(j.) <i>*</i>(:) qui(j) cus(j)tó(i)dit(j) Is(h)ra(g)ël.(g.) (::)
+<i>5.</i> Dó(j)mi(j)nus(j) cus(j)tó(j)dit(j) te,(j) Dó(j)mi(j)nus(j) pro(j)téc(j)ti(j)o(j) tu(k)a,(j.) <i>*</i>(:) su(j)per(j) ma(j)num(j) déx(j)te(i)ram(j) tu(h)am.(g.) (::)
+<i>6.</i> Per(j) di(j)em(j) sol(j) non(j) u(k)ret(j) te:(j.) <i>*</i>(:) ne(j)que(j) lu(j)na(i) per(j) noc(h)tem.(g.) (::)
+<i>7.</i> Dó(j)mi(j)nus(j) cus(j)tó(j)dit(j) te(j) ab(j) om(j)ni(j) ma(k)lo:(j.) <i>*</i>(:) cus(j)tó(j)di(j)at(j) á(j)ni(j)mam(j) tu(i)am(j) Dó(h)mi(g)nus.(g.) (::)
+<i>8.</i> Dó(j)mi(j)nus(j) cus(j)tó(j)di(j)at(j) in(j)tró(j)i(j)tum(j) tu(j)um,(j) et(j) éx(j)i(j)tum(j) tu(k)um:(j.) <i>*</i>(:) ex(j) hoc(j) nunc,(j) et(j) us(j)que(i) in(j) sǽ(h)cu(g)lum.(g.) (::)
+<i>9.</i> Gló(j)ri(j)a(j) Pa(j)tri,(j) et(j) Fí(k)li(j)o,(j.) <i>*</i>(:) et(j) Spi(j)rí(j)tu(i)i(j) Sanc(h)to.(g.) (::)
+<i>10.</i> Sic(j)ut(j) e(j)rat(j) in(j) prin(j)cí(j)pi(j)o,(j) et(j) nunc,(j) et(j) sem(k)per,(j.) <i>*</i>(:) et(j) in(j) sǽ(j)cu(j)la(j) sæ(j)cu(j)ló(i)rum.(j) A(h)men.(g.) (::)`;
+
+// Psalm 121
+export const psalm121_8G = `name: 121-8G;
+initial-style: 1;
+annotation: 8.G;
+ centering-scheme: latin;
+%%
+(c4)Læ(g)tá(h)tus(j) sum(j) in(j) his,(j) quæ(j) dic(j)ta(j) sunt(j) mi(k)hi:(j.) <i>*</i>(:) In(j) do(j)mum(j) Dó(j)mi(i)ni(j) í(h)bi(g)mus.(g.) (::)
+<i>2.</i> Stan(j)tes(j) e(j)rant(j) pe(j)des(j) nos(k)tri,(j.) <i>*</i>(:) in(j) á(j)tri(j)is(j) tu(j)is,(i) Je(j)rú(h)sa(g)lem.(g.) (::)
+<i>3.</i> Je(j)rú(j)sa(j)lem,(j) quæ(j) æ(j)di(j)fi(j)cá(j)tur(j) ut(j) cí(k)vi(j)tas:(j.) <i>*</i>(:) cu(j)jus(j) par(j)ti(j)ci(j)pá(j)ti(j)o(j) e(j)jus(j) in(i) id(j)íp(h)sum.(g.) (::)
+<i>4.</i> Il(j)luc(j) e(j)nim(j) a(j)scen(j)dé(j)runt(j) tri(j)bus,(j) tri(j)bus(j) Dó(k)mi(j)ni:(j.) <i>*</i>(:) tes(j)ti(j)mó(j)ni(j)um(j) Is(j)ra(j)ël(j) ad(j) con(j)fi(j)tén(j)dum(j) nó(j)mi(i)ni(j) Dó(h)mi(g)ni.(g.) (::)
+<i>5.</i> Qui(j)a(j) il(j)lic(j) se(j)dé(j)runt(j) se(j)des(j) in(j) ju(j)dí(k)ci(j)o,(j.) <i>*</i>(:) se(j)des(j) su(j)per(j) do(i)mum(j) Da(h)vid.(g.) (::)
+<i>6.</i> Ro(j)gá(j)te(j) quæ(j) ad(j) pa(j)cem(j) sunt(j) Je(j)rú(k)sa(j)lem:(j.) <i>*</i>(:) et(j) ab(j)un(j)dán(j)ti(j)a(j) di(j)li(j)gén(i)ti(j)bus(h) te:(g.) (::)
+<i>7.</i> Fi(j)at(j) pax(j) in(j) vir(j)tú(j)te(j) tu(k)a:(j.) <i>*</i>(:) et(j) ab(j)un(j)dán(j)ti(j)a(j) in(j) túr(j)ri(i)bus(j) tu(h)is.(g.) (::)
+<i>8.</i> Prop(j)ter(j) fra(j)tres(j) me(j)os,(j) et(j) pró(j)xi(j)mos(j) me(k)os,(j.) <i>*</i>(:) lo(j)qué(j)bar(j) pa(i)cem(j) de(h) te:(g.) (::)
+<i>9.</i> Prop(j)ter(j) do(j)mum(j) Dó(j)mi(j)ni,(j) De(j)i(j) nos(k)tri,(j.) <i>*</i>(:) quæ(j)sí(j)vi(j) bo(i)na(j) ti(h)bi.(g.) (::)
+<i>10.</i> Gló(j)ri(j)a(j) Pa(j)tri,(j) et(j) Fí(k)li(j)o,(j.) <i>*</i>(:) et(j) Spi(j)rí(j)tu(i)i(j) Sanc(h)to.(g.) (::)
+<i>11.</i> Sic(j)ut(j) e(j)rat(j) in(j) prin(j)cí(j)pi(j)o,(j) et(j) nunc,(j) et(j) sem(k)per,(j.) <i>*</i>(:) et(j) in(j) sǽ(j)cu(j)la(j) sæ(j)cu(j)ló(i)rum.(j) A(h)men.(g.) (::)`;
+
 // Export as object for consistent API
 export default {
   // Lauds 1
@@ -348,7 +400,7 @@ export default {
   // Vespers 1
   "psalm-109": gabcPsalm109,
   "psalm-112": gabcPsalm112,
-  "psalm-121": gabcPsalm121,
+  "psalm-121-3b": gabcPsalm121_3b,
   "psalm-126": gabcPsalm126,
   "psalm-147": gabcPsalm147,
   "magnificat-chant": gabcMagnificat,
@@ -363,4 +415,9 @@ export default {
   "psalm-53": psalm53,
   "psalm-84": psalm84,
   "psalm-116": psalm116,
+
+  // Terce
+  "psalm-119": psalm119,
+  "psalm-120": psalm120,
+  "psalm-121-8g": psalm121_8G,
 };

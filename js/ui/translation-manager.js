@@ -3,6 +3,8 @@
  * Handles UI and chant translations
  */
 
+import { IDS, getElement } from '../utils/selectors.js';
+
 // Update UI elements with translations (not chant translations)
 export function updateUITranslations(translations, lang) {
   if (!translations) return;
@@ -32,8 +34,8 @@ export function updateChantTranslations(translations, lang) {
 
 // Initialize translation controls
 export function initTranslations(translations) {
-  var checkbox = document.getElementById("show-translations");
-  var langSelect = document.getElementById("language-selector");
+  var checkbox = getElement(IDS.SHOW_TRANSLATIONS);
+  var langSelect = getElement(IDS.LANGUAGE_SELECTOR);
 
   if (!langSelect) return;
 
@@ -58,18 +60,3 @@ export function initTranslations(translations) {
   return langSelect.value;
 }
 
-// Get current language from selector
-export function getCurrentLanguage() {
-  var langSelect = document.getElementById("language-selector");
-  return langSelect ? langSelect.value : 'en';
-}
-
-// Set language programmatically
-export function setLanguage(translations, lang) {
-  var langSelect = document.getElementById("language-selector");
-  if (langSelect) {
-    langSelect.value = lang;
-    updateUITranslations(translations, lang);
-    updateChantTranslations(translations, lang);
-  }
-}

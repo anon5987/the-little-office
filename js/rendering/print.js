@@ -4,91 +4,72 @@
  */
 
 import { extendStaffLines } from './renderer.js';
-
-// Print configuration
-const printWidth = 900; // wider = fewer line breaks = shorter SVGs
-const pageWidth = 720;  // approximate print page width in pixels
+import { RENDER, PRINT } from '../core/constants.js';
 
 // Store for afterprint restoration
 let printSplitData = [];
 
+// Extract Y positions from transforms, sorted and deduped
+// useParent: when true, reads the transform from el.parentElement (for staff groups)
+function extractYPositions(elements, useParent) {
+  const positions = [];
+  elements.forEach(function(el) {
+    const target = useParent ? el.parentElement : el;
+    const transform = target ? target.getAttribute('transform') || '' : '';
+    const match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
+    if (match) {
+      positions.push(parseFloat(match[2]) || 0);
+    }
+  });
+
+  positions.sort(function(a, b) { return a - b; });
+  return positions.filter(function(y, i, arr) {
+    return i === 0 || y - arr[i - 1] > 10;
+  });
+}
+
 // Get Y positions of each system (staff line) in the SVG
 function getSystemYPositions(svg) {
-  var positions = [];
-
   // Find staff groups - first try inside caeciliae, then in entire SVG
-  var caeciliaeGroup = svg.querySelector('g.caeciliae');
-  var staffGroups = caeciliaeGroup
+  const caeciliaeGroup = svg.querySelector('g.caeciliae');
+  const staffGroups = caeciliaeGroup
     ? Array.from(caeciliaeGroup.querySelectorAll('g[id^="staff"]'))
     : [];
 
   // If no staff groups in caeciliae, look for system groups in entire SVG
   if (staffGroups.length <= 1) {
-    var systemGroups = Array.from(svg.querySelectorAll('g[id^="system"]'));
+    const systemGroups = Array.from(svg.querySelectorAll('g[id^="system"]'));
     if (systemGroups.length > 1) {
-      // Extract Y positions directly from system group transforms
-      systemGroups.forEach(function(sys) {
-        var transform = sys.getAttribute('transform') || '';
-        var match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
-        if (match) {
-          var y = parseFloat(match[2]) || 0;
-          positions.push(y);
-        }
-      });
-
-      // Sort and dedupe
-      positions.sort(function(a, b) { return a - b; });
-      positions = positions.filter(function(y, i, arr) {
-        return i === 0 || y - arr[i-1] > 10;
-      });
-
-      return positions;
+      return extractYPositions(systemGroups, false);
     }
   }
 
-  // If we found staff groups in caeciliae, extract Y positions from parent (system) transforms
-  staffGroups.forEach(function(staff) {
-    // The transform is on the parent element (system group), not the staff group itself
-    var parent = staff.parentElement;
-    var transform = parent ? parent.getAttribute('transform') || '' : '';
-    var match = transform.match(/translate\(([^,)]+),\s*([^)]+)\)/);
-    if (match) {
-      var y = parseFloat(match[2]) || 0;
-      positions.push(y);
-    }
-  });
-
-  // Sort by Y position and remove duplicates
-  positions.sort(function(a, b) { return a - b; });
-  positions = positions.filter(function(y, i, arr) {
-    return i === 0 || y - arr[i-1] > 10; // Remove positions within 10px of each other
-  });
-
-  return positions;
+  // Extract Y positions from parent (system) transforms of staff groups
+  return extractYPositions(staffGroups, true);
 }
 
 // Split a multi-line chant SVG into separate line containers
 function splitChantForPrint(svg, targetWidth) {
-  var positions = getSystemYPositions(svg);
+  const positions = getSystemYPositions(svg);
   if (positions.length <= 1) return null;
 
-  var svgWidth = targetWidth || printWidth;
-  var svgHeight = parseFloat(svg.getAttribute('height')) || 800;
+  const svgWidth = targetWidth || PRINT.WIDTH;
+  const svgHeight = parseFloat(svg.getAttribute('height')) || RENDER.DEFAULT_WIDTH;
 
   // Get the staffoffset (caeciliae group Y offset) to adjust coordinates
-  var staffOff = (typeof staffoffset !== 'undefined') ? staffoffset : 44;
+  const staffOff = (typeof staffoffset !== 'undefined') ? staffoffset : RENDER.STAFF_OFFSET_PRINT;
 
   // Create container for line divs (built in memory, inserted once at end)
-  var container = document.createElement('div');
+  const container = document.createElement('div');
   container.className = 'chant-print-lines';
 
-  var lineSvgs = [];
-  var numPositions = positions.length;
-  var normalLineHeight = numPositions > 1 ? positions[1] - positions[0] : 83;
+  const lineSvgs = [];
+  const numPositions = positions.length;
+  const normalLineHeight = numPositions > 1 ? positions[1] - positions[0] : 83;
 
-  for (var index = 0; index < numPositions; index++) {
-    var yPos = positions[index];
-    var lineStart, lineHeight;
+  for (let index = 0; index < numPositions; index++) {
+    const yPos = positions[index];
+    let lineStart, lineHeight;
 
     if (index === 0) {
       lineStart = 0;
@@ -103,12 +84,12 @@ function splitChantForPrint(svg, targetWidth) {
     }
 
     // Create wrapper with fixed height for clipping
-    var lineWrapper = document.createElement('div');
+    const lineWrapper = document.createElement('div');
     lineWrapper.className = 'chant-line';
     lineWrapper.style.cssText = 'height:' + lineHeight + 'px;overflow:hidden;padding-right:10px';
 
     // Clone SVG and use negative margin to show correct portion
-    var lineSvg = svg.cloneNode(true);
+    const lineSvg = svg.cloneNode(true);
     lineSvg.className = 'Exsurge ChantScore chant-line-svg';
     lineSvg.setAttribute('width', svgWidth);
     lineSvg.setAttribute('height', svgHeight);
@@ -146,8 +127,8 @@ function handleBeforePrint() {
 
   if (typeof relayoutChant !== "function") return;
 
-  var scale = pageWidth / printWidth;
-  var svgs = document.querySelectorAll(".chant svg");
+  const scale = PRINT.PAGE_WIDTH / PRINT.WIDTH;
+  const svgs = document.querySelectorAll(".chant svg");
 
   // First pass: relayout all chants (batched reads/writes)
   svgs.forEach(function (svg) {
@@ -159,8 +140,8 @@ function handleBeforePrint() {
 
     // Relayout for print width
     try {
-      relayoutChant(svg, printWidth);
-      extendStaffLines(svg, printWidth);
+      relayoutChant(svg, PRINT.WIDTH);
+      extendStaffLines(svg, PRINT.WIDTH);
     } catch (e) {
       console.error("Print layout error:", e);
     }
@@ -169,20 +150,20 @@ function handleBeforePrint() {
   // Second pass: split and scale (batched)
   svgs.forEach(function (svg) {
     try {
-      var splitData = splitChantForPrint(svg, printWidth);
+      const splitData = splitChantForPrint(svg, PRINT.WIDTH);
       if (splitData) {
         printSplitData.push(splitData);
 
         // Apply scaling to all line SVGs
-        var systems = splitData.systems;
-        for (var i = 0; i < systems.length; i++) {
-          var lineSvg = systems[i];
-          var wrapper = lineSvg.parentElement;
+        const systems = splitData.systems;
+        for (let i = 0; i < systems.length; i++) {
+          const lineSvg = systems[i];
+          const wrapper = lineSvg.parentElement;
           if (wrapper) {
-            var wrapperHeight = parseFloat(wrapper.style.height) || 83;
-            var marginTop = parseFloat(lineSvg.style.marginTop) || 0;
-            var svgW = parseFloat(lineSvg.getAttribute('width')) || printWidth;
-            var svgH = parseFloat(lineSvg.getAttribute('height')) || 600;
+            const wrapperHeight = parseFloat(wrapper.style.height) || 83;
+            const marginTop = parseFloat(lineSvg.style.marginTop) || 0;
+            const svgW = parseFloat(lineSvg.getAttribute('width')) || PRINT.WIDTH;
+            const svgH = parseFloat(lineSvg.getAttribute('height')) || 600;
 
             lineSvg.setAttribute('viewBox', '0 0 ' + svgW + ' ' + svgH);
             lineSvg.setAttribute('width', svgW * scale);
@@ -193,11 +174,11 @@ function handleBeforePrint() {
         }
       } else {
         // Single-line chant - use existing scaling
-        var svgHeight = parseFloat(svg.getAttribute("height")) || 100;
-        svg.setAttribute("viewBox", "0 0 " + printWidth + " " + svgHeight);
-        svg.setAttribute("width", pageWidth);
+        const svgHeight = parseFloat(svg.getAttribute("height")) || RENDER.DEFAULT_HEIGHT;
+        svg.setAttribute("viewBox", "0 0 " + PRINT.WIDTH + " " + svgHeight);
+        svg.setAttribute("width", PRINT.PAGE_WIDTH);
         svg.setAttribute("height", svgHeight * scale);
-        svg.style.width = pageWidth + "px";
+        svg.style.width = PRINT.PAGE_WIDTH + "px";
         svg.style.height = (svgHeight * scale) + "px";
       }
     } catch (e) {
@@ -216,7 +197,7 @@ function handleAfterPrint() {
   if (typeof relayoutChant === "function") {
     document.querySelectorAll(".chant svg").forEach(function (svg) {
       try {
-        var screenWidth = parseFloat(svg.dataset.screenWidth) || svg.parentNode.offsetWidth || 800;
+        const screenWidth = parseFloat(svg.dataset.screenWidth) || svg.parentNode.offsetWidth || RENDER.DEFAULT_WIDTH;
         relayoutChant(svg, screenWidth);
         extendStaffLines(svg, screenWidth);
 
@@ -244,7 +225,9 @@ function handleAfterPrint() {
         delete svg.dataset.screenHeight;
         delete svg.dataset.screenStyle;
         delete svg.dataset.screenViewBox;
-      } catch (e) {}
+      } catch (e) {
+        console.error('Failed to restore SVG after print:', e);
+      }
     });
   }
 }
@@ -256,4 +239,4 @@ export function initPrint() {
 }
 
 // Export for potential direct use
-export { printWidth, pageWidth, handleBeforePrint, handleAfterPrint };
+export { handleBeforePrint, handleAfterPrint };

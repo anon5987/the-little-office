@@ -136,7 +136,7 @@ select, input {
 .hour-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-medium);
-  box-shadow: 0 2px 8px var(--shadow-color);
+  box-shadow: 0 8px 24px var(--shadow-color);
 }
 
 .hour-card.recommended {
