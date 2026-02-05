@@ -132,8 +132,8 @@ export default {
     cs: "V hodinu ranních chval, před svítáním, náš Pán Ježíš Kristus vstal z mrtvých a zjevil se nejprve své blahoslavené Matce a poté svatým ženám u hrobu. V tutéž hodinu, po svém Zmrtvýchvstání, se zjevil dvěma učedníkům na cestě do Emauz.",
   },
   "ui-description-compline": {
-    en: "At Compline time, when the day is ended and night has fallen, we commend ourselves to God's protection during the hours of sleep. Our Lord Jesus Christ was laid in the tomb in the evening, and in the quiet of night the holy women prepared spices to anoint His body.",
-    cs: "V hodinu kompletáře, kdy den končí a noc nastává, svěřujeme se do Boží ochrany během spánku. Náš Pán Ježíš Kristus byl večer položen do hrobu a v tichu noci svaté ženy připravovaly vonné masti k pomazání jeho těla.",
+    en: "Compline is the end of the day; and in the end of our life we have most need of our Lady's help, and therefore in all these hours we ought to do her worship and praising. Also the pains that our Lord Jesus Christ suffered in His Holy Passion in all these seven hours our Lady His Mother suffered the same pain in her heart by compassion, and therefore it is convenient to praise her and do her service in all the same hours. O most blessed Virgin, as the day draws to a close may your prayers be ever with us. Amen.",
+    cs: "Kompletář završuje den; a na sklonku života nejvíce potřebujeme pomoc naší Paní, proto jí v těchto hodinkách vzdáváme úctu a chválu. Vše, co náš Pán Ježíš Kristus vytrpěl ve svém svatém utrpení, prožívala jeho Matka spolu s ním ve svém srdci ze soucitu, a proto je vhodné ji oslavovat a sloužit jí v každé z těchto sedmi hodinek. Ó nejblahoslavenější Panno, když se den chýlí ke konci, kéž nás tvé modlitby stále provázejí. Amen.",
   },
 
   // Psalm labels - Compline
@@ -219,6 +219,10 @@ export default {
     en: "Let us bless the Lord.\nThanks be to God.\nMay the almighty and merciful Lord, Father, and Son, and Holy Ghost, bless and preserve us.\nAmen.",
     cs: "Dobrořečme Pánu.\nBohu díky.\nAť nás všemohoucí a milosrdný Pán, Otec i Syn i Duch Svatý, požehná a ochraňuje.\nAmen.",
   },
+  "divinum-auxilium": {
+    en: "May the divine help remain always with us. Amen.",
+    cs: "Boží pomoc ať zůstává vždy s námi. Amen.",
+  },
 
   // Landing page
   "ui-landing-title": {
@@ -268,7 +272,7 @@ export default {
     cs: "Zrušit",
   },
 
-  // Marian Antiphons
+  // Marian Antiphons TODO revise translations
   "alma-redemptoris-mater": {
     en: "Loving Mother of our Saviour, hear thou thy people's cry.\nStar of the deep and Portal of the sky!\nMother of Him who thee from nothing made,\nSinking we strive and call to thee for aid.\nOh, by that joy which Gabriel brought to thee,\nThou Virgin first and last, let us thy mercy see.",
     cs: "Laskavá Matko Vykupitele, slyš volání svého lidu.\nHvězdo mořská a Bráno nebeská!\nMatko Toho, jenž tě z ničeho stvořil,\nklesajíce voláme k tobě o pomoc.\nPro radost, kterou ti Gabriel přinesl,\nPanno první i poslední, ukaž nám své milosrdenství.",
@@ -295,23 +299,23 @@ export default {
   },
   "ave-regina-versicle": {
     en: "Vouchsafe that I may praise thee, O sacred Virgin.\nGive me strength against thine enemies.",
-    cs: "Dopřej mi, abych tě chválil, Panno svatá.\nDej mi sílu proti tvým nepřátelům.",
+    cs: "Popřej mi, abych tě chválil, svatá Panno.\nDej mi sílu proti tvým nepřátelům.",
   },
   "ave-regina-prayer": {
     en: "Let us pray. Grant, O merciful God, to our weak natures Thy protection, that we who commemorate the holy Mother of God may, by the help of her intercession, arise from our iniquities. Through the same Christ our Lord. Amen.",
-    cs: "Modleme se. Uděl, milosrdný Bože, oporu naší slabosti: abychom my, kteří vzpomínáme na svatou Matku Boží, s pomocí její přímluvy povstali z našich nepravostí. Skrze téhož Krista, našeho Pána. Amen.",
+    cs: "Modleme se. Popřej, milosrdný Bože, ochranu naší křehkosti: abychom, kteří konáme památku svaté Rodičky Boží, povstali pomocí její přímluvy ze svých nepravostí. Amen.",
   },
   "regina-caeli-laetare": {
     en: "Queen of Heaven, rejoice, alleluia.\nFor He whom you did merit to bear, alleluia.\nHas risen, as he said, alleluia.\nPray for us to God, alleluia.",
     cs: "Raduj se, Královno nebeská, aleluja.\nNeboť ten, kterého jsi zasloužila nosit, aleluja.\nVstal z mrtvých, jak předpověděl, aleluja.\nPros za nás Boha, aleluja.",
   },
   "regina-caeli-versicle": {
-    en: "Rejoice and be glad, O Virgin Mary, alleluia.\nFor the Lord has truly risen, alleluia.",
-    cs: "Raduj se a vesel se, Panno Maria, aleluja.\nNeboť Pán vpravdě vstal z mrtvých, aleluja.",
+    en: "Rejoice and be glad, O Virgin Mary, alleluia.\nFor the Lord hath risen indeed, alleluia.",
+    cs: "Raduj se a vesel se, Panno Maria, aleluja.\nNeboť Pán vpravdě z mrtvých vstal, aleluja.",
   },
   "regina-caeli-prayer": {
-    en: "Let us pray. O God, who gave joy to the world through the resurrection of Thy Son, our Lord Jesus Christ: grant, we beseech Thee, that through His Mother, the Virgin Mary, we may obtain the joys of everlasting life. Through the same Christ our Lord. Amen.",
-    cs: "Modleme se. Bože, jenž jsi skrze vzkříšení svého Syna, našeho Pána Ježíše Krista, dal světu radost: dej, prosíme, abychom skrze jeho Matku, Pannu Marii, dosáhli radostí věčného života. Skrze téhož Krista, našeho Pána. Amen.",
+    en: "Let us pray. O God, Who didst vouchsafe to give joy to the world through the Resurrection of Thy Son, Our Lord Jesus Christ; grant, we beseech Thee, that, through His Mother, the Virgin Mary, we may obtain the joys of everlasting life. Through the same Christ our Lord. Amen.",
+    cs: "Modleme se. Bože, vzkříšením svého Syna, našeho Pána Ježíše Krista, jsi naplnil svět radostí; na přímluvu jeho Rodičky, Panny Marie, dej ať dosáhneme radosti života věčného. Skrze Krista, našeho Pána. Amen.",
   },
   "salve-regina": {
     en: "Hail, holy Queen, Mother of Mercy,\nour life, our sweetness and our hope.\nTo thee do we cry, poor banished children of Eve;\nto thee do we send up our sighs,\nmourning and weeping in this valley of tears.\nTurn then, most gracious advocate,\nthine eyes of mercy toward us,\nand after this our exile,\nshow unto us the blessed fruit of thy womb, Jesus.\nO clement, O loving, O sweet Virgin Mary.",
