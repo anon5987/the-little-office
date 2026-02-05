@@ -82,8 +82,7 @@ the-little-office/
 │       ├── marian-season.js# Marian antiphon selection
 │       └── hour-time.js    # Hour recommendations
 ├── data/                   # Content modules
-│   ├── index.js            # Aggregates all data modules
-│   ├── hours/              # Hour definitions (vespers.js, lauds.js, compline.js)
+│   ├── hours/              # Hour definitions (vespers.js, lauds.js, compline.js, prime.js, terce.js)
 │   ├── gabc/               # GABC chant notation
 │   │   ├── common/         # Shared chants (opening, closing, marian-antiphons)
 │   │   └── office1/        # Office-specific (antiphons, psalms, hymns, chapters, versicles)

@@ -19,10 +19,3 @@ export function detectIOS() {
   return isIOS;
 }
 
-/**
- * Check if current device is iOS
- * @returns {boolean}
- */
-export function isIOSDevice() {
-  return document.documentElement.classList.contains('ios-device');
-}

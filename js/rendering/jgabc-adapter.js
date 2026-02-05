@@ -24,10 +24,14 @@ export function isJgabcReady() {
  * @returns {Promise<void>}
  */
 export function waitForJgabcReady() {
-  return new Promise((resolve) => {
+  const MAX_ATTEMPTS = 100;
+  return new Promise((resolve, reject) => {
+    let attempts = 0;
     const check = () => {
       if (isJgabcReady()) {
         resolve();
+      } else if (++attempts >= MAX_ATTEMPTS) {
+        reject(new Error('jgabc library failed to load after ' + (MAX_ATTEMPTS * DELAYS.JGABC_RETRY / 1000) + 's'));
       } else {
         setTimeout(check, DELAYS.JGABC_RETRY);
       }
@@ -40,11 +44,14 @@ export function waitForJgabcReady() {
  * Wait for jgabc with callback (legacy API)
  * @param {Function} callback - Function to call when ready
  */
-export function waitForJgabc(callback) {
+export function waitForJgabc(callback, _attempts = 0) {
+  const MAX_ATTEMPTS = 100;
   if (isJgabcReady()) {
     if (callback) callback();
+  } else if (_attempts >= MAX_ATTEMPTS) {
+    console.error('jgabc library failed to load after ' + (MAX_ATTEMPTS * DELAYS.JGABC_RETRY / 1000) + 's');
   } else {
-    setTimeout(() => waitForJgabc(callback), DELAYS.JGABC_RETRY);
+    setTimeout(() => waitForJgabc(callback, _attempts + 1), DELAYS.JGABC_RETRY);
   }
 }
 

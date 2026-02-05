@@ -102,7 +102,7 @@ export function renderLandingPage() {
           <li><s>${getHourNameTranslated("lauds", lang)}</s> <span class="plan-date">(${new Date("2026-02-03").toLocaleDateString(lang)})</span></li>
           <li><s>${getHourNameTranslated("compline", lang)}</s> <span class="plan-date">(${new Date("2026-02-05").toLocaleDateString(lang)})</span></li>
           <li><s>${getHourNameTranslated("prime", lang)}</s> <span class="plan-date">(${new Date("2026-02-05").toLocaleDateString(lang)})</span></li>
-          <li>${getHourNameTranslated("terce", lang)}</li>
+          <li><s>${getHourNameTranslated("terce", lang)}</s> <span class="plan-date">(${new Date("2026-02-05").toLocaleDateString(lang)})</span></li>
           <li>${getHourNameTranslated("sext", lang)}</li>
           <li>${getHourNameTranslated("none", lang)}</li>
           <li>
@@ -147,9 +147,6 @@ export function renderLandingPage() {
       const isDark = !getState().darkMode;
       set("darkMode", isDark);
       document.body.classList.toggle(CSS_CLASSES.DARK_MODE, isDark);
-      // Update checkbox in header menu if exists
-      const headerCheckbox = getElement(IDS.DARK_MODE_CHECKBOX);
-      if (headerCheckbox) headerCheckbox.checked = isDark;
       renderLandingPage();
     });
   }

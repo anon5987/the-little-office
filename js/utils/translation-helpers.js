@@ -17,14 +17,6 @@ export function setTranslationsCache(translations) {
 }
 
 /**
- * Get translations cache
- * @returns {Object|null}
- */
-export function getTranslationsCache() {
-  return translationsCache;
-}
-
-/**
  * Get hour name from translations or fallback
  * @param {string} hourId - Hour identifier
  * @param {string} lang - Language code

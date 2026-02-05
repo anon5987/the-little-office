@@ -12,14 +12,7 @@
  * 4. salve-regina: Trinity Monday → Advent 1 Eve
  */
 
-import { getFirstSundayOfAdvent } from './season.js';
-
-/**
- * Convert a Date to YYYYMMDD integer for comparison
- */
-function toDateValue(date) {
-  return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
-}
+import { getFirstSundayOfAdvent, toDateValue } from './season.js';
 
 /**
  * Check if a date falls within an inclusive range

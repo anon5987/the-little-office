@@ -67,20 +67,6 @@ export function navigate(hour, options = {}) {
 }
 
 /**
- * Navigate to landing page (remove hash)
- */
-export function navigateToLanding() {
-  window.location.hash = '';
-}
-
-/**
- * Get current route
- */
-export function getRoute() {
-  return { ...currentRoute };
-}
-
-/**
  * Check if on landing page (no hour selected)
  */
 export function isLandingPage() {

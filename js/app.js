@@ -15,6 +15,7 @@ import {
 import { initState, getState, set, subscribe } from './core/state.js';
 import {
   initRouter,
+  parseHash,
   onRouteChange,
   isLandingPage,
   navigate,
@@ -78,6 +79,14 @@ function handleRouteChange(newRoute, oldRoute) {
       })
       .catch((e) => {
         console.error('Failed to render hour page:', e);
+        const content = getElement(IDS.HOUR_CONTENT_AREA);
+        if (content) {
+          const p = document.createElement('p');
+          p.className = 'error';
+          p.textContent = `Failed to load page. ${e.message}`;
+          content.innerHTML = '';
+          content.appendChild(p);
+        }
       });
   }
 }
@@ -93,13 +102,21 @@ function handleDateOverrideChange() {
     app.currentView = renderLandingPage();
   } else {
     // Re-render the current hour page with new date
-    const currentRoute = initRouter();
+    const currentRoute = parseHash();
     renderHourPage(currentRoute.hour, currentRoute.params)
       .then((view) => {
         app.currentView = view;
       })
       .catch((e) => {
         console.error('Failed to render hour page:', e);
+        const content = getElement(IDS.HOUR_CONTENT_AREA);
+        if (content) {
+          const p = document.createElement('p');
+          p.className = 'error';
+          p.textContent = `Failed to load page. ${e.message}`;
+          content.innerHTML = '';
+          content.appendChild(p);
+        }
       });
   }
 }
@@ -191,7 +208,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize with global translations if available, otherwise initialize without
   const globalTranslations =
     typeof translations !== 'undefined' ? translations : null;
-  init(globalTranslations);
+  init(globalTranslations).catch(function (e) {
+    console.error('Application initialization failed:', e);
+    var p = document.createElement('p');
+    p.className = 'error';
+    p.textContent = 'Failed to initialize application. Please reload the page.';
+    document.body.appendChild(p);
+  });
 });
 
 // Export app object for debugging

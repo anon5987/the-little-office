@@ -3,6 +3,9 @@
  * Handles rendering of GABC notation to SVG using the jgabc library
  */
 
+import { isJgabcReady, getHeaderSafe, getDefsSafe, getStaffOffset, setSvgWidth, getChantSafe, relayoutChantSafe } from './jgabc-adapter.js';
+import { RENDER, DELAYS } from '../core/constants.js';
+
 // Normalize GABC: trim leading whitespace from each line (handles autoformat)
 export function normalizeGabc(source) {
   return source
@@ -58,7 +61,7 @@ export function renderGabc(container) {
   // Normalize whitespace from autoformatting
   gabcSource = normalizeGabc(gabcSource);
 
-  var width = container.offsetWidth || 800;
+  var width = container.offsetWidth || RENDER.DEFAULT_WIDTH;
 
   // Create wrapper div for jgabc (it needs #chant-preview or [for] attribute)
   var wrapperId = "chant-preview-" + Math.random().toString(36).substr(2, 9);
@@ -77,9 +80,8 @@ export function renderGabc(container) {
   wrapper.appendChild(svg);
 
   try {
-    // Parse GABC header and text using jgabc's getHeader function
-    var header =
-      typeof getHeader === "function" ? getHeader(gabcSource) : null;
+    // Parse GABC header and text
+    var header = getHeaderSafe(gabcSource);
     var text = gabcSource;
     if (header && header.original) {
       text = gabcSource.slice(header.original.length);
@@ -89,51 +91,36 @@ export function renderGabc(container) {
     var result = document.createElementNS(svgns, "g");
     result.setAttribute(
       "transform",
-      "translate(0," +
-        (typeof staffoffset !== "undefined" ? staffoffset : 36) +
-        ")"
+      "translate(0," + getStaffOffset() + ")"
     );
     result.setAttribute("class", "caeciliae");
     svg.appendChild(result);
 
     // Append defs if available
-    if (typeof _defs !== "undefined" && _defs) {
-      svg.insertBefore(_defs.cloneNode(true), result);
+    var defs = getDefsSafe();
+    if (defs) {
+      svg.insertBefore(defs, result);
     }
 
     // Set global width for jgabc
-    if (typeof svgWidth !== "undefined") {
-      svgWidth = width;
-    }
+    setSvgWidth(width);
 
     // Call jgabc's getChant function
     var top = [0];
-    if (typeof getChant === "function") {
-      getChant([header, text], svg, result, top);
-    }
+    getChantSafe([header, text], svg, result, top);
 
     // Relayout to fit width (may fail if fonts not loaded yet)
-    try {
-      if (typeof relayoutChant === "function") {
-        relayoutChant(svg, width);
-      }
-    } catch (relayoutError) {
+    if (!relayoutChantSafe(svg, width)) {
       // Schedule a retry during idle time to avoid blocking user interaction
       const retryRelayout = () => {
-        try {
-          if (typeof relayoutChant === "function") {
-            relayoutChant(svg, width);
-          }
-          extendStaffLines(svg, width);
-        } catch (e) {
-          console.warn('GABC relayout retry failed:', e);
-        }
+        relayoutChantSafe(svg, width);
+        extendStaffLines(svg, width);
       };
 
       if (typeof requestIdleCallback === "function") {
-        requestIdleCallback(retryRelayout, { timeout: 2000 });
+        requestIdleCallback(retryRelayout, { timeout: DELAYS.IDLE_TIMEOUT });
       } else {
-        setTimeout(retryRelayout, 500);
+        setTimeout(retryRelayout, DELAYS.FONT_FALLBACK);
       }
     }
 
@@ -153,13 +140,16 @@ export function renderGabc(container) {
       svg.setAttribute("height", height);
     } catch (e) {
       console.warn('Could not calculate SVG height, using fallback:', e);
-      svg.setAttribute("height", 100);
+      svg.setAttribute("height", RENDER.DEFAULT_HEIGHT);
     }
 
   } catch (e) {
     console.error("GABC render error:", e);
-    container.innerHTML =
-      "<p style='color:red'>Error rendering GABC: " + e.message + "</p>";
+    var p = document.createElement('p');
+    p.className = 'error';
+    p.textContent = 'Error rendering GABC: ' + e.message;
+    container.innerHTML = '';
+    container.appendChild(p);
   }
 }
 
@@ -257,37 +247,33 @@ export async function renderAllGabc(container = document) {
   }
 }
 
-// Synchronous version for backwards compatibility
-export function renderAllGabcSync(container = document) {
-  container
-    .querySelectorAll("[data-gabc], [data-gabc-id]")
-    .forEach(renderGabc);
-}
-
 // Wait for jQuery and jgabc to be ready, then render
 export function waitForJgabc(callback) {
-  const isReady = () =>
-    typeof $ !== "undefined" &&
-    typeof getChant === "function" &&
-    typeof _defs !== "undefined";
+  const MAX_ATTEMPTS = 100;
 
   const execute = () => {
     if (callback) callback();
     else renderAllGabc();
   };
 
-  if (isReady()) {
+  if (isJgabcReady()) {
     execute();
   } else {
     // Try once more after a frame, then fall back to polling
     requestAnimationFrame(() => {
-      if (isReady()) {
+      if (isJgabcReady()) {
         execute();
       } else {
         // Fall back to polling if still not ready
+        let attempts = 0;
         const poll = () => {
-          if (isReady()) execute();
-          else setTimeout(poll, 50);
+          if (isJgabcReady()) {
+            execute();
+          } else if (++attempts >= MAX_ATTEMPTS) {
+            console.error('jgabc library failed to load after ' + (MAX_ATTEMPTS * DELAYS.JGABC_RETRY / 1000) + 's');
+          } else {
+            setTimeout(poll, DELAYS.JGABC_RETRY);
+          }
         };
         poll();
       }
@@ -300,7 +286,8 @@ export function extendAllStaffLines() {
   document
     .querySelectorAll("[data-gabc] svg, [data-gabc-id] svg")
     .forEach(function (svg) {
-      var width = svg.parentNode.parentNode.offsetWidth || 800;
+      var parent = svg.parentNode && svg.parentNode.parentNode;
+      var width = (parent && parent.offsetWidth) || RENDER.DEFAULT_WIDTH;
       extendStaffLines(svg, width);
     });
 }
@@ -310,30 +297,27 @@ export function initRenderer() {
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () {
       // Just extend staff lines on existing chants, don't re-render
-      setTimeout(extendAllStaffLines, 200);
+      setTimeout(extendAllStaffLines, DELAYS.FONT_LOAD);
     });
   } else {
-    setTimeout(extendAllStaffLines, 500);
+    setTimeout(extendAllStaffLines, DELAYS.FONT_FALLBACK);
   }
 }
 
-// Handle window resize - re-render all chants (debounced)
+// Handle window resize - relayout all chants to fit new width (debounced)
 let resizeTimeout;
 export function handleResize() {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(function () {
-    if (typeof $ !== "undefined" && typeof relayoutChant === "function") {
+    if (isJgabcReady()) {
       document
         .querySelectorAll("[data-gabc] svg, [data-gabc-id] svg")
         .forEach(function (svg) {
-          try {
-            var width = svg.parentNode.parentNode.offsetWidth || 800;
-            relayoutChant(svg, width);
-            extendStaffLines(svg, width);
-          } catch (e) {
-            console.warn('Failed to relayout chant on resize:', e);
-          }
+          var parent = svg.parentNode && svg.parentNode.parentNode;
+          var width = (parent && parent.offsetWidth) || RENDER.DEFAULT_WIDTH;
+          relayoutChantSafe(svg, width);
+          extendStaffLines(svg, width);
         });
     }
-  }, 250);
+  }, DELAYS.RESIZE_DEBOUNCE);
 }

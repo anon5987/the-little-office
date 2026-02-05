@@ -59,15 +59,6 @@ export function cleanupScope(scope) {
   listenerRegistry.delete(scope);
 }
 
-/**
- * Clean up all scopes
- */
-export function cleanupAll() {
-  for (const scope of listenerRegistry.keys()) {
-    cleanupScope(scope);
-  }
-}
-
 // Event scope identifiers
 export const SCOPES = {
   LANDING_PAGE: 'landing-page',

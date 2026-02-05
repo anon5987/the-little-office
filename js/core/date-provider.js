@@ -15,14 +15,6 @@ export function getCurrentDate() {
 }
 
 /**
- * Check if a date override is currently active
- * @returns {boolean}
- */
-export function hasDateOverride() {
-  return !!getState().dateOverride;
-}
-
-/**
  * Format a Date for datetime-local input value
  * @param {Date} date
  * @returns {string} YYYY-MM-DDTHH:MM format

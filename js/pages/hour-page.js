@@ -87,7 +87,11 @@ export async function renderHourPage(hourId, params = {}) {
     setScrollHour(hourId);
   } catch (e) {
     console.error('Failed to render hour:', e);
-    contentArea.innerHTML = `<p class="error">Failed to load ${hourId}. ${e.message}</p>`;
+    const p = document.createElement('p');
+    p.className = 'error';
+    p.textContent = `Failed to load ${hourId}. ${e.message}`;
+    contentArea.innerHTML = '';
+    contentArea.appendChild(p);
     clearCurrentHourData();
   }
 

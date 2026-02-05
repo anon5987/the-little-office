@@ -1,7 +1,7 @@
 /**
  * Terce Hour Definition
  *
- * Defines the structure and content of Terce (Second Hour)
+ * Defines the structure and content of Terce (Third Hour)
  * @see {import('../../js/core/types.js').HourDefinition}
  */
 
@@ -58,7 +58,7 @@ export const terce = {
       gabcId: "et-sic-in-sion",
       translationKey: "et-sic-in-sion",
       labelKey: "ui-little-chapter",
-      reference: "Cant. vi. 9.",
+      reference: "Ecclus. xxiv. 15.",
       id: "reading",
     },
 
@@ -102,11 +102,11 @@ export const terce = {
     },
     2: {
       // Office 2 (Advent) - placeholder for antiphon/hymn changes
-      // overrides: { 'o-gloriosa-virginum': 'conditor-alme-siderum' }
+      // overrides: { 'memento-rerum-conditor': 'conditor-alme-siderum' }
     },
     3: {
       // Office 3 (Christmas to Purification) - placeholder
-      // overrides: { 'o-gloriosa-virginum': 'jesu-redemptor-omnium' }
+      // overrides: { 'memento-rerum-conditor': 'jesu-redemptor-omnium' }
     },
   },
 };

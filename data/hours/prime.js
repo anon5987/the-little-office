@@ -102,11 +102,11 @@ export const prime = {
     },
     2: {
       // Office 2 (Advent) - placeholder for antiphon/hymn changes
-      // overrides: { 'o-gloriosa-virginum': 'conditor-alme-siderum' }
+      // overrides: { 'memento-rerum-conditor': 'conditor-alme-siderum' }
     },
     3: {
       // Office 3 (Christmas to Purification) - placeholder
-      // overrides: { 'o-gloriosa-virginum': 'jesu-redemptor-omnium' }
+      // overrides: { 'memento-rerum-conditor': 'jesu-redemptor-omnium' }
     },
   },
 };

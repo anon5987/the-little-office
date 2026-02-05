@@ -80,7 +80,7 @@ text.annotation {
   user-select: none;
 }
 body {
-  color: #000;
+  color: var(--text-primary, #000);
   -webkit-user-select: none;
   user-select: none;
 }

@@ -128,10 +128,24 @@ export async function loadGabcContent(office = 1) {
 
     let [antiphons, psalms, hymns, versicles, chapters] = await loadOfficeGabc(office);
 
-    // Fall back to office 1 if office-specific files not found
-    if (!antiphons && !psalms && !hymns && !versicles && !chapters && office !== 1) {
-      console.warn(`Office ${office} GABC not found, falling back to Office 1`);
-      [antiphons, psalms, hymns, versicles, chapters] = await loadOfficeGabc(1);
+    // Fall back to office 1 individually for any modules that failed to load
+    if (office !== 1) {
+      const missing = [];
+      if (!antiphons) missing.push('antiphons');
+      if (!psalms) missing.push('psalms');
+      if (!hymns) missing.push('hymns');
+      if (!versicles) missing.push('versicles');
+      if (!chapters) missing.push('chapters');
+
+      if (missing.length > 0) {
+        console.warn(`Office ${office} missing ${missing.join(', ')}, falling back to Office 1`);
+        const [fb_ant, fb_ps, fb_hy, fb_ver, fb_ch] = await loadOfficeGabc(1);
+        if (!antiphons) antiphons = fb_ant;
+        if (!psalms) psalms = fb_ps;
+        if (!hymns) hymns = fb_hy;
+        if (!versicles) versicles = fb_ver;
+        if (!chapters) chapters = fb_ch;
+      }
     }
 
     if (antiphons) Object.assign(gabc, antiphons.default || antiphons);
@@ -311,6 +325,8 @@ function renderChant(section, gabc, container) {
   // Add chant
   if (gabc[section.gabcId]) {
     appendChant(wrapper, section.gabcId, gabc[section.gabcId], section.translationKey);
+  } else {
+    console.warn(`Missing GABC content for: ${section.gabcId}`);
   }
 
   container.appendChild(wrapper);
@@ -413,6 +429,8 @@ function renderChantVariants(section, gabc, container) {
         // Render with individual translation
         appendChant(wrapper, variant.gabcId, gabc[variant.gabcId], variant.translationKey);
       }
+    } else {
+      console.warn(`Missing GABC content for variant: ${variant.gabcId}`);
     }
   }
 
@@ -446,6 +464,8 @@ function renderChantSequence(section, gabc, container) {
         : item.gabcId;
 
       appendChant(wrapper, uniqueId, gabc[item.gabcId], item.translationKey);
+    } else {
+      console.warn(`Missing GABC content for sequence item: ${item.gabcId}`);
     }
   }
 
@@ -485,6 +505,8 @@ function renderDynamic(section, gabc, container, hourId) {
   for (const item of items) {
     if (gabc[item.gabcId]) {
       appendChant(wrapper, item.gabcId, gabc[item.gabcId], item.translationKey);
+    } else {
+      console.warn(`Missing GABC content for dynamic item: ${item.gabcId}`);
     }
   }
 
@@ -537,7 +559,11 @@ export async function renderHour(hourId, container, options = {}) {
   ]);
 
   if (!hourDef) {
-    container.innerHTML = `<p class="error">Hour "${hourId}" not found.</p>`;
+    const p = document.createElement('p');
+    p.className = 'error';
+    p.textContent = `Hour "${hourId}" not found.`;
+    container.innerHTML = '';
+    container.appendChild(p);
     return;
   }
 
