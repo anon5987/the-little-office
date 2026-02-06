@@ -37,6 +37,12 @@ De(h)us(h) qui(h) vir(h)gi(h)na(h)lem(h) au(h)lam(h) be(h)a(h)tae(h) Ma(h)ri(h)a
 A(g.)men.(h.) (::)
 `,
 
+  "concede-misericors-Deus": `initial-style: 1;
+%%
+(c3)O(h)re(h)mus.(f) (::)
+Con(h)ce(h)de,(h) mi(h)se(h)ri(h)cors(h) De(h)us,(h) fra(h)gi(h)li(h)ta(h)ti(h) no(h)strae(h) prae(h)si(h)di(f)um(f) (;) ut,(h) qui(h) san(h)ctae(h) De(h)i(h) Ge(h)ne(h)tri(h)cis(h) me(h)mo(h)ri(g)am(f) a(h)gi(h)mus;(h) (:) in(h)ter(h)ces(h)si(h)o(h)nis(h) e(h)jus(h) au(h)xi(h)li(h)o,(h) a(h) no(h)stris(h) i(h)ni(h)qui(h)ta(h)ti(h)bus(h) re(h)sur(h)ga(h)mus.(f) (:) Per(h) e(h)un(h)dem(h) Chri(h)stum(h) Do(h)mi(h)num(h) no(h)strum.(f.) <i>R.</i> (::)
+A(g.)men.(h.) (::)`,
+
   "beatae-et-gloriosae": `initial-style: 1;
 %%
 (c3)O(h)re(h)mus.(f) (::)

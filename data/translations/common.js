@@ -201,6 +201,20 @@ export default {
     cs: "Žalm 120.",
   },
 
+  // Psalm labels - Sext
+  "ui-psalm-122": {
+    en: "Psalm cxxii.",
+    cs: "Žalm 122.",
+  },
+  "ui-psalm-123": {
+    en: "Psalm cxxiii.",
+    cs: "Žalm 123.",
+  },
+  "ui-psalm-124": {
+    en: "Psalm cxxiv.",
+    cs: "Žalm 124.",
+  },
+
   // Psalm labels - Lauds
   "ui-psalm-92": {
     en: "Psalm xcii.",
