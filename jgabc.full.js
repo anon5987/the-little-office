@@ -346,6 +346,7 @@ var abcs = {};
 var _defs = null;
 var defText = null;
 var _defText = null;
+function _defTextQHeight(){try{return _defText.getExtentOfChar(0).height}catch(e){return 0}}
 var defChant = null;
 var masks = [];
 var selectedPunctum=-1;
@@ -509,7 +510,7 @@ function updateChant(text, svg, dontDelay) {
   var top=[0];
   var newElem = getChant(text,svg,old,top);
   //svg.replaceChild(newElem,old);
-  var height = newElem.getBBox().height + top[0] + _heightCorrection - _defText.getExtentOfChar("q").height;
+  var height = newElem.getBBox().height + top[0] + _heightCorrection - _defTextQHeight();
   $(svg).height(height);
   //svg.setAttribute('height',height);
   if(svg.parentNode.tagName.match(/span/i)){
@@ -1138,7 +1139,7 @@ function relayoutChant(svg, width){
     $staff = $svg.find('#system'+staffI+',.system'+staffI);
     $staff.remove();
   }
-  var height = $svg.children("g")[0].getBBox().height + extraHeight + _heightCorrection - _defText.getExtentOfChar("q").height;
+  var height = $svg.children("g")[0].getBBox().height + extraHeight + _heightCorrection - _defTextQHeight();
   svg.setAttribute('height',height);
   $svg.height(height);
 }
@@ -2848,7 +2849,7 @@ $(function() {
           ++i;
         }
       }
-      svg.setAttribute('height',$(svg).children("g")[0].getBBox().height + extraHeight + _heightCorrection - _defText.getExtentOfChar("q").height);
+      svg.setAttribute('height',$(svg).children("g")[0].getBBox().height + extraHeight + _heightCorrection - _defTextQHeight());
       
       punctumId = selectedPunctum - punctumId;
       selectedPunctumTag=null;
