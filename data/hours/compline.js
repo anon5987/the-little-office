@@ -19,13 +19,18 @@ export const compline = {
       type: "chant",
       gabcId: "converte-nos-Deus",
       translationKey: "converte-nos-Deus",
-      id: "converte"
+      id: "converte",
     },
+
     {
       type: "chant",
       gabcId: "Deus-in-adjutorium",
       translationKey: "Deus-in-adjutorium",
-      id: "intro"
+      id: "intro",
+    },
+
+    {
+      type: "separator",
     },
 
     {
@@ -34,23 +39,37 @@ export const compline = {
       translationKey: "psalm-128",
       labelKey: "ui-psalm-128",
       incipit: "Sæpe expugnaverunt",
-      id: "psalm-128"
+      id: "psalm-128",
     },
+
+    {
+      type: "separator",
+    },
+
     {
       type: "chant",
       gabcId: "psalm-129",
       translationKey: "psalm-129",
       labelKey: "ui-psalm-129",
       incipit: "De profundis",
-      id: "psalm-129"
+      id: "psalm-129",
     },
+
+    {
+      type: "separator",
+    },
+
     {
       type: "chant",
       gabcId: "psalm-130",
       translationKey: "psalm-130",
       labelKey: "ui-psalm-130",
       incipit: "Domine, non est",
-      id: "psalm-130"
+      id: "psalm-130",
+    },
+
+    {
+      type: "separator",
     },
 
     {
@@ -58,7 +77,11 @@ export const compline = {
       gabcId: "memento-rerum-conditor",
       translationKey: "memento-rerum-conditor",
       labelKey: "ui-hymn",
-      id: "hymnus"
+      id: "hymnus",
+    },
+
+    {
+      type: "separator",
     },
 
     {
@@ -67,24 +90,28 @@ export const compline = {
       translationKey: "ego-mater",
       labelKey: "ui-little-chapter",
       reference: "Ecclus. xxiv. 24.",
-      id: "reading"
+      id: "reading",
     },
 
     {
-      type: 'chant-variants',
+      type: "chant-variants",
       variants: [
         {
-          gabcId: 'ora-pro-nobis-solemn',
-          labelKey: 'ui-sundays-feasts',
-          translationKey: 'ora-pro-nobis'
+          gabcId: "ora-pro-nobis-solemn",
+          labelKey: "ui-sundays-feasts",
+          translationKey: "ora-pro-nobis",
         },
         {
-          gabcId: 'ora-pro-nobis-simple',
-          labelKey: 'ui-other-times',
-          translationKey: 'ora-pro-nobis'
-        }
+          gabcId: "ora-pro-nobis-simple",
+          labelKey: "ui-other-times",
+          translationKey: "ora-pro-nobis",
+        },
       ],
-      id: 'versicle'
+      id: "versicle",
+    },
+
+    {
+      type: "separator",
     },
 
     {
@@ -93,11 +120,15 @@ export const compline = {
         {
           gabcId: "nunc-dimittis",
           translationKey: "nunc-dimittis-chant",
-          labelKey: "ui-nunc-dimittis"
-        }
+          labelKey: "ui-nunc-dimittis",
+        },
       ],
       antiphonKey: "sub-tuum-praesidium",
-      id: "canticle"
+      id: "canticle",
+    },
+
+    {
+      type: "separator",
     },
 
     {
@@ -105,28 +136,38 @@ export const compline = {
       id: "end",
       items: [
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
-        { gabcId: "beatae-et-gloriosae", translationKey: "beatae-et-gloriosae" },
+        {
+          gabcId: "beatae-et-gloriosae",
+          translationKey: "beatae-et-gloriosae",
+        },
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
-        { gabcId: "benedicamus-benedicat", translationKey: "benedicamus-benedicat" }
-      ]
+        {
+          gabcId: "benedicamus-benedicat",
+          translationKey: "benedicamus-benedicat",
+        },
+      ],
+    },
+
+    {
+      type: "separator",
     },
 
     {
       type: "dynamic",
       resolver: "marian-antiphon",
       labelKey: "ui-marian-antiphon",
-      id: "marian-antiphon"
+      id: "marian-antiphon",
     },
 
     {
       type: "chant",
       gabcId: "divinum-auxilium",
       translationKey: "divinum-auxilium",
-      id: "ending"
+      id: "ending",
     },
   ],
 
-  seasonal: {}
+  seasonal: {},
 };
 
 export default compline;

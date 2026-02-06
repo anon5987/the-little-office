@@ -31,6 +31,9 @@ export const vespers = {
       antiphonKey: "dum-esset-rex",
     },
     {
+      type: "separator",
+    },
+    {
       type: "chants-with-antiphon",
       chants: [
         {
@@ -41,6 +44,9 @@ export const vespers = {
         },
       ],
       antiphonKey: "laeva-ejus",
+    },
+    {
+      type: "separator",
     },
     {
       type: "chants-with-antiphon",
@@ -55,6 +61,9 @@ export const vespers = {
       antiphonKey: "nigra-sum",
     },
     {
+      type: "separator",
+    },
+    {
       type: "chants-with-antiphon",
       chants: [
         {
@@ -65,6 +74,9 @@ export const vespers = {
         },
       ],
       antiphonKey: "jam-hiems",
+    },
+    {
+      type: "separator",
     },
     {
       type: "chants-with-antiphon",
@@ -79,12 +91,18 @@ export const vespers = {
       antiphonKey: "speciosa-facta-es",
     },
     {
+      type: "separator",
+    },
+    {
       type: "chant",
       gabcId: "ab-initio",
       translationKey: "ab-initio",
       labelKey: "ui-little-chapter",
       reference: "Ecclus. xxiv. 14",
       id: "reading",
+    },
+    {
+      type: "separator",
     },
     {
       type: "chant",
@@ -110,6 +128,9 @@ export const vespers = {
       id: "versicle",
     },
     {
+      type: "separator",
+    },
+    {
       type: "chants-with-antiphon",
       chants: [
         {
@@ -120,6 +141,9 @@ export const vespers = {
       ],
       antiphonKey: "beata-mater",
       id: "canticle",
+    },
+    {
+      type: "separator",
     },
     {
       type: "chant-sequence",
@@ -133,6 +157,11 @@ export const vespers = {
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },
       ],
+    },
+    {
+      type: "navigation",
+      targetHour: "compline",
+      id: "next-hour",
     },
   ],
 
