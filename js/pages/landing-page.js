@@ -104,7 +104,7 @@ export function renderLandingPage() {
           <li><s>${getHourNameTranslated("prime", lang)}</s> <span class="plan-date">(${new Date("2026-02-05").toLocaleDateString(lang)})</span></li>
           <li><s>${getHourNameTranslated("terce", lang)}</s> <span class="plan-date">(${new Date("2026-02-05").toLocaleDateString(lang)})</span></li>
           <li><s>${getHourNameTranslated("sext", lang)}</s> <span class="plan-date">(${new Date("2026-02-06").toLocaleDateString(lang)})</span></li>
-          <li>${getHourNameTranslated("none", lang)}</li>
+          <li><s>${getHourNameTranslated("none", lang)}</s> <span class="plan-date">(${new Date("2026-02-06").toLocaleDateString(lang)})</span></li>
           <li>
             ${t("ui-seasonal-variations", lang)}
             <span class="plan-note">(${t("ui-seasonal-variations-note", lang)})</span>
