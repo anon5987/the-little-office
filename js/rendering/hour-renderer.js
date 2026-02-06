@@ -2,17 +2,20 @@
  * Hour Renderer Module
  * Dynamically builds and renders an hour from data modules
  *
- * Uses 5 functional section types:
+ * Uses 7 functional section types:
  * - chant: Single chant with optional label
  * - chants-with-antiphon: Multiple chants wrapped by antiphon (before first, after last)
  * - chant-variants: Multiple alternative chants
  * - chant-sequence: Array of chants in order
  * - dynamic: Runtime-resolved content
+ * - separator: Horizontal divider
+ * - navigation: Link to another hour
  */
 
 import { renderGabc, renderAllGabc, waitForJgabc, extendStaffLines, cancelRender } from './renderer.js';
 import { getMarianSeason } from '../liturgical/marian-season.js';
 import { getCurrentDate } from '../core/date-provider.js';
+import { HOUR_NAME_KEYS } from '../core/constants.js';
 
 // Re-export cancelRender for use in app.js
 export { cancelRender };
@@ -499,6 +502,56 @@ function renderDynamic(section, gabc, container, hourId) {
 }
 
 /**
+ * Render separator section (horizontal divider)
+ */
+function renderSeparator(section, container) {
+  const hr = document.createElement('hr');
+  hr.className = 'section-separator';
+  if (section.id) hr.id = section.id;
+  container.appendChild(hr);
+}
+
+/**
+ * Render navigation section (link to next hour)
+ * Handles: "Continue to [next hour]" cards
+ */
+function renderNavigation(section, container) {
+  const nameKey = HOUR_NAME_KEYS[section.targetHour];
+  if (!nameKey) {
+    console.warn(`Navigation section references unknown hour: "${section.targetHour}"`);
+    return;
+  }
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'navigation-section';
+  if (section.id) wrapper.id = section.id;
+
+  const link = document.createElement('a');
+  link.className = 'navigation-card';
+  link.href = `#${section.targetHour}`;
+
+  const nameSpan = document.createElement('span');
+  nameSpan.className = 'navigation-hour-name';
+  nameSpan.setAttribute('data-translation-key', nameKey);
+  link.appendChild(nameSpan);
+
+  if (section.noteKey) {
+    const noteSpan = document.createElement('span');
+    noteSpan.className = 'navigation-note';
+    noteSpan.setAttribute('data-translation-key', section.noteKey);
+    link.appendChild(noteSpan);
+  }
+
+  const arrow = document.createElement('span');
+  arrow.className = 'navigation-arrow';
+  arrow.textContent = '\u2192';
+  link.appendChild(arrow);
+
+  wrapper.appendChild(link);
+  container.appendChild(wrapper);
+}
+
+/**
  * Apply translations to the rendered content
  */
 export function applyTranslations(container, translations, lang) {
@@ -513,6 +566,8 @@ export function applyTranslations(container, translations, lang) {
       const translation = translations[key];
       if (translation && translation[lang]) {
         el.textContent = translation[lang];
+      } else if (!translation) {
+        console.warn(`Missing translation for key: "${key}"`);
       }
     });
 
@@ -583,6 +638,12 @@ export async function renderHour(hourId, container, options = {}) {
         break;
       case 'dynamic':
         renderDynamic(section, gabc, container, hourId);
+        break;
+      case 'separator':
+        renderSeparator(section, container);
+        break;
+      case 'navigation':
+        renderNavigation(section, container);
         break;
       default:
         console.warn(`Unknown section type: ${section.type}`);

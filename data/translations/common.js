@@ -140,6 +140,18 @@ export default {
     en: "",
     cs: "",
   },
+  "ui-description-terce": {
+    en: "",
+    cs: "",
+  },
+  "ui-description-sext": {
+    en: "",
+    cs: "",
+  },
+  "ui-description-none": {
+    en: "",
+    cs: "",
+  },
 
   // Psalm labels - Compline
   "ui-psalm-128": {
@@ -199,6 +211,16 @@ export default {
   "ui-psalm-120": {
     en: "Psalm cxx.",
     cs: "Žalm 120.",
+  },
+
+  // Psalm labels - None
+  "ui-psalm-125": {
+    en: "Psalm cxxv.",
+    cs: "Žalm 125.",
+  },
+  "ui-psalm-127": {
+    en: "Psalm cxxvii.",
+    cs: "Žalm 127.",
   },
 
   // Psalm labels - Sext
