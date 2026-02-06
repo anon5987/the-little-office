@@ -150,6 +150,12 @@ export default {
     cs: "Bože, jenž jsi skrze plodné panenství blahoslavené Marie dal lidstvu odměnu věčné spásy: dej, prosíme, abychom zakusili její přímluvu za nás, skrze niž jsme byli učiněni hodnými přijmout Původce života, našeho Pána Ježíše Krista, tvého Syna. Amen.",
   },
 
+  // Sext Prayer
+  "concede-misericors-Deus": {
+    en: "Let us pray. Grant, O merciful God, to our weak natures Thy protection, that we who commemorate the holy Mother of God may, by the help of her intercession, arise from our iniquities. Through the same Christ our Lord. Amen.",
+    cs: "Modleme se. Popřej, milosrdný Bože, ochranu naší křehkosti: abychom, kteří konáme památku svaté Rodičky Boží, povstali pomocí její přímluvy ze svých nepravostí. Amen.",
+  },
+
   // Vespers Prayer (Oremus)
   "concede-nos-famulos": {
     en: "Let us pray.\nGrant, we beseech Thee, O Lord God, that we Thy servants may enjoy perpetual health of mind and body: and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow, and enjoy everlasting gladness. Through our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end. Amen.",

@@ -387,6 +387,53 @@ annotation: 8.G;
 <i>10.</i> Gló(j)ri(j)a(j) Pa(j)tri,(j) et(j) Fí(k)li(j)o,(j.) <i>*</i>(:) et(j) Spi(j)rí(j)tu(i)i(j) Sanc(h)to.(g.) (::)
 <i>11.</i> Sic(j)ut(j) e(j)rat(j) in(j) prin(j)cí(j)pi(j)o,(j) et(j) nunc,(j) et(j) sem(k)per,(j.) <i>*</i>(:) et(j) in(j) sǽ(j)cu(j)la(j) sæ(j)cu(j)ló(i)rum.(j) A(h)men.(g.) (::)`;
 
+// Sext
+
+// Psalm 122
+export const psalm122 = `name: 122-4A*;
+initial-style: 1;
+centering-scheme: latin;
+annotation: 4.A*;
+%%
+(c3)Ad(i) te(hi) le(i)vá(i)vi(i) ó(i)cu(h)los(i) me(j)os,(i.) <i>*</i>(:) qui(i) há(i)bi(h)tas(i) in(j) cæ(h)lis.(f.) (::)
+<i>2.</i> Ec(i)ce(i) sic(i)ut(i) ó(i)cu(i)li(h) ser(i)vó(j)rum,(i.) <i>*</i>(:) in(i) má(i)ni(i)bus(i) do(i)mi(i)nó(h)rum(i) su(j)ó(h)rum.(f.) (::)
+<i>3.</i> Sic(i)ut(i) ó(i)cu(i)li(i) an(i)cíl(i)læ(i) in(i) má(i)ni(i)bus(i) dó(i)mi(h)næ(i) su(j)æ:(i.) <i>*</i>(:) i(i)ta(i) ó(i)cu(i)li(i) nos(i)tri(i) ad(i) Dó(i)mi(i)num,(i) De(i)um(i) nos(i)trum,(i) do(i)nec(i) mi(i)se(i)re(h)á(i)tur(j) nos(h)tri.(f.) (::)
+<i>4.</i> Mi(i)se(i)ré(i)re(i) nos(i)tri,(i) Dó(i)mi(i)ne,(i) mi(i)se(i)ré(h)re(i) nos(j)tri:(i.) <i>*</i>(:) qui(i)a(i) mul(i)tum(i) re(i)plé(i)ti(i) su(i)mus(i) de(h)spec(i)ti(j)ó(h)ne:(f.) (::)
+<i>5.</i> Qui(i)a(i) mul(i)tum(i) re(i)plé(i)ta(i) est(i) á(i)ni(h)ma(i) nos(j)tra:(i.) <i>*</i>(:) op(i)pró(i)bri(i)um(i) ab(i)un(i)dán(i)ti(i)bus,(i) et(i) de(i)spéc(i)ti(h)o(i) su(j)pér(h)bis.(f.) (::)
+<i>6.</i> Gló(i)ri(i)a(i) Pa(i)tri,(h) et(i) Fí(j)li(i)o,(i.) <i>*</i>(:) et(i) Spi(i)rí(h)tu(i)i(j) Sanc(h)to.(f.) (::)
+<i>7.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(h) et(i) sem(j)per,(i.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(h)ló(i)rum.(j) A(h)men.(f.) (::)`;
+
+// Psalm 123
+export const psalm123 = `name: 123-4A*;
+initial-style: 1;
+centering-scheme: latin;
+annotation: 4.A*;
+%%
+(c3)Ni(i)si(hi) qui(i)a(i) Dó(i)mi(i)nus(i) e(i)rat(i) in(i) no(i)bis,(i) di(i)cat(h) nunc(i) Is(j)ra(i)ël:(i.) <i>*</i>(:) ni(i)si(i) qui(i)a(i) Dó(i)mi(i)nus(i) e(h)rat(i) in(j) no(h)bis,(f.) (::)
+<i>2.</i> Cum(i) ex(i)súr(i)ge(i)rent(i) hó(i)mi(h)nes(i) in(j) nos,(i.) <i>*</i>(:) for(i)te(i) vi(i)vos(h) de(i)glu(j)tís(h)sent(f) nos:(f.) (::)
+<i>3.</i> Cum(i) i(i)ra(i)sce(i)ré(i)tur(i) fu(i)ror(i) e(i)ó(h)rum(i) in(j) nos,(i.) <i>*</i>(:) fór(i)si(i)tan(i) a(i)qua(i) ab(h)sor(i)bu(j)ís(h)set(f) nos.(f.) (::)
+<i>4.</i> Tor(i)rén(i)tem(i) per(i)trans(i)í(i)vit(i) á(i)ni(h)ma(i) nos(j)tra:(i.) <i>*</i>(:) fór(i)si(i)tan(i) per(i)trans(i)ís(i)set(i) á(i)ni(i)ma(i) nos(i)tra(i) a(i)quam(i) in(h)to(i)le(j)rá(h)bi(f)lem.(f.) (::)
+<i>5.</i> Be(i)ne(i)díc(h)tus(i) Dó(j)mi(i)nus(i.) <i>*</i>(:) qui(i) non(i) de(i)dit(i) nos,(i) in(i) cap(i)ti(i)ó(i)nem(i) dén(i)ti(h)bus(i) e(j)ó(h)rum.(f.) (::)
+<i>6.</i> A(i)ni(i)ma(i) nos(i)tra(i) sic(i)ut(i) pas(i)ser(h) e(i)rép(j)ta(i) est(i.) <i>*</i>(:) de(i) lá(i)que(h)o(i) ve(j)nán(h)ti(f)um.(f.) (::)
+<i>7.</i> Lá(i)que(i)us(h) con(i)trí(j)tus(i) est,(i.) <i>*</i>(:) et(i) nos(i) li(i)be(h)rá(i)ti(j) su(h)mus.(f.) (::)
+<i>8.</i> Ad(i)ju(i)tó(i)ri(i)um(i) nos(i)trum(i) in(i) nó(i)mi(h)ne(i) Dó(j)mi(i)ni,(i.) <i>*</i>(:) qui(i) fe(i)cit(i) cæ(h)lum(i) et(j) ter(h)ram.(f.) (::)
+<i>9.</i> Gló(i)ri(i)a(i) Pa(i)tri,(h) et(i) Fí(j)li(i)o,(i.) <i>*</i>(:) et(i) Spi(i)rí(h)tu(i)i(j) Sanc(h)to.(f.) (::)
+<i>10.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(h) et(i) sem(j)per,(i.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(h)ló(i)rum.(j) A(h)men.(f.) (::)`;
+
+// Psalm 124
+export const psalm124 = `name: 124-4A*;
+initial-style: 1;
+centering-scheme: latin;
+annotation: 4.A*;
+%%
+(c3)Qui(i) con(hi)fí(i)dunt(i) in(i) Dó(i)mi(i)no,(i) sic(i)ut(h) mons(i) Si(j)on:(i.) <i>*</i>(:) non(i) com(i)mo(i)vé(i)bi(i)tur(i) in(i) æ(i)tér(i)num,(i) qui(i) há(i)bi(i)tat(h) in(i) Je(j)rú(h)sa(f)lem.(f.) (::)
+<i>2.</i> Mon(i)tes(i) in(i) cir(i)cú(i)i(i)tu(i) e(i)jus: †(h.) et(i) Dó(i)mi(i)nus(i) in(i) cir(i)cú(i)i(i)tu(i) pó(i)pu(h)li(i) su(j)i,(i.) <i>*</i>(:) ex(i) hoc(i) nunc(i) et(i) us(h)que(i) in(j) sǽ(h)cu(f)lum.(f.) (::)
+<i>3.</i> Qui(i)a(i) non(i) re(i)lín(i)quet(i) Dó(i)mi(i)nus(i) vir(i)gam(i) pec(i)ca(i)tó(i)rum(i) su(i)per(i) sor(i)tem(h) jus(i)tó(j)rum:(i.) <i>*</i>(:) ut(i) non(i) ex(i)tén(i)dant(i) jus(i)ti(i) ad(i) in(i)i(i)qui(i)tá(i)tem(h) ma(i)nus(j) su(h)as.(f.) (::)
+<i>4.</i> Bé(i)ne(i)fac,(i) Dó(i)mi(h)ne,(i) bo(j)nis,(i.) <i>*</i>(:) et(h) rec(i)tis(j) cor(h)de.(f.) (::)
+<i>5.</i> De(i)cli(i)nán(i)tes(i) au(i)tem(i) in(i) ob(i)li(i)ga(i)ti(i)ó(i)nes(i) ad(i)dú(i)cet(i) Dó(i)mi(i)nus(i) cum(i) o(i)pe(i)rán(i)ti(i)bus(i) in(i)i(h)qui(i)tá(j)tem:(i.) <i>*</i>(:) pax(h) su(i)per(j) Is(h)ra(f)ël.(f.) (::)
+<i>6.</i> Gló(i)ri(i)a(i) Pa(i)tri,(h) et(i) Fí(j)li(i)o,(i.) <i>*</i>(:) et(i) Spi(i)rí(h)tu(i)i(j) Sanc(h)to.(f.) (::)
+<i>7.</i> Sic(i)ut(i) e(i)rat(i) in(i) prin(i)cí(i)pi(i)o,(i) et(i) nunc,(h) et(i) sem(j)per,(i.) <i>*</i>(:) et(i) in(i) sǽ(i)cu(i)la(i) sæ(i)cu(h)ló(i)rum.(j) A(h)men.(f.) (::)`;
+
 // Export as object for consistent API
 export default {
   // Lauds 1
@@ -420,4 +467,9 @@ export default {
   "psalm-119": psalm119,
   "psalm-120": psalm120,
   "psalm-121-8g": psalm121_8G,
+
+  // Sext
+  "psalm-122": psalm122,
+  "psalm-123": psalm123,
+  "psalm-124": psalm124,
 };

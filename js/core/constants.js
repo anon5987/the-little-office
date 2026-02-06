@@ -50,6 +50,7 @@ export const AVAILABLE_HOURS = [
   "lauds",
   "prime",
   "terce",
+  "sext",
   "compline",
 ];
 
