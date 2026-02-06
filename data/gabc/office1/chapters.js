@@ -24,8 +24,19 @@ export default {
 (c3)Que(h) est(h) i(h)sta(h) que(h) pro(h)gre(h)di(h)tur(h) qua(h)si(h) au(h)ro(h)ra(h) con(h)sur(h)gens,(f) (,) pul(h)chra(h) ut(h) lu(h)na,(h) e(h)le(h)cta(g) ut(f) sol,(h) (,) ter(h)ri(h)bi(h)lis(h) ut(h) ca(h)stro(h)rum(h) a(h)ci(h)es(h) or(h)di(h)na(h)ta.(d) <i>R.</i> (::)
 De(h)o(h) gra(h)ti(d)as.(d) (::)`,
 
-'et-sic-in-sion': `initial-style: 1;
+  "et-sic-in-sion": `initial-style: 1;
 %%
 (c3)Et(h) sic(h) in(h) Si(h)on(h) fir(h)ma(h)ta(f) sum,(f) (;) et(h) in(h) ci(h)vi(h)ta(h)te(h) san(h)cti(h)fi(h)ca(h)ta(h) si(h)mi(h)li(h)ter(h) re(g)qui(f)e(h)vi,(h) (:) et(h) in(h) Je(h)ru(h)sa(h)lem(h) po(h)te(h)stas(h) me(h)a.(d) <i>R.</i> (::)
+De(h)o(h) gra(h)ti(d)as.(d) (::)`,
+
+  "et-radicavi-in-populo": `initial-style: 1;
+%%
+(c3)Et(h) ra(h)di(h)ca(h)vi(h) in(h) po(h)pu(h)lo(h) ho(h)no(h)ri(h)fi(h)ca(h)to,(f) (;) et(h) in(h) par(h)te(h) De(h)i(h) me(h)i(h) hae(h)re(h)di(g)tas(f) il(h)li(h)us,(h) (:) et(h) in(h) ple(h)ni(h)tu(h)di(h)ne(h) san(h)cto(h)rum(h) de(h)ten(h)ti(h)o(h) me(h)a.(d) <i>R.</i> (::)
+De(h)o(h) gra(h)ti(d)as.(d) (::)`,
+
+  "in-plateis": `initial-style: 1;
+%%
+(c3)In(h) pla(h)te(h)is(h) si(h)cut(h) cin(h)na(h)mo(h)mum(h) et(h) bal(h)sa(h)mum(h) a(h)ro(h)ma(h)ti(h)zans(h) o(h)do(h)rem(h) de(h)di:(f) <i>R.</i> (:)
+qua(h)si(h) myr(h)rha(g) e(f)le(h)cta,(h) (;) de(h)di(h) su(h)a(h)vi(h)ta(h)tem(h) o(h)do(h)ris.(d) (::)
 De(h)o(h) gra(h)ti(d)as.(d) (::)`,
 };

@@ -53,7 +53,7 @@ Be(h)a(h)tæ,(h) et(h) glo(h)ri(h)o(h)sæ(h) sem(h)per(h)que(h) vir(h)gi(h)nis(h
 (c3)Be(h)ne(h)di(h)ca(hi)mus(i) Do(i)mi(i)no.(ivHG.) <i>R.</i> (::)
 De(i)o(i) gra(i)ti(i)as.(ivHG.) <i>V.</i> (::)
 Fi(e)de(e)li(e)um(e) a(e)ni(e)mæ,(e) <i>✠</i> per(e) mi(e)se(e)ri(e)cor(e)di(e)am(e) De(e)i,(e) re(e)qui(e)e(e)scant(e) in(e) pa(e)ce.(e) <i>R.</i> (::)
-A(e)men.(e.) (::)`,
+A(e.)men.(e.) (::)`,
 
   "benedicamus-benedicat": `initial-style: 1;
 %%
@@ -71,5 +71,11 @@ A(e.)men.(e.) (::)`,
 %%
 (c3)O(h)re(h)mus.(f) (::)
 De(h)us,(h) qui(h) sa(h)lu(h)tis(h) ae(h)ter(h)nae,(h) be(h)a(h)tae(h) Ma(h)ri(h)ae(h) vir(h)gi(h)ni(h)ta(h)te(h) fe(h)cun(h)da,(h) hu(h)ma(h)no(h) ge(h)ne(h)ri(h) prae(h)mi(h)a(h) prae(h)sti(h)ti(h)sti:(g) (;) tri(h)bu(h)e,(h) quae(h)su(h)mus;(h) ut(h) i(h)psam(h) pro(h) no(h)bis(h) in(h)ter(h)ce(h)de(h)re(h) sen(g)ti(f)a(h)mus,(h) (;) per(h) quam(h) me(h)ru(h)i(h)mus(h) au(h)cto(h)rem(h) vi(h)tae(h) su(h)sci(h)pe(h)re,(h) Do(h)mi(h)num(h) no(h)strum(h) Ie(h)sum(h) Chri(h)stum,(h) Fi(h)li(h)um(h) tu(h)um.(f) <i>R.</i> (::)
+A(g.)men.(h.) (::)`,
+
+  "famulorum-tuorum-quaesumus-Domine": `initial-style: 1;
+%%
+(c3)O(h)re(h)mus.(f) (:)
+Fa(h)mu(h)lo(h)rum(h) tu(h)o(h)rum,(h) quae(h)su(h)mus,(h) Do(h)mi(h)ne,(h) de(h)li(h)ctis(h) i(h)gno(h)sce:(f) (;) ut(h) qui(h) ti(h)bi(h) pla(h)ce(h)re(h) de(h) a(h)cti(h)bus(h) no(h)stris(h) non(g) va(f)le(h)mus:(h) (:) ge(h)ni(h)tri(h)cis(h) fi(h)li(h)i(h) tu(h)i(h) Do(h)mi(h)ni(h) no(h)stri(h) in(h)ter(h)ces(h)si(h)o(h)ne(h) sal(h)ve(h)mur.(f) (:) Per(h) e(h)un(h)dem(h) Do(h)mi(h)num(h) no(h)strum(h) Ie(h)sum(h) Chri(h)stum(h) fi(h)li(h)um(h) tu(h)um:(f) (;) qui(g) te(g)cum(g) vi(g)vit(g) et(g) re(g)gnat(g) in(g) u(g)ni(g)ta(g)te(g) spi(g)ri(g)tus(g) san(f)cti(d) De(h)us,(h) (;) per(h) om(h)ni(h)a(h) sae(h)cu(h)la(h) sae(h)cu(h)lo(h)rum.(f) <i>R.</i> (::)
 A(g.)men.(h.) (::)`,
 };
