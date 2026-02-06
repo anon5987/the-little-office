@@ -10,6 +10,8 @@
  * - chant-variants: Multiple alternative chants
  * - chant-sequence: Array of chants in order
  * - dynamic: Runtime-resolved content
+ * - separator: Horizontal divider
+ * - navigation: Link to another hour
  *
  * @module types
  */
@@ -117,8 +119,26 @@
  */
 
 /**
+ * Horizontal divider between sections
+ * Used for: visual separation (e.g., between closing prayers and navigation)
+ * @typedef {Object} SeparatorSection
+ * @property {'separator'} type
+ * @property {string} [id] - Wrapper element ID
+ */
+
+/**
+ * Navigation link to another hour
+ * Used for: "Continue to [next hour]" cards
+ * @typedef {Object} NavigationSection
+ * @property {'navigation'} type
+ * @property {string} targetHour - Hour ID to link to (e.g., 'compline')
+ * @property {string} [noteKey] - Optional translation key for a note below the hour name
+ * @property {string} [id] - Wrapper element ID
+ */
+
+/**
  * Any section type
- * @typedef {ChantSection|ChantsWithAntiphonSection|ChantVariantsSection|ChantSequenceSection|DynamicSection} Section
+ * @typedef {ChantSection|ChantsWithAntiphonSection|ChantVariantsSection|ChantSequenceSection|DynamicSection|SeparatorSection|NavigationSection} Section
  */
 
 /**

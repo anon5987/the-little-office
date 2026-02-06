@@ -52,7 +52,9 @@ export const prime = {
       antiphonKey: "assumpta-est-maria-in-cælum",
       id: "psalms",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant",
       gabcId: "que-est-ista",
@@ -78,7 +80,9 @@ export const prime = {
       ],
       id: "versicle",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant-sequence",
       id: "end",
@@ -91,6 +95,11 @@ export const prime = {
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },
       ],
+    },
+    {
+      type: "navigation",
+      targetHour: "terce",
+      id: "next-hour",
     },
   ],
 

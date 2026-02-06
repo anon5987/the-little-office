@@ -52,7 +52,9 @@ export const terce = {
       antiphonKey: "maria-virgo-assumpta-est",
       id: "psalms",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant",
       gabcId: "et-sic-in-sion",
@@ -78,7 +80,9 @@ export const terce = {
       ],
       id: "versicle",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant-sequence",
       id: "end",
@@ -91,6 +95,11 @@ export const terce = {
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },
       ],
+    },
+    {
+      type: "navigation",
+      targetHour: "sext",
+      id: "next-hour",
     },
   ],
 

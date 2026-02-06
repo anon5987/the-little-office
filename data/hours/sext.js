@@ -52,7 +52,9 @@ export const sext = {
       antiphonKey: "in-odorem",
       id: "psalms",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant",
       gabcId: "",
@@ -78,7 +80,9 @@ export const sext = {
       ],
       id: "versicle",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant-sequence",
       id: "end",
@@ -91,6 +95,11 @@ export const sext = {
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },
       ],
+    },
+    {
+      type: "navigation",
+      targetHour: "vespers",
+      id: "next-hour",
     },
   ],
 
