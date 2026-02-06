@@ -15,8 +15,8 @@ const HOUR_TIMES = {
   terce:    { start: 9,  end: 12 },  // 9 AM to noon (third hour)
   sext:     { start: 12, end: 15 },  // Noon to 3 PM (sixth hour)
   none:     { start: 15, end: 18 },  // 3 PM to 6 PM (ninth hour)
-  vespers:  { start: 18, end: 21 },  // 6 PM to 9 PM (evening)
-  compline: { start: 21, end: 24 }   // 9 PM to midnight (before sleep)
+  vespers:  { start: 18, end: 20 },  // 6 PM to 9 PM (evening)
+  compline: { start: 20, end: 24 }   // 9 PM to midnight (before sleep)
 };
 
 /**

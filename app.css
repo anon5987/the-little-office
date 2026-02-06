@@ -710,6 +710,20 @@ body.dark-mode .control-input::-webkit-calendar-picker-indicator {
 .navigation-card:hover .navigation-arrow { transform: translateX(4px); }
 
 /* ==========================================================================
+   Mobile Styles
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+  #hour-content {
+    padding: 0.5rem 0.15rem;
+  }
+
+  .landing-page {
+    padding: 2rem 0.75rem;
+  }
+}
+
+/* ==========================================================================
    Print Styles
    ========================================================================== */
 
