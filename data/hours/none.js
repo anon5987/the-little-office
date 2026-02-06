@@ -1,14 +1,14 @@
 /**
- * Sext Hour Definition
+ * None Hour Definition
  *
- * Defines the structure and content of Sext (Sixth Hour)
+ * Defines the structure and content of None (Ninth Hour)
  * @see {import('../../js/core/types.js').HourDefinition}
  */
 
-export const sext = {
-  id: "sext",
-  nameKey: "ui-hour-sext",
-  descriptionKey: "ui-description-sext",
+export const none = {
+  id: "none",
+  nameKey: "ui-hour-none",
+  descriptionKey: "ui-description-none",
 
   // Structure defines the order of sections
   structure: [
@@ -31,34 +31,34 @@ export const sext = {
       type: "chants-with-antiphon",
       chants: [
         {
-          gabcId: "psalm-122",
-          translationKey: "psalm-122",
-          labelKey: "ui-psalm-122",
-          incipit: "Ad te levavi",
+          gabcId: "psalm-125",
+          translationKey: "psalm-125",
+          labelKey: "ui-psalm-125",
+          incipit: "In convertendo",
         },
         {
-          gabcId: "psalm-123",
-          translationKey: "psalm-123",
-          labelKey: "ui-psalm-123",
-          incipit: "Nisi quia Dominus",
+          gabcId: "psalm-126-1g2",
+          translationKey: "psalm-126",
+          labelKey: "ui-psalm-126",
+          incipit: "Nisi Dominus",
         },
         {
-          gabcId: "psalm-124",
-          translationKey: "psalm-124",
-          labelKey: "ui-psalm-124",
-          incipit: "Qui confidunt",
+          gabcId: "psalm-127",
+          translationKey: "psalm-127",
+          labelKey: "ui-psalm-127",
+          incipit: "Beati omnes",
         },
       ],
-      antiphonKey: "in-odorem",
+      antiphonKey: "pulchra-es-et-decora",
       id: "psalms",
     },
 
     {
       type: "chant",
-      gabcId: "et-radicavi-in-populo",
-      translationKey: "et-radicavi-in-populo",
+      gabcId: "in-plateis",
+      translationKey: "in-plateis",
       labelKey: "ui-little-chapter",
-      reference: "Ecclus. xxiv. 16.",
+      reference: "Ecclus. xxiv. 19,20.",
       id: "reading",
     },
 
@@ -66,14 +66,14 @@ export const sext = {
       type: "chant-variants",
       variants: [
         {
-          gabcId: "benedicta-tu-solemn",
+          gabcId: "post-partum-virgo-solemn",
           labelKey: "ui-sundays-feasts",
-          translationKey: "benedicta-tu",
+          translationKey: "post-partum-virgo",
         },
         {
-          gabcId: "benedicta-tu-simple",
+          gabcId: "post-partum-virgo-simple",
           labelKey: "ui-other-times",
-          translationKey: "benedicta-tu",
+          translationKey: "post-partum-virgo",
         },
       ],
       id: "versicle",
@@ -85,8 +85,8 @@ export const sext = {
       items: [
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         {
-          gabcId: "concede-misericors-Deus",
-          translationKey: "concede-misericors-Deus",
+          gabcId: "famulorum-tuorum-quaesumus-Domine",
+          translationKey: "famulorum-tuorum-quaesumus-Domine",
         },
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },
@@ -111,4 +111,4 @@ export const sext = {
   },
 };
 
-export default sext;
+export default none;

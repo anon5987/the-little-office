@@ -51,6 +51,7 @@ export const AVAILABLE_HOURS = [
   "prime",
   "terce",
   "sext",
+  "none",
   "compline",
 ];
 
