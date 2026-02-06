@@ -3,7 +3,7 @@
  * Handles rendering of GABC notation to SVG using the jgabc library
  */
 
-import { isJgabcReady, getHeaderSafe, getDefsSafe, getStaffOffset, setSvgWidth, getChantSafe, relayoutChantSafe } from './jgabc-adapter.js';
+import { isJgabcReady, getHeaderSafe, getDefsSafe, getStaffOffset, getChantSafe, relayoutChantSafe } from './jgabc-adapter.js';
 import { RENDER, DELAYS } from '../core/constants.js';
 
 /**
@@ -85,7 +85,7 @@ export function renderGabc(container) {
   // Create SVG element
   var svgns = "http://www.w3.org/2000/svg";
   var svg = document.createElementNS(svgns, "svg");
-  svg.setAttribute("class", "Exsurge ChantScore");
+  svg.setAttribute("class", "ChantScore");
   svg.setAttribute("width", width);
   svg.setAttribute("style", "width:100%");
   wrapper.appendChild(svg);
@@ -113,32 +113,13 @@ export function renderGabc(container) {
       svg.insertBefore(defs, result);
     }
 
-    // Set global width for jgabc
-    setSvgWidth(width);
-
-    // Call jgabc's getChant function
+    // Call jgabc's getChant function (performs full layout at container width)
     var top = [0];
     if (!getChantSafe([header, text], svg, result, top)) {
       console.warn('Chant rendering failed for container:', container.getAttribute('data-gabc-id') || '(inline)');
       return;
     }
 
-    // Relayout to fit width (may fail if fonts not loaded yet)
-    if (!relayoutChantSafe(svg, width)) {
-      // Schedule a retry during idle time to avoid blocking user interaction
-      const retryRelayout = () => {
-        relayoutChantSafe(svg, width);
-        extendStaffLines(svg, width);
-      };
-
-      if (typeof requestIdleCallback === "function") {
-        requestIdleCallback(retryRelayout, { timeout: DELAYS.IDLE_TIMEOUT });
-      } else {
-        setTimeout(retryRelayout, DELAYS.FONT_FALLBACK);
-      }
-    }
-
-    // Always extend staff lines immediately (even if relayout failed)
     extendStaffLines(svg, width);
 
     // Force red color on verse numbers and asterisks (override jgabc inline styles)
@@ -223,6 +204,11 @@ export async function renderAllGabc(container = document) {
   });
 
   activeObserver = observer;
+
+  // Wait for fonts to load so getComputedTextLength() returns correct values
+  if (document.fonts && document.fonts.ready) {
+    await document.fonts.ready;
+  }
 
   // Wait for layout to be computed before checking positions
   // Double rAF ensures we wait for both the next frame and subsequent layout
@@ -314,11 +300,10 @@ export function extendAllStaffLines() {
 export function initRenderer() {
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () {
-      // Just extend staff lines on existing chants, don't re-render
-      setTimeout(extendAllStaffLines, DELAYS.FONT_LOAD);
+      handleResize();
     });
   } else {
-    setTimeout(extendAllStaffLines, DELAYS.FONT_FALLBACK);
+    setTimeout(handleResize, DELAYS.FONT_FALLBACK);
   }
 }
 

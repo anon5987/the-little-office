@@ -328,7 +328,7 @@ select, input {
 }
 
 .chant svg {
-  contain: strict;
+  contain: layout style paint;
 }
 
 /* Chant labels and text using variables */
@@ -356,29 +356,23 @@ select, input {
 }
 
 /* SVG styles using variables for dark mode support */
-.chant svg path {
-  fill: var(--svg-fill) !important;
+/* Target the caeciliae group (inherits to children) instead of blanket !important */
+.chant svg g.caeciliae {
+  fill: var(--svg-fill);
+  color: var(--svg-fill);
 }
 
-.chant svg use {
-  fill: var(--svg-fill) !important;
+.chant svg g.caeciliae text {
+  fill: var(--svg-fill);
 }
 
-.chant svg line {
-  stroke: var(--svg-fill) !important;
-}
-
-.chant svg rect:not(mask rect) {
-  fill: var(--svg-fill) !important;
+.chant svg g.caeciliae line {
+  stroke: var(--svg-fill);
 }
 
 /* Don't override mask rect fills - they need to stay white for visibility */
 .chant svg mask rect {
   fill: white !important;
-}
-
-.chant svg text {
-  fill: var(--svg-fill) !important;
 }
 
 /* Red elements in SVG (verse numbers, asterisks) */

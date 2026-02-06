@@ -90,7 +90,7 @@ function splitChantForPrint(svg, targetWidth) {
 
     // Clone SVG and use negative margin to show correct portion
     const lineSvg = svg.cloneNode(true);
-    lineSvg.className = 'Exsurge ChantScore chant-line-svg';
+    lineSvg.className = 'ChantScore chant-line-svg';
     lineSvg.setAttribute('width', svgWidth);
     lineSvg.setAttribute('height', svgHeight);
     lineSvg.removeAttribute('viewBox');

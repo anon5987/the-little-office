@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="https://bbloomf.github.io/jgabc/Caeciliae-Staffless.ttf" as="font" type="font/truetype" crossorigin>
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/bbloomf/jgabc@master/fonts/CrimsonText-Regular.ttf" as="font" type="font/truetype" crossorigin>
   <title>The Little Office of the Blessed Virgin Mary</title>
   <script>
     // Apply dark mode immediately to prevent flash of white background
@@ -78,6 +80,7 @@
   <!-- Dependencies -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="jgabc.full.js"></script>
+  <script>if(typeof gabcSettings!=='undefined'){gabcSettings.showSyllableEditorOnHover=false;gabcSettings.showSyllableEditorOnClick=false;}</script>
 
   <!-- Main App (ES Module) -->
   <script type="module" src="js/app.js"></script>
