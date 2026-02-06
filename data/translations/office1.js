@@ -104,6 +104,12 @@ export default {
     cs: "Oroduj za nás, Svatá Boží Rodičko.\n Abychom měli účast na Kristových zaslíbeních.",
   },
 
+  // None Versicle
+  "post-partum-virgo": {
+    en: "After childbirth thou didst remain a pure virgin.\nIntercede for us, O Mother of God.",
+    cs: "Po porodu jsi zůstala čistou pannou.\nPřimlouvej se za nás, Boží Rodičko.",
+  },
+
   // === CHAPTER TRANSLATIONS ===
 
   // Prime - Cant. vi. 9
@@ -136,6 +142,18 @@ export default {
     cs: "Na Siónu jsem obdržela sídlo, usadil mě v městě, které miloval jako mě, v Jeruzalémě vykonávám svou moc.\nBohu díky.",
   },
 
+  // Sext - Ecclesiasticus 24:16
+  "et-radicavi-in-populo": {
+    en: "And I took root in an honourable people, and in the portion of my God his inheritance, and my abode is in the full assembly of saints.\nThanks be to God.",
+    cs: "Usadil mě v městě, které miloval jako mě, v Jeruzalémě vykonávám svou moc.\nBohu díky.",
+  },
+
+  // None - Ecclesiasticus 24:19,20
+  "in-plateis": {
+    en: "In the streets, I gave a sweet smell like cinnamon and aromatical balm: I yielded a sweet odour like the best myrrh:\nThanks be to God.",
+    cs: "Voněla jsem jako skořice a vonný balzám, jako nejjemnější myrha jsem šířila vůni.\nBohu díky.",
+  },
+
   // === PRAYER TRANSLATIONS ===
 
   // Prime Prayer
@@ -154,6 +172,12 @@ export default {
   "concede-misericors-Deus": {
     en: "Let us pray. Grant, O merciful God, to our weak natures Thy protection, that we who commemorate the holy Mother of God may, by the help of her intercession, arise from our iniquities. Through the same Christ our Lord. Amen.",
     cs: "Modleme se. Popřej, milosrdný Bože, ochranu naší křehkosti: abychom, kteří konáme památku svaté Rodičky Boží, povstali pomocí její přímluvy ze svých nepravostí. Amen.",
+  },
+
+  // None Prayer
+  "famulorum-tuorum-quaesumus-Domine": {
+    en: "O Lord, we beseech thee, to forgive the offences of thy servants: that we which are not able to please thee by our own acts: may be saved by the intercession of the mother of thy son, our Lord. Through the same our Lord Jesus Christ thy son: Who liveth and reigneth, God, with thee in the unity of the holy Ghost, world without end. Amen.",
+    cs: "Odpusť, prosíme, Pane, provinění svých služebníků: abychom my, kteří ti nemůžeme být milí svými vlastními skutky, byli spaseni přímluvou Matky tvého Syna, našeho Pána. Skrze téhož našeho Pána Ježíše Krista, tvého Syna, který s tebou žije a kraluje v jednotě Ducha Svatého, Bůh, po všechny věky věků. Amen.",
   },
 
   // Vespers Prayer (Oremus)
