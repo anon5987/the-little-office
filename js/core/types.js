@@ -4,7 +4,7 @@
  * These JSDoc typedefs serve as contracts/interfaces for the hour data structure.
  * They provide IDE autocompletion and serve as documentation.
  *
- * The type system uses 5 functional types that describe rendering behavior:
+ * The type system uses 7 functional types that describe rendering behavior:
  * - chant: Single chant with optional label
  * - chants-with-antiphon: Multiple chants wrapped by antiphon (before first, after last)
  * - chant-variants: Multiple alternative chants

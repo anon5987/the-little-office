@@ -98,7 +98,7 @@ export const sext = {
     },
     {
       type: "navigation",
-      targetHour: "vespers",
+      targetHour: "none",
       id: "next-hour",
     },
   ],

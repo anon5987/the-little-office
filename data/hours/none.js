@@ -52,7 +52,9 @@ export const none = {
       antiphonKey: "pulchra-es-et-decora",
       id: "psalms",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant",
       gabcId: "in-plateis",
@@ -78,7 +80,9 @@ export const none = {
       ],
       id: "versicle",
     },
-
+    {
+      type: "separator",
+    },
     {
       type: "chant-sequence",
       id: "end",
@@ -91,6 +95,11 @@ export const none = {
         { gabcId: "Domine-exaudi", translationKey: "Domine-exaudi" },
         { gabcId: "benedicamus", translationKey: "benedicamus" },
       ],
+    },
+    {
+      type: "navigation",
+      targetHour: "vespers",
+      id: "next-hour",
     },
   ],
 

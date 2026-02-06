@@ -2,7 +2,7 @@
  * Hour Renderer Module
  * Dynamically builds and renders an hour from data modules
  *
- * Uses 5 functional section types:
+ * Uses 7 functional section types:
  * - chant: Single chant with optional label
  * - chants-with-antiphon: Multiple chants wrapped by antiphon (before first, after last)
  * - chant-variants: Multiple alternative chants
@@ -516,6 +516,12 @@ function renderSeparator(section, container) {
  * Handles: "Continue to [next hour]" cards
  */
 function renderNavigation(section, container) {
+  const nameKey = HOUR_NAME_KEYS[section.targetHour];
+  if (!nameKey) {
+    console.warn(`Navigation section references unknown hour: "${section.targetHour}"`);
+    return;
+  }
+
   const wrapper = document.createElement('div');
   wrapper.className = 'navigation-section';
   if (section.id) wrapper.id = section.id;
@@ -524,13 +530,10 @@ function renderNavigation(section, container) {
   link.className = 'navigation-card';
   link.href = `#${section.targetHour}`;
 
-  const nameKey = HOUR_NAME_KEYS[section.targetHour];
-  if (nameKey) {
-    const nameSpan = document.createElement('span');
-    nameSpan.className = 'navigation-hour-name';
-    nameSpan.setAttribute('data-translation-key', nameKey);
-    link.appendChild(nameSpan);
-  }
+  const nameSpan = document.createElement('span');
+  nameSpan.className = 'navigation-hour-name';
+  nameSpan.setAttribute('data-translation-key', nameKey);
+  link.appendChild(nameSpan);
 
   if (section.noteKey) {
     const noteSpan = document.createElement('span');
@@ -563,6 +566,8 @@ export function applyTranslations(container, translations, lang) {
       const translation = translations[key];
       if (translation && translation[lang]) {
         el.textContent = translation[lang];
+      } else if (!translation) {
+        console.warn(`Missing translation for key: "${key}"`);
       }
     });
 
