@@ -28,6 +28,7 @@
   --skeleton-bg: #e0e0e0;
   --skeleton-wave: rgba(255, 255, 255, 0.5);
   --svg-fill: #000000;
+  --primary-light: rgba(33, 72, 202, 0.35);
   --scroll-highlight: rgba(221, 0, 0, 0.12);
   --scroll-highlight-strong: rgba(221, 0, 0, 0.22);
 }
@@ -56,6 +57,7 @@ body.dark-mode {
   --skeleton-bg: #2a2a2a;
   --skeleton-wave: rgba(255, 255, 255, 0.08);
   --svg-fill: #cccccc;
+  --primary-light: rgba(90, 140, 255, 0.4);
   --scroll-highlight: rgba(204, 68, 68, 0.18);
   --scroll-highlight-strong: rgba(204, 68, 68, 0.28);
 }
@@ -494,10 +496,22 @@ select, input {
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
+  margin: 0 -8px;
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border-light);
   gap: 0.75rem;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--primary-light);
+  transition: width 150ms ease-out;
+  pointer-events: none;
 }
 
 .sticky-header .back-btn {

@@ -7,6 +7,7 @@
 export const IDS = {
   // Sticky header
   STICKY_HEADER: 'sticky-header',
+  PROGRESS_BAR: 'progress-bar',
   MENU_BTN: 'menu-btn',
   HEADER_MENU: 'header-menu',
   HEADER_BACK: 'header-back',
@@ -29,6 +30,7 @@ export const IDS = {
   LANDING_DARK_MODE: 'landing-dark-mode',
 
   // Date override controls
+  DATE_OVERRIDE_WRAPPER: 'date-override-wrapper',
   DATE_OVERRIDE_INPUT: 'date-override-input',
   DATE_OVERRIDE_CLEAR: 'date-override-clear',
 };

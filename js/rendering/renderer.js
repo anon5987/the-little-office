@@ -147,22 +147,15 @@ export function renderGabc(container) {
 // Track current render operation for cancellation
 let currentRenderAbort = null;
 
-// Track active IntersectionObserver for cleanup
-let activeObserver = null;
-
 // Cancel any in-progress rendering
 export function cancelRender() {
   if (currentRenderAbort) {
     currentRenderAbort.cancelled = true;
     currentRenderAbort = null;
   }
-  if (activeObserver) {
-    activeObserver.disconnect();
-    activeObserver = null;
-  }
 }
 
-// Render all GABC elements using lazy loading (IntersectionObserver)
+// Render all GABC elements in a single pass (no lazy loading)
 export async function renderAllGabc(container = document) {
   // Cancel any previous render
   cancelRender();
@@ -177,70 +170,34 @@ export async function renderAllGabc(container = document) {
     return;
   }
 
-  // Set to track which elements have been rendered
-  const rendered = new WeakSet();
-
-  // Render a single element
-  const renderElement = (element) => {
-    if (rendered.has(element) || abortToken.cancelled) return;
-    rendered.add(element);
-    renderGabc(element);
-    element.classList.remove('loading');
-  };
-
-  // Create IntersectionObserver for lazy loading
-  const observer = new IntersectionObserver((entries) => {
-    if (abortToken.cancelled) return;
-
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        renderElement(entry.target);
-        observer.unobserve(entry.target);
-      }
-    }
-  }, {
-    rootMargin: '200px 0px', // Start rendering 200px before element enters viewport
-    threshold: 0
-  });
-
-  activeObserver = observer;
-
   // Wait for fonts to load so getComputedTextLength() returns correct values
   if (document.fonts && document.fonts.ready) {
     await document.fonts.ready;
   }
 
-  // Wait for layout to be computed before checking positions
+  // Wait for layout to be computed
   // Double rAF ensures we wait for both the next frame and subsequent layout
   await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 
-  // Check for cancellation after waiting
   if (abortToken.cancelled) return;
 
-  // Observe all elements and immediately render visible ones
-  const INITIAL_BATCH = 8; // Render first N immediately for fast initial paint
-  let initialCount = 0;
-
+  // Render all elements in one pass
+  let count = 0;
   for (const element of elements) {
     if (abortToken.cancelled) break;
 
-    // Check if element is in or near viewport
-    const rect = element.getBoundingClientRect();
-    const isNearViewport = rect.top < window.innerHeight + 200;
+    renderGabc(element);
+    element.classList.remove('loading');
+    count++;
 
-    if (isNearViewport && initialCount < INITIAL_BATCH) {
-      // Render immediately if in initial viewport
-      renderElement(element);
-      initialCount++;
-      // Yield occasionally for responsiveness
-      if (initialCount % 4 === 0) {
-        await new Promise(r => setTimeout(r, 0));
-      }
-    } else {
-      // Lazy load via observer
-      observer.observe(element);
+    // Yield every 4 elements for responsiveness
+    if (count % 4 === 0) {
+      await new Promise(r => setTimeout(r, 0));
+      if (abortToken.cancelled) break;
     }
   }
+
+  currentRenderAbort = null;
 }
 
 // Maximum polling attempts before giving up on jgabc load

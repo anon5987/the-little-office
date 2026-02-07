@@ -29,6 +29,7 @@ import { cancelRender } from './rendering/hour-renderer.js';
 import { detectIOS } from './utils/device-detection.js';
 import { fixStaticSVGWhitespace } from './utils/svg-utils.js';
 import { initStickyHeader, setUITranslations } from './ui/sticky-header.js';
+import { loadConfig } from './core/config.js';
 import { renderLandingPage, setTranslationsCache as setLandingTranslations } from './pages/landing-page.js';
 import { renderHourPage, hideHourContent, setTranslationsCache as setHourTranslations } from './pages/hour-page.js';
 import { IDS, getElement, SELECTORS } from './utils/selectors.js';
@@ -143,11 +144,14 @@ export async function init(translations) {
   // Initialize state from URL/localStorage
   initState();
 
+  // Load configuration
+  const config = await loadConfig();
+
   // Load common translations for page rendering
   const commonTranslations = await loadCommonTranslations();
 
   // Initialize sticky header controls and set UI translations
-  initStickyHeader();
+  initStickyHeader(config);
   if (commonTranslations) {
     setUITranslations(commonTranslations);
     // Apply initial UI translations for header menu
