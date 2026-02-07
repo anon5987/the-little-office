@@ -30,6 +30,7 @@ export const IDS = {
   LANDING_DARK_MODE: 'landing-dark-mode',
 
   // Date override controls
+  DATE_OVERRIDE_WRAPPER: 'date-override-wrapper',
   DATE_OVERRIDE_INPUT: 'date-override-input',
   DATE_OVERRIDE_CLEAR: 'date-override-clear',
 };

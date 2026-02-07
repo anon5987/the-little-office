@@ -51,7 +51,7 @@ export function clearCurrentHourData() {
 /**
  * Initialize sticky header controls
  */
-export function initStickyHeader() {
+export function initStickyHeader(config = {}) {
   const state = getState();
   const events = createEventScope(SCOPES.STICKY_HEADER);
 
@@ -141,6 +141,12 @@ export function initStickyHeader() {
       set('darkMode', isDark);
       if (darkModeIcon) darkModeIcon.textContent = isDark ? '🌙' : '☀️';
     });
+  }
+
+  // Show date picker if enabled in config
+  if (config.showDatePicker) {
+    const dateWrapper = getElement(IDS.DATE_OVERRIDE_WRAPPER);
+    if (dateWrapper) dateWrapper.classList.remove(CSS_CLASSES.HIDDEN);
   }
 
   // Progress bar
