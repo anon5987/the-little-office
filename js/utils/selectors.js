@@ -7,6 +7,7 @@
 export const IDS = {
   // Sticky header
   STICKY_HEADER: 'sticky-header',
+  PROGRESS_BAR: 'progress-bar',
   MENU_BTN: 'menu-btn',
   HEADER_MENU: 'header-menu',
   HEADER_BACK: 'header-back',

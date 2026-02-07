@@ -143,6 +143,9 @@ export function initStickyHeader() {
     });
   }
 
+  // Progress bar
+  initProgressBar(events);
+
   // Date override controls
   const dateInput = getElement(IDS.DATE_OVERRIDE_INPUT);
   const dateClearBtn = getElement(IDS.DATE_OVERRIDE_CLEAR);
@@ -177,6 +180,21 @@ export function initStickyHeader() {
 }
 
 /**
+ * Initialize scroll progress bar tracking
+ * @param {ReturnType<typeof createEventScope>} events - Event scope to register the scroll listener
+ */
+function initProgressBar(events) {
+  const progressBar = getElement(IDS.PROGRESS_BAR);
+  if (!progressBar) return;
+
+  events.add(window, 'scroll', () => {
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+    progressBar.style.width = scrollPercent + '%';
+  }, { passive: true });
+}
+
+/**
  * Show sticky header with section name
  * @param {string} sectionName - Name to display in header
  * @param {string} [hourId] - Hour ID for language switching
@@ -203,6 +221,10 @@ export function hideStickyHeader() {
   const header = getElement(IDS.STICKY_HEADER);
   if (header) {
     header.classList.add(CSS_CLASSES.HIDDEN);
+  }
+  const progressBar = getElement(IDS.PROGRESS_BAR);
+  if (progressBar) {
+    progressBar.style.width = '0%';
   }
 }
 
